@@ -1,5 +1,4 @@
 $(function() {
-	
 	var code = getQueryString('code');
 	
 	var fields = [{
@@ -15,13 +14,15 @@ $(function() {
 		field: 'name',
 		required: true,
 		maxlength: 30
-	}, {
+	},
+		{
 		title: '角色等级',
 		field: 'level',
 		required: true,
 		type: 'select',
 		key: 'role_level'
-	}, {
+	},
+		{
 		title: '备注',
 		field: 'remark',
 		maxlength: 250
@@ -30,9 +31,9 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '805022',
-		addCode: '805023',
-		editCode: '805025'
+		detailCode: '627927',
+		addCode: '627920',
+		editCode: '627921'
 	});
 	
 });

@@ -54,7 +54,8 @@ $(function() {
 			
 			//获取用户详情
             reqApi({
-                code: '805050',
+                // code: '805050',
+                code: '627200',
                 json: data,
 				sync: true
             }).then(function(data) {

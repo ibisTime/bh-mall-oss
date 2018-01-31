@@ -15,9 +15,11 @@ $(function() {
 		field : 'parentCode',
 		title : '父菜单编号',
 		type : 'select',
-		listCode: '805001',
+		// listCode: '805001',
+		listCode: '627917',
 		params: {
-			type: '1'
+			type: '1',
+            roleCode: sessionStorage.getItem('roleCode')
 		},
 		keyName: 'code',
 		valueName: '{{code.DATA}} {{name.DATA}}',
@@ -39,7 +41,7 @@ $(function() {
 	buildList({
 		router: 'menu',
 		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
+		pageCode: '627900',
+		deleteCode: '627904'
 	});
 });

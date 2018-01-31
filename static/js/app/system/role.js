@@ -1,5 +1,4 @@
 $(function(){
-	
 	var columns = [{
 		field : '',
 		title : '',
@@ -29,10 +28,10 @@ $(function(){
 	buildList({
 		//router: 'role',
 		columns: columns,
-		pageCode: '805020',
-		deleteCode: '805024'
+		pageCode: '627925',
+		deleteCode: '627922'
 	});
-	
+
 	$('#changeBtn').click(function() {
 		var selRecords = $('#tableList').bootstrapTable('getSelections');
 		if(selRecords.length <= 0){

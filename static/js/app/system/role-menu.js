@@ -3,17 +3,19 @@ $(function() {
 	$("#name").val(decodeURI(getQueryString("name")));
 	
 	//下拉菜单
-	$.when(reqApi({ // 所有菜单
-		code: '805001',
+	$.when(
+		reqApi({ // 所有菜单
+		code: '627901',
 		json: {
 			kind: '1'
 		}
-	}), reqApi({ // 获得菜单
-		code: '805026',
+	}),
+		reqApi({ // 获得菜单
+		code: '627917',
 		json: {
 			roleCode: $("#code").val()
 		}
-	}, true)).then(function(d1, d2) {
+	}, true)).then(function(d1,d2) {
 		var checkedCodes = [];
 		d2.forEach(function(item) {
 			checkedCodes.push(item.code);
@@ -40,7 +42,7 @@ $(function() {
 		}
   	var data = {roleCode:$("#code").val(),menuCodeList:menuList, updater: getUserName()};
 		reqApi({
-			code: '805027',
+			code: '627910',
 			json: data
 		}).done(function(data) {
 			sucDetail();

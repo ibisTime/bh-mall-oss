@@ -6,9 +6,11 @@ $(function() {
 		field : 'parentCode',
 		title : '父菜单编号',
 		type : 'select',
-		listCode: '805001',
+		// listCode: '805001',
+		listCode: '627917',
 		params: {
-			type: '1'
+			type: '1',
+			roleCode: sessionStorage.getItem('roleCode')
 		},
 		keyName: 'code',
 		valueName: '{{code.DATA}} {{name.DATA}}',
@@ -43,9 +45,9 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '805002',
-		addCode: '805003',
-		editCode: '805005'
+		detailCode: '627902',
+		addCode: '627903',
+		editCode: '627905'
 	});
-	
+	hideLoading();
 });

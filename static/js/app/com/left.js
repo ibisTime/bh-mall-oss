@@ -12,7 +12,8 @@ $(function() {
 		
 		// 一级菜单
 		reqApi({
-			code: '805026',
+			// code: '805026',
+			code: '627917',
 			json: data,
 			sync: true 
 		}, true).then(function(data) {
@@ -31,7 +32,8 @@ $(function() {
 				var $ul = $(me).parent().next();
 				if (!$(me).attr('data-loaded')) {
 					reqApi({
-						code: '805026',
+						// code: '805026',
+						code: '627917',
 						json: {
 							parentCode: $ul.attr('id'),
 							type: '1',

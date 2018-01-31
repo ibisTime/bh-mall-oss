@@ -9,7 +9,7 @@ $(function() {
 
     // 获取用户
     reqApi({
-        code: '805121',
+        code: '627230',
         cache: true,
         sync: true,
         json: {
@@ -23,22 +23,23 @@ $(function() {
         sessionStorage.setItem('userName', data.loginName);
     });
 
-    reqApi({
-        code: '805022',
-        cache: true,
-        sync: true,
-        json: {
-            'code': sessionStorage.getItem('roleCode')
-        }
-    }).then(function(data) {
-        sessionStorage.setItem('roleLevel', data.level);
-    });
+    // reqApi({
+    //     code: '805022',
+    //     cache: true,
+    //     sync: true,
+    //     json: {
+    //         'code': sessionStorage.getItem('roleCode')
+    //     }
+    // }).then(function(data) {
+    //     sessionStorage.setItem('roleLevel', data.level);
+    // });
     // 设置根目录
     window.parentCode = OSS.menuRoot;
 
     var data = { "parentCode": window.parentCode, "type": "1", 'roleCode': sessionStorage.getItem('roleCode') };
     reqApi({
-        code: '805026',
+        // code: '805026',
+        code: '627917',
         json: data,
         sync: true
     }, true).done(function(data) {

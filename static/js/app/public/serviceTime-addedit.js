@@ -1,7 +1,7 @@
 $(function() {
 	var code;
 	reqApi({
-		code: '805917',
+		code: '627967',
 		json: {
 			ckey: 'time'
 		},
