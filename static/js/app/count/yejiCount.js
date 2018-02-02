@@ -32,6 +32,17 @@ $(function() {
         field : 'updateDatetime',
         title : '介绍总额',
         formatter: dateTimeFormat
+    }, {
+        field : 'updateDatetime',
+        title : '日期',
+        formatter: dateTimeFormat,
+        field1: 'applyDateStart',
+        title1: '日期',
+        // type: 'date',
+        field2: 'applyDateEnd',
+        twoDate: true,
+        search: true,
+        visible: false
     }];
 	buildList({
 		columns: columns,

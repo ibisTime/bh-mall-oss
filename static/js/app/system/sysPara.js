@@ -6,9 +6,15 @@ $(function() {
 		checkbox : true
 	},{
 		field : 'ckey',
-		title : '参数名称',
+		title : '参数名',
 		search: true,
-		type: 'select'
+		type: 'select',
+        pageCode: '627965',
+        keyName: 'ckey',
+        valueName: 'ckey',
+        // formatter: function (v, data) {
+        //     return data.remark
+        // }
 	},{
 		field : 'cvalue',
 		title : '参数值'

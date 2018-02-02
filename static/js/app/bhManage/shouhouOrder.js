@@ -34,6 +34,11 @@ $(function() {
         field : 'updateDatetime',
         title : '状态',
         formatter: dateTimeFormat
+    }, {
+        field : 'updateDatetime',
+        title : '操作人',
+        search: true,
+        visible: false
     }];
 	buildList({
 		columns: columns,

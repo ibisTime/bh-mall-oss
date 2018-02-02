@@ -1,6 +1,5 @@
 $(function() {
-	
-	var columns = [{
+    var columns = [{
 		field : '',
 		title : '',
 		checkbox : true

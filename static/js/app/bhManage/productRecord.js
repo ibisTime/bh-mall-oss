@@ -37,6 +37,12 @@ $(function() {
         field : 'updateDatetime',
         title : '备注',
         formatter: dateTimeFormat
+    }, {
+        field : 'updateDatetime',
+        title : '操作类型',
+        search: true,
+        type: 'select',
+        visible: false
     }];
 	buildList({
 		columns: columns,

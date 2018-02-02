@@ -30,6 +30,12 @@ $(function() {
         field : 'updateDatetime',
         title : '溯源码是否使用',
         formatter: dateTimeFormat
+    }, {
+        field : 'updateDatetime',
+        title : '盒码状态',
+        search: true,
+        type: 'select',
+        visible: false
     }];
 	buildList({
 		columns: columns,

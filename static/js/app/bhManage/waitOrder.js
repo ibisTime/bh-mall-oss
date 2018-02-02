@@ -1,5 +1,4 @@
 $(function() {
-
 	var columns = [{
 		field : '',
 		title : '',

@@ -40,6 +40,18 @@ $(function() {
     }, {
         field : 'updateDatetime',
         title : '备注'
+    }, {
+        field : 'updateDatetime',
+        title : '团队',
+        search: true,
+        type: 'select',
+        visible: false
+    }, {
+        field : 'updateDatetime',
+        title : '订单所在人',
+        search: true,
+        type: 'select',
+        visible: false
     }];
 	buildList({
 		columns: columns,

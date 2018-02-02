@@ -27,6 +27,23 @@ $(function() {
     }, {
         field : 'updateDatetime',
         title : '备注'
+    }, {
+        field : 'updateDatetime',
+        title : '等级',
+        search: true,
+        type: 'select',
+        visible: false
+    }, {
+        field : 'updateDatetime',
+        title : '生效时间',
+        formatter: dateTimeFormat,
+        field1: 'applyDateStart',
+        title1: '生效时间',
+        // type: 'date',
+        field2: 'applyDateEnd',
+        twoDate: true,
+        search: true,
+        visible: false
     }];
 	buildList({
 		columns: columns,

@@ -1,22 +1,40 @@
 $(function() {
 
 	var columns = [{
-		field : '',
-		title : '',
-		checkbox : true
-	},{
 		field : 'remark',
-		title : '参数名称',
-		search: true
-	},{
-		field : 'cvalue',
-		title : '参数值'
+		title : '代理商个数'
 	}, {
         field : 'updateDatetime',
-        title : '最近修改时间',
-		formatter: dateTimeFormat
+        title : '等级',
+        search: true,
+		type: 'select',
+        visible: false
+    }, {
+        field : 'updateDatetime',
+        title : '授权状态',
+        search: true,
+        type: 'select',
+        visible: false
+    }, {
+        field : 'updateDatetime',
+        title : '团队',
+        search: true,
+        type: 'select',
+        visible: false
+    }, {
+        field : 'updateDatetime',
+        title : '管理员',
+        search: true,
+        type: 'select',
+        visible: false
+    }, {
+        field : 'updateDatetime',
+        title : '地区',
+        search: true,
+        type: 'citySelect',
+        visible: false
     }];
-	buildList({
+        buildList({
 		columns: columns,
 		pageCode: '627955',
 		// searchParams: {
