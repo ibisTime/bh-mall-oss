@@ -1,32 +1,28 @@
 $(function() {
 	var code = getQueryString('code');
-	
-	var fields = [{
-		field: 'kind',
-		type: 'hidden',
-		value: '1'
-	}, {
-		field: 'updater',
-		type: 'hidden',
-		value: getUserName()
-	}, {
-		title: '角色名称',
-		field: 'name',
-		required: true,
-		maxlength: 30
-	},
-		{
-		title: '角色等级',
-		field: 'level',
-		required: true,
-		type: 'select',
-		key: 'role_level'
-	},
-		{
-		title: '备注',
-		field: 'remark',
-		maxlength: 250
-	}];
+
+    var fields = [{
+        field : 'remark',
+        title : '等级名称'
+    },{
+        field : 'cvalue',
+        title : '等级',
+        search: true,
+        type: 'select'
+    },{
+        field : 'cvalue',
+        title : '本等级升级是否公司审核'
+    },{
+        field : 'cvalue',
+        title : '本等级升级首单总额',
+        formatter: moneyFormat
+    },{
+        field : 'cvalue',
+        title : '半门槛升级推荐人数'
+    },{
+        field : 'cvalue',
+        title : '本等级升级是否余额清零'
+    }];
 	
 	buildDetail({
 		fields: fields,

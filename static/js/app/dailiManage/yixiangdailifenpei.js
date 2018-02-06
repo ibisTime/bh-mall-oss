@@ -14,24 +14,19 @@ $(function() {
 		type: 'select'
 	}, {
         field : 'updateDatetime',
-        title : '联系电话',
-		formatter: dateTimeFormat
+        title : '联系电话'
     }, {
         field : 'updateDatetime',
-        title : '微信号',
-        formatter: dateTimeFormat
+        title : '微信号'
     }, {
         field : 'updateDatetime',
-        title : '地域',
-        formatter: dateTimeFormat
+        title : '地域'
     }, {
         field : 'updateDatetime',
-        title : '代理状态',
-        formatter: dateTimeFormat
+        title : '代理状态'
     }, {
         field : 'updateDatetime',
-        title : '来源',
-        formatter: dateTimeFormat
+        title : '来源'
     }, {
         field : 'updateDatetime',
         title : '申请时间',
@@ -43,9 +38,8 @@ $(function() {
         twoDate: true,
         search: true
     }, {
-        field : 'updateDatetime',
-        title : '备注',
-        formatter: dateTimeFormat
+        field : 'remark',
+        title : '备注'
     }];
 	buildList({
 		columns: columns,
@@ -60,4 +54,12 @@ $(function() {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
 		// }
 	});
+    $('#hulveyixiangBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if(selRecords.length <= 0){
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "yixiangdailifenpei_hulveyixiang.html?code="+selRecords[0].code+"&name="+encodeURI(encodeURI(selRecords[0].name));
+    });
 });

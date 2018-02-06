@@ -14,24 +14,19 @@ $(function() {
         type: 'select'
     }, {
         field : 'updateDatetime',
-        title : '联系电话',
-        formatter: dateTimeFormat
+        title : '联系电话'
     }, {
         field : 'updateDatetime',
-        title : '微信号',
-        formatter: dateTimeFormat
+        title : '微信号'
     }, {
         field : 'updateDatetime',
-        title : '上级',
-        formatter: dateTimeFormat
+        title : '上级'
     }, {
         field : 'updateDatetime',
-        title : '团队名称',
-        formatter: dateTimeFormat
+        title : '团队名称'
     },{
         field : 'updateDatetime',
-        title : '地域',
-        formatter: dateTimeFormat
+        title : '地域'
     }, {
         field : 'updateDatetime',
         title : '申请时间',

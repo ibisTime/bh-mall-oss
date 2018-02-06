@@ -15,43 +15,34 @@ $(function() {
     }, {
         field : 'updateDatetime',
         title : '余额',
-        formatter: dateTimeFormat
+        formatter: moneyFormat
     }, {
         field : 'updateDatetime',
-        title : '联系电话',
-        formatter: dateTimeFormat
+        title : '联系电话'
     }, {
         field : 'updateDatetime',
-        title : '微信号',
-        formatter: dateTimeFormat
+        title : '微信号'
     }, {
         field : 'updateDatetime',
-        title : '上级',
-        formatter: dateTimeFormat
+        title : '上级'
     }, {
         field : 'updateDatetime',
-        title : '上级电话',
-        formatter: dateTimeFormat
+        title : '上级电话'
     },{
         field : 'updateDatetime',
-        title : '团队名称',
-        formatter: dateTimeFormat
+        title : '团队名称'
     }, {
         field : 'updateDatetime',
-        title : '关联管理员',
-        formatter: dateTimeFormat
+        title : '关联管理员'
     }, {
         field : 'updateDatetime',
-        title : '推荐人',
-        formatter: dateTimeFormat
+        title : '推荐人'
     }, {
         field : 'updateDatetime',
-        title : '推荐人电话',
-        formatter: dateTimeFormat
+        title : '推荐人电话'
     }, {
         field : 'updateDatetime',
         title : '授权状态',
-        formatter: dateTimeFormat,
         search: true,
         type: 'select'
     },  {

@@ -17,7 +17,8 @@ $(function() {
         title : '充值人团队'
     },{
         field : 'cvalue',
-        title : '金额'
+        title : '金额',
+        formatter: moneyFormat
     },{
         field : 'updateDatetime',
         title : '申请时间',

@@ -17,7 +17,8 @@ $(function() {
         title : '本等级升级是否公司审核'
     },{
         field : 'cvalue',
-        title : '本等级升级首单总额'
+        title : '本等级升级首单总额',
+		formatter: moneyFormat
     },{
         field : 'cvalue',
         title : '半门槛升级推荐人数'
@@ -27,7 +28,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
+		pageCode: '627025',
 		// searchParams: {
 		// 	type: 'android_b',
 		// 	companyCode: OSS.company,

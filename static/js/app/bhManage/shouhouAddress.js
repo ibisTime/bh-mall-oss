@@ -13,24 +13,19 @@ $(function() {
 		title : '省'
 	}, {
         field : 'updateDatetime',
-        title : '市',
-        formatter: dateTimeFormat
+        title : '市'
     }, {
         field : 'updateDatetime',
-        title : '区',
-        formatter: dateTimeFormat
+        title : '区'
     }, {
         field : 'updateDatetime',
-        title : '具体地址',
-        formatter: dateTimeFormat
+        title : '具体地址'
     }, {
         field : 'updateDatetime',
-        title : '收货人',
-        formatter: dateTimeFormat
+        title : '收货人'
     }, {
         field : 'updateDatetime',
-        title : '收货人电话',
-        formatter: dateTimeFormat
+        title : '收货人电话'
     }];
 	buildList({
 		columns: columns,

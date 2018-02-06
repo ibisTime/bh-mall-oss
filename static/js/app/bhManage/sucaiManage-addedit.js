@@ -1,32 +1,28 @@
 $(function() {
 	var code = getQueryString('code');
-	
-	var fields = [{
-		field: 'kind',
-		type: 'hidden',
-		value: '1'
-	}, {
-		field: 'updater',
-		type: 'hidden',
-		value: getUserName()
-	}, {
-		title: '角色名称',
-		field: 'name',
-		required: true,
-		maxlength: 30
-	},
-		{
-		title: '角色等级',
-		field: 'level',
-		required: true,
-		type: 'select',
-		key: 'role_level'
-	},
-		{
-		title: '备注',
-		field: 'remark',
-		maxlength: 250
-	}];
+
+    var fields = [{
+        field : 'remark',
+        title : '标题'
+    },{
+        field : 'cvalue',
+        title : '分类',
+        search: true,
+        type: 'select'
+    }, {
+        field : 'updateDatetime',
+        title : '图像'
+    }, {
+        field : 'updateDatetime',
+        title : '是否显示在列表'
+    }, {
+        field : 'updateDatetime',
+        title : '添加时间',
+        formatter: dateTimeFormat
+    }, {
+        field : 'updateDatetime',
+        title : '可查看等级'
+    }];
 	
 	buildDetail({
 		fields: fields,

@@ -589,15 +589,15 @@ function zipImg(file, pos) {
 
 //后退
 function goBack() {
-    if ('referrer' in document) {
-        if (/top\.html/.test(window.document.referrer)) {
-            window.history.back();
-            return;
-        }
-        window.location = document.referrer;
-    } else {
+    // if ('referrer' in document) {
+    //     if (/top\.html/.test(window.document.referrer)) {
+    //         window.history.back();
+    //         return;
+    //     }
+    //     window.location = document.referrer;
+    // } else {
         window.history.back();
-    }
+    // }
 }
 
 String.prototype.temp = function(obj) {
@@ -3256,12 +3256,12 @@ function buildCharts(options) {
                 // 默认加载用类目轴的图表
 
                 //x轴类目数据
-                $.each(data, function(j, d) {
-                    xAxisDate.push(dateFormat(d[settings.xAxisData], 'yyyy-MM-dd'))
-                });
+
 
                 //图表数据
-                $.each(settings.legendData, function(i, d) {
+                $.each(settings.legendData, function(i, d) {  $.each(data, function(j, d) {
+                    xAxisDate.push(dateFormat(d[settings.xAxisData], 'yyyy-MM-dd'))
+                });
                     var seriesDate = [] //每个类的数据
                     $.each(data, function(j, d1) {
                         seriesDate.push(settings.seriesDataType == 'amount' ? moneyFormat(d1[settings.seriesDataName[i]]) : d1[settings.seriesDataName[i]])

@@ -24,7 +24,8 @@ $(function() {
         title : '授权等级'
     }, {
         field : 'updateDatetime',
-        title : '授权时间'
+        title : '授权时间',
+        formatter: dateTimeFormat
     }, {
         field : 'updateDatetime',
         title : '操作人'

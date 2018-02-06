@@ -14,16 +14,13 @@ $(function() {
 		title : '库存分类'
 	}, {
         field : 'updateDatetime',
-        title : '变动操作',
-		formatter: dateTimeFormat
+        title : '变动操作'
     }, {
         field : 'updateDatetime',
-        title : '变动库存',
-        formatter: dateTimeFormat
+        title : '变动库存'
     }, {
         field : 'updateDatetime',
-        title : '变动后库存',
-        formatter: dateTimeFormat
+        title : '变动后库存'
     }, {
         field : 'updateDatetime',
         title : '变动时间',
@@ -31,12 +28,10 @@ $(function() {
     }, {
         field : 'updateDatetime',
         title : '操作人',
-        formatter: dateTimeFormat,
 		search: true
     }, {
-        field : 'updateDatetime',
+        field : 'remark',
         title : '备注',
-        formatter: dateTimeFormat
     }, {
         field : 'updateDatetime',
         title : '操作类型',

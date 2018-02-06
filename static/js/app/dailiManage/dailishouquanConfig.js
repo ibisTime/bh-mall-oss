@@ -26,10 +26,12 @@ $(function() {
         title : '本等级是否公司审核'
     },{
         field : 'cvalue',
-        title : '本等级授权首单总额'
+        title : '本等级授权首单总额',
+        formatter: moneyFormat
     },{
         field : 'cvalue',
-        title : '本等级授权充值门槛'
+        title : '本等级授权充值门槛',
+        formatter: moneyFormat
     },{
         field : 'cvalue',
         title : '红线设置'
@@ -39,7 +41,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
+		pageCode: '627015',
 		// searchParams: {
 		// 	type: 'android_b',
 		// 	companyCode: OSS.company,

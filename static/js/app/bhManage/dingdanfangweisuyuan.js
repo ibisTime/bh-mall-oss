@@ -23,29 +23,23 @@ $(function() {
     }, {
         field : 'updateDatetime',
         title : '订单类型',
-        formatter: dateTimeFormat,
         search: true,
         type: 'select'
     }, {
         field : 'updateDatetime',
-        title : '下单代理',
-        formatter: dateTimeFormat
+        title : '下单代理'
     }, {
         field : 'updateDatetime',
-        title : '下单代理等级',
-        formatter: dateTimeFormat
+        title : '下单代理等级'
     }, {
         field : 'updateDatetime',
-        title : '收货人',
-        formatter: dateTimeFormat
+        title : '收货人'
     }, {
         field : 'updateDatetime',
-        title : '收货人电话',
-        formatter: dateTimeFormat
+        title : '收货人电话'
     }, {
-        field : 'updateDatetime',
-        title : '备注',
-        formatter: dateTimeFormat
+        field : 'remark',
+        title : '备注'
     }];
 	buildList({
 		columns: columns,

@@ -24,10 +24,12 @@ $(function() {
 		type: 'select'
     }, {
         field : 'updateDatetime',
-        title : '奖励收入'
+        title : '奖励收入',
+		formatter: moneyFormat
     }, {
         field : 'updateDatetime',
-        title : '奖励支出'
+        title : '奖励支出',
+        formatter: moneyFormat
     }];
 	buildList({
 		columns: columns,

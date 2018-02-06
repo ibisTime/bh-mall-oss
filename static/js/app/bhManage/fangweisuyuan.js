@@ -15,21 +15,17 @@ $(function() {
 	}, {
         field : 'updateDatetime',
         title : '箱码是否使用',
-		formatter: dateTimeFormat,
         search: true,
         type: 'select'
     }, {
         field : 'updateDatetime',
-        title : '防伪码',
-        formatter: dateTimeFormat
+        title : '防伪码'
     }, {
         field : 'updateDatetime',
-        title : '溯源码',
-        formatter: dateTimeFormat
+        title : '溯源码'
     }, {
         field : 'updateDatetime',
-        title : '溯源码是否使用',
-        formatter: dateTimeFormat
+        title : '溯源码是否使用'
     }, {
         field : 'updateDatetime',
         title : '盒码状态',

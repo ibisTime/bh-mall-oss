@@ -20,7 +20,8 @@ $(function() {
 		field: 'level',
 		required: true,
 		type: 'select',
-		key: 'role_level'
+		key: 'role_level',
+        keyCode:'627956'
 	},
 		{
 		title: '备注',

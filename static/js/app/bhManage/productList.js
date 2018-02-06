@@ -14,37 +14,31 @@ $(function() {
 	}, {
         field : 'updateDatetime',
         title : '建议微信价',
-		formatter: dateTimeFormat
+		formatter: moneyFormat
     }, {
         field : 'updateDatetime',
         title : '市场价',
-        formatter: dateTimeFormat
+        formatter: moneyFormat
     }, {
         field : 'updateDatetime',
-        title : '虚拟库存',
-        formatter: dateTimeFormat
+        title : '虚拟库存'
     }, {
         field : 'updateDatetime',
-        title : '实际库存',
-        formatter: dateTimeFormat
+        title : '实际库存'
     }, {
         field : 'updateDatetime',
         title : '状态',
-        formatter: dateTimeFormat,
 		search: true,
 		type: 'select'
     }, {
         field : 'updateDatetime',
-        title : '产品组',
-        formatter: dateTimeFormat
+        title : '产品组'
     }, {
         field : 'updateDatetime',
-        title : '是否计入出货',
-        formatter: dateTimeFormat
+        title : '是否计入出货'
     }, {
         field : 'updateDatetime',
-        title : '排序',
-        formatter: dateTimeFormat
+        title : '排序'
     }, {
         field : 'updateDatetime',
         title : '添加时间',

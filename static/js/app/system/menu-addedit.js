@@ -40,7 +40,17 @@ $(function() {
 		field: 'remark',
 		title: '备注',
 		maxlength: 250
-	}];
+	}
+	// , {
+     //    field: 'hhh',
+     //    title: '备注',
+     //    maxlength: 250,
+	// 	type: 'img',
+     //    required: true,
+     //    single: true,
+     //    readonly: false
+	// }
+	];
 	
 	buildDetail({
 		fields: fields,

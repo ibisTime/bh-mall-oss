@@ -1,32 +1,55 @@
 $(function() {
 	var code = getQueryString('code');
-	
-	var fields = [{
-		field: 'kind',
-		type: 'hidden',
-		value: '1'
-	}, {
-		field: 'updater',
-		type: 'hidden',
-		value: getUserName()
-	}, {
-		title: '角色名称',
-		field: 'name',
-		required: true,
-		maxlength: 30
-	},
-		{
-		title: '角色等级',
-		field: 'level',
-		required: true,
-		type: 'select',
-		key: 'role_level'
-	},
-		{
-		title: '备注',
-		field: 'remark',
-		maxlength: 250
-	}];
+
+    var fields = [{
+        field : 'remark',
+        title : '订单编号'
+    },{
+        field : 'cvalue',
+        title : '下单日期',
+        formatter: dateTimeFormat
+    }, {
+        field : 'updateDatetime',
+        title : '付款金额',
+		formatter: moneyFormat
+    }, {
+        field : 'updateDatetime',
+        title : '订单状态',
+        search: true,
+        type: 'select'
+    }, {
+        field : 'updateDatetime',
+        title : '订单类型',
+        search: true,
+        type: 'select'
+    }, {
+        field : 'updateDatetime',
+        title : '下单代理'
+    }, {
+        field : 'updateDatetime',
+        title : '下单代理等级'
+    }, {
+        field : 'updateDatetime',
+        title : '收货人'
+    }, {
+        field : 'updateDatetime',
+        title : '收货人电话'
+    }, {
+        field : 'updateDatetime',
+        title : '备注'
+    }, {
+        field : 'updateDatetime',
+        title : '团队',
+        search: true,
+        type: 'select',
+        visible: false
+    }, {
+        field : 'updateDatetime',
+        title : '订单所在人',
+        search: true,
+        type: 'select',
+        visible: false
+    }];
 	
 	buildDetail({
 		fields: fields,

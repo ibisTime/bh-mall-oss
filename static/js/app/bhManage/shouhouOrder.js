@@ -12,28 +12,23 @@ $(function() {
 		title : '代理等级'
 	}, {
         field : 'updateDatetime',
-        title : '代理电话',
-		formatter: dateTimeFormat
+        title : '代理电话'
     }, {
         field : 'updateDatetime',
-        title : '代理微信',
-        formatter: dateTimeFormat
+        title : '代理微信'
     }, {
         field : 'updateDatetime',
-        title : '关联订单',
-        formatter: dateTimeFormat
+        title : '关联订单'
     }, {
         field : 'updateDatetime',
-        title : '售后类型',
-        formatter: dateTimeFormat
+        title : '售后类型'
     }, {
         field : 'updateDatetime',
         title : '申请时间',
         formatter: dateTimeFormat
     }, {
         field : 'updateDatetime',
-        title : '状态',
-        formatter: dateTimeFormat
+        title : '状态'
     }, {
         field : 'updateDatetime',
         title : '操作人',

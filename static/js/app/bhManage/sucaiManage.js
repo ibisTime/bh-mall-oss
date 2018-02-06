@@ -14,20 +14,17 @@ $(function() {
 		type: 'select'
 	}, {
         field : 'updateDatetime',
-        title : '图像',
-		formatter: dateTimeFormat
+        title : '图像'
     }, {
         field : 'updateDatetime',
-        title : '是否显示在列表',
-        formatter: dateTimeFormat
+        title : '是否显示在列表'
     }, {
         field : 'updateDatetime',
         title : '添加时间',
         formatter: dateTimeFormat
     }, {
         field : 'updateDatetime',
-        title : '可查看等级',
-        formatter: dateTimeFormat
+        title : '可查看等级'
     }];
 	buildList({
 		columns: columns,

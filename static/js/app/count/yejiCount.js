@@ -10,28 +10,23 @@ $(function() {
 		title : '等级'
 	}, {
         field : 'updateDatetime',
-        title : '手机号',
-		formatter: dateTimeFormat
+        title : '手机号'
     }, {
         field : 'updateDatetime',
-        title : '微信号',
-        formatter: dateTimeFormat
+        title : '微信号'
     }, {
         field : 'updateDatetime',
         title : '余额',
-        formatter: dateTimeFormat
+        formatter: moneyFormat
     }, {
         field : 'updateDatetime',
-        title : '出货总额',
-        formatter: dateTimeFormat
+        title : '出货总额'
     }, {
         field : 'updateDatetime',
-        title : '推荐总额',
-        formatter: dateTimeFormat
+        title : '推荐总额'
     }, {
         field : 'updateDatetime',
-        title : '介绍总额',
-        formatter: dateTimeFormat
+        title : '介绍总额'
     }, {
         field : 'updateDatetime',
         title : '日期',

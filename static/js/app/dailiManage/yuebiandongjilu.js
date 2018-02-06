@@ -14,18 +14,21 @@ $(function() {
 		type: 'select'
 	}, {
         field : 'updateDatetime',
-        title : '变动前金额'
+        title : '变动前金额',
+        formatter: moneyFormat
     }, {
         field : 'updateDatetime',
-        title : '变动金额'
+        title : '变动金额',
+        formatter: moneyFormat
     }, {
         field : 'updateDatetime',
-        title : '奖励金额'
+        title : '奖励金额',
+        formatter: moneyFormat
     }, {
         field : 'updateDatetime',
         title : '状态'
     }, {
-        field : 'updateDatetime',
+        field : 'remark',
         title : '备注'
     }, {
         field : 'updateDatetime',

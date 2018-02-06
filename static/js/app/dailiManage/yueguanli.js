@@ -26,7 +26,8 @@ $(function() {
         title : '代理团队'
     },{
         field : 'cvalue',
-        title : '余额'
+        title : '余额',
+		formatter: moneyFormat
     }];
 	buildList({
 		columns: columns,

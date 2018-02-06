@@ -43,7 +43,7 @@ $(function() {
             fromSystemCode: OSS.system
         }
     });
-    
+    // 发布/撤下
     $('#pushBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -61,6 +61,7 @@ $(function() {
             });
         }, function(){});
     });
+    // 修改
     $('#edit2Btn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {

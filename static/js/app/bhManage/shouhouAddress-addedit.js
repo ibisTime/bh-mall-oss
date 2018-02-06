@@ -1,32 +1,29 @@
 $(function() {
 	var code = getQueryString('code');
-	
-	var fields = [{
-		field: 'kind',
-		type: 'hidden',
-		value: '1'
-	}, {
-		field: 'updater',
-		type: 'hidden',
-		value: getUserName()
-	}, {
-		title: '角色名称',
-		field: 'name',
-		required: true,
-		maxlength: 30
-	},
-		{
-		title: '角色等级',
-		field: 'level',
-		required: true,
-		type: 'select',
-		key: 'role_level'
-	},
-		{
-		title: '备注',
-		field: 'remark',
-		maxlength: 250
-	}];
+
+    var fields = [{
+        field : 'remark',
+        title : '地址名称',
+        search: true
+    },{
+        field : 'cvalue',
+        title : '省'
+    }, {
+        field : 'updateDatetime',
+        title : '市'
+    }, {
+        field : 'updateDatetime',
+        title : '区'
+    }, {
+        field : 'updateDatetime',
+        title : '具体地址'
+    }, {
+        field : 'updateDatetime',
+        title : '收货人'
+    }, {
+        field : 'updateDatetime',
+        title : '收货人电话'
+    }];
 	
 	buildDetail({
 		fields: fields,

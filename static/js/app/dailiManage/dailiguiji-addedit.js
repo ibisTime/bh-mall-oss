@@ -1,32 +1,35 @@
 $(function() {
 	var code = getQueryString('code');
-	
-	var fields = [{
-		field: 'kind',
-		type: 'hidden',
-		value: '1'
-	}, {
-		field: 'updater',
-		type: 'hidden',
-		value: getUserName()
-	}, {
-		title: '角色名称',
-		field: 'name',
-		required: true,
-		maxlength: 30
-	},
-		{
-		title: '角色等级',
-		field: 'level',
-		required: true,
-		type: 'select',
-		key: 'role_level'
-	},
-		{
-		title: '备注',
-		field: 'remark',
-		maxlength: 250
-	}];
+
+    var fields = [{
+        field : 'remark',
+        title : '姓名',
+        search: true,
+        type: 'select'
+    },{
+        field : 'cvalue',
+        title : '联系电话',
+        search: true,
+        type: 'select'
+    }, {
+        field : 'updateDatetime',
+        title : '微信号',
+        search: true,
+        type: 'select'
+    }, {
+        field : 'updateDatetime',
+        title : '授权等级'
+    }, {
+        field : 'updateDatetime',
+        title : '授权时间',
+        formatter: dateTimeFormat
+    }, {
+        field : 'updateDatetime',
+        title : '操作人'
+    }, {
+        field : 'updateDatetime',
+        title : '推荐人'
+    }];
 	
 	buildDetail({
 		fields: fields,
