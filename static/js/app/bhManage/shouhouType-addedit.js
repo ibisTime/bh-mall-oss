@@ -3,8 +3,7 @@ $(function() {
 
     var fields = [{
         field : 'remark',
-        title : '类型名称',
-        search: true
+        title : '类型名称'
     },{
         field : 'cvalue',
         title : '分类'

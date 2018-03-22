@@ -2,26 +2,22 @@ $(function() {
 	var code = getQueryString('code');
 
     var fields = [{
-        field : 'remark',
+        field : 'code',
         title : '订单编号'
     },{
         field : 'cvalue',
         title : '下单日期',
         formatter: dateTimeFormat
     }, {
-        field : 'updateDatetime',
+        field : 'fkAmount',
         title : '付款金额',
-		formatter: moneyFormat
+        formatter: moneyFormat
     }, {
         field : 'updateDatetime',
-        title : '订单状态',
-        search: true,
-        type: 'select'
+        title : '订单状态'
     }, {
-        field : 'updateDatetime',
-        title : '订单类型',
-        search: true,
-        type: 'select'
+        field : 'orderType',
+        title : '订单类型'
     }, {
         field : 'updateDatetime',
         title : '下单代理'
@@ -32,23 +28,11 @@ $(function() {
         field : 'updateDatetime',
         title : '收货人'
     }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '收货人电话'
     }, {
-        field : 'updateDatetime',
+        field : 'remark',
         title : '备注'
-    }, {
-        field : 'updateDatetime',
-        title : '团队',
-        search: true,
-        type: 'select',
-        visible: false
-    }, {
-        field : 'updateDatetime',
-        title : '订单所在人',
-        search: true,
-        type: 'select',
-        visible: false
     }];
 	
 	buildDetail({

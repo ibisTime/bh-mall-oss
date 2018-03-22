@@ -23,10 +23,8 @@ $(function() {
         field : 'updateDatetime',
         title : '实际库存'
     }, {
-        field : 'updateDatetime',
-        title : '状态',
-        search: true,
-        type: 'select'
+        field : 'status',
+        title : '状态'
     }, {
         field : 'updateDatetime',
         title : '产品组'

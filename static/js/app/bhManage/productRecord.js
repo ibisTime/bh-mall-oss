@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
+		field : 'name',
 		title : '名称',
 		search: true,
 		type: 'select'

@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b16bfd14-18c8-4358-9f4e-c33329f71347" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/html/signin.html" afterPath="$PROJECT_DIR$/static/html/signin.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/allOrder-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/allOrder-addedit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/allOrder.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/allOrder.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/dingdanfangweisuyuan.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/dingdanfangweisuyuan.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/failOrder-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/failOrder-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/failOrder.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/failOrder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/fangweisuyuan.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/fangweisuyuan.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/productList-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/productList-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/productList.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/productList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/productRecord-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/productRecord-addedit.js" />
@@ -20,7 +21,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/waitOrder-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/waitOrder-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/waitOrder.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/waitOrder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/com/common-method.js" afterPath="$PROJECT_DIR$/static/js/app/com/common-method.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/count/dailishangCount.js" afterPath="$PROJECT_DIR$/static/js/app/count/dailishangCount.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/count/newDailiCount.js" afterPath="$PROJECT_DIR$/static/js/app/count/newDailiCount.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/count/yejiCount.js" afterPath="$PROJECT_DIR$/static/js/app/count/yejiCount.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig.js" />
@@ -34,6 +36,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/dailiziliao-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/dailiziliao-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/dailiziliao.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/dailiziliao.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangConfig-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangConfig-addedit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangConfig.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangConfig.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangli.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangli.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/shenhequxiaoshouquan.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/shenhequxiaoshouquan.js" />
@@ -42,13 +45,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangli.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei-hulveyixiang.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei-hulveyixiang.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/yuebiandongjilu.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/yuebiandongjilu.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/public/notice.js" afterPath="$PROJECT_DIR$/static/js/app/public/notice.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/signin.js" afterPath="$PROJECT_DIR$/static/js/app/signin.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/system/menu-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/system/menu-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/system/role-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/system/role-addedit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/system/sysPara-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/system/sysPara-addedit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/system/role-menu.js" afterPath="$PROJECT_DIR$/static/js/app/system/role-menu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/config.js" afterPath="$PROJECT_DIR$/static/js/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/package-lock.json" afterPath="$PROJECT_DIR$/static/package-lock.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -63,104 +69,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="shenheshengji.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shenheshengji.js">
+      <file leaf-file-name="menu-addedit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/app/system/menu-addedit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-825">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-856">
+              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shenheshouquan.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shenheshouquan.js">
+      <file leaf-file-name="signin.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/html/signin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-750">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shouquanzhengshuConfig.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shouquanzhengshuConfig.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tuijianjiangConfig.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-300">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="714">
+              <caret line="81" column="29" lean-forward="true" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
               <folding>
-                <marker date="1517887948566" expanded="true" signature="503:512" ph="..." />
+                <element signature="n#div#0;n#div#0;n#div#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tuijianjiangConfig-addedit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-225">
-              <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tuijianjiangli.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangli.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-375">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yixiangdailifenpei.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yuebiandongjilu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yuebiandongjilu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yueguanli.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yixiangdailifenpei-hulveyixiang.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei-hulveyixiang.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="30" column="20" lean-forward="false" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -169,36 +95,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>buildChar</find>
-      <find>buildChart</find>
-      <find>buildC</find>
-      <find>t</find>
-      <find>type</find>
-      <find>type == 'li</find>
-      <find>type == 'l</find>
-      <find>type == '</find>
-      <find>type == &quot;li</find>
-      <find>type == &quot;l</find>
-      <find>type == &quot;</find>
       <find>type ==</find>
-      <find>type ===</find>
-      <find>type === '</find>
-      <find>type === 'li</find>
-      <find>type === 'lin</find>
-      <find>type === 'line</find>
-      <find>searches</find>
-      <find>searchs</find>
-      <find>options.searchs</find>
-      <find>updateTableInfo</find>
-      <find>浙江</find>
-      <find>O</find>
-      <find>OS</find>
-      <find>OSS</find>
-      <find>OSS.S</find>
-      <find>OSS.SYS</find>
-      <find>OSS.SY</find>
-      <find>OSS.</find>
-      <find>OSS.sys</find>
+      <find>type =</find>
+      <find>type : 'che</find>
+      <find>type : 'ch</find>
+      <find>type : 'c</find>
+      <find>type : '</find>
+      <find>type :</find>
+      <find>type :'che</find>
+      <find>type :'ch</find>
+      <find>type :'c</find>
+      <find>type :'</find>
+      <find>type</find>
+      <find>type:'</find>
+      <find>type:'se</find>
+      <find>type:'s</find>
+      <find>type:</find>
+      <find>t</find>
+      <find>type == 'select'</find>
+      <find>type == ''</find>
+      <find>type == 'citySelect'</find>
+      <find>type == &quot;che</find>
+      <find>//获取七牛地址</find>
+      <find>b</find>
+      <find>ba</find>
+      <find>ban</find>
+      <find>banner</find>
+      <find>banne</find>
+      <find>上架</find>
+      <find>上</find>
+      <find>627967</find>
     </findStrings>
     <dirStrings>
       <dir>D:\一堆\chengdai\chengdai_0125_bhxt\bhxt_oss\static\js\app\rules</dir>
@@ -210,57 +136,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/html/dailiManage/yixiangdailifenpei_hulveyixiang.html" />
-        <option value="$PROJECT_DIR$/static/js/app/system/menu-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/public/notice.js" />
-        <option value="$PROJECT_DIR$/static/js/app/system/sysPara-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/system/role-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/statistics/statisticsStockNum-charts.js" />
-        <option value="$PROJECT_DIR$/static/js/app/com/common-method.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/shouhouType-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/failOrder-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/bhManage/allOrder.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/fangweisuyuan.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/allOrder-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/dingdanfangweisuyuan.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/failOrder.js" />
         <option value="$PROJECT_DIR$/static/js/app/bhManage/productList.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/productList-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/productRecord.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/productRecord-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/bhManage/shouhouAddress.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/shouhouAddress-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/bhManage/shouhouOrder.js" />
         <option value="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/waitOrder.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/waitOrder-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/count/dailishangCount.js" />
+        <option value="$PROJECT_DIR$/static/js/app/count/newDailiCount.js" />
         <option value="$PROJECT_DIR$/static/js/app/count/yejiCount.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangli.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailiguiji.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailiguiji-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailiziliao.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailiziliao-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangli.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangConfig-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangli.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/shenhequxiaoshouquan.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/shenheshengji.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/shenheshouquan.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangli.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei-hulveyixiang.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangConfig-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailiziliao-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailiguiji-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/shouhouType-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/shouhouAddress-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/productList-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/allOrder-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/dingdanfangweisuyuan.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/failOrder.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/failOrder-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/productRecord.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/productRecord-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/waitOrder.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/waitOrder-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangConfig.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangli.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei-hulveyixiang.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/yuebiandongjilu.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangConfig.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js" />
+        <option value="$PROJECT_DIR$/static/js/app/system/menu-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/system/role-menu.js" />
+        <option value="$PROJECT_DIR$/static/js/app/system/role-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/config.js" />
+        <option value="$PROJECT_DIR$/static/js/app/signin.js" />
+        <option value="$PROJECT_DIR$/static/html/signin.html" />
       </list>
     </option>
   </component>
@@ -274,8 +200,7 @@
     <handled-path value="$PROJECT_DIR$/static/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-2" />
     <option name="width" value="1370" />
     <option name="height" value="744" />
   </component>
@@ -294,27 +219,26 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -324,11 +248,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -342,11 +266,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -364,11 +288,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -390,193 +314,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statistics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dailiManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="count" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
+              <option name="myItemId" value="bh-mall-oss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -585,55 +327,12 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dailiManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bhxt_oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="count" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -734,6 +433,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b16bfd14-18c8-4358-9f4e-c33329f71347" name="Default" comment="" />
@@ -743,25 +445,30 @@
       <updated>1517541891745</updated>
       <workItem from="1517541895574" duration="3613000" />
       <workItem from="1517795092436" duration="16315000" />
-      <workItem from="1517881114294" duration="4819000" />
+      <workItem from="1517881114294" duration="13565000" />
+      <workItem from="1517967494520" duration="6647000" />
+      <workItem from="1518055615958" duration="1539000" />
+      <workItem from="1518078990942" duration="2045000" />
+      <workItem from="1521626033017" duration="4000" />
+      <workItem from="1521683168930" duration="1122000" />
+      <workItem from="1521686043206" duration="2420000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24747000" />
+    <option name="totallyTimeSpent" value="47270000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
-    <editor active="true" />
+    <frame x="-2" y="0" width="1370" height="744" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.243994" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22672673" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19672132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22950819" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -780,44 +487,12 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/sucaiManage-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/shouhouType-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/shouhouAddress-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/allOrder-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
-          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/baiwanyinliu.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/menu-addedit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -825,377 +500,289 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/dazhuanpan.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/role-menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1375">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/dingdanfangweisuyuan.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/allOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-611">
-          <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/failOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="46" column="23" lean-forward="false" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/failOrder-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="43" column="23" lean-forward="false" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/fangweisuyuan.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productList-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-350">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productRecord.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="32" column="23" lean-forward="false" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productRecord-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/shouhouAddress.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/shouhouOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/shouhouType.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/sucaiManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/waitOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/waitOrder-addedit.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/role-addedit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
-          <caret line="47" column="7" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
+          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/count/dailishangCount.js">
+    <entry file="file://$PROJECT_DIR$/static/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-675">
+        <state relative-caret-position="300">
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/fis-conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/count/newDailiCount.js">
+    <entry file="file://$PROJECT_DIR$/static/js/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-300">
+        <state relative-caret-position="150">
+          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/role.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/count/teamSellNumCount.js">
+    <entry file="file://$PROJECT_DIR$/static/js/lib/ligerTree.resource.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/count/yejiCount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+        <state relative-caret-position="250">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding>
-            <marker date="1517888352443" expanded="true" signature="307:316" ph="..." />
+            <marker date="1517286493764" expanded="true" signature="34823:34835" ph="..." />
+            <marker date="1517286493764" expanded="true" signature="55356:55368" ph="..." />
+            <marker date="1517286493764" expanded="true" signature="56656:56668" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig-addedit.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yuebiandongjilu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        <state relative-caret-position="825">
+          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangli.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/signin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailiguiji.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-675">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailiguiji-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailijiegou.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="37" column="7" lean-forward="true" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="30" column="30" lean-forward="false" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailiziliao.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1050">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailiziliao-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="1125">
+          <caret line="45" column="31" lean-forward="false" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
           <folding>
-            <marker date="1517464378670" expanded="true" signature="219:228" ph="..." />
+            <marker date="1521686703926" expanded="true" signature="2892:2912" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/jieshaojiangli.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450">
+        <state relative-caret-position="875">
+          <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/public/banner-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/menu-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/role-menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1375">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/role.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi.js">
+    <entry file="file://$PROJECT_DIR$/static/js/lib/ligerTree.resource.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="250">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding>
+            <marker date="1517286493764" expanded="true" signature="34823:34835" ph="..." />
+            <marker date="1517286493764" expanded="true" signature="55356:55368" ph="..." />
+            <marker date="1517286493764" expanded="true" signature="56656:56668" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yuebiandongjilu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shenhequxiaoshouquan.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/signin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-750">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="1125">
+          <caret line="45" column="31" lean-forward="false" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+          <folding>
+            <marker date="1521686703926" expanded="true" signature="2892:2912" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shenheshengji.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/role-addedit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-825">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shenheshouquan.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-750">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shouquanzhengshuConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="350">
+          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-300">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1517887948566" expanded="true" signature="503:512" ph="..." />
-          </folding>
+        <state relative-caret-position="875">
+          <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        <state relative-caret-position="100">
+          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/public/banner-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/role-menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1375">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangli.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/role.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei.js">
+    <entry file="file://$PROJECT_DIR$/static/js/lib/ligerTree.resource.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="250">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding>
+            <marker date="1517286493764" expanded="true" signature="34823:34835" ph="..." />
+            <marker date="1517286493764" expanded="true" signature="55356:55368" ph="..." />
+            <marker date="1517286493764" expanded="true" signature="56656:56668" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yuebiandongjilu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+        <state relative-caret-position="825">
+          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yixiangdailifenpei-hulveyixiang.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/role-addedit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="30" column="20" lean-forward="false" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        <state relative-caret-position="350">
+          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/fis-conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/signin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="58" column="27" lean-forward="true" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+          <folding>
+            <marker date="1521686703926" expanded="true" signature="2892:2912" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/rules/rule1-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/menu-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-856">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/signin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="81" column="29" lean-forward="true" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -9,10 +9,10 @@ $(function() {
         title : '代理',
         search: true
     },{
-        field : 'cvalue',
+        field : 'mobile',
         title : '代理手机'
     }, {
-        field : 'updateDatetime',
+        field : 'level',
         title : '代理等级'
     }, {
         field : 'updateDatetime',

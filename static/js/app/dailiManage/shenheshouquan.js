@@ -5,15 +5,15 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
+		field : 'name',
 		title : '姓名'
 	},{
-		field : 'cvalue',
+		field : 'level',
 		title : '等级',
         search: true,
 		type: 'select'
 	}, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '联系电话'
     }, {
         field : 'updateDatetime',
@@ -25,7 +25,7 @@ $(function() {
         field : 'updateDatetime',
         title : '团队名称'
     }, {
-        field : 'updateDatetime',
+        field : 'sqAmount',
         title : '授权金额',
         formatter: moneyFormat
     }, {

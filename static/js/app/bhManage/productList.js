@@ -5,11 +5,11 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
+		field : 'code',
 		title : '编号',
 		search: true
 	},{
-		field : 'cvalue',
+		field : 'name',
 		title : '名称'
 	}, {
         field : 'updateDatetime',
@@ -26,7 +26,7 @@ $(function() {
         field : 'updateDatetime',
         title : '实际库存'
     }, {
-        field : 'updateDatetime',
+        field : 'status',
         title : '状态',
 		search: true,
 		type: 'select'

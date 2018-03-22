@@ -9,16 +9,16 @@ $(function() {
 		title : '出货人',
 		search: true
 	},{
-		field : 'cvalue',
+		field : 'mobile',
 		title : '出货人手机'
 	}, {
-        field : 'updateDatetime',
+        field : 'level',
         title : '出货人等级'
     }, {
         field : 'updateDatetime',
         title : '出货人团队'
     }, {
-        field : 'updateDatetime',
+        field : 'product',
         title : '出货产品',
         search: true,
 		type: 'select'

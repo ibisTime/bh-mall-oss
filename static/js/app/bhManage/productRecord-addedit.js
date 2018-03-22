@@ -2,10 +2,8 @@ $(function() {
 	var code = getQueryString('code');
 
     var fields = [{
-        field : 'remark',
-        title : '名称',
-        search: true,
-        type: 'select'
+        field : 'name',
+        title : '名称'
     },{
         field : 'cvalue',
         title : '库存分类'
@@ -24,17 +22,10 @@ $(function() {
         formatter: dateTimeFormat
     }, {
         field : 'updateDatetime',
-        title : '操作人',
-        search: true
+        title : '操作人'
     }, {
         field : 'remark',
-        title : '备注',
-    }, {
-        field : 'updateDatetime',
-        title : '操作类型',
-        search: true,
-        type: 'select',
-        visible: false
+        title : '备注'
     }];
 	
 	buildDetail({

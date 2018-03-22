@@ -11,7 +11,7 @@ $(function() {
 		field : 'cvalue',
 		title : '代理等级'
 	}, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '代理电话'
     }, {
         field : 'updateDatetime',
@@ -27,7 +27,7 @@ $(function() {
         title : '申请时间',
         formatter: dateTimeFormat
     }, {
-        field : 'updateDatetime',
+        field : 'status',
         title : '状态'
     }, {
         field : 'updateDatetime',

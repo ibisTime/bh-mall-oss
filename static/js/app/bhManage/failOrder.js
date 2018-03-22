@@ -18,7 +18,7 @@ $(function() {
         twoDate: true,
         search: true
     }, {
-        field : 'updateDatetime',
+        field : 'fkAmount',
         title : '付款金额',
         formatter: moneyFormat
     }, {
@@ -27,7 +27,7 @@ $(function() {
         search: true,
         type: 'select'
     }, {
-        field : 'updateDatetime',
+        field : 'orderType',
         title : '订单类型',
         search: true,
         type: 'select'
@@ -35,13 +35,13 @@ $(function() {
         field : 'updateDatetime',
         title : '下单代理'
     }, {
-        field : 'updateDatetime',
+        field : 'level',
         title : '下单代理等级'
     }, {
         field : 'updateDatetime',
         title : '收货人'
     }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '收货人电话'
     }, {
         field : 'remark',

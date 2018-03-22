@@ -1,13 +1,13 @@
 $(function() {
 
 	var columns = [{
-		field : 'remark',
+		field : 'name',
 		title : '姓名'
 	},{
-		field : 'cvalue',
+		field : 'value',
 		title : '等级'
 	},{
-        field : 'cvalue',
+        field : 'mobile',
         title : '手机号'
     },{
         field : 'cvalue',

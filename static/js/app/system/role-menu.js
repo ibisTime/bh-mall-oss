@@ -53,5 +53,6 @@ $(function() {
 	$('#backBtn').click(function() {
 		goBack();
 	});
+
 });
 

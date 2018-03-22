@@ -4,7 +4,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
+		field : 'code',
 		title : '订单编号'
 	},{
 		field : 'cvalue',
@@ -17,16 +17,16 @@ $(function() {
         twoDate: true,
         search: true
 	}, {
-        field : 'updateDatetime',
+        field : 'fkAmount',
         title : '付款金额',
         formatter: moneyFormat
     }, {
-        field : 'updateDatetime',
+        field : 'orderStatus',
         title : '订单状态',
 		search: true,
 		type: 'select'
     }, {
-        field : 'updateDatetime',
+        field : 'orderType',
         title : '订单类型',
         search: true,
         type: 'select'
@@ -42,7 +42,7 @@ $(function() {
         field : 'updateDatetime',
         title : '收货人'
     }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '收货人电话'
     }, {
         field : 'remark',

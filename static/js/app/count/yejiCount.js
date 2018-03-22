@@ -1,15 +1,15 @@
 $(function() {
 
 	var columns = [{
-		field : 'remark',
+		field : 'name',
 		title : '姓名',
 		search: true,
 		type: 'select'
 	},{
-		field : 'cvalue',
+		field : 'level',
 		title : '等级'
 	}, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '手机号'
     }, {
         field : 'updateDatetime',

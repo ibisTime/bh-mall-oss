@@ -5,10 +5,10 @@ $(function() {
         title : '',
         checkbox : true
     },{
-        field : 'remark',
+        field : 'name',
         title : '姓名'
     },{
-        field : 'cvalue',
+        field : 'level',
         title : '等级',
         search: true,
         type: 'select'
@@ -17,7 +17,7 @@ $(function() {
         title : '余额',
         formatter: moneyFormat
     }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '联系电话'
     }, {
         field : 'updateDatetime',

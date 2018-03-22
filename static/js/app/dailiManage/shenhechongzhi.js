@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
+		field : 'code',
 		title : '编号'
 	},{
 		field : 'cvalue',
@@ -16,7 +16,7 @@ $(function() {
         field : 'cvalue',
         title : '充值人团队'
     },{
-        field : 'cvalue',
+        field : 'amount',
         title : '金额',
         formatter: moneyFormat
     },{
@@ -24,7 +24,7 @@ $(function() {
         title : '申请时间',
 		formatter: dateTimeFormat
     }, {
-        field : 'cvalue',
+        field : 'status',
         title : '状态',
         search: true,
         type: 'select'

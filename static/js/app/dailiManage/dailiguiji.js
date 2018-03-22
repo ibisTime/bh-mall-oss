@@ -5,12 +5,12 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
+		field : 'name',
 		title : '姓名',
 		search: true,
 		type: 'select'
 	},{
-		field : 'cvalue',
+		field : 'mobile',
 		title : '联系电话',
         search: true,
         type: 'select'

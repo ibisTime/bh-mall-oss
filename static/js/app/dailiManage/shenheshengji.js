@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
+		field : 'name',
 		title : '姓名'
 	},{
 		field : 'cvalue',
@@ -16,7 +16,7 @@ $(function() {
         field : 'updateDatetime',
         title : '需升级等级'
     }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '联系电话'
     }, {
         field : 'updateDatetime',

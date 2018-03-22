@@ -3,8 +3,7 @@ $(function() {
 
     var fields = [{
         field : 'remark',
-        title : '地址名称',
-        search: true
+        title : '地址名称'
     },{
         field : 'cvalue',
         title : '省'
@@ -21,7 +20,7 @@ $(function() {
         field : 'updateDatetime',
         title : '收货人'
     }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '收货人电话'
     }];
 	

@@ -2,13 +2,11 @@ $(function() {
 	var code = getQueryString('code');
 
     var fields = [{
-        field : 'remark',
+        field : 'name',
         title : '等级名称'
     },{
-        field : 'cvalue',
-        title : '等级',
-        search: true,
-        type: 'select'
+        field : 'level',
+        title : '等级'
     },{
         field : 'cvalue',
         title : '本等级是否可被意向'

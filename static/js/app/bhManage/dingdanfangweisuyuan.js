@@ -5,7 +5,7 @@ $(function() {
         title : '',
         checkbox : true
     },{
-        field : 'remark',
+        field : 'code',
         title : '订单编号'
     },{
         field : 'cvalue',
@@ -21,7 +21,7 @@ $(function() {
         search: true,
         type: 'select'
     }, {
-        field : 'updateDatetime',
+        field : 'orderType',
         title : '订单类型',
         search: true,
         type: 'select'
@@ -35,7 +35,7 @@ $(function() {
         field : 'updateDatetime',
         title : '收货人'
     }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '收货人电话'
     }, {
         field : 'remark',

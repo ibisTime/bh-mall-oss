@@ -9,15 +9,15 @@ $(function() {
 		title : '代理',
 		search: true
 	},{
-		field : 'cvalue',
+		field : 'mobile',
 		title : '代理电话',
         search: true
 	},{
-        field : 'cvalue',
+        field : 'wx',
         title : '代理微信',
         search: true
     },{
-        field : 'cvalue',
+        field : 'level',
         title : '代理等级',
         search: true,
 		type: 'select'
@@ -31,7 +31,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
+		pageCode: '627955'
 		// searchParams: {
 		// 	type: 'android_b',
 		// 	companyCode: OSS.company,

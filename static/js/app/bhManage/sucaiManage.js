@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
+		field : 'title',
 		title : '标题'
 	},{
 		field : 'cvalue',

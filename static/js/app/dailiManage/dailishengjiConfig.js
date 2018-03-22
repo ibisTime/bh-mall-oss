@@ -5,10 +5,10 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
+		field : 'name',
 		title : '等级名称'
 	},{
-		field : 'cvalue',
+		field : 'level',
 		title : '等级',
         search: true,
 		type: 'select'

@@ -2,13 +2,13 @@ $(function() {
 	var code = getQueryString('code');
 
     var columns = [{
-        field : 'remark',
+        field : 'name',
         title : '姓名'
     },{
-        field : 'cvalue',
+        field : 'level',
         title : '等级'
     }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '联系电话'
     }, {
         field : 'updateDatetime',

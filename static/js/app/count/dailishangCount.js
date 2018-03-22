@@ -4,7 +4,7 @@ $(function() {
 		field : 'remark',
 		title : '代理商个数'
 	}, {
-        field : 'updateDatetime',
+        field : 'level',
         title : '等级',
         search: true,
 		type: 'select',

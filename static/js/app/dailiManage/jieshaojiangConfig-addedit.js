@@ -1,9 +1,10 @@
 $(function() {
 	var code = getQueryString('code');
-
+	var view = true;
     var fields = [{
-        field : 'remark',
-        title : '代理等级'
+        field : 'level',
+        title : '代理等级',
+		readonly: view
     },{
         field : 'cvalue',
         title : '授权本等级直接获利'

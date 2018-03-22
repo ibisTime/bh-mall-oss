@@ -1,14 +1,13 @@
 $(function() {
 	var code = getQueryString('code');
-
+    var view = true;
     var fields = [{
-        field : 'remark',
-        title : '姓名'
+        field : 'name',
+        title : '姓名',
+        readonly : view
     },{
         field : 'cvalue',
-        title : '等级',
-        search: true,
-        type: 'select'
+        title : '等级'
     }, {
         field : 'updateDatetime',
         title : '余额',
@@ -39,19 +38,11 @@ $(function() {
         title : '推荐人电话'
     }, {
         field : 'updateDatetime',
-        title : '授权状态',
-        search: true,
-        type: 'select'
+        title : '授权状态'
     },  {
         field : 'updateDatetime',
         title : '状态时间',
-        formatter: dateTimeFormat,
-        field1: 'applyDateStart',
-        title1: '状态时间',
-        type: 'date',
-        field2: 'applyDateEnd',
-        twoDate: true,
-        search: true
+        formatter: dateTimeFormat
     }];
 	
 	buildDetail({

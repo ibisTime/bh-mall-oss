@@ -2,9 +2,9 @@ var OSS = {};
 // mainUrl
 OSS.mainUrl = '/mainUrl';
 // system
-OSS.system = 'CD-CBH000019';
+OSS.system = 'CD-CBH000020';
 // companyCode
-OSS.company = 'CD-CBH000019';
+OSS.company = 'CD-CBH000020';
 // system name
 OSS.systemName = '浙江圈粉科技管理平台';
 // company name

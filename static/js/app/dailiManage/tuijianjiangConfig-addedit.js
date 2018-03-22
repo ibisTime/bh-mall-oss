@@ -1,12 +1,14 @@
 $(function() {
 	var code = getQueryString('code');
-
+    var view = true;
     var fields = [{
-        field : 'remark',
-        title : '代理等级'
+        field : 'level',
+        title : '代理等级',
+        readonly: view
     },{
-        field : 'cvalue',
-        title : '产品'
+        field : 'product',
+        title : '产品',
+        readonly: view
     }, {
         field : 'updateDatetime',
         title : '直推奖励',

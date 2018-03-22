@@ -25,13 +25,13 @@ $(function() {
         title : '奖励金额',
         formatter: moneyFormat
     }, {
-        field : 'updateDatetime',
+        field : 'status',
         title : '状态'
     }, {
         field : 'remark',
         title : '备注'
     }, {
-        field : 'updateDatetime',
+        field : 'level',
         title : '等级',
         search: true,
         type: 'select',

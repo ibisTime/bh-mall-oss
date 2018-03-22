@@ -2,20 +2,14 @@ $(function() {
 	var code = getQueryString('code');
 
     var fields = [{
-        field : 'remark',
-        title : '姓名',
-        search: true,
-        type: 'select'
+        field : 'name',
+        title : '姓名'
     },{
-        field : 'cvalue',
-        title : '联系电话',
-        search: true,
-        type: 'select'
+        field : 'mobile',
+        title : '联系电话'
     }, {
         field : 'updateDatetime',
-        title : '微信号',
-        search: true,
-        type: 'select'
+        title : '微信号'
     }, {
         field : 'updateDatetime',
         title : '授权等级'

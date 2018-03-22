@@ -36,5 +36,5 @@ $(function() {
 		addCode: '627920',
 		editCode: '627921'
 	});
-	
+    hideLoading();
 });

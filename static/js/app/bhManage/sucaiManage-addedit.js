@@ -2,13 +2,11 @@ $(function() {
 	var code = getQueryString('code');
 
     var fields = [{
-        field : 'remark',
+        field : 'title',
         title : '标题'
     },{
         field : 'cvalue',
-        title : '分类',
-        search: true,
-        type: 'select'
+        title : '分类'
     }, {
         field : 'updateDatetime',
         title : '图像'
