@@ -28,8 +28,8 @@ $(function(){
 	buildList({
 		//router: 'role',
 		columns: columns,
-		pageCode: '627925',
-		deleteCode: '627922'
+		pageCode: '627045',
+		deleteCode: '627042'
 	});
 
 	$('#changeBtn').click(function() {

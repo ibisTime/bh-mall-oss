@@ -1,12 +1,12 @@
 $(function() {
-
+// 报货管理-云仓管理-产品库存记录
 	var columns = [{
 		field : '',
 		title : '',
 		checkbox : true
 	},{
 		field : 'name',
-		title : '名称',
+		title : '产品名称',
 		search: true,
 		type: 'select'
 	},{
@@ -31,7 +31,7 @@ $(function() {
 		search: true
     }, {
         field : 'remark',
-        title : '备注',
+        title : '备注'
     }, {
         field : 'updateDatetime',
         title : '操作类型',

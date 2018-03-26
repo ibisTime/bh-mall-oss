@@ -22,14 +22,14 @@ $(function() {
 		code: {
 			userId: getUserId()
 		},
-		detailCode: '805121'
+		detailCode: '627351'
 	});
 	
 	$('#subBtn').off('click').click(function() {
     if ($('#jsForm').valid()) {
       var data = $('#jsForm').serializeObject();
       reqApi({
-        code: '805064',
+        code: '627304',
         json: data
       }).done(function(data) {
 	    	toastr.success('操作成功');

@@ -28,8 +28,8 @@ $(function() {
 	buildList({
 		router: 'banner',
 		columns: columns,
-		pageCode: '805805',
-		deleteCode: '805801',
+		pageCode: '627035',
+		deleteCode: '627031',
 		searchParams:{
 			companyCode: OSS.company,
 			type:2

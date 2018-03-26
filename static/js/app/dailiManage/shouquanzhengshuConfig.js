@@ -1,5 +1,5 @@
 $(function() {
-
+// 代理管理-系统设置-授权证书设置
 	var columns = [{
 		field : '',
 		title : '',

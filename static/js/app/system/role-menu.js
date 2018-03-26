@@ -5,13 +5,13 @@ $(function() {
 	//下拉菜单
 	$.when(
 		reqApi({ // 所有菜单
-		code: '627901',
+		code: '627056',
 		json: {
 			kind: '1'
 		}
 	}),
 		reqApi({ // 获得菜单
-		code: '627917',
+		code: '627065',
 		json: {
 			roleCode: $("#code").val()
 		}
@@ -42,7 +42,7 @@ $(function() {
 		}
   	var data = {roleCode:$("#code").val(),menuCodeList:menuList, updater: getUserName()};
 		reqApi({
-			code: '627910',
+			code: '627060',
 			json: data
 		}).done(function(data) {
 			sucDetail();

@@ -1,4 +1,5 @@
 $(function() {
+
     var view = getQueryString('v');
 
     var code = getQueryString('code');
@@ -22,7 +23,7 @@ $(function() {
         title: '针对人群',
         type: 'select',
         key: 'user_kind',
-        keyCode:'805906',
+        keyCode:'627076',
         readonly: view,
         required: true
     }, {
@@ -50,7 +51,6 @@ $(function() {
     }];
 
 
-
     buildDetail({
         fields: fields,
         code: code,
@@ -59,4 +59,5 @@ $(function() {
         detailCode: '804042',
         view: view,
     });
+    hideLoading();
 });

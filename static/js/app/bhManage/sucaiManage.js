@@ -1,5 +1,5 @@
 $(function() {
-
+// 报货管理-素材管理-素材管理
 	var columns = [{
 		field : '',
 		title : '',

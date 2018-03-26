@@ -1,12 +1,12 @@
 $(function() {
-
+// 报货管理-云仓管理-产品列表
 	var columns = [{
 		field : '',
 		title : '',
 		checkbox : true
 	},{
 		field : 'code',
-		title : '编号',
+		title : '产品编号',
 		search: true
 	},{
 		field : 'name',

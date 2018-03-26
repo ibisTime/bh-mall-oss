@@ -21,7 +21,7 @@ $(function() {
 		required: true,
 		type: 'select',
 		key: 'role_level',
-        keyCode:'627956'
+        keyCode:'627076'
 	},
 		{
 		title: '备注',
@@ -32,9 +32,9 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '627927',
-		addCode: '627920',
-		editCode: '627921'
+		detailCode: '627047',
+		addCode: '627040',
+		editCode: '627041'
 	});
     hideLoading();
 });

@@ -1,5 +1,5 @@
 $(function() {
-
+// 报货管理-云仓管理-订单作废
     var columns = [{
         field : '',
         title : '',

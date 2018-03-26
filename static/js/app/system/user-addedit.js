@@ -1,5 +1,5 @@
 $(function() {
-	
+	// hideLoading();
 	var code = getQueryString('code');
 	
 	var fields = [{
@@ -16,7 +16,7 @@ $(function() {
 		field: 'roleCode',
 		required: true,
 		type: 'select',
-		listCode: '805021',
+		listCode: '627046',
 		keyName: 'code',
 		valueName: 'name'
 	}, {
@@ -28,8 +28,8 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '805121',
-		addCode: '805042'
+		detailCode: '627351',
+		addCode: '627301'
 	});
-	
+    hideLoading();
 });

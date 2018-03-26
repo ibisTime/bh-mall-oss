@@ -1,5 +1,5 @@
 $(function() {
-
+// 报货管理-活动管理-百万引流
 	var columns = [{
 		field : '',
 		title : '',

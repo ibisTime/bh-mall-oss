@@ -1,5 +1,5 @@
 $(function() {
-
+// 代理管理-系统设置-推荐奖设置
 	var columns = [{
 		field : '',
 		title : '',

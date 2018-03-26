@@ -15,7 +15,7 @@ $(function() {
 		title : '父菜单编号',
 		type : 'select',
 		// listCode: '805001',
-		listCode: '627917',
+		listCode: '627056',
 		params: {
 			type: '1',
             roleCode: sessionStorage.getItem('roleCode')
@@ -40,7 +40,7 @@ $(function() {
 	buildList({
 		router: 'menu',
 		columns: columns,
-		pageCode: '627900',
-		deleteCode: '627904'
+		pageCode: '627055',
+		deleteCode: '627051'
 	});
 });

@@ -13,7 +13,7 @@ $(function() {
 		// 一级菜单
 		reqApi({
 			// code: '805026',
-			code: '627917',
+			code: '627056',
 			json: data,
 			sync: true 
 		}, true).then(function(data) {
@@ -33,7 +33,7 @@ $(function() {
 				if (!$(me).attr('data-loaded')) {
 					reqApi({
 						// code: '805026',
-						code: '627917',
+						code: '627056',
 						json: {
 							parentCode: $ul.attr('id'),
 							type: '1',

@@ -1,5 +1,5 @@
 $(function() {
-
+// 代理管理-代理管理-意向代理分配
 	var columns = [{
 		field : '',
 		title : '',

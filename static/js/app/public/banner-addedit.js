@@ -84,9 +84,9 @@ $(function() {
         fields: fields,
         code: code,
         view: view,
-        addCode: "805800",
-        editCode: "805802",
-        detailCode: '805807'
+        addCode: "627030",
+        editCode: "627032",
+        detailCode: '627037'
     });
-
+hideLoading();
 });

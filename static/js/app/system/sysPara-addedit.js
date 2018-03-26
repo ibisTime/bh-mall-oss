@@ -2,7 +2,7 @@ $(function() {
 	var code = getQueryString('code');
 	var id = getQueryString('id');
     var fields = [{
-        field : 'ckey',
+        field : 'remark',
         title : '参数名',
         pageCode: '627965',
         keyName: 'ckey',
@@ -24,8 +24,8 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '627966',
-		editCode: '627961'
+		detailCode: '627086',
+		editCode: '627081'
 	});
 	
 });

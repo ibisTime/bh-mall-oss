@@ -1,5 +1,5 @@
 $(function() {
-
+// 报货管理-售后管理-售后类型
 	var columns = [{
 		field : '',
 		title : '',

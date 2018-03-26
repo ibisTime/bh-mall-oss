@@ -1,5 +1,5 @@
 $(function() {
-
+// 报货管理-活动管理-开门红包
 	var columns = [{
 		field : '',
 		title : '',

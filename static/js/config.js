@@ -10,7 +10,7 @@ OSS.systemName = '浙江圈粉科技管理平台';
 // company name
 OSS.companyName = '浙江圈粉科技有限公司';
 // menuCode
-OSS.menuRoot = 'BHSM201800000000000000';
+OSS.menuRoot = 'BHXTSM201700000000000000';
 // picUrl
 OSS.picBaseUrl = sessionStorage.getItem('qiniuUrl');
 // picShow

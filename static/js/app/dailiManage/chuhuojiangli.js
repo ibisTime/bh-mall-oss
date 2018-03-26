@@ -1,5 +1,5 @@
 $(function() {
-
+// 代理管理-财务管理-出货奖励
 	var columns = [{
 		field : '',
 		title : '',

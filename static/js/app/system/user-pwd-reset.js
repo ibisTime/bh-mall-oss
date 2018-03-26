@@ -29,7 +29,7 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: {userId:userId},
-		detailCode: '805121',
-		editCode: '805065'
+		detailCode: '627351',
+		editCode: '627304'
 	});
 });

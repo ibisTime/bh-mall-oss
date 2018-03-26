@@ -1,5 +1,5 @@
 $(function() {
-
+// 代理管理-代理管理-代理资料
     var columns = [{
         field : '',
         title : '',

@@ -1,5 +1,5 @@
 $(function() {
-
+// 代理管理-代理管理-审核取消授权
     var columns = [{
         field : '',
         title : '',

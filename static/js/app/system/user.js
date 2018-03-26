@@ -20,7 +20,7 @@ $(function(){
 		field: 'roleCode',
 		title: '角色',
 		type: 'select',
-		listCode: '805021',
+		listCode: '627046',
 		keyName: 'code',
 		valueName: 'name',
 		search: true
@@ -31,7 +31,7 @@ $(function(){
 	buildList({
 		router: 'user',
 		columns: columns,
-		pageCode: '805120',
+		pageCode: '627266',
 		searchParams: {
 			kind: 'P',
 			companyCode: OSS.company
@@ -71,7 +71,7 @@ $(function(){
 		
 		confirm("确定激活？").then(function() {
     	reqApi({
-				code: '805091',
+				code: '627303',
 				json: {
 					userId: selRecords[0].userId,
 					toStatus: '0',
@@ -98,7 +98,7 @@ $(function(){
 		
 		confirm("确定注销？").then(function() {
 			reqApi({
-				code: '805091',
+				code: '627303',
 				json: {
 					userId: selRecords[0].userId,
 					toStatus: '2',

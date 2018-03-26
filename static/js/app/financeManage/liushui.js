@@ -10,18 +10,12 @@ $(function() {
         search: true
     }, {
         field: 'currency',
-        title: '币种',
-        type: 'select',
-        key: 'currency',
-
-        formatter: Dict.getNameForList("currency"),
-        search: true
+        title: '账号'
     }, {
         field: 'channelType',
         title: '渠道',
         type: 'select',
         key: 'channel_type',
-
         formatter: Dict.getNameForList('channel_type'),
         search: true
     }, {
@@ -29,7 +23,6 @@ $(function() {
         title: '业务类型',
         type: 'select',
         key: 'biz_type',
-
         formatter: Dict.getNameForList('biz_type'),
         search: true
     }, {
@@ -49,7 +42,6 @@ $(function() {
         title: '状态',
         type: 'select',
         key: 'jour_status',
-
         formatter: Dict.getNameForList('jour_status'),
         search: true
     }, {
@@ -57,18 +49,8 @@ $(function() {
         title: '创建时间',
         formatter: dateTimeFormat
     }, {
-        field1: 'dateStart',
-        title1: '创建时间',
-        type: 'date',
-        field2: 'dateEnd',
-        twoDate: true,
-        search: true,
-        visible: false
-    }, {
-        field: 'workDate',
-        title: '拟对账日期',
-        type: 'date',
-        search: true,
+        field: 'reamrk',
+        title: '备注'
     }];
     buildList({
         columns: columns,

@@ -1,5 +1,5 @@
 $(function() {
-
+// 代理管理-系统设置-代理授权设置
 	var columns = [{
 		field : '',
 		title : '',

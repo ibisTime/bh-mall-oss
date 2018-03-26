@@ -39,7 +39,7 @@ $(function() {
     var data = { "parentCode": window.parentCode, "type": "1", 'roleCode': sessionStorage.getItem('roleCode') };
     reqApi({
         // code: '805026',
-        code: '627917',
+        code: '627056',
         json: data,
         sync: true
     }, true).done(function(data) {
@@ -70,6 +70,7 @@ $(function() {
         ajaxGet(OSS.mainUrl + '/logOut', {
             token: window.sessionStorage.getItem('token')
         }).then(function(res) {
+            console.log(res);
             if (res.errorCode == '0') {
                 window.sessionStorage.setItem('token', '');
                 window.sessionStorage.setItem('userId', '');

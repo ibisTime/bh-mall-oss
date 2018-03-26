@@ -1,5 +1,5 @@
 $(function() {
-
+// 代理管理-财务管理-介绍奖励
     var columns = [{
         field : '',
         title : '',
@@ -10,7 +10,7 @@ $(function() {
         search: true
     },{
         field : 'mobile',
-        title : '代理手机'
+        title : '代理电话'
     }, {
         field : 'level',
         title : '代理等级'
