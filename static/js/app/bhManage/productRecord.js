@@ -26,7 +26,7 @@ $(function() {
         title : '变动时间',
         formatter: dateTimeFormat
     }, {
-        field : 'updateDatetime',
+        field : 'updater',
         title : '操作人',
 		search: true
     }, {
@@ -41,7 +41,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
+		pageCode: '627610',
 		// searchParams: {
 		// 	type: 'android_b',
 		// 	companyCode: OSS.company,
