@@ -11,19 +11,21 @@ $(function() {
 	},{
 		field : 'name',
 		title : '名称'
-	}, {
-        field : 'updateDatetime',
-        title : '建议微信价',
-		formatter: moneyFormat
-    }, {
-        field : 'updateDatetime',
+	},
+    //     {
+    //     field : 'updateDatetime',
+    //     title : '建议微信价',
+		// formatter: moneyFormat
+    // },
+        {
+        field : 'price',
         title : '市场价',
         formatter: moneyFormat
     }, {
-        field : 'updateDatetime',
+        field : 'virNumber',
         title : '虚拟库存'
     }, {
-        field : 'updateDatetime',
+        field : 'realNumber',
         title : '实际库存'
     }, {
         field : 'status',
@@ -46,7 +48,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
+		pageCode: '627554',
 		// searchParams: {
 		// 	type: 'android_b',
 		// 	companyCode: OSS.company,

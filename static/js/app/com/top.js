@@ -70,7 +70,6 @@ $(function() {
         ajaxGet(OSS.mainUrl + '/logOut', {
             token: window.sessionStorage.getItem('token')
         }).then(function(res) {
-            console.log(res);
             if (res.errorCode == '0') {
                 window.sessionStorage.setItem('token', '');
                 window.sessionStorage.setItem('userId', '');
