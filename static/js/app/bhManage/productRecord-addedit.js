@@ -1,28 +1,32 @@
 $(function() {
 	var code = getQueryString('code');
+	var view = getQueryString('v');
 
     var fields = [{
         field : 'name',
-        title : '名称'
+        title : '产品名称'
     },{
-        field : 'cvalue',
-        title : '库存分类'
+        field : 'type',
+        title : '变动类型'
     }, {
-        field : 'updateDatetime',
-        title : '变动操作'
-    }, {
-        field : 'updateDatetime',
+        field : 'tranCount',
         title : '变动库存'
     }, {
-        field : 'updateDatetime',
+        field : 'preCount',
+        title : '变动前库存',
+        formatter : function (v, data) {
+            return data.preCount
+        }
+    }, {
+        field : 'postCount',
         title : '变动后库存'
     }, {
         field : 'updateDatetime',
         title : '变动时间',
         formatter: dateTimeFormat
     }, {
-        field : 'updateDatetime',
-        title : '操作人'
+        field : 'updater',
+        title : '操作人',
     }, {
         field : 'remark',
         title : '备注'
@@ -31,9 +35,8 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '627927',
-		addCode: '627920',
-		editCode: '627921'
+        view : view,
+		detailCode: '627612'
 	});
 	
 });

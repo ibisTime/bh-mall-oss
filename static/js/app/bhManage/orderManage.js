@@ -8,11 +8,11 @@ $(function() {
         field : 'code',
         title : '订单编号'
     },{
-        field : 'cvalue',
+        field : 'applyDatetime',
         title : '下单日期',
         formatter: dateTimeFormat
     }, {
-        field : 'fkAmount',
+        field : 'payAmount',
         title : '付款金额',
         formatter: moneyFormat
     }, {
@@ -32,7 +32,7 @@ $(function() {
         field : 'updateDatetime3',
         title : '下单代理等级'
     }, {
-        field : 'updateDatetime4',
+        field : 'signer',
         title : '收货人'
     }, {
         field : 'mobile',
@@ -40,18 +40,6 @@ $(function() {
     }, {
         field : 'remark',
         title : '备注'
-    }, {
-        field : 'updateDatetime5',
-        title : '团队',
-        search: true,
-        type: 'select',
-        visible: false
-    }, {
-        field : 'updateDatetime6',
-        title : '订单所在人',
-        search: true,
-        type: 'select',
-        visible: false
     }];
 	buildList({
 		columns: columns,
@@ -66,4 +54,15 @@ $(function() {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
 		// }
 	});
+
+    // 物流信息
+    $('#wuliuBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+
+        window.location.href = './orderManage_wuliu.html?v=1&code='+selRecords[0].code
+    })
 });

@@ -2,16 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b16bfd14-18c8-4358-9f4e-c33329f71347" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/app/bhManage/productList-addedit1.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/app/bhManage/productList-addedit.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/bhxt_oss.iml" afterPath="$PROJECT_DIR$/.idea/bhxt_oss.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/html/financeManage/account.html" afterPath="$PROJECT_DIR$/static/html/financeManage/account.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/html/bhManage/productList.html" afterPath="$PROJECT_DIR$/static/html/bhManage/productList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/html/bhManage/productList_addedit.html" afterPath="$PROJECT_DIR$/static/html/bhManage/productList_addedit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/allOrder.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/allOrder.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/orderManage.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/orderManage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/productList.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/productList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/productManage-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/productManage-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/productManage.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/productManage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/productRecord-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/productRecord-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/productRecord.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/productRecord.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage-addedit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage.js" afterPath="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/com/top.js" afterPath="$PROJECT_DIR$/static/js/app/com/top.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/system/user.js" afterPath="$PROJECT_DIR$/static/js/app/system/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/com/common-method.js" afterPath="$PROJECT_DIR$/static/js/app/com/common-method.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig-addedit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangli.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig-addedit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig-addedit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js" afterPath="$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/financeManage/liushui.js" afterPath="$PROJECT_DIR$/static/js/app/financeManage/liushui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/financeManage/queryQuxian.js" afterPath="$PROJECT_DIR$/static/js/app/financeManage/queryQuxian.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,65 +43,26 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="levelManage-addedit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/levelManage-addedit.js">
+    <leaf>
+      <file leaf-file-name="yueguanli-addedit.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yueguanli-addedit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            <state relative-caret-position="80">
+              <caret line="102" column="111" lean-forward="false" selection-start-line="102" selection-start-column="111" selection-end-line="102" selection-end-column="111" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sucaiManage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/sucaiManage.js">
+      <file leaf-file-name="yueguanli.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+            <state relative-caret-position="250">
+              <caret line="55" column="35" lean-forward="false" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
               <folding>
-                <marker date="1522144588611" expanded="true" signature="851:873" ph="..." />
+                <element signature="e#875#1174#0" expanded="false" />
+                <element signature="e#1221#1519#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productRecord.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productRecord.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="28" column="24" lean-forward="false" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sucaiManage-addedit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/sucaiManage-addedit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="levelManage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/levelManage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="25" selection-end-column="30" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -92,8 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tableEx</find>
-      <find>tableExp</find>
       <find>tableExport</find>
       <find>export</find>
       <find>type</find>
@@ -122,6 +99,8 @@
       <find>pa</find>
       <find>params</find>
       <find>627927</find>
+      <find>buildLi</find>
+      <find>627006</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -136,33 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/html/financeManage/quxianRules_addedit.html" />
-        <option value="$PROJECT_DIR$/static/html/financeManage/underlineQuxian.html" />
-        <option value="$PROJECT_DIR$/static/js/app/financeManage/underlineQuxian.js" />
-        <option value="$PROJECT_DIR$/static/html/financeManage/queryQuxian.html" />
-        <option value="$PROJECT_DIR$/static/js/app/financeManage/queryQuxian.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/shenheshouquan-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/dailiManage/shenheshengji-addedit.js" />
-        <option value="$PROJECT_DIR$/static/html/dailiManage/shengheshouquan_addedit.html" />
-        <option value="$PROJECT_DIR$/static/html/dailiManage/shenheshengji_addedit.html" />
-        <option value="$PROJECT_DIR$/static/html/user/customer_userReferee.html" />
-        <option value="$PROJECT_DIR$/static/js/config.js" />
-        <option value="$PROJECT_DIR$/static/js/app/com/left.js" />
-        <option value="$PROJECT_DIR$/static/js/app/system/role.js" />
-        <option value="$PROJECT_DIR$/static/js/app/com/dict.js" />
-        <option value="$PROJECT_DIR$/static/js/app/system/role-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/system/menu.js" />
-        <option value="$PROJECT_DIR$/static/js/app/system/menu-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/system/role-menu.js" />
-        <option value="$PROJECT_DIR$/static/js/app/system/dataDict.js" />
-        <option value="$PROJECT_DIR$/static/html/system/notify.html" />
-        <option value="$PROJECT_DIR$/static/js/app/system/notify.js" />
-        <option value="$PROJECT_DIR$/static/js/app/public/banner.js" />
-        <option value="$PROJECT_DIR$/static/js/app/public/aboutus-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/public/hotline-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/public/time-addedit.js" />
-        <option value="$PROJECT_DIR$/static/html/public/time_addedit.html" />
-        <option value="$PROJECT_DIR$/static/js/app/com/common-method.js" />
         <option value="$PROJECT_DIR$/static/js/app/system/dataDict-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/system/sysPara-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/system/sysPara.js" />
@@ -173,20 +125,47 @@
         <option value="$PROJECT_DIR$/static/js/app/public/banner-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/com/top.js" />
         <option value="$PROJECT_DIR$/static/js/app/signin.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/orderManage.js" />
         <option value="$PROJECT_DIR$/static/js/app/system/user.js" />
         <option value="$PROJECT_DIR$/static/html/financeManage/account.html" />
         <option value="$PROJECT_DIR$/static/html/dailiManage/levelManage.html" />
         <option value="$PROJECT_DIR$/static/html/bhManage/productManage_addedit.html" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/productManage-addedit.js" />
-        <option value="$PROJECT_DIR$/static/js/app/bhManage/productManage.js" />
         <option value="$PROJECT_DIR$/static/html/dailiManage/levelManage_addedit.html" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/levelManage.js" />
         <option value="$PROJECT_DIR$/static/js/app/dailiManage/levelManage-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/productManage-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/productManage.js" />
         <option value="$PROJECT_DIR$/static/js/app/bhManage/sucaiManage.js" />
+        <option value="$PROJECT_DIR$/static/js/app/financeManage/liushui.js" />
+        <option value="$PROJECT_DIR$/static/js/app/financeManage/queryQuxian.js" />
         <option value="$PROJECT_DIR$/static/js/app/bhManage/productList.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/productRecord-addedit.js" />
         <option value="$PROJECT_DIR$/static/js/app/bhManage/productRecord.js" />
+        <option value="$PROJECT_DIR$/static/html/bhManage/orderManage_addedit.html" />
+        <option value="$PROJECT_DIR$/static/html/bhManage/orderManage_wuliu.html" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/orderManage-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/allOrder.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/orderManage.js" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/orderManage-wuliu.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangli.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/com/common-method.js" />
+        <option value="$PROJECT_DIR$/static/html/bhManage/productList.html" />
+        <option value="$PROJECT_DIR$/static/js/app/bhManage/productList-addedit.js" />
+        <option value="$PROJECT_DIR$/static/html/bhManage/productList_addedit.html" />
+        <option value="$PROJECT_DIR$/static/html/dailiManage/yueguanli_addedit.html" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig-addedit.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig.js" />
+        <option value="$PROJECT_DIR$/static/html/dailiManage/shenhechongzhi_check.html" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi-check.js" />
+        <option value="$PROJECT_DIR$/static/js/app/dailiManage/yueguanli-addedit.js" />
       </list>
     </option>
   </component>
@@ -200,9 +179,9 @@
     <handled-path value="$PROJECT_DIR$/static/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="1" />
-    <option name="width" value="1370" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectView">
@@ -310,58 +289,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bh-mall-oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bh-mall-oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="financeManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bh-mall-oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bh-mall-oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="dailiManage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -388,7 +315,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="count" />
+              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -433,28 +360,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bh-mall-oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bh-mall-oss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -525,8 +430,8 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\一堆\chengdai\chengdai_0321_bhxt\bh-mall-oss\static\html\dailiManage" />
       <recent name="D:\一堆\chengdai\chengdai_0321_bhxt\bh-mall-oss\static\js\app\dailiManage" />
-      <recent name="D:\一堆\chengdai\chengdai_0321_bhxt\bh-mall-oss\static\html\bhManage" />
       <recent name="D:\一堆\chengdai\chengdai_0321_bhxt\bh-mall-oss\static\js\app\bhManage" />
+      <recent name="D:\一堆\chengdai\chengdai_0321_bhxt\bh-mall-oss\static\html\bhManage" />
       <recent name="D:\一堆\chengdai\chengdai_0321_bhxt\bh-mall-oss\static\html\public" />
     </key>
   </component>
@@ -634,24 +539,27 @@
       <workItem from="1521686043206" duration="2420000" />
       <workItem from="1521769504620" duration="16457000" />
       <workItem from="1522028484279" duration="19269000" />
-      <workItem from="1522114660283" duration="18821000" />
+      <workItem from="1522114660283" duration="19065000" />
+      <workItem from="1522201532752" duration="23293000" />
+      <workItem from="1522287400448" duration="23398000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101817000" />
+    <option name="totallyTimeSpent" value="148752000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1370" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21621622" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.234375" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22950819" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22295082" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -688,346 +596,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/js/lib/tableExport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1804">
-          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="40" lean-forward="false" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/com/left.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="35" column="37" lean-forward="false" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/role.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/com/dict.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/role-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="43" column="27" lean-forward="false" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/menu-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1078">
-          <caret line="49" column="25" lean-forward="false" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/role-menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="44" column="24" lean-forward="false" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/html/system/notify.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/notify.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/public/keyWords-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/public/aboutus-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/public/hotline-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/public/time-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/html/public/time_addedit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/dataDict.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/dataDict-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/sysPara.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/sysPara-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-260">
-          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/com/common-method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="2059" column="0" lean-forward="true" selection-start-line="2059" selection-start-column="0" selection-end-line="2060" selection-end-column="0" />
-          <folding>
-            <element signature="e#19891#20246#0" expanded="false" />
-            <element signature="e#20309#23868#0" expanded="false" />
-            <element signature="e#24493#25247#0" expanded="false" />
-            <element signature="e#26458#27237#0" expanded="false" />
-            <marker date="1522056774910" expanded="true" signature="5802:5816" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="17520:17531" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="17670:17700" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="18010:18021" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="18256:18266" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="35265:35286" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="35370:35392" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="35441:35478" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="35527:35549" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="36099:36120" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="39677:39696" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="39958:39977" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="40158:40181" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="40200:40213" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="40396:40419" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="40438:40503" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="42352:42374" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="63095:63112" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="64169:64210" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="64620:64661" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="65047:65088" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="67492:67533" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="67943:67984" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="68370:68411" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="70328:70369" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="70832:70873" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="71307:71348" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="74268:74302" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="74391:74425" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="74516:74550" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="74711:74745" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="77639:77673" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="77762:77796" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="77887:77921" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="78066:78100" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="83479:83540" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="83966:83980" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="84038:84051" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="84260:84321" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="84731:84745" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="84803:84816" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="85000:85061" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="85484:85498" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="85556:85569" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="87293:87307" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="97755:97776" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="97866:97888" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="97943:97980" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="98035:98057" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="98613:98634" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="102177:102196" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="102377:102400" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="102419:102432" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="102621:102644" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="102663:102715" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="104131:104153" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="119991:120008" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="121016:121057" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="121464:121505" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="121590:121607" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="121890:121931" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="124278:124319" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="124721:124762" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="125140:125181" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="127007:127048" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="127503:127544" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="127629:127646" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="127977:128018" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="132653:132664" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="132803:132833" ph="..." />
-            <marker date="1522056774910" expanded="true" signature="133127:133138" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/public/notice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1408">
-          <caret line="64" column="13" lean-forward="false" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/user-pwd-change.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/user-pwd-reset.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/public/banner.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/user-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="18" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/public/notice-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1342">
-          <caret line="61" column="18" lean-forward="false" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/public/banner-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1914">
-          <caret line="87" column="25" lean-forward="false" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/html/top.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/com/top.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="71" column="31" lean-forward="true" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/signin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="60" column="36" lean-forward="false" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
-          <folding>
-            <marker date="1522115317247" expanded="true" signature="2892:2912" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/system/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="58" column="4" lean-forward="false" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
-          <folding>
-            <element signature="e#1258#1262#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/financeManage/account.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/html/financeManage/account.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
           <caret line="75" column="10" lean-forward="false" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
-          <folding>
-            <element signature="n#div#1;n#div#1;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1047,30 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/orderManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productList-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productManage-addedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/html/dailiManage/levelManage_addedit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -1079,21 +632,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="126" column="31" lean-forward="false" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
-          <folding>
-            <marker date="1522134412400" expanded="true" signature="1553:1587" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/count/newDailiCount.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-330">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1101,7 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-264">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1109,15 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-462">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/count/dailishangCount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="39" column="17" lean-forward="false" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1131,7 +663,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/levelManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
+        <state relative-caret-position="528">
           <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="25" selection-end-column="30" />
           <folding />
         </state>
@@ -1139,34 +671,463 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/sucaiManage-addedit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
+        <state relative-caret-position="286">
           <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/system/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="98" column="34" lean-forward="true" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/count/dailishangCount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/financeManage/liushui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="69" column="27" lean-forward="false" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/financeManage/queryQuxian.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="53" column="13" lean-forward="false" selection-start-line="51" selection-start-column="11" selection-end-line="53" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="32" column="7" lean-forward="true" selection-start-line="27" selection-start-column="6" selection-end-line="32" selection-end-column="7" />
+          <folding>
+            <element signature="e#918#3407#0" expanded="false" />
+            <element signature="e#3455#4101#0" expanded="false" />
+            <marker date="1522202752089" expanded="true" signature="1418:1452" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productManage-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1738">
+          <caret line="79" column="24" lean-forward="false" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productRecord.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="29" column="21" lean-forward="false" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/bhManage/orderManage_addedit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productRecord-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/bhManage/orderManage_wuliu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/orderManage-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="44" column="9" lean-forward="false" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/allOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/orderManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="46" column="26" lean-forward="true" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/orderManage-wuliu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="63" column="40" lean-forward="false" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangli.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/com/common-method.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="1042" column="22" lean-forward="false" selection-start-line="1042" selection-start-column="9" selection-end-line="1042" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!block;n#buildList#0" expanded="false" />
+            <element signature="e#19891#20246#0" expanded="false" />
+            <element signature="e#20309#23868#0" expanded="false" />
+            <element signature="e#24493#25247#0" expanded="false" />
+            <element signature="e#26458#27237#0" expanded="false" />
+            <element signature="e#35465#35820#0" expanded="false" />
+            <element signature="e#35883#39442#0" expanded="false" />
+            <element signature="e#40067#40821#0" expanded="false" />
+            <element signature="e#42038#42817#0" expanded="false" />
+            <marker date="1522304538989" expanded="true" signature="5802:5816" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="17520:17531" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="17670:17700" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="18010:18021" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="18256:18266" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="33094:33105" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="33244:33274" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="33584:33595" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="33830:33840" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="50999:51020" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="51104:51126" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="51175:51212" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="51261:51283" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="51833:51854" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="55411:55430" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="55692:55711" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="55892:55915" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="55934:55947" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="56130:56153" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="56172:56237" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="58086:58108" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="78829:78846" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="79903:79944" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="80354:80395" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="80781:80822" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="83226:83267" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="83677:83718" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="84104:84145" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="86062:86103" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="86566:86607" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="87041:87082" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="90002:90036" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="90125:90159" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="90250:90284" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="90445:90479" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="93373:93407" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="93496:93530" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="93621:93655" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="93800:93834" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="99213:99274" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="99700:99714" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="99772:99785" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="99994:100055" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="100465:100479" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="100537:100550" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="100734:100795" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="101218:101232" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="101290:101303" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="103027:103041" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="113489:113510" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="113600:113622" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="113677:113714" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="113769:113791" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="114347:114368" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="117911:117930" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="118111:118134" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="118153:118166" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="118355:118378" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="118397:118449" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="119865:119887" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="135725:135742" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="136750:136791" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="137198:137239" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="137324:137341" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="137624:137665" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="140012:140053" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="140455:140496" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="140874:140915" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="142741:142782" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="143237:143278" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="143363:143380" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="143711:143752" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="148387:148398" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="148537:148567" ph="..." />
+            <marker date="1522304538989" expanded="true" signature="148861:148872" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/sucaiManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+        <state relative-caret-position="320">
+          <caret line="63" column="33" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="63" selection-end-column="33" />
           <folding>
-            <marker date="1522144588611" expanded="true" signature="851:873" ph="..." />
+            <marker date="1522205281370" expanded="true" signature="851:873" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/bhManage/productList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productList-addedit1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="180" column="21" lean-forward="false" selection-start-line="180" selection-start-column="12" selection-end-line="180" selection-end-column="21" />
+          <folding>
+            <marker date="1522233843787" expanded="true" signature="460:478" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4051:4061" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4093:4108" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4149:4201" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4236:4261" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4456:4466" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4498:4513" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4572:4622" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4670:4722" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4757:4782" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4822:4840" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4900:4918" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="4980:4998" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="5056:5074" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="5139:5157" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="5222:5240" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="6255:6279" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="6314:6329" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="6373:6425" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="6618:6649" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="6745:6776" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="6872:6902" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="6998:7029" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="7125:7156" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="7252:7283" ph="..." />
+            <marker date="1522233843787" expanded="true" signature="7459:7489" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/bhManage/productList_addedit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="10" column="82" lean-forward="true" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_cdn.bootcss.com_x-editable_1.5.1_bootstrap-editable_js_bootstrap-editable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6204">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1522306595917" expanded="true" signature="124882:124916" ph="..." />
+            <marker date="1522306595917" expanded="true" signature="180323:180329" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productList-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="27" lean-forward="false" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/dailiManage/dailishengjiConfig.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/dailiManage/yueguanli_addedit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="47" lean-forward="false" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/dailiManage/yueguanli.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="42" lean-forward="true" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="25" lean-forward="false" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/chuhuojiangConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="36" column="9" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+          <folding>
+            <marker date="1522312884068" expanded="true" signature="537:546" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+        <state relative-caret-position="198">
+          <caret line="73" column="9" lean-forward="true" selection-start-line="69" selection-start-column="8" selection-end-line="73" selection-end-column="9" />
+          <folding>
+            <marker date="1522216920159" expanded="true" signature="1954:1988" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/dailiManage/dailishouquanConfig_addedit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/bhManage/productRecord.js">
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/tuijianjiangConfig.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="28" column="24" lean-forward="false" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        <state relative-caret-position="596">
+          <caret line="32" column="26" lean-forward="false" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+          <folding>
+            <marker date="1522311392962" expanded="true" signature="1059:1068" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/dailiManage/dailishouquanConfig.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="58" column="20" lean-forward="false" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailishouquanConfig-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="29" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/dailishengjiConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/html/dailiManage/shenhechongzhi_check.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="49" lean-forward="false" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="37" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/shenhechongzhi-check.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yueguanli.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="55" column="35" lean-forward="false" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+          <folding>
+            <element signature="e#875#1174#0" expanded="false" />
+            <element signature="e#1221#1519#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/dailiManage/yueguanli-addedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="102" column="111" lean-forward="false" selection-start-line="102" selection-start-column="111" selection-end-line="102" selection-end-column="111" />
           <folding />
         </state>
       </provider>

@@ -54,7 +54,7 @@ $(function() {
     }];
     buildList({
         columns: columns,
-        pageCode: '802520',
+        pageCode: '627490',
         beforeDetail: function(data) {
             location.href = "ledger_addedit.html?v=1&code=" + data.code;
         },
@@ -66,7 +66,7 @@ $(function() {
             return true;
         },
         searchParams: {
-            channelType: 'out',
+            // channelType: 'out',
             companyCode: OSS.company
         },
         beforeSearch: function(data) {

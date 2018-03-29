@@ -25,6 +25,11 @@ $(function() {
         type: 'select',
         key: 'inner_status',
         formatter: Dict.getNameForList("inner_status")
+    },{
+        field : 'isFree',
+        title : '是否包邮',
+        type: 'select',
+        data : {'1':'是','0':'否'}
     }, {
         field : 'orderNo',
         title : '排序'
@@ -34,16 +39,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627710',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
+		pageCode: '627710'
 	});
     // 上架
     $('#upBtn').click(function() {
@@ -70,6 +66,12 @@ $(function() {
                         required: true,
                         number: true,
                         min: '0'
+                    },{
+                        field : 'isFree1',
+                        title : '是否包邮',
+                        required: true,
+                        type: 'select',
+                        data : {'0':'否','1':'是'}
                     }],
                     buttons: [{
                         title: '确定',
@@ -81,7 +83,8 @@ $(function() {
                                     json: {
                                         code: selRecords[0].code,
                                         updater: getUserName(),
-                                        orderNo: data.orderNo
+                                        orderNo: data.orderNo,
+                                        isFree: data.isFree1
                                     }
                                 }).done(function () {
                                     sucList();

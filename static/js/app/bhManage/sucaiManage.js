@@ -55,7 +55,6 @@ $(function() {
                 formatter: function (v, data) {
                     for(var v of items) {
                         data.level = data.level.replace(v.level,v.name);
-
                     }
                     return data.level;
                 }}];

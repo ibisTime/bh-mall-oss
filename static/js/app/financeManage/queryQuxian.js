@@ -48,29 +48,29 @@ $(function() {
     }];
     buildList({
         columns: columns,
-        pageCode: '802520',
-        beforeDetail: function(data) {
-            location.href = "ledger_addedit.html?v=1&code=" + data.code;
-        },
-        beforeEdit: function(r) {
-            if (r.status != '1') {
-                toastr.info('该记录不是待对账状态');
-                return false;
-            }
-            return true;
-        },
+        pageCode: '627510',
+        // beforeDetail: function(data) {
+        //     location.href = "ledger_addedit.html?v=1&code=" + data.code;
+        // },
+        // beforeEdit: function(r) {
+        //     if (r.status != '1') {
+        //         toastr.info('该记录不是待对账状态');
+        //         return false;
+        //     }
+        //     return true;
+        // },
         searchParams: {
-            channelType: 'out',
+            // channelType: 'out',
             companyCode: OSS.company
         },
-        beforeSearch: function(data) {
-            if (data.workDate) {
-                data.workDate = data.workDate.replace(/-/g, "");;
-                return data;
-            } else {
-                return data;
-            }
-        }
+        // beforeSearch: function(data) {
+        //     if (data.workDate) {
+        //         data.workDate = data.workDate.replace(/-/g, "");;
+        //         return data;
+        //     } else {
+        //         return data;
+        //     }
+        // }
     });
 
 });

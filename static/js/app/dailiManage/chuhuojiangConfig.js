@@ -6,12 +6,17 @@ $(function() {
 		checkbox : true
 	},{
 		field : 'level',
-		title : '代理等级'
+		title : '代理等级',
+        type : 'select',
+        listCode: '627006',
+        keyName : 'level',
+        searchName :'level',
+        valueName: 'name'
 	},{
-		field : 'product',
+		field : 'productCode',
 		title : '产品'
 	}, {
-        field : 'updateDatetime',
+        field : 'value1',
         title : '出货奖励',
 		formatter: moneyFormat
     }];
@@ -26,15 +31,9 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
+		pageCode: '627590',
+        searchParams: {
+            type: '1',
+        }
 	});
 });

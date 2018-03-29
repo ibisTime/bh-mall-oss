@@ -10,16 +10,16 @@ $(function() {
 		search: true,
 		type: 'select'
 	},{
-		field : 'cvalue',
-		title : '库存分类'
-	}, {
-        field : 'updateDatetime',
-        title : '变动操作'
+        field : 'type',
+        title : '变动类型'
     }, {
-        field : 'updateDatetime',
+        field : 'tranCount',
         title : '变动库存'
     }, {
-        field : 'updateDatetime',
+        field : 'preCount',
+        title : '变动前库存'
+    }, {
+        field : 'postCount',
         title : '变动后库存'
     }, {
         field : 'updateDatetime',
@@ -27,8 +27,7 @@ $(function() {
         formatter: dateTimeFormat
     }, {
         field : 'updater',
-        title : '操作人',
-		search: true
+        title : '操作人'
     }, {
         field : 'remark',
         title : '备注'

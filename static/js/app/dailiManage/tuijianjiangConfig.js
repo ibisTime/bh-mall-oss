@@ -6,22 +6,38 @@ $(function() {
 		checkbox : true
 	},{
 		field : 'level',
-		title : '代理等级'
+		title : '代理等级',
+		type : 'select',
+        listCode: '627006',
+        keyName : 'level',
+        searchName :'level',
+        valueName: 'name'
 	},{
-		field : 'product',
-		title : '产品'
+		field : 'productCode',
+		title : '产品',
+        // type : 'select',
+        // listCode: '627557',
+        // keyName : 'code',
+        // searchName :'code',
+        // valueName: 'name'
 	}, {
-        field : 'updateDatetime',
+        field : 'value1',
         title : '直推奖励',
-		formatter: moneyFormat
+		formatter : function (v, data) {
+			return data.value1?data.value1+'%':'-';
+        }
     }, {
-        field : 'updateDatetime',
+        field : 'value2',
         title : '间推奖励',
-        formatter: moneyFormat
+        formatter : function (v, data) {
+        return data.value2?data.value2+'%':'-';
+    }
     }, {
-        field : 'updateDatetime',
+        field : 'value3',
         title : '次推奖励',
-        formatter: moneyFormat
+        formatter : function (v, data) {
+            return data.value3?data.value3+'%':'-';
+        }
     }];
 
 	// 隐藏掉搜索栏，不然的话一个空的搜索栏依旧占位，会有一行空白
@@ -34,13 +50,10 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
+		pageCode: '627590',
+		searchParams: {
+			type: '0',
+		},
 		// beforeEdit: function(r) {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
 		// }

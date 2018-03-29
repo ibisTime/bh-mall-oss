@@ -26,13 +26,13 @@ $(function() {
         search: true,
         type: 'select'
     }, {
-        field : 'updateDatetime',
+        field : 'updateDatetime1',
         title : '下单代理'
     }, {
-        field : 'updateDatetime',
+        field : 'updateDatetime2',
         title : '下单代理等级'
     }, {
-        field : 'updateDatetime',
+        field : 'updateDatetime3',
         title : '收货人'
     }, {
         field : 'mobile',
@@ -41,13 +41,13 @@ $(function() {
         field : 'remark',
         title : '备注'
     }, {
-        field : 'updateDatetime',
+        field : 'updateDatetime4',
         title : '团队',
         search: true,
         type: 'select',
         visible: false
     }, {
-        field : 'updateDatetime',
+        field : 'updateDatetime5',
         title : '订单所在人',
         search: true,
         type: 'select',
@@ -55,7 +55,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
+		pageCode: '627662',
 		// searchParams: {
 		// 	type: 'android_b',
 		// 	companyCode: OSS.company,
