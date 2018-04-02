@@ -103,14 +103,14 @@ $(function() {
                 data.chargePdf = $('.center-img-wrap').children('img').attr('src').split('/')[3].split('?')[0];
                 data.accountNumber = accountNumber;
                 data.chargeAmount *= 1000;
-                data.applyUser = getUserName();
+                data.applyUser = getUserId();
                 data.accountNumber = accountNumber;
                 data.type=chongzhi?'AJ_CZ':'AJ_KK'
 
                 reqApi({
                     code: '627460',
                     json: data
-                }).done(function(data) {
+                }).done(function() {
                     sucDetail();
                 });
             }

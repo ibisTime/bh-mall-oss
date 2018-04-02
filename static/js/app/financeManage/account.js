@@ -1,40 +1,19 @@
 $(function() {
-    var accountNumberCNY;
-    var accountNumberJF;
-    var accountNumberTG;
+    var accountNumber;
     reqApi({
-        code: '802503',
+        code: '627453',
         json: {
-            userId: getUserId()
+            userId: 'SYS_USER_BH',
+            currency : 'YJ_CNY'
         }
     }).done(function(data) {
-        $("#amount-CNY").text("￥" + moneyFormat(data[0].amount));
-        accountNumberCNY = data[0].accountNumber;
-        $("#amount-JF").text(moneyFormat(data[1].amount));
-        accountNumberJF = data[1].accountNumber;
-    });
-
-    reqApi({
-        code: '802503',
-        json: {
-            userId: OSS.SYS_USER + "_TG"
-        }
-    }).then(function(data) {
         $("#amount-TG").text("￥" + moneyFormat(data[0].amount));
-        accountNumberTG = data[0].accountNumber;
+        accountNumber = data[0].accountNumber;
     });
 
-    $("#CNYls-Btn").click(function() {
-        location.href = "ledgerFF.html?accountNumber=" + accountNumberCNY + "&kind=CNY";
-    });
-    $("#JFls-Btn").click(function() {
-        location.href = "ledgerFF.html?accountNumber=" + accountNumberJF + "&kind=JF";
-    });
-    $("#accoutGrantBtn").click(function() {
-        location.href = "ledgerFF.html?accountNumber=" + accountNumberTG + "&kind=TG";
-    });
+
     $("#accouBtn").click(function() {
-        window.location.href = 'account_enchashment.html?accountNumber=' + accountNumberTG;
+        window.location.href = 'quxian.html?accountNumber=' + accountNumber;
     });
 
 });

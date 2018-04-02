@@ -23,10 +23,6 @@ $(function() {
 		type : 'select',
 		data : {'1':'是','0':'否'}
     },{
-        field : 'upgradeFirstAmount',
-        title : '本等级升级首单总额',
-		formatter: moneyFormat
-    },{
         field : 'reNumber',
         title : '半门槛升级推荐人数'
     },{

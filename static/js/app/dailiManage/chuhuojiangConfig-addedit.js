@@ -17,7 +17,7 @@ $(function() {
     }, {
         field : 'value1',
         title : '出货奖励',
-        formatter: moneyFormat
+        required : true
     }];
 	
 	buildDetail({

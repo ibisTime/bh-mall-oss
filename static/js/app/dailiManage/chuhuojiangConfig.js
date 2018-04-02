@@ -18,7 +18,9 @@ $(function() {
 	}, {
         field : 'value1',
         title : '出货奖励',
-		formatter: moneyFormat
+        formatter : function (v, data) {
+            return data.value1?data.value1*100+'%':'-';
+        }
     }];
 
 	// 隐藏掉搜索栏，不然的话一个空的搜索栏依旧占位，会有一行空白

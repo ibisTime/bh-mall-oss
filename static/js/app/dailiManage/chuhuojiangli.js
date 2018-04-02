@@ -33,9 +33,9 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627490',
+		pageCode: '627590',
 		searchParams: {
-			bizType: 'CH',
+			type: 'CH',
 		},
 		// beforeEdit: function(r) {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;

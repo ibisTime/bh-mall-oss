@@ -5,31 +5,18 @@ $(function() {
         title: '',
         checkbox: true
     },{
-        field: 'type',
-        title: '角色'
-    },{
-        field: 'ckey',
-        title: '规则分类',
-        // type: 'select',
-        // listCode: '805906',
-        // params :{
-        //     parentKey : 'level'
-        // },
-        // keyName : 'dkey',
-        // valueName: 'dvalue'
-    },{
         field: 'remark',
-        title: '数值'
+        title: '规则名称'
     },{
         field: 'cvalue',
-        title: '备注'
+        title: '数值'
     }];
     buildList({
-        router: 'param',
         columns: columns,
-        pageCode: '805915',
+        pageCode: '627085',
         searchParams : {
-            typeList : ['YY_ZJ','YY_JS','YY_MD']
+            type: 'AT_QX',
+            companyCode : OSS.company
         }
     });
     // 修改
@@ -40,6 +27,6 @@ $(function() {
             return;
         }
         // debugger;
-        window.location.href = "../system/bookRules_addedit.html?v=0&id=" + selRecords[0].id;
+        window.location.href = "./quxianRules_addedit.html?v=0&id=" + selRecords[0].id+"&remark="+selRecords[0].remark;
     });
 });

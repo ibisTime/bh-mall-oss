@@ -17,16 +17,16 @@ $(function() {
     }, {
         field : 'value1',
         title : '直推奖励',
-        formatter: moneyFormat,
+
         required : true
     }, {
         field : 'value2',
         title : '间推奖励',
-        formatter: moneyFormat
+
     }, {
         field : 'value3',
         title : '次推奖励',
-        formatter: moneyFormat
+
     }];
 	
 	buildDetail({

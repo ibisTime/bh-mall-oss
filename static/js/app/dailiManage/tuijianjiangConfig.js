@@ -24,19 +24,19 @@ $(function() {
         field : 'value1',
         title : '直推奖励',
 		formatter : function (v, data) {
-			return data.value1?data.value1+'%':'-';
+			return data.value1?data.value1*100+'%':'-';
         }
     }, {
         field : 'value2',
         title : '间推奖励',
         formatter : function (v, data) {
-        return data.value2?data.value2+'%':'-';
+        return data.value2?data.value2*100+'%':'-';
     }
     }, {
         field : 'value3',
         title : '次推奖励',
         formatter : function (v, data) {
-            return data.value3?data.value3+'%':'-';
+            return data.value3?data.value3*100+'%':'-';
         }
     }];
 

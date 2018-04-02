@@ -1,18 +1,12 @@
 $(function() {
     var id = getQueryString('id');
-    var fields = [{
-        title: '参数键',
-        field: 'ckey',
-        maxlength: 20,
-        readonly: true,
-        key: 'level',
-        formatter: Dict.getNameForList("level"),
-        search: true
-    }, {
+    var remark = getQueryString('remark');
+    var fields = [ {
         title: '参数说明',
         field: 'remark',
         required: true,
-        maxlength: 20
+        maxlength: 20,
+        readonly: true,
     },  {
         title: '参数值',
         field: 'cvalue',
@@ -25,11 +19,10 @@ $(function() {
         code: {
             id : id
         },
-        addCode: "805910",
-        detailCode: '805916',
-        editCode: '805911',
+        detailCode: '627086',
+        editCode: '627081',
         beforeSubmit:function(data){
-            data.remark = $('#remark').val();
+            data.remark = remark;
             return data
         }
     });

@@ -48,12 +48,6 @@ $(function() {
         title : '数量',
         required : true
     },{
-        field : 'isFree',
-        title : '是否包邮',
-        required : true,
-        type : 'select',
-        data : {'1':'是','0':'否'}
-    },{
         field : 'advPic',
         title : '广告图',
         single : true,

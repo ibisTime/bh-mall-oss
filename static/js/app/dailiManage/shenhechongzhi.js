@@ -8,10 +8,12 @@ $(function() {
 		field : 'code',
 		title : '编号'
 	},{
-		field : 'cvalue',
+		field : 'cvalue1',
 		title : '充值人',
         search: true,
-        type: 'select'
+        formatter : function (v, data) {
+            return data.user?data.user.loginName:'-'
+        }
 	}, {
         field : 'cvalue',
         title : '充值人团队'
@@ -20,14 +22,16 @@ $(function() {
         title : '金额',
         formatter: moneyFormat
     },{
-        field : 'updateDatetime',
+        field : 'applyDatetime',
         title : '申请时间',
 		formatter: dateTimeFormat
     }, {
         field : 'status',
         title : '状态',
         search: true,
-        type: 'select'
+        type: 'select',
+        key : 'charge_status',
+        formatter : Dict.getNameForList('charge_status')
     }, {
         field : 'cvalue',
         title : '审核人'
@@ -46,4 +50,17 @@ $(function() {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
 		// }
 	});
+	$("#checkBtn").click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        console.log(typeof selRecords[0].status);
+        if(selRecords[0].status === '1') {
+            window.location.href = "./shenhechongzhi_check.html";
+        }else {
+            toastr.info('该状态不可进行审核')
+        }
+    })
 });

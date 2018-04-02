@@ -22,7 +22,6 @@ $(function() {
         title: '币种',
         type: 'select',
         key: 'currency',
-
         formatter: Dict.getNameForList("currency"),
         readonly: true,
     }, {
@@ -70,7 +69,6 @@ $(function() {
         title: '状态',
         type: 'select',
         key: 'jour_status',
-
         formatter: Dict.getNameForList('jour_status'),
         readonly: true
     }, {
@@ -81,30 +79,12 @@ $(function() {
         field: 'remark',
         title: '备注',
         readonly: true
-    }, {
-        title: '偏离金额',
-        field: 'checkAmount',
-        amount1: true,
-        value: '0',
-        required: true,
-        readonly: false,
-    }, {
-        title: '对账说明',
-        field: 'checkNote',
-        required: true,
-        readonly: false,
-        maxlength: 250
-    }, {
-        field: 'checkUser',
-        type: 'hidden',
-        value: getUserName()
     }];
 
     var options = {
         fields: fields,
         code: code,
-        detailCode: '802522',
-        editCode: '802800',
+        detailCode: '627492',
         view: view,
         beforeSubmit: function(data) {
             data.order = data.code;

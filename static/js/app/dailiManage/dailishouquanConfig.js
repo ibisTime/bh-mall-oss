@@ -38,22 +38,9 @@ $(function() {
         type : 'select',
         data : {'1':'是','0':'否'}
     },{
-        field : 'impowerAmount',
-        title : '本等级授权首单总额',
-        formatter: moneyFormat
-    },{
         field : 'minCharge',
         title : '本等级授权充值门槛',
         formatter: moneyFormat
-    },{
-        field : 'redPercent',
-        title : '红线设置',
-        formatter: moneyFormat
-    },{
-        field : 'isSummary',
-        title : '本等级授权单是否汇总',
-        type : 'select',
-        data : {'1':'是','0':'否'}
     },{
         field : 'remark',
         title : '备注'
