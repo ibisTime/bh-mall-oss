@@ -8,18 +8,20 @@ $(function() {
         field : 'code',
         title : '订单编号'
     },{
-        field : 'cvalue',
+        field : 'applyDatetime',
         title : '下单日期',
         formatter: dateTimeFormat
     }, {
-        field : 'fkAmount',
+        field : 'amount',
         title : '付款金额',
         formatter: moneyFormat
     }, {
-        field : 'updateDatetime',
+        field : 'status',
         title : '订单状态',
         search: true,
-        type: 'select'
+        type: 'select',
+        key : 'order_status',
+        formatter : Dict.getNameForList('order_status')
     }, {
         field : 'orderType',
         title : '订单类型',
@@ -32,7 +34,7 @@ $(function() {
         field : 'updateDatetime2',
         title : '下单代理等级'
     }, {
-        field : 'updateDatetime3',
+        field : 'signer',
         title : '收货人'
     }, {
         field : 'mobile',

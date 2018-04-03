@@ -28,13 +28,10 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
+        pageCode: '627590',
+        searchParams: {
+            type: 'JS',
+        },
 		// beforeEdit: function(r) {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
 		// }

@@ -2,12 +2,16 @@ $(function() {
 	var code = getQueryString('code');
     var view = true;
     var fields = [{
-        field : 'name',
+        field : 'loginName',
         title : '姓名',
         readonly : view
     },{
-        field : 'cvalue',
-        title : '等级'
+        field : 'level',
+        title : '等级',
+        type: 'select',
+        listCode: '627006',
+        keyName: 'level',
+        valueName: 'name',
     }, {
         field : 'updateDatetime',
         title : '余额',
@@ -47,8 +51,11 @@ $(function() {
 	
 	buildDetail({
 		fields: fields,
-		code: code,
-		detailCode: '627927',
+        view : view,
+		code: {
+		    userId : code
+        },
+		detailCode: '627357',
 		addCode: '627920',
 		editCode: '627921'
 	});

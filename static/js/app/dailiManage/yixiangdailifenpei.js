@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'name',
+		field : 'loginName',
 		title : '姓名'
 	},{
 		field : 'level',
@@ -22,7 +22,7 @@ $(function() {
         field : 'updateDatetime',
         title : '地域'
     }, {
-        field : 'updateDatetime',
+        field : 'status',
         title : '代理状态'
     }, {
         field : 'updateDatetime',
@@ -43,23 +43,25 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
+		pageCode: '627354'
 	});
-    $('#hulveyixiangBtn').click(function() {
+	// 忽略意向
+    $('#hulveBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if(selRecords.length <= 0){
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "yixiangdailifenpei_hulveyixiang.html?code="+selRecords[0].code+"&name="+encodeURI(encodeURI(selRecords[0].name));
+        window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&userId="+selRecords[0].userId+"&name="+encodeURI(encodeURI(selRecords[0].name));
+    });
+
+    // 审核分配
+    $('#checkBtn').off().click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if(selRecords.length <= 0){
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId="+selRecords[0].userId+"&name="+encodeURI(encodeURI(selRecords[0].name));
     });
 });

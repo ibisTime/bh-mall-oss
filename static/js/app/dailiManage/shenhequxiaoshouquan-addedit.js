@@ -15,14 +15,6 @@ $(function() {
         keyName: 'level',
         valueName: 'name'
     }, {
-        field : 'applyLevel',
-        title : '需升级等级',
-        search: true,
-        type: 'select',
-        listCode: '627006',
-        keyName: 'level',
-        valueName: 'name'
-    }, {
         field : 'mobile',
         title : '联系电话'
     }, {
@@ -34,14 +26,11 @@ $(function() {
     }, {
         field : 'updateDatetime',
         title : '团队名称'
-    }, {
-        field : 'updateDatetime',
-        title : '关联管理员'
-    }, {
+    },{
         field : 'updateDatetime',
         title : '地域'
     }, {
-        field : 'createDatetime',
+        field : 'applyDatetime',
         title : '申请时间',
         formatter: dateTimeFormat,
         field1: 'applyDateStart',
@@ -66,7 +55,7 @@ $(function() {
                 data.userId = userId;
                 data.remark = $('#remark').val();
                 reqApi({
-                    code: '627263',
+                    code: '627258',
                     json: data
                 }).done(function(data) {
                     sucDetail();
@@ -83,7 +72,7 @@ $(function() {
                 data.userId = userId;
                 data.remark = $('#remark').val();
                 reqApi({
-                    code: '627263',
+                    code: '627258',
                     json: data
                 }).done(function() {
                     sucDetail();

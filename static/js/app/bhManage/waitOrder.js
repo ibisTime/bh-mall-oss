@@ -51,13 +51,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
+        pageCode: '627665'
 		// beforeEdit: function(r) {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
 		// }

@@ -5,10 +5,8 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'name',
-		title : '姓名',
-		search: true,
-		type: 'select'
+		field : 'loginName',
+		title : '姓名'
 	},{
 		field : 'mobile',
 		title : '联系电话',
@@ -20,14 +18,19 @@ $(function() {
         search: true,
         type: 'select'
     }, {
-        field : 'updateDatetime',
-        title : '授权等级'
+        field : 'level',
+        title : '授权等级',
+        search: true,
+        type: 'select',
+        listCode: '627006',
+        keyName: 'level',
+        valueName: 'name'
     }, {
         field : 'updateDatetime',
         title : '授权时间',
         formatter: dateTimeFormat
     }, {
-        field : 'updateDatetime',
+        field : 'updater',
         title : '操作人'
     }, {
         field : 'updateDatetime',
@@ -35,15 +38,22 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
+		pageCode: '627355',
+		searchParams: {
+			kind: 'B',
+
+		}
 		// beforeEdit: function(r) {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
 		// }
 	});
+	$('#detailBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+
+        window.location.href = "./dailiguiji_addedit.html?userId="+selRecords[0].userId;
+    })
 });

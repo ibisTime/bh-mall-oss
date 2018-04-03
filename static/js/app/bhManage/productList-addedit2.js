@@ -79,34 +79,27 @@ $(function() {
         buildDetail({
             fields: fields,
             code: code,
-            detailCode: '627927',
-            addCode: '627920',
-            editCode: '627921',
+            detailCode: '627557',
+            addCode: '627540',
+            editCode: '627541',
             beforeSubmit : function (data) {
                 //产品规格
                 data.specList = specList;
+                // 奖励机制
+                data.awardList = awardList;
+                // 各种价格
+                data.adPrice *= 1000;
+                data.price *= 1000;
+                data.changePrice *= 1000;
 
                 console.log(data);
 
-                // return data;
+                return data;
             }
         });
         hideLoading();
 
-        $('#remark').parent().after(
-            '<div style="width:100%">' +
-            '<span style="font-size: 18px">奖励机制<input id="add2Btn" type="button" class="btn" style="margin-left:20px;display: inline-block;!important;" value="添加"/></span>' +
-            '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
-            '<div style="border: 1px solid #ced9df">'+
-            '<div style="border: 1px solid #ced9df">'+
-                '<label style="padding: 20px 40px"><b>*</b>等级</label>'+
-                '<label style="padding: 20px 40px"><b>*</b>类型</label>'+
-                '<label style="padding: 20px 40px"><b>*</b>直接推荐/出货奖励</label>'+
-                '<label style="padding: 20px 40px"><b>*</b>间接推荐奖励</label>'+
-                '<label style="padding: 20px 40px"><b>*</b>次推荐奖励</label>'+
-            '</div>'+
-            '</div>'+
-            '</div>')
+
 
         $('#remark').parent().after(
             '<div style="width:100%">' +
@@ -133,6 +126,26 @@ $(function() {
                 '</div>'+
 
             '</div>')
+
+        var awardHtml = '';
+        $('#remark').parent().after(
+            '<div style="width:100%">' +
+                '<span style="font-size: 18px">奖励机制<input id="add2Btn" type="button" class="btn" style="margin-left:20px;display: inline-block;!important;" value="添加"/></span>' +
+                '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
+                '<div style="border: 1px solid #ced9df">'+
+                    '<div id="awardTitle">'+
+                        '<label style="padding: 20px 40px"><b>*</b>等级</label>'+
+                        '<label style="padding: 20px 40px"><b>*</b>类型</label>'+
+                        '<label style="padding: 20px 40px"><b>*</b>直接推荐/出货奖励</label>'+
+                        '<label style="padding: 20px 40px"><b>*</b>间接推荐奖励</label>'+
+                        '<label style="padding: 20px 40px"><b>*</b>次推荐奖励</label>'+
+                    '</div>'+
+                    '<div id="awardContent"></div>'+
+                '</div>'+
+            '</div>')
+
+
+
 
         var specList = [];
         // 添加产品规格
@@ -191,6 +204,19 @@ $(function() {
                             temp.isNormalOrder = data.isNormalOrder;
                             temp.isPowerOrder = data.isPowerOrder;
                             temp.isUpgradeOrder = data.isUpgradeOrder;
+                            var g = 0;
+                            var guigeTemp =
+                                '<div id="guigeDom'+g+'">'+
+                                    '<span style="width : 120px;padding:20px 40px;display: inline-block">'+temp.name+'</span>'+
+                                    '<span style="width : 120px;padding:20px 40px;display: inline-block">'+temp.number+'</span>'+
+                                    '<span style="width : 180px;padding:20px 40px;display: inline-block">'+temp.weight+'</span>'+
+                                    '<span style="width : 180px;padding:20px 40px;display: inline-block">'+temp.isNormalOrder+'</span>'+
+                                    '<span style="width : 180px;padding:20px 40px;display: inline-block">'+temp.isPowerOrder+'</span>'+
+                                    '<span style="width : 180px;padding:20px 40px;display: inline-block">'+temp.isUpgradeOrder+'</span>'+
+                                '</div>';
+
+                            $('#guigeHtml').append(guigeTemp);
+                            g++;
                             var dw1 = dialog({
                                 content: '<form class="pop-form-dingjia" id="popFormDingjia" novalidate="novalidate">' +
                                 '<ul class="form-info" id="formContainer_dingjia"><li style="text-align:center;font-size: 15px;">规格定价</li></ul>' +
@@ -209,7 +235,6 @@ $(function() {
                                 temp_field.push(temp_field_item);
 
                             });
-
                             buildDetail({
                                 container: $('#formContainer_dingjia'),
                                 fields: temp_field,
@@ -219,7 +244,8 @@ $(function() {
 
                                         if ($('#popFormDingjia').valid()) {
                                             var data = $('#popFormDingjia').serializeObject();
-
+                                            delete data.code;
+                                            var arrTemp2 = data;
                                             var specsPriceList = [];
 
 
@@ -233,6 +259,20 @@ $(function() {
                                             temp.specsPriceList = specsPriceList;
                                             specList.push(temp);
                                             dw1.close().remove();
+                                            var d = 0;
+                                            var dingjiaTemp = '<div id="dingjiaDom'+d+'">';
+                                            console.log(arrTemp2);
+                                            console.log(specsPriceList);
+                                            specsPriceList.map(function (item) {
+                                                // specsPriceList.map(function (index1, item1) {
+                                                dingjiaTemp += '<span style="width : 110px;padding:20px 40px;display: inline-block">'+item.price+'</span>'
+                                                    // awardHtml += awardTemp;
+                                                });
+                                            dingjiaTemp +=  '</div>';
+
+
+                                            $('#dingjiaHtml').append(dingjiaTemp);
+                                            d++;
                                         }
                                     }
                                 }, {
@@ -253,21 +293,26 @@ $(function() {
                 }]
             });
             hideLoading();
-        })
+        });
 
 
         var awardList = [];
-        var v = 1;
-        var value = items[v].name;
+        var v = 0;
+
         // 添加奖励机制
         $('#add2Btn').click(function jiangli() {
             console.log(v);
+            var value = items[v].name;
             var dw = dialog({
                 content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
                 '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的奖励机制</li></ul>' +
-                '</form>'
-            });
+                '</form>',
 
+                // fixed : true,
+                // top : '-100000px',
+                // left : '0'
+            });
+            // dw.__offset()
             dw.showModal();
 
 
@@ -313,10 +358,37 @@ $(function() {
                                 temp.value3 = data.value3;
 
                                 awardList.push(temp);
-                                if(v<items.length) {
+                                if(v<items.length-1) {
                                     v +=1;
                                     dw.close().remove();
                                     jiangli();
+                                }else {
+                                    dw.close().remove();
+                                    awardList.map(function (index,item) {
+                                        var awardTemp =
+                                            '<div id="awardDom'+item+'">'+
+                                                '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.level+'</span>'+
+                                                '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
+                                                '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value1+'</span>'+
+                                                '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value2+'</span>'+
+                                                '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value3+'</span>'+
+                                                '<input id="editAwardBtn'+item+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'+
+                                            '</div>'
+                                        awardHtml += awardTemp;
+                                    });
+
+
+
+                                    $('#awardContent').append(awardHtml);
+
+                                    // 修改奖励机制按钮点击事件
+                                    $('.editAwardBtn').click(function (data) {
+
+                                        editAward();
+                                    });
+                                    $('#add2Btn').addClass('hidden');
+
+
                                 }
                             }
                         }
@@ -344,4 +416,8 @@ $(function() {
 
     });
 
+    // 修改奖励机制按钮点击事件
+function editAward() {
+
+}
 });

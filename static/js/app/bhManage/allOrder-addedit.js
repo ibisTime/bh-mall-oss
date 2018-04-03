@@ -1,20 +1,27 @@
 $(function() {
 	var code = getQueryString('code');
+	var view = getQueryString('v');
 
     var fields = [{
-        field : 'code',
-        title : '订单编号'
+        field : 'code1',
+        title : '订单编号',
+        formatter : function (v, data) {
+            return data.code
+        }
     },{
-        field : 'cvalue',
+        field : 'applyDatetime',
         title : '下单日期',
         formatter: dateTimeFormat
     }, {
-        field : 'fkAmount',
+        field : 'amount',
         title : '付款金额',
         formatter: moneyFormat
     }, {
-        field : 'updateDatetime',
-        title : '订单状态'
+        field : 'status',
+        title : '订单状态',
+        type: 'select',
+        key : 'order_status',
+        formatter : Dict.getNameForList('order_status')
     }, {
         field : 'orderType',
         title : '订单类型'
@@ -25,7 +32,7 @@ $(function() {
         field : 'updateDatetime',
         title : '下单代理等级'
     }, {
-        field : 'updateDatetime',
+        field : 'signer',
         title : '收货人'
     }, {
         field : 'mobile',
@@ -38,7 +45,8 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '627927',
+        view : view,
+		detailCode: '627664',
 		addCode: '627920',
 		editCode: '627921'
 	});

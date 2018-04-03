@@ -1,5 +1,5 @@
 $(function() {
-	// 实际上是审核升级的审核页面
+	// 实际上是审核授权的审核页面
 	var code = getQueryString('code');
 	var userId = getQueryString('userId');
 	var view = true;
@@ -9,14 +9,6 @@ $(function() {
     },{
         field : 'level',
         title : '等级',
-        search: true,
-        type: 'select',
-        listCode: '627006',
-        keyName: 'level',
-        valueName: 'name'
-    }, {
-        field : 'applyLevel',
-        title : '需升级等级',
         search: true,
         type: 'select',
         listCode: '627006',
@@ -35,13 +27,14 @@ $(function() {
         field : 'updateDatetime',
         title : '团队名称'
     }, {
-        field : 'updateDatetime',
-        title : '关联管理员'
+        field : 'sqAmount',
+        title : '授权金额',
+        formatter: moneyFormat
     }, {
         field : 'updateDatetime',
         title : '地域'
     }, {
-        field : 'createDatetime',
+        field : 'approveDatetime',
         title : '申请时间',
         formatter: dateTimeFormat,
         field1: 'applyDateStart',
@@ -51,10 +44,11 @@ $(function() {
         twoDate: true,
         search: true
     },{
-        field : 'remark',
-        title : '备注',
-        readonly : false
-    }];
+    	field : 'remark',
+		title : '备注',
+		readonly : false
+	}];
+
 
     var buttons = [{
         title: '通过',
@@ -66,7 +60,7 @@ $(function() {
                 data.userId = userId;
                 data.remark = $('#remark').val();
                 reqApi({
-                    code: '627263',
+                    code: '627257',
                     json: data
                 }).done(function(data) {
                     sucDetail();
@@ -83,7 +77,7 @@ $(function() {
                 data.userId = userId;
                 data.remark = $('#remark').val();
                 reqApi({
-                    code: '627263',
+                    code: '627257',
                     json: data
                 }).done(function() {
                     sucDetail();
@@ -97,17 +91,16 @@ $(function() {
         }
     }];
 
-    buildDetail({
-        fields: fields,
-        view : view,
-        buttons : buttons,
-        code: {
-            userId : userId
-        },
-        detailCode: '627357',
-        addCode: '627920',
-        editCode: '627921'
-    });
-    hideLoading();
-	
+	buildDetail({
+		fields: fields,
+		view : view,
+		buttons : buttons,
+		code: {
+			userId : userId
+		},
+		detailCode: '627357',
+		addCode: '627920',
+		editCode: '627921'
+	});
+	hideLoading();
 });

@@ -1,17 +1,37 @@
 $(function() {
 // 代理管理-代理管理-代理资料
+
     var columns = [{
         field : '',
         title : '',
         checkbox : true
     },{
-        field : 'name',
-        title : '姓名'
+        field : 'loginName',
+        title : '姓名',
+
     },{
         field : 'level',
         title : '等级',
         search: true,
-        type: 'select'
+        type: 'select',
+        listCode: '627006',
+        // params: {
+        //     companyCode : OSS.company,
+        //     kind : 'S',
+        //     start : 1,
+        //     limit : 1000
+        // },
+        keyName: 'level',
+        valueName: 'name',
+        // formatter: function (v, data) {
+        //     for(var v of items) {
+        //         if(data.level) {
+        //             data.level = data.level.replace(v.level,v.name);
+        //
+        //         }
+        //     }
+        //     return data.level;
+        // }
     }, {
         field : 'updateDatetime',
         title : '余额',
@@ -56,17 +76,43 @@ $(function() {
         twoDate: true,
         search: true
     }];
-	buildList({
-		columns: columns,
-		pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
-	});
+    buildList({
+        columns: columns,
+        pageCode: '627355',
+        searchParams: {
+            kind : 'B'
+        },
+        // beforeEdit: function(r) {
+        // 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
+        // }
+    });
+    // 修改上级
+
+
+    $('#changeUpBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "./dailiziliao_change.html?v=1&up=1&userId="+selRecords[0].userId+'&level='+selRecords[0].level;
+    });
+    // 修改推荐人
+    $('#changeRefereeBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "./dailiziliao_change.html?v=1&referee=1&userId="+selRecords[0].userId;
+    });
+    // 修改管理员
+    $('#changeAdminBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "./dailiziliao_change.html?v=1&admin=1&userId="+selRecords[0].userId;
+    })
 });
