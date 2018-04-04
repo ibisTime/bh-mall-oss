@@ -47,13 +47,13 @@ $(function() {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
 		// }
 	});
-	$('#detailBtn').click(function () {
+    $('#detailBtn').click(function () {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
 
-        window.location.href = "./dailiguiji_addedit.html?userId="+selRecords[0].userId;
+        window.location.href = "./dailiguiji_addedit.html?v=1&userId="+selRecords[0].userId;
     })
 });

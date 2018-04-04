@@ -39,6 +39,7 @@ $(function() {
 
             $.each(t, function() {
                 data[this.name] = this.value;
+                data.systemCode = OSS.system;
             });
 			
 			//获取七牛地址

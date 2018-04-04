@@ -1,5 +1,6 @@
 $(function() {
 	var code = getQueryString('code');
+	var view = getQueryString('v');
 
     var fields = [{
         field : 'code',
@@ -38,7 +39,8 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '627927',
+        view : view,
+		detailCode: '627664',
 		addCode: '627920',
 		editCode: '627921'
 	});

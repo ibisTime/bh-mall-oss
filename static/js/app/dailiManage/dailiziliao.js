@@ -115,4 +115,24 @@ $(function() {
         }
         window.location.href = "./dailiziliao_change.html?v=1&admin=1&userId="+selRecords[0].userId;
     })
+
+    // 修改资料
+    $('#editBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "./dailiziliao_addedit.html?v=0&edit=1&userId="+selRecords[0].userId;
+    })
+
+    // 详情
+    $('#detailBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "./dailiziliao_addedit.html?v=1&userId="+selRecords[0].userId;
+    })
 });

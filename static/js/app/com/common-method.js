@@ -1653,7 +1653,11 @@ function buildDetail(options) {
                 html += '<input id="' + item.field + '" name="' + item.field + '" class="lay-input"/></li>';
             } else if (item.type == "o2m") {
                 html += '<div id="' + item.field + '" style="display: inline-block;"></div>';
-            } else {
+            } else if(item.type == 'doubleLine'){
+            html += '<textarea id="' + item.field + '" rows="2" style="height:80px;" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
+                    ('placeholder="' + item.placeholder + '"') :
+                    '') + '/></li>';
+        }else {
                 html += '<input id="' + item.field + '" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
                     ('placeholder="' + item.placeholder + '"') :
                     '') + '/></li>';

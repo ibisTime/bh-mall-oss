@@ -79,7 +79,6 @@
 		}
 	
 		function getCity(val) { //获取市数据
-            console.log('1');
             var temp_html = select_prehtml;
 	
 			$provinceXmlElements.each(function(i, d) {

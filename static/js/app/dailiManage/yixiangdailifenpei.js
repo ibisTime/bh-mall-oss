@@ -8,22 +8,34 @@ $(function() {
 		field : 'loginName',
 		title : '姓名'
 	},{
+		field : 'nickname',
+		title : '昵称'
+	},{
 		field : 'level',
 		title : '等级',
         search: true,
-		type: 'select'
+		type: 'select',
+        listCode : '627006',
+        keyName : 'level',
+        valueName : 'name'
 	}, {
         field : 'mobile',
         title : '联系电话'
     }, {
-        field : 'updateDatetime',
+        field : 'wxId',
         title : '微信号'
     }, {
-        field : 'updateDatetime',
-        title : '地域'
+        field : 'diyu',
+        title : '地域',
+        formatter : function (v, data) {
+            return data.area?data.province+' '+data.city+' '+data.area
+                        :data.city?data.province+' '+data.city
+                            :data.province
+        }
     }, {
         field : 'status',
-        title : '代理状态'
+        title : '代理状态',
+        formatter : Dict.getNameForList('agent_status')
     }, {
         field : 'updateDatetime',
         title : '来源'
@@ -63,5 +75,15 @@ $(function() {
             return;
         }
         window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId="+selRecords[0].userId+"&name="+encodeURI(encodeURI(selRecords[0].name));
+    });
+
+    // 修改资料
+    $('#editBtn').off('click').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if(selRecords.length <= 0){
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "./yixiangdailifenpei_edit.html?v=0&userId="+selRecords[0].userId;
     });
 });

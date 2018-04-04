@@ -94,6 +94,7 @@ $(function() {
             var dw = dialog({
                 content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
                 '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
+                '' +
                 '</form>'
             });
 

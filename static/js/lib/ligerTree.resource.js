@@ -1048,7 +1048,7 @@
                     treehtmlarr.push('<span>' + p.render(o, o[p.textFieldName]) + '</span>');
                 } else
                 {
-                    treehtmlarr.push('<span>' + o[p.textFieldName] + '</span>');
+                    treehtmlarr.push('<span>' + '('+ o[p.textFieldName1] +')'+  o[p.textFieldName2] + '</span>');
                 }
                 treehtmlarr.push('</div>');
                 if (g.hasChildren(o))
