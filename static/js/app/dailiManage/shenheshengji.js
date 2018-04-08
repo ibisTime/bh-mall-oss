@@ -54,9 +54,8 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-        pageCode: '627355',
+        pageCode: '627354',
         searchParams: {
-            kind : 'B',
             status : '12'
         },
 		// beforeEdit: function(r) {

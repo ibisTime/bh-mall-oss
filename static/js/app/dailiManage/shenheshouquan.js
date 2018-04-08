@@ -47,10 +47,9 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627355',
+		pageCode: '627354',
 		searchParams: {
-			kind : 'B',
-            status : '6'
+            status : '11'
 		},
 		// beforeEdit: function(r) {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;

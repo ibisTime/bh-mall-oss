@@ -12,123 +12,177 @@ $(function() {
             };
         });
 
-
-    })
-	var columns = [{
-		field : '',
-		title : '',
-		checkbox : true
-	},{
-		field : 'code',
-		title : '订单编号'
-	},{
-		field : 'cvalue',
-		title : '下单日期',
-        formatter: dateTimeFormat,
-        field1: 'applyDateStart',
-        title1: '下单日期',
-        type: 'date',
-        field2: 'applyDateEnd',
-        twoDate: true,
-        search: true
-	}, {
-        field : 'amount',
-        title : '付款金额',
-        formatter: moneyFormat
-    }, {
-        field : 'status',
-        title : '订单状态',
-		search: true,
-		type: 'select',
-        formatter : Dict.getNameForList('order_status')
-    },{
-        field : 'updateDatetime',
-        title : '下单代理'
-    }, {
-        field : 'level',
-        title : '下单代理等级',
-        search: true,
-        type: 'select',
-        listCode : '627006',
-        keyName : 'level',
-        valueName : 'name'
-    }, {
-        field : 'updateDatetime',
-        title : '收货人'
-    }, {
-        field : 'mobile',
-        title : '收货人电话'
-    }, {
-        field : 'remark',
-        title : '备注'
-    }];
-	buildList({
-		columns: columns,
-        pageCode: '627662',
-        searchParams : {
-            statusList : '0,1'
-        },
-        singleSelect : false
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
-	});
-	// 批量审单
-    $('#shendanBtn').click(function () {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
-        confirm('确定批量审单？').then(function () {
-            var dw = dialog({
-                content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该喜报的位序</li></ul>' +
-                '</form>'
+        var columns = [{
+            field: '',
+            title: '',
+            checkbox: true
+        }, {
+            field: 'code',
+            title: '订单编号'
+        }, {
+            field: 'applyDatetime',
+            title: '下单日期',
+            formatter: dateTimeFormat,
+            field1: 'applyDateStart',
+            title1: '下单日期',
+            type: 'date',
+            field2: 'applyDateEnd',
+            twoDate: true,
+            search: true
+        }, {
+            field: 'amount',
+            title: '付款金额',
+            formatter: moneyFormat
+        }, {
+            field: 'status',
+            title: '订单状态',
+            search: true,
+            type: 'select',
+            formatter: Dict.getNameForList('order_status')
+        }, {
+            field: 'updateDatetime',
+            title: '下单代理'
+        }, {
+            field: 'level',
+            title: '下单代理等级',
+            search: true,
+            type: 'select',
+            listCode: '627006',
+            keyName: 'level',
+            valueName: 'name'
+        }, {
+            field: 'signer',
+            title: '收货人'
+        }, {
+            field: 'mobile',
+            title: '收货人电话'
+        }, {
+            field: 'remark',
+            title: '备注'
+        }];
+        buildList({
+            columns: columns,
+            pageCode: '627662',
+            searchParams: {
+                statusList: '1,2,5'
+            },
+            singleSelect: false
+            // beforeEdit: function(r) {
+            // 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
+            // }
+        });
+        // 批量审单
+        $('#shendanBtn').click(function () {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            var check = true;
+            selRecords.map(function (item) {
+                if(item.status != '1') {
+                    toastr.info('包含不可审单的订单')
+                    check = false
+                }
             });
+            if(check) {
+                var codeList = [];
+                var temp = {}
+                selRecords.map(function (item) {
+                    temp = {
+                        code : item.code
+                    }
+                    codeList.push(temp);
+                });
 
-            dw.showModal();
+                confirm('确定批量审单？').then(function () {
+                    var dw = dialog({
+                        content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                        '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
+                        '</form>'
+                    });
 
-            buildDetail({
-                container: $('#formContainer'),
-                fields: [{
-                    field: 'orderNo',
-                    title: '顺序',
-                    required: true,
-                    number: true,
-                    min: '0'
-                },{
-                    field : 'location1',
-                    title : '是否推荐',
-                    required: true,
-                    type: 'select',
-                    data : {'0':'否','1':'是'}
-                }],
-                buttons: [{
-                    title: '确定',
-                    handler: function () {
-                        if ($('#popForm').valid()) {
-                            var data = $('#popForm').serializeObject();
-                            reqApi({
-                                code: '805433',
-                                json: {
-                                    code: selRecords[0].code,
-                                    location : data.location1,
-                                    updater: getUserName(),
-                                    orderNo: data.orderNo
+                    dw.showModal();
+
+                    buildDetail({
+                        container: $('#formContainer'),
+                        fields: [{
+                            field: 'approveNote',
+                            title: '审核备注',
+                        }],
+                        buttons: [{
+                            title: '确定',
+                            handler: function () {
+                                if ($('#popForm').valid()) {
+                                    var data = $('#popForm').serializeObject();
+                                    reqApi({
+                                        code: '627644',
+                                        json: {
+                                            codeList: codeList,
+                                            approver: getUserName(),
+                                            approveNote : data.approveNote
+                                        }
+                                    }).done(function () {
+                                        sucList();
+                                        dw.close().remove();
+                                    });
                                 }
-                            }).done(function () {
-                                sucList();
+                            }
+                        }, {
+                            title: '取消',
+                            handler: function () {
                                 dw.close().remove();
-                            });
-                        }
-                    }
-                }, {
-                    title: '取消',
-                    handler: function () {
-                        dw.close().remove();
-                    }
-                }]
-            });
+                            }
+                        }]
+                    });
+                    hideLoading();
+                })
+            }else {
+                return
+            }
+
+        });
+        // 修改收货
+        $('#changeAddressBtn').click(function () {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status == '0' || selRecords[0].status == '1' || selRecords[0].status == '2') {
+                window.location.href = './waitOrder_changeAddress.html?code='+selRecords[0].code
+            }else {
+                toastr.info('该状态下不能修改收货地址')
+            }
+        });
+
+        // 发货
+        $('#fahuoBtn').click(function () {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status == '2') {
+                window.location.href = './waitOrder_fahuo.html?code='+selRecords[0].code
+            }else {
+                toastr.info('该状态下不能发货')
+            }
+        });
+
+        // 审核取消
+        $('#cancelBtn').click(function () {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status == '5') {
+                window.location.href = './waitOrder_addedit.html?cancel=1&code='+selRecords[0].code
+            }else {
+                toastr.info('该状态下不能审核取消')
+            }
+        });
     })
+
 });

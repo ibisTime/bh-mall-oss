@@ -4,37 +4,33 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-	},{
-		field : 'remark',
-		title : '出货人',
-		search: true
-	},{
-		field : 'mobile',
-		title : '出货人手机'
-	}, {
-        field : 'level',
-        title : '出货人等级'
-    }, {
-        field : 'updateDatetime',
-        title : '出货人团队'
-    }, {
-        field : 'product',
-        title : '出货产品',
-        search: true,
-		type: 'select'
-    }, {
-        field : 'updateDatetime',
-        title : '奖励收入',
-		formatter: moneyFormat
-    }, {
-        field : 'updateDatetime',
-        title : '奖励支出',
-        formatter: moneyFormat
-    },{
-        field: 'realName',
-        title: '户名',
-        search: true
-    }, {
+	},
+    //     {
+		// field : 'remark',
+		// title : '出货人',
+		// search: true
+    // },{
+		// field : 'mobile',
+		// title : '出货人手机'
+    // }, {
+    //     field : 'level',
+    //     title : '出货人等级'
+    // }, {
+    //     field : 'updateDatetime',
+    //     title : '出货人团队'
+    // }, {
+    //     field : 'product',
+    //     title : '出货产品',
+    //     search: true,
+		// type: 'select'
+    // },
+
+    //     {
+    //     field: 'realName',
+    //     title: '户名',
+    //     search: true
+    // },
+        {
         field: 'accountNumber',
         title: '账号'
     }, {
@@ -51,17 +47,13 @@ $(function() {
         key: 'biz_type',
         formatter: Dict.getNameForList('biz_type'),
         search: true
-    }, {
-        field: 'transAmount',
-        title: '变动金额',
+    },{
+	    field : 'inAmount',
+        title : '奖励收入',
         formatter: moneyFormat
     }, {
-        field: 'preAmount',
-        title: '变动前金额',
-        formatter: moneyFormat
-    }, {
-        field: 'postAmount',
-        title: '变动后金额',
+        field : 'outAmount',
+        title : '奖励支出',
         formatter: moneyFormat
     }, {
         field: 'status',
@@ -85,13 +77,31 @@ $(function() {
             bizType: 'AJ_CHJL',
 		}
 	});
-	//
+	//支出明细
 	$('#outRecordBtn').click(function () {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./"
+        if(selRecords[0].outAmount != '0'){
+            window.location.href = "./chuhuojiangli_addedit.html?out=1&userId="+selRecords[0].userId
+        }else {
+            toastr.info('无支出明细')
+        }
+    });
+
+    //收入明细
+    $('#inRecordBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        if(selRecords[0].inAmount != '0'){
+            window.location.href = "./chuhuojiangli_addedit.html?in=1&userId="+selRecords[0].userId
+        }else {
+            toastr.info('无收入明细')
+        }
     })
 });

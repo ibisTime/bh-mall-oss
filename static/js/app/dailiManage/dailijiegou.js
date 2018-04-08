@@ -39,13 +39,12 @@ $(function() {
                 ligerTreeData.push(tmpl);
 
             });
-            console.log(ligerTreeData);
             $("#treeMenu").ligerTree({
                 nodeWidth:300,
                 data:ligerTreeData,
                 // parentIcon: 'user',
                 // childIcon: 'user' ,
-                checkbox: true,
+                checkbox: false,
                 isExpand: true,
                 textFieldName1: 'level',
                 textFieldName2: 'loginName',
@@ -53,6 +52,7 @@ $(function() {
                 onClick: onClick,
                 onCollapse: collapseAll,
                 onExpand: expandAll,
+                combine : true
                 // isLeaf : hasChildren
                 // idFieldName: 'code',
                 // parentIDFieldName: 'parentCode',
@@ -64,61 +64,84 @@ $(function() {
 
 
 
-    $('#exportBtn').click(function() {
-        console.log(manager.getSelected().data.userId);
+    $('#exportBtn').off('click').click(function () {
 
 
         var dw = dialog({
-            content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-            '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该喜报的位序</li></ul>' +
-            '</form>'
+            // content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+            // '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该喜报的位序</li></ul>' +
+            // '</form>'
+            content:
+            '<div class="right-info">'+
+            '<form class="search-form">'+
+            '</form>'+
+            '<div class="tools">'+
+            '<ul class="toolbar1">'+
+            '<li style="display:inline-block;width:100px；border:1px solid red" id="exBtn"><span><img src="/static/images/t01.png"></span>导出</li>'+
+            '<li"><input id="cancelBtn" type="button" class="btn" value="取消"></li>'+
+            '</ul>'+
+            '</div>'+
+            '<table id="tableList1"></table>'+
+            // '<ul></ul>'+
+            '</div>'
         });
 
         dw.showModal();
 
-        buildList({
-            // container: $('#formContainer'),
-            fields: [{
-                field: 'orderNo',
-                title: '顺序',
-                required: true,
-                number: true,
-                min: '0'
-            },{
-                field : 'location1',
-                title : '是否推荐',
-                required: true,
-                type: 'select',
-                data : {'0':'否','1':'是'}
-            }],
-            buttons: [{
-                title: '确定',
-                handler: function () {
-                    if ($('#popForm').valid()) {
-                        var data = $('#popForm').serializeObject();
-                        reqApi({
-                            code: '805433',
-                            json: {
-                                code: selRecords[0].code,
-                                location : data.location1,
-                                updater: getUserName(),
-                                orderNo: data.orderNo
-                            }
-                        }).done(function () {
-                            sucList();
-                            dw.close().remove();
-                        });
+        // var columns=[];
+        reqApi({
+            code: '627006',
+        }, true).then(function (data) {
+            var items = data.map(function (item) {
+                return {
+                    field: item.level,
+                    title: item.name,
+                    formatter : function (v, data) {
+                        if(data.level == item.level) {
+                            return data.realName+'-'+data.nickname;
+                        }else {
+                            return '-'
+                        }
                     }
-                }
-            }, {
-                title: '取消',
-                handler: function () {
-                    dw.close().remove();
-                }
-            }]
+                };
+            });
+
+
+            buildList({
+                container: $('.ui-dialog-content'),
+                columns: items,
+                pageCode: '627352',
+                searchParams: {
+                    userId : manager.getSelected().data.userId
+                },
+                onLoadSuccess : function(data) {
+                    var data = $('#table').bootstrapTable('getData', true);
+                    //合并单元格
+                    console.log(data);
+                    mergeCells(data, "companyTypeName", 1, $('#table'));
+
+                },
+            });
+            $('.search-form').empty();
+            $('.search-form-li').empty();
+            // $('#exportBtn').css('display','none');
+            // var tempHtml =  '<ul><li class="search-form-li"><input id="exBtn" type="button" class="btn" value="导出"></li></ul>';
+            // $('.search-form').append(tempHtml);
+
+            $('#exBtn').off('click').click(function () {
+                // $('#tableList1').tableExport({ type: 'excel', escape: 'false' })
+                $('.export .btn').click();
+            });
+
+            $('#cancelBtn').click(function () {
+                dw.close().remove();
+                $('.fixed-table-container').remove()
+            });
+            hideLoading();
         });
+
     });
-        // return ligerTreeData;
+
 
 
 
@@ -130,14 +153,12 @@ $(function() {
         // alert('onSelect:' + note.data.userId);
         // 1、请求接口获取子节点数据
         // 2、将子节点数据插入到节点树中
-        console.log(note.data);
         var isChild =note.data.children;
         if(isChild && isChild.length>0)
 		{
 			return
 
         }else {
-            console.log('2');
             reqApi({
                 code: '627006',
             }, true).then(function (data) {
@@ -155,7 +176,6 @@ $(function() {
                         'userId' : note.data.userId
                     }
                 }).then(function(d) {
-                    // console.log('111'+d);
 
 
                     d.forEach(function (d, i) {
@@ -175,7 +195,6 @@ $(function() {
                         ligerTreeData.push(tmpl);
 
                     });
-                    console.log(ligerTreeData);
                     manager.append(note, ligerTreeData);
 
                 });
@@ -198,9 +217,36 @@ $(function() {
     }
 
     function onSelect(note) {
-		alert(note.data.userId);
+		// alert(note.data.userId);
     }
 
+
+    function mergeCells(data,fieldName,colspan,target){
+        //声明一个map计算相同属性值在data对象出现的次数和
+        var sortMap = {};
+        for(var i = 0 ; i < data.length ; i++){
+            for(var prop in data[i]){
+                if(prop == fieldName){
+                    var key = data[i][prop]
+                    if(sortMap.hasOwnProperty(key)){
+                        sortMap[key] = sortMap[key] * 1 + 1;
+                    } else {
+                        sortMap[key] = 1;
+                    }
+                    break;
+                }
+            }
+        }
+        for(var prop in sortMap){
+            console.log(prop,sortMap[prop])
+        }
+        var index = 0;
+        for(var prop in sortMap){
+            var count = sortMap[prop] * 1;
+            $(target).bootstrapTable('mergeCells',{index:index, field:fieldName, colspan: colspan, rowspan: count});
+            index += count;
+        }
+    }
 
     $("#subBtn").click(function() {
         var menuList = new Array();

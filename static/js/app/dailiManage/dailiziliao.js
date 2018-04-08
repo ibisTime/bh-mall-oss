@@ -40,7 +40,7 @@ $(function() {
         field : 'mobile',
         title : '联系电话'
     }, {
-        field : 'updateDatetime',
+        field : 'wxId',
         title : '微信号'
     }, {
         field : 'updateDatetime',
@@ -55,16 +55,22 @@ $(function() {
         field : 'updateDatetime',
         title : '关联管理员'
     }, {
-        field : 'updateDatetime',
-        title : '推荐人'
+        field : 'realName',
+        title : '推荐人',
+        formatter : function (v, data) {
+            return data.refereeUser?data.refereeUser.realName: '-'
+        }
     }, {
-        field : 'updateDatetime',
-        title : '推荐人电话'
+        field : 'mobile',
+        title : '推荐人电话',
+        formatter : function (v, data) {
+            return data.refereeUser?data.refereeUser.mobile: '-'
+        }
     }, {
-        field : 'updateDatetime',
+        field : 'status',
         title : '授权状态',
-        search: true,
-        type: 'select'
+        type: 'select',
+        formatter : Dict.getNameForList('agent_status')
     },  {
         field : 'updateDatetime',
         title : '状态时间',

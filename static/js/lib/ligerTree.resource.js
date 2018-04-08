@@ -1043,12 +1043,22 @@
                         treehtmlarr.push('</div>');
                     }
                 }
-                if (p.render)
-                {
-                    treehtmlarr.push('<span>' + p.render(o, o[p.textFieldName]) + '</span>');
-                } else
-                {
-                    treehtmlarr.push('<span>' + '('+ o[p.textFieldName1] +')'+  o[p.textFieldName2] + '</span>');
+                if(p.combine){
+                    if (p.render)
+                    {
+                        treehtmlarr.push('<span>' + p.render(o, o[p.textFieldName]) + '</span>');
+                    } else
+                    {
+                        treehtmlarr.push('<span>' + '('+ o[p.textFieldName1] +')'+  o[p.textFieldName2] + '</span>');
+                    }
+                }else {
+                    if (p.render)
+                    {
+                        treehtmlarr.push('<span>' + p.render(o, o[p.textFieldName]) + '</span>');
+                    } else
+                    {
+                        treehtmlarr.push('<span>' + o[p.textFieldName] + '</span>');
+                    }
                 }
                 treehtmlarr.push('</div>');
                 if (g.hasChildren(o))

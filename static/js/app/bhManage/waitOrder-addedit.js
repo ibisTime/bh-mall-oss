@@ -1,45 +1,101 @@
 $(function() {
 	var code = getQueryString('code');
+	var cancel = getQueryString('cancel');
 	var view = getQueryString('v');
 
+
+	if(cancel == '1') {
+	    view = true
+    }
     var fields = [{
-        field : 'code',
-        title : '订单编号'
+        field : 'code1',
+        title : '订单编号',
+        formatter : function (v, data) {
+            return data.code
+        }
     },{
-        field : 'cvalue',
+        field : 'updateDatetime',
         title : '下单日期',
         formatter: dateTimeFormat
     }, {
-        field : 'fkAmount',
+        field : 'amount',
         title : '付款金额',
         formatter: moneyFormat
     }, {
-        field : 'orderStatus',
-        title : '订单状态'
+        field : 'status',
+        title : '订单状态',
+        type: 'select',
+        formatter: Dict.getNameForList('order_status')
+
     }, {
-        field : 'orderType',
-        title : '订单类型'
+        field : 'kind',
+        title : '订单类型',
+        type: 'select',
+        formatter: Dict.getNameForList('order_type')
+
     }, {
-        field : 'updateDatetime',
+        field : 'updateDatetime1',
         title : '下单代理'
     }, {
-        field : 'updateDatetime',
+        field : 'updateDatetime2',
         title : '下单代理等级'
     }, {
-        field : 'updateDatetime',
+        field : 'signer',
         title : '收货人'
     }, {
         field : 'mobile',
         title : '收货人电话'
     }, {
         field : 'remark',
-        title : '备注'
+        title : '备注',
+        readonly : !cancel,
+        required : true
     }];
-	
+
+  var buttons = [{
+        title: '通过',
+        handler: function() {
+
+            var data = $('#popForm').serializeObject();
+            data.code = code;
+            data.result = "1";
+            data.updater = getUserName();
+            reqApi({
+                code: '627647',
+                json: data
+            }).done(function(data) {
+                sucDetail();
+                dw.close().remove();
+            });
+
+        }
+    }, {
+        title: '不通过',
+        handler: function() {
+            var data = $('#popForm').serializeObject();
+            data.code = code;
+            data.result = "0";
+            data.updater = getUserName();
+            reqApi({
+                code: '627647',
+                json: data
+            }).done(function(data) {
+                sucDetail();
+                dw.close().remove();
+            });
+        }
+    }, {
+        title: '取消',
+        handler: function() {
+            dw.close().remove();
+        }
+    }];
+
 	buildDetail({
 		fields: fields,
 		code: code,
         view : view,
+        buttons : cancel?buttons: null,
 		detailCode: '627664',
 		addCode: '627920',
 		editCode: '627921'

@@ -13,7 +13,7 @@ $(function() {
         search: true,
         type: 'select'
 	}, {
-        field : 'updateDatetime',
+        field : 'wxId',
         title : '微信号',
         search: true,
         type: 'select'

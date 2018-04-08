@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'loginName',
+		field : 'realName',
 		title : '姓名'
 	},{
 		field : 'nickname',
@@ -40,7 +40,7 @@ $(function() {
         field : 'updateDatetime',
         title : '来源'
     }, {
-        field : 'updateDatetime',
+        field : 'applyDatetime',
         title : '申请时间',
         formatter: dateTimeFormat,
         field1: 'applyDateStart',
@@ -55,7 +55,10 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627354'
+		pageCode: '627354',
+        searchParams : {
+		    status : '3,4'
+        }
 	});
 	// 忽略意向
     $('#hulveBtn').click(function() {
