@@ -1,14 +1,13 @@
 $(function() {
     var accountNumber;
     reqApi({
-        code: '627453',
+        code: '627452',
         json: {
-            userId: 'SYS_USER_BH',
-            currency : 'YJ_CNY'
+            'accountNumber' : 'A1321515156456'
         }
     }).done(function(data) {
-        $("#amount-TG").text("￥" + moneyFormat(data[0].amount));
-        accountNumber = data[0].accountNumber;
+        $("#amount-TG").text("￥" + moneyFormat(data.amount));
+        accountNumber = data.accountNumber;
     });
 
 

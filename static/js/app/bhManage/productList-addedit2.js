@@ -114,6 +114,7 @@ $(function() {
                     '<label style="padding: 20px 40px"><b>*</b>规格名称</label>'+
                     '<label style="padding: 20px 40px"><b>*</b>规格包含数量</label>'+
                     '<label style="padding: 20px 40px"><b>*</b>重量</label>'+
+                    '<label style="padding: 20px 40px"><b>*</b>换货价</label>'+
                     '<label style="padding: 20px 40px"><b>*</b>是否允许普通单下单</label>'+
                     '<label style="padding: 20px 40px"><b>*</b>是否允许授权单下单</label>'+
                     '<label style="padding: 20px 40px"><b>*</b>是否允许升级单下单</label>'+
@@ -494,21 +495,4 @@ $(function() {
 
     });
 
-    // 修改奖励机制按钮点击事件
-    function editAward(index) {
-        reqApi({
-            code: '627006',
-        }, true).then(function (data) {
-            var items = data.map(function (item) {
-                return {
-                    level: item.level,
-                    name: item.name
-                };
-            });
-
-
-
-        })
-
-    }
 });
