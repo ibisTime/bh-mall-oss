@@ -100,10 +100,15 @@ $(function() {
             '<div style="width:100%">' +
             '<span style="font-size: 18px">规格定价</span>' +
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
-                '<div style="border: 1px solid #ced9df">'+
-                     html+
-                    '<div id="dingjiaHtml"></div>'+
-                '</div>'+
+            	'<div style="border: 1px solid #ced9df">'+
+            		'<div id="dingjiaTitle">'+
+            			'<label style="padding: 20px 40px"><b>*</b>规格</label>'+
+            			'<label style="padding: 20px 40px"><b>*</b>等级</label>'+
+            			'<label style="padding: 20px 40px"><b>*</b>价格</label>'+
+            			'<label style="padding: 20px 40px"><b>*</b>换货价</label>'+
+            		'</div>'+
+            		'<div id="dingjiaContent"></div>'+
+            	'</div>'+
             '</div>')
 
         $('#remark').parent().after(
@@ -173,6 +178,7 @@ $(function() {
         var a = 0;
         var b = 0;
         var specList = [];
+        var dingjiaDom = 0;
         // 添加产品规格
         $('#add1Btn').click(function () {
             var temp = {}
@@ -243,66 +249,79 @@ $(function() {
                                 '</div>';
 
                             $('#guigeHtml').append(guigeTemp);
+                            
                             dw.close().remove();
-                            var specsPriceList = [];
+                            var circleList = []
                             for(var p=0;p<items.length;p++) {
-                                var value = items[p].name;
-                                console.log(value);
+                            	var field1 = {
+                            		field : items[p].level,
+                            		title : '等级',
+                            		value : items[p].name,
+                            		readonly : true
+                            	};
+                            	var field2 = {
+                            		field : 'price'+p,
+                            		title : '价格',
+                            		required : true
+                            	};
+                            	var field3 = {
+                            		field : 'changePrice'+p,
+                            		title : '换货价',
+                            		required : true
+                            	};
+                            	
+                            	circleList.push(field1,field2,field3);
+                            }
+                            
                                 var dw1 = dialog({
                                     content: '<form class="pop-form-dingjia" id="popFormDingjia" novalidate="novalidate">' +
-                                    '<ul class="form-info" id="formContainer_dingjia"><li style="text-align:center;font-size: 15px;">'+p+'</li></ul>' +
+                                    '<ul class="form-info" id="formContainer_dingjia"><li style="text-align:center;font-size: 15px;">请输入规格定价</li></ul>' +
                                     '</form>'
                                 });
 
                                 dw1.showModal();
                                 buildDetail({
                                     container: $('#formContainer_dingjia'),
-                                    fields: [{
-                                        field: 'level',
-                                        title: '等级',
-                                        required: true,
-                                        value: value,
-                                        readonly: true
-                                    }, {
-                                        field: 'price',
-                                        title: '价格',
-                                        required : true
-                                    }, {
-                                        field: 'changePrice',
-                                        title: '换货价',
-                                        required: true
-                                    }],
+                                    fields: circleList,
                                     buttons: [{
                                         title: '确定',
                                         handler: function () {
-                                            dw1.close().remove();
+                                            
                                             if ($('#popFormDingjia').valid()) {
                                                 var data = $('#popFormDingjia').serializeObject();
-                                                delete data.code;
-                                                data.level = items[p].level;
-                                                data.changePrice *= 1000;
-                                                console.log(data);
-                                                var arrTemp2 = data;
-                                                specsPriceList.push(arrTemp2);
+                                                dw1.close().remove();
+                                                var specsPriceList = []
+                                                for(var v of items) {
+                                                	var price1= 'price'+(v.level-1);
+                                                	var changePrice1= 'changePrice'+(v.level-1);
+                                                	
+                                                	var temp1 = {};
+                                                	temp1.level = v.level;
+                                                	temp1.price = data[price1];
+                                                	temp1.changePrice = data[changePrice1];
+                                                	
+                                                	specsPriceList.push(temp1);
+                                                }
+                                                temp.specsPriceList = specsPriceList;
+                                                
+                                                
+                                                
+                                                var dingjiaHtml = '<div id=dingjiaOutDom'+dingjiaDom+'">';
+                                                for(var v = 0 ;v<specsPriceList.length ;v++ ) {
+                                                	var dingjiaTemp =
+                                                		'<div class="dingjiaDom'+v+'">'+
+                                                			'<span style="width : 120px;padding:20px 40px;display: inline-block">'+temp.name+'</span>'+
+                                                			'<span style="width : 140px;'padding:20px 40px;display: inline-block">'+items[specsPriceList[v].level-1].name+'</span>'+
+                                                			'<span style="width : 140px;padding:20px 40px;display: inline-block">'+specsPriceList[v].price+'</span>'+
+                                                			'<span style="width : 140px;padding:20px 40px;display: inline-block">'+specsPriceList[v].changePrice+'</span>'+
+                                                		'</div>'
+                                            		dingjiaHtml += dingjiaTemp;
+                                                }
 
-
-                                                // var dingjiaTemp = '<div id="dingjiaDom'+d+'">';
-                                                // console.log(arrTemp2);
-                                                // console.log(specsPriceList);
-                                                // specsPriceList.map(function (item) {
-                                                //     // specsPriceList.map(function (index1, item1) {
-                                                //     dingjiaTemp += '<span style="width : 110px;padding:20px 50px;display: inline-block">'+item.price+'</span>'+
-                                                //         '<span style="width : 110px;padding:20px 50px;display: inline-block">'+item.changePrice+'</span>'
-                                                //     // awardHtml += awardTemp;
-                                                // });
-                                                // dingjiaTemp +=  '</div>';
-
-
-                                                // $('#dingjiaHtml').append(dingjiaTemp);
-                                                // d++;
-
-
-
+												dingjiaHtml += '</div>';
+												$('#dingjiaContent').append(dingjiaHtml);
+                                                
+												specList.push(temp)
                                                 console.log(specList);
 
                                             }
@@ -317,11 +336,11 @@ $(function() {
                                     ]
                                 });
                                 hideLoading();
-                            }
+                                dingjiaDom++;
                             // 删除规格定价
                             $('.delguigeBtn').click(function (e) {
                                 $('#guigeHtml').empty();
-                                $('#dingjiaHtml').empty();
+                                $('#dingjiaContent').empty();
                                 // console.log(specList);
 
                                 // var index = e.target.id.split('_')[1];
