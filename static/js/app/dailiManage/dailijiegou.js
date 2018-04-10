@@ -78,16 +78,20 @@ $(function() {
             '<div class="tools">'+
             '<ul class="toolbar1">'+
             '<li style="display:inline-block;width:100px；border:1px solid red" id="exBtn"><span><img src="/static/images/t01.png"></span>导出</li>'+
-            '<li"><input id="cancelBtn" type="button" class="btn" value="取消"></li>'+
+            '<li></li>'+
             '</ul>'+
             '</div>'+
             '<table id="tableList1"></table>'+
             // '<ul></ul>'+
+            '<input id="cancelBtn" type="button" class="btn" style="margin-left:40px;display: inline-block;!important;" value="取消"/>'+
             '</div>'
+
         });
 
         dw.showModal();
-
+        $('#cancelBtn').click(function () {
+            dw.close().remove();
+        })
         // var columns=[];
         reqApi({
             code: '627006',
@@ -111,6 +115,7 @@ $(function() {
                 container: $('.ui-dialog-content'),
                 columns: items,
                 pageCode: '627352',
+                tableId : 'tableList1',
                 searchParams: {
                     userId : manager.getSelected().data.userId
                 },
