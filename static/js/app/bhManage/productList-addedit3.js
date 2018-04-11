@@ -701,7 +701,7 @@ $(function() {
                                                     console.log(index);
                                                     for(var v in awardList) {
                                                         console.log(v);
-                                                        if(awardList[CH].level-1 == index) {
+                                                        if(awardList[CH].level-1 == index && awardList[CH].type == data.type) {
                                                             awardList[CH] = data;
                                                             // awardList[v].level = +index+1;
                                                             console.log(awardList[CH]);
