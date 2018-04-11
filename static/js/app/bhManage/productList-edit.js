@@ -1,8 +1,8 @@
 $(function() {
 	var code = getQueryString('code');
-
-
-
+	var detailData = {};
+	var specList = [];
+	var awardList = [];
     reqApi({
         code: '627006',
     }, true).then(function (data) {
@@ -79,9 +79,9 @@ $(function() {
             editCode: '627541',
             beforeSubmit : function (data) {
                 //产品规格
-                data.specList = specList;
+                data.specList = detailData.specsList;
                 // 奖励机制
-                data.awardList = awardList;
+                data.awardList = detailData.awardList;
                 // 各种价格
                 data.adPrice *= 1000;
                 data.price *= 1000;
@@ -90,12 +90,137 @@ $(function() {
                 console.log(data);
 
                 return data;
+            },
+            afterData : function(data) {
+            	console.log(data);
+            	
+            	
+            	
+            	detailData = data;
+            	
+            	// 插入规格和定价
+            	var g=0;
+            	detailData.specsList.map(function (item) {
+            		var guigeTemp =
+                                '<div id="guigeDom'+g+'">'+
+                                    '<span style="width : 150px;padding:20px 60px;display: inline-block">'+item.name+'</span>'+
+                                    '<span style="width : 150px;padding:20px 40px;display: inline-block">'+item.number+'</span>'+
+                                    '<span style="width : 120px;padding:20px 40px;display: inline-block">'+item.weight+'</span>'+
+                                    '<span style="width : 180px;padding:20px 40px;display: inline-block">'+bool[item.isNormalOrder]+'</span>'+
+                                    '<span style="width : 170px;padding:20px 40px;display: inline-block">'+bool[item.isImpowerOrder]+'</span>'+
+                                    '<span style="width : 170px;padding:20px 40px;display: inline-block">'+bool[item.isUpgradeOrder]+'</span>'+
+                                    '<input id="delguigeBtn_'+g+'" type="button" class="btn delguigeBtn" style="margin-left:40px;display: inline-block;!important;" value="删除"/>'
+                                '</div>';
+
+                    $('#guigeHtml').append(guigeTemp);
+                    
+                    
+                    
+                    var dingjiaHtml = '<div id=dingjiaOutDom'+dingjiaDom+'">';
+                    for(var v = 0 ;v<item.priceList.length ;v++ ) {
+		                var dingjiaTemp =
+		                    '<div class="dingjiaDom'+v+'">'+
+		                        '<span style="width : 120px;padding:20px 40px;display: inline-block">'+item.name+'</span>'+
+		                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+items[item.priceList[v].level-1].name+'</span>'+
+		                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+item.priceList[v].price+'</span>'+
+		                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+item.priceList[v].changePrice+'</span>'+
+		                    '</div>'
+		                dingjiaHtml += dingjiaTemp;
+		            }
+		
+					dingjiaHtml += '</div>';
+					$('#dingjiaContent').append(dingjiaHtml);
+					
+					
+					
+					
+		                    
+            	})
+            	
+            	// 插入推荐奖励
+            	detailData.directAwardList.map(function (index, item) {
+            		var awardTemp =
+                        '<div id="awardDom'+item+'">'+
+                            '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[index.level-1].name+'</span>'+
+                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value1+'</span>'+
+                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value2+'</span>'+
+                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value3+'</span>'+
+                            '<input id="editAwardBtn_'+item+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'+
+                        '</div>'
+                    awardHtml += awardTemp;
+
+            	})
+            	$('#awardContent').append(awardHtml);
+            	
+            	
+            	
+            	// 插入出货奖励
+            	detailData.sendAwardList.map(function (index, item) {
+            		var awardTemp =
+                        '<div id="awardCHDom'+item+'">'+
+                            '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[index.level-1].name+'</span>'+
+                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value1+'</span>'+
+                            '<input id="editAwardBtn_'+item+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'+
+                        '</div>'
+                    awardHtml1 += awardTemp;
+
+            	})
+            	$('#awardCHContent').append(awardHtml1);
+            	
+            	
+            	// 规格定价数据格式转换
+            	detailData.specsList.map(function (item) {
+            		return {
+            			code : item.code,
+            			isNormalOrder : item.isNormalOrder,
+            			isPowerOrder : item.isImpowerOrder,
+            			isUpgradeOrder : item.isUpgradeOrder,
+            			name : item.name,
+            			number : item.number,
+            			weight : item.weight,
+            			specsPriceList : item.priceList.map(function (item1) {
+            				return {
+            					changePrice : item1.changePrice,
+            					code : item1.code,
+            					level : item1.level,
+            					price : item1.price
+            				}
+            			})
+            		}
+            	}) 
+            	
+            	detailData.specsList.map(function (item) {
+            		item.specsPriceList = item.priceList;
+            		delete item.priceList;
+            	})
+            	
+            	
+            	// 奖励数据格式转换
+            	
+            	detailData.directAwardList.map(function (item) {
+            		awardList.push(item);
+            	})
+            	
+            	
+            	detailData.sendAwardList.map(function (item) {
+            		awardList.push(item);
+            	})
+            	detailData.awardList = awardList;
+//          	detailData.specsList.specsPriceList = detailData.specsList.priceList;
+				console.log(awardList);
+            	console.log(detailData);
+            	
             }
         });
         hideLoading();
 
+		
+//		setTimeout(function(){
+//			
+//			console.log(detailData);
+//		}, 2000);
 
-
+		// 定价
         $('#remark').parent().after(
             '<div style="width:100%">' +
             '<span style="font-size: 18px">规格定价</span>' +
@@ -111,6 +236,7 @@ $(function() {
             	'</div>'+
             '</div>')
 
+		// 规格
         $('#remark').parent().after(
             '<div style="width:100%">' +
             '<span style="font-size: 18px">产品规格<input id="add1Btn" type="button" class="btn" style="margin-left:20px;display: inline-block;!important;" value="添加"/></span>'+
@@ -130,11 +256,11 @@ $(function() {
 
 
 
-
+		// 出货奖励
         var awardHtml1 = '';
         $('#remark').parent().after(
             '<div style="width:100%">' +
-            '<span style="font-size: 18px">出货奖励机制<input id="add3Btn" type="button" class="btn" style="margin-left:20px;display: inline-block;!important;" value="添加"/></span>' +
+            '<span style="font-size: 18px">出货奖励机制</span>' +
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
             '<div style="border: 1px solid #ced9df">'+
             '<div id="awardTitle">'+
@@ -150,11 +276,11 @@ $(function() {
 
 
 
-
+		// 推荐奖励
         var awardHtml = '';
         $('#remark').parent().after(
             '<div style="width:100%">' +
-                '<span style="font-size: 18px">推荐奖励机制<input id="add2Btn" type="button" class="btn" style="margin-left:20px;display: inline-block;!important;" value="添加"/></span>' +
+                '<span style="font-size: 18px">推荐奖励机制</span>' +
                 '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
                 '<div style="border: 1px solid #ced9df">'+
                     '<div id="awardTitle">'+
@@ -170,8 +296,10 @@ $(function() {
 
 
 
-
+		// 删除规格定价
 		$('#guigeHtml').on('click', '.delguigeBtn', function delguige(e) {
+			
+			specList = detailData.specsList;
             var id = e.target.id;
             var text = $('#'+id).parent().children(":first").text();
             for(var v=0;v<specList.length;v++) {
@@ -218,13 +346,14 @@ $(function() {
         });
             
         
+        
+        
         var b = 0;
-        var specList = [];
         
         var dingjiaDom = 0;
         // 添加产品规格
         $('#add1Btn').click(function () {
-        	
+        	specList = detailData.specsList;
         	var g = specList.length;
             var temp = {}
 
@@ -399,6 +528,86 @@ $(function() {
         });
 
 
+
+		$('.editAwardBtn').click(function (e) {
+            var index = e.target.id.split('_')[1];
+            var value = items[index].name;
+            var dw = dialog({
+                content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                            '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的奖励机制</li></ul>' +
+                          '</form>',
+            });
+            dw.showModal();
+
+            buildDetail({
+                container: $('#formContainer'),
+                fields: [{
+                            field: 'level',
+                            title: '等级',
+                            required: true,
+                            value: value,
+                            readonly: true
+                        }, {
+                            field: 'type',
+                            title: '类型',
+                            value : '0',
+                            hidden : true
+                        }, {
+                            field: 'value1',
+                            title: '直接推荐奖励',
+                            required: true
+                        }, {
+                            field: 'value2',
+                            title: '间接推荐奖励',
+                            required: true
+                        }, {
+                            field: 'value3',
+                            title: '次推荐奖励',
+                            required: true
+                        }],
+                        buttons: [{
+                            title: '确定',
+                            handler: function () {
+                                if ($('#popForm').valid()) {
+                                    var data = $('#popForm').serializeObject();
+                                    data.level = +index+1;
+                                    console.log(data);
+                                    console.log(index);
+                                    for(var v in awardList) {
+                                        console.log(v);
+                                        if(awardList[v].level-1 == index) {
+                                            awardList[v] = data;
+                                            // awardList[v].level = +index+1;
+                                            console.log(awardList[v]);
+                                        }
+                                    }
+                                    console.log(awardList);
+                                    var awardTemp =
+                                        // '<div id="awardDom'+index+'">'+
+                                        '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
+                                        // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
+                                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value1+'</span>'+
+                                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
+                                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
+                                        '<input id="editAwardBtn_'+index+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
+                                        // '</div>'
+
+                                    console.log(awardTemp);
+                                    $('#awardDom'+index).empty().append(awardTemp);
+                                    dw.close().remove();
+                                }
+
+                            }
+                        }, {
+                            title: '取消',
+                            handler: function () {
+                                dw.close().remove();
+                            }
+                        }]
+
+			})
+			hideLoading();
+		});
         var awardList = [];
         var v = 0;
 
@@ -482,85 +691,7 @@ $(function() {
                                     $('#awardContent').append(awardHtml);
 
                                     // 修改奖励机制按钮点击事件
-                                    $('.editAwardBtn').click(function (e) {
-                                        var index = e.target.id.split('_')[1];
-                                        var value = items[index].name;
-                                        var dw = dialog({
-                                            content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                                            '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的奖励机制</li></ul>' +
-                                            '</form>',
-                                        });
-                                        dw.showModal();
-
-                                        buildDetail({
-                                            container: $('#formContainer'),
-                                            fields: [{
-                                                field: 'level',
-                                                title: '等级',
-                                                required: true,
-                                                value: value,
-                                                readonly: true
-                                            }, {
-                                                field: 'type',
-                                                title: '类型',
-                                                value : '0',
-                                                hidden : true
-                                            }, {
-                                                field: 'value1',
-                                                title: '直接推荐奖励',
-                                                required: true
-                                            }, {
-                                                field: 'value2',
-                                                title: '间接推荐奖励',
-                                                required: true
-                                            }, {
-                                                field: 'value3',
-                                                title: '次推荐奖励',
-                                                required: true
-                                            }],
-                                            buttons: [{
-                                                title: '确定',
-                                                handler: function () {
-                                                    if ($('#popForm').valid()) {
-                                                        var data = $('#popForm').serializeObject();
-                                                        data.level = +index+1;
-                                                        console.log(data);
-                                                        console.log(index);
-                                                        for(var v in awardList) {
-                                                            console.log(v);
-                                                            if(awardList[v].level-1 == index) {
-                                                                awardList[v] = data;
-                                                                // awardList[v].level = +index+1;
-                                                                console.log(awardList[v]);
-                                                            }
-                                                        }
-                                                        console.log(awardList);
-                                                        var awardTemp =
-                                                            // '<div id="awardDom'+index+'">'+
-                                                            '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
-                                                            // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
-                                                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value1+'</span>'+
-                                                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
-                                                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
-                                                            '<input id="editAwardBtn_'+index+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
-                                                            // '</div>'
-
-                                                        console.log(awardTemp);
-                                                        $('#awardDom'+index).empty().append(awardTemp);
-                                                        dw.close().remove();
-                                                    }
-
-                                                }
-                                            }, {
-                                                title: '取消',
-                                                handler: function () {
-                                                    dw.close().remove();
-                                                }
-                                            }]
-
-                                        })
-                                        hideLoading();
-                                    });
+                                    
                                     $('#add2Btn').addClass('hidden');
 
 
@@ -748,16 +879,6 @@ $(function() {
                     }
                 }]
             });
-//          $('#type').change(function(){
-//              var type = $('#type').val();
-//              if(type == '1') {
-//                  $('#value2').parent().css('display','none');
-//                  $('#value3').parent().css('display','none');
-//              }else {
-//                  $('#value2').parent().css('display','block');
-//                  $('#value3').parent().css('display','block');
-//              }
-//          });
             hideLoading();
 
 

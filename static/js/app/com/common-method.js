@@ -1296,73 +1296,75 @@ function buildDetail(options) {
         $('#' + btnHandlers[i].id).on('click', btnHandlers[i].handler);
     }
 
-    $('#backBtn').click(function() {
-        goBack();
-    });
-
-    $('#subBtn').click(function() {
-        if ($('#jsForm').valid()) {
-            var data = $('#jsForm').serializeObject();
-            $('#jsForm').find('.btn-file [type=file]').parent().next().each(function(i, el) {
-                var values = [];
-                var imgs = $(el).find('.img-ctn');
-                imgs.each(function(index, img) {
-                    values.push($(img).attr('data-src') || $(img).find('img').attr('data-src'));
-                });
-                data[el.id] = values.join('||');
-            });
-            if ($('#jsForm').find('#province')[0]) {
-                var province = $('#province').val();
-                var city = $('#city').val();
-                var area = $('#area').val();
-                if (!city) {
-                    data['city'] = province;
-                    data['area'] = province;
-                } else if (!area) {
-                    data['city'] = province;
-                    data['area'] = city;
-                }
-            }
-            for (var i = 0, len = fields.length; i < len; i++) {
-                var item = fields[i];
-                if (item.equal && (!$('#' + item.field).is(':hidden') || !$('#' + item.field + 'Img').is(':hidden'))) {
-                    data[item.equal] = $('#' + item.field).val() || $('#' + item.field).attr('src');
-                } else if (item.emptyValue && !data[item.field]) {
-                    data[item.field] = item.emptyValue;
-                } else if (item.readonly && item.pass) {
-                    data[item.field] = $('#' + item.field).attr('data-value') || $('#' + item.field).html();
-                }
-                if (item.type == 'select' && item.passValue) {
-                    data[item.field] = $('#' + item.field).find('option:selected').html();
-                }
-            }
-            data['id'] = data['code'];
-            if (options.beforeSubmit) {
-                if (!options.beforeSubmit(data)) {
-                    return;
-                }
-            }
-
-            var request = function() {
-            	showLoading();
-                reqApi({
-                    code: code ?
-                        options.editCode : options.addCode,
-                    json: data
-                }).then(function(data){
-                	sucDetail();
-                },hideLoading);
-            };
-
-            if (options.beforeSubmitAsync) {
-                options.beforeSubmitAsync.callback = request;
-                options.beforeSubmitAsync(data);
-            } else {
-                request();
-            }
-
-        }
-    });
+	if (!options.buttons) {
+	    $('#backBtn').click(function() {
+	        goBack();
+	    });
+	
+	    $('#subBtn').click(function() {
+	        if ($('#jsForm').valid()) {
+	            var data = $('#jsForm').serializeObject();
+	            $('#jsForm').find('.btn-file [type=file]').parent().next().each(function(i, el) {
+	                var values = [];
+	                var imgs = $(el).find('.img-ctn');
+	                imgs.each(function(index, img) {
+	                    values.push($(img).attr('data-src') || $(img).find('img').attr('data-src'));
+	                });
+	                data[el.id] = values.join('||');
+	            });
+	            if ($('#jsForm').find('#province')[0]) {
+	                var province = $('#province').val();
+	                var city = $('#city').val();
+	                var area = $('#area').val();
+	                if (!city) {
+	                    data['city'] = province;
+	                    data['area'] = province;
+	                } else if (!area) {
+	                    data['city'] = province;
+	                    data['area'] = city;
+	                }
+	            }
+	            for (var i = 0, len = fields.length; i < len; i++) {
+	                var item = fields[i];
+	                if (item.equal && (!$('#' + item.field).is(':hidden') || !$('#' + item.field + 'Img').is(':hidden'))) {
+	                    data[item.equal] = $('#' + item.field).val() || $('#' + item.field).attr('src');
+	                } else if (item.emptyValue && !data[item.field]) {
+	                    data[item.field] = item.emptyValue;
+	                } else if (item.readonly && item.pass) {
+	                    data[item.field] = $('#' + item.field).attr('data-value') || $('#' + item.field).html();
+	                }
+	                if (item.type == 'select' && item.passValue) {
+	                    data[item.field] = $('#' + item.field).find('option:selected').html();
+	                }
+	            }
+	            data['id'] = data['code'];
+	            if (options.beforeSubmit) {
+	                if (!options.beforeSubmit(data)) {
+	                    return;
+	                }
+	            }
+	
+	            var request = function() {
+	            	showLoading();
+	                reqApi({
+	                    code: code ?
+	                        options.editCode : options.addCode,
+	                    json: data
+	                }).then(function(data){
+	                	sucDetail();
+	                },hideLoading);
+	            };
+	
+	            if (options.beforeSubmitAsync) {
+	                options.beforeSubmitAsync.callback = request;
+	                options.beforeSubmitAsync(data);
+	            } else {
+	                request();
+	            }
+	
+	        }
+	    });
+    }
 
     //valid验证
     if (options.container) {

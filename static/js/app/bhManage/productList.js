@@ -54,16 +54,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627554',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
+		pageCode: '627554'
 	});
     // 上架
     $('#upBtn').click(function() {
@@ -157,4 +148,14 @@ $(function() {
 
     });
 
+
+	//修改
+	$('#editBtn').off('click').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "./productList_edit.html?code="+selRecords[0].code;
+    });
 });
