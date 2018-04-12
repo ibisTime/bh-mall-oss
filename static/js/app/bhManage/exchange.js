@@ -20,27 +20,14 @@ $(function() {
         title : '订单状态',
         search: true,
         type: 'select',
-        key : 'order_status',
-        formatter : Dict.getNameForList('order_status')
-    }, {
-        field : 'kind',
-        title : '订单类型',
-        search: true,
-        type: 'select',
-        key :'order_type',
-        formatter : Dict.getNameForList('order_type')
-    }, {
+        key : 'change_product_status',
+        formatter : Dict.getNameForList('change_product_status')
+    },{
         field : 'updateDatetime1',
         title : '下单代理'
     }, {
         field : 'updateDatetime2',
         title : '下单代理等级'
-    }, {
-        field : 'signer',
-        title : '收货人'
-    }, {
-        field : 'mobile',
-        title : '收货人电话'
     }, {
         field : 'remark',
         title : '备注'
@@ -53,15 +40,21 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627800',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
+		pageCode: '627800'
 	});
+	
+	$('#checkBtn').off('click').click(function() {
+		var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        
+        if(selRecords[0].status == '0') {
+        	window.location.href = "./exchange_check.html?v=1&code="+selRecords[0].code;
+        }else {
+        	toastr.info('该状态下不可进行审核');
+        }
+
+	})
 });

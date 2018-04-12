@@ -170,7 +170,7 @@ $(function() {
 
 
 
-
+		// 删除产品规格
 		$('#guigeHtml').on('click', '.delguigeBtn', function delguige(e) {
             var id = e.target.id;
             var text = $('#'+id).parent().children(":first").text();
@@ -218,6 +218,176 @@ $(function() {
         });
             
         
+        
+         // 修改推荐奖励
+        $('#awardContent').on('click', '.editAwardBtn', function editAward(e) {
+        	
+					var index = e.target.id.split('_')[1];
+					var value = items[index].name;
+					var dw = dialog({
+    					content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+									'<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的奖励机制</li></ul>' +
+  								'</form>',
+					});
+					dw.showModal();
+
+					buildDetail({
+    					container: $('#formContainer'),
+						fields: [{
+									field: 'level',
+									title: '等级',
+									required: true,
+									value: value,
+									readonly: true
+								}, {
+    								field: 'type',
+									title: '类型',
+									value : '0',
+    								hidden : true
+								}, {
+    								field: 'value1',
+									title: '直接推荐奖励',
+    								required: true
+								}, {
+    								field: 'value2',
+									title: '间接推荐奖励',
+    								required: true
+								}, {
+    								field: 'value3',
+									title: '次推荐奖励',
+    								required: true
+								}],
+						buttons: [{
+    								title: '确定',
+									handler: function () {
+    											if ($('#popForm').valid()) {
+												    var data = $('#popForm').serializeObject();
+												    data.level = +index+1;
+												    console.log(data);
+												    console.log(index);
+												    for(var v in awardList) {
+												        console.log(v);
+												        if(awardList[v].level-1 == index && awardList[v].type == data.type) {
+												            awardList[v].value1 = data.value1;
+												            awardList[v].value2 = data.value2;
+												            awardList[v].value3 = data.value3;
+												            // awardList[v].level = +index+1;
+												            console.log(awardList[v]);
+												        }
+												    }
+												    console.log(awardList);
+												    var awardTemp =
+												        // '<div id="awardDom'+index+'">'+
+												        '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
+												        // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
+												        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value1+'</span>'+
+												        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
+												        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
+												        '<input id="editAwardBtn_'+index+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
+												        // '</div>'
+												
+												
+												
+													$('。editAwardBtn').click(function() {
+														editAward(e);
+													})
+												    console.log(awardTemp);
+												    $('#awardDom'+index).empty().append(awardTemp);
+												            dw.close().remove();
+												}
+												
+									}
+								}, {
+									title: '取消',
+									handler: function () {
+												dw.close().remove();
+									}
+								}]
+
+					})
+					hideLoading();
+				
+        })
+        
+        
+        // 修改出货奖励
+        $('#awardCHContent').on('click', '.editAwardCHBtn', function editAwardCH(e) {
+        	var index = (+e.target.id.split('_')[1]);
+                                    console.log(index);
+                                    console.log(items);
+                                    var value = items[index].name;
+                                    var dw2 = dialog({
+                                        content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                                        '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的出货奖励机制</li></ul>' +
+                                        '</form>',
+                                    });
+                                    dw2.showModal();
+
+                                    buildDetail({
+                                        container: $('#formContainer'),
+                                        fields: [{
+                                            field: 'level',
+                                            title: '等级',
+                                            required: true,
+                                            value: value,
+                                            readonly: true
+                                        }, {
+                                            field: 'type',
+                                            title: '类型',
+                                            value : '1',
+                                            hidden : true
+                                        }, {
+                                            field: 'value1',
+                                            title: '出货奖励',
+                                            required: true
+                                        }],
+                                        buttons: [{
+                                            title: '确定',
+                                            handler: function () {
+                                                if ($('#popForm').valid()) {
+                                                    var data = $('#popForm').serializeObject();
+                                                    data.level = +index+1;
+                                                    console.log(data);
+                                                    console.log(index);
+                                                    for(var v in awardList) {
+                                                        console.log(v);
+                                                        if(awardList[v].level-1 == index && awardList[v].type == data.type) {
+                                                            awardList[v].value1 = data.value1;
+                                                            // awardList[v].level = +index+1;
+                                                            console.log(awardList[v]);
+                                                        }
+                                                    }
+                                                    console.log(awardList);
+                                                    var awardTemp =
+                                                        // '<div id="awardDom'+index+'">'+
+                                                        '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
+                                                        // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
+                                                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value1+'</span>'+
+                                                        // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
+                                                        // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
+                                                        '<input id="editAwardCHBtn_'+index+'" type="button" class="btn editAwardCHBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
+                                                    // '</div>'
+
+                                                 	console.log(awardTemp);
+                                                    console.log(index);
+                                                  $('#awardCHDom'+index).empty().append(awardTemp);
+                                                    dw2.close().remove();
+                                                }
+
+                                            }
+                                        }, {
+                                            title: '取消',
+                                            handler: function () {
+                                                 dw.close().remove();
+                                            }
+                                        }]
+
+                                    })
+                                    hideLoading();
+                                });
+
+
+
         var b = 0;
         var specList = [];
         
@@ -460,20 +630,32 @@ $(function() {
                                     jiangli();
                                 }else {
                                     dw.close().remove();
-                                    awardList.map(function (index,item) {
+                                    
+                                    
+                                    var type0 = [];
+                                
+                                	function ftype0(item){
+                                		if(item.type == '0') {
+                                			return item
+                                		}
+                                	}
+                                
+                                	type0 = awardList.filter(ftype0);
+                                
+                                
+                                    type0.map(function (index,item) {
                                         // console.log(items[index.level].name);
-                                        if(index.type == '0') {
+//                                      if(index.type == '0') {
                                             var awardTemp =
                                                 '<div id="awardDom'+item+'">'+
                                                 '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[index.level-1].name+'</span>'+
-                                                // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
                                                 '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value1+'</span>'+
                                                 '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value2+'</span>'+
                                                 '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value3+'</span>'+
                                                 '<input id="editAwardBtn_'+item+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'+
                                                 '</div>'
                                             awardHtml += awardTemp;
-                                        }
+//                                      }
 
                                     });
 
@@ -481,86 +663,7 @@ $(function() {
 
                                     $('#awardContent').append(awardHtml);
 
-                                    // 修改奖励机制按钮点击事件
-                                    $('.editAwardBtn').click(function (e) {
-                                        var index = e.target.id.split('_')[1];
-                                        var value = items[index].name;
-                                        var dw = dialog({
-                                            content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                                            '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的奖励机制</li></ul>' +
-                                            '</form>',
-                                        });
-                                        dw.showModal();
-
-                                        buildDetail({
-                                            container: $('#formContainer'),
-                                            fields: [{
-                                                field: 'level',
-                                                title: '等级',
-                                                required: true,
-                                                value: value,
-                                                readonly: true
-                                            }, {
-                                                field: 'type',
-                                                title: '类型',
-                                                value : '0',
-                                                hidden : true
-                                            }, {
-                                                field: 'value1',
-                                                title: '直接推荐奖励',
-                                                required: true
-                                            }, {
-                                                field: 'value2',
-                                                title: '间接推荐奖励',
-                                                required: true
-                                            }, {
-                                                field: 'value3',
-                                                title: '次推荐奖励',
-                                                required: true
-                                            }],
-                                            buttons: [{
-                                                title: '确定',
-                                                handler: function () {
-                                                    if ($('#popForm').valid()) {
-                                                        var data = $('#popForm').serializeObject();
-                                                        data.level = +index+1;
-                                                        console.log(data);
-                                                        console.log(index);
-                                                        for(var v in awardList) {
-                                                            console.log(v);
-                                                            if(awardList[v].level-1 == index) {
-                                                                awardList[v] = data;
-                                                                // awardList[v].level = +index+1;
-                                                                console.log(awardList[v]);
-                                                            }
-                                                        }
-                                                        console.log(awardList);
-                                                        var awardTemp =
-                                                            // '<div id="awardDom'+index+'">'+
-                                                            '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
-                                                            // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
-                                                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value1+'</span>'+
-                                                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
-                                                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
-                                                            '<input id="editAwardBtn_'+index+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
-                                                            // '</div>'
-
-                                                        console.log(awardTemp);
-                                                        $('#awardDom'+index).empty().append(awardTemp);
-                                                        dw.close().remove();
-                                                    }
-
-                                                }
-                                            }, {
-                                                title: '取消',
-                                                handler: function () {
-                                                    dw.close().remove();
-                                                }
-                                            }]
-
-                                        })
-                                        hideLoading();
-                                    });
+                                   
                                     $('#add2Btn').addClass('hidden');
 
 
@@ -639,102 +742,109 @@ $(function() {
                                 CHjiangli();
                             }else {
                                 dw.close().remove();
-                                awardList.map(function (index,item) {
+                                
+                                
+                                var type1 = [];
+                                
+                                function ftype1(item){
+                                	if(item.type == '1') {
+                                		return item
+                                	}
+                                }
+                                
+                                type1 = awardList.filter(ftype1);
+                                type1.map(function (index,item) {
                                     // console.log(items[index.level].name);
-                                    if(index.type == '1') {
+//                                  if(index.type == '1') {
                                         var awardTemp =
                                             '<div id="awardCHDom'+item+'">'+
                                             '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[index.level-1].name+'</span>'+
-                                            // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
                                             '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value1+'</span>'+
-                                            // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value2+'</span>'+
-                                            // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value3+'</span>'+
                                             '<input id="editAwardCHBtn_'+item+'" type="button" class="btn editAwardCHBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'+
                                             '</div>'
                                         awardHtml1 += awardTemp;
-                                    }
+//                                  }
 
                                 });
-
 
 
                                 $('#awardCHContent').append(awardHtml1);
 
                                 // 修改奖励机制按钮点击事件
-                                $('.editAwardCHBtn').click(function (e) {
-                                    var index = e.target.id.split('_')[1]-5;
-                                    console.log(index);
-                                    console.log(items);
-                                    var value = items[index].name;
-                                    var dw = dialog({
-                                        content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                                        '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的出货奖励机制</li></ul>' +
-                                        '</form>',
-                                    });
-                                    dw.showModal();
-
-                                    buildDetail({
-                                        container: $('#formContainer'),
-                                        fields: [{
-                                            field: 'level',
-                                            title: '等级',
-                                            required: true,
-                                            value: value,
-                                            readonly: true
-                                        }, {
-                                            field: 'type',
-                                            title: '类型',
-                                            value : '1',
-                                            hidden : true
-                                        }, {
-                                            field: 'value1',
-                                            title: '出货奖励',
-                                            required: true
-                                        }],
-                                        buttons: [{
-                                            title: '确定',
-                                            handler: function () {
-                                                if ($('#popForm').valid()) {
-                                                    var data = $('#popForm').serializeObject();
-                                                    data.level = +index+1;
-                                                    console.log(data);
-                                                    console.log(index);
-                                                    for(var v in awardList) {
-                                                        console.log(v);
-                                                        if(awardList[CH].level-1 == index && awardList[CH].type == data.type) {
-                                                            awardList[CH] = data;
-                                                            // awardList[v].level = +index+1;
-                                                            console.log(awardList[CH]);
-                                                        }
-                                                    }
-                                                    console.log(awardList);
-                                                    var awardTemp =
-                                                        // '<div id="awardDom'+index+'">'+
-                                                        '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
-                                                        // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
-                                                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value1+'</span>'+
-                                                        // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
-                                                        // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
-                                                        '<input id="editAwardBtn_'+index+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
-                                                    // '</div>'
-
-                                                    console.log(awardTemp);
-                                                    console.log(index);
-                                                    $('#awardCHDom'+(+index+5)).empty().append(awardTemp);
-                                                    dw.close().remove();
-                                                }
-
-                                            }
-                                        }, {
-                                            title: '取消',
-                                            handler: function () {
-                                                dw.close().remove();
-                                            }
-                                        }]
-
-                                    })
-                                    hideLoading();
-                                });
+//                              $('.editAwardCHBtn').click(function (e) {
+//                                  var index = e.target.id.split('_')[1]-5;
+//                                  console.log(index);
+//                                  console.log(items);
+//                                  var value = items[index].name;
+//                                  var dw = dialog({
+//                                      content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+//                                      '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的出货奖励机制</li></ul>' +
+//                                      '</form>',
+//                                  });
+//                                  dw.showModal();
+//
+//                                  buildDetail({
+//                                      container: $('#formContainer'),
+//                                      fields: [{
+//                                          field: 'level',
+//                                          title: '等级',
+//                                          required: true,
+//                                          value: value,
+//                                          readonly: true
+//                                      }, {
+//                                          field: 'type',
+//                                          title: '类型',
+//                                          value : '1',
+//                                          hidden : true
+//                                      }, {
+//                                          field: 'value1',
+//                                          title: '出货奖励',
+//                                          required: true
+//                                      }],
+//                                      buttons: [{
+//                                          title: '确定',
+//                                          handler: function () {
+//                                              if ($('#popForm').valid()) {
+//                                                  var data = $('#popForm').serializeObject();
+//                                                  data.level = +index+1;
+//                                                  console.log(data);
+//                                                  console.log(index);
+//                                                  for(var v in awardList) {
+//                                                      console.log(v);
+//                                                      if(awardList[CH].level-1 == index ) {
+//                                                          awardList[CH] = data;
+//                                                          // awardList[v].level = +index+1;
+//                                                          console.log(awardList[CH]);
+//                                                      }
+//                                                  }
+//                                                  console.log(awardList);
+//                                                  var awardTemp =
+//                                                      // '<div id="awardDom'+index+'">'+
+//                                                      '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
+//                                                      // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
+//                                                      '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value1+'</span>'+
+//                                                      // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
+//                                                      // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
+//                                                      '<input id="editAwardBtn_'+index+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
+//                                                  // '</div>'
+//
+//                                                  console.log(awardTemp);
+//                                                  console.log(index);
+//                                                  $('#awardCHDom'+(+index+5)).empty().append(awardTemp);
+//                                                  dw.close().remove();
+//                                              }
+//
+//                                          }
+//                                      }, {
+//                                          title: '取消',
+//                                          handler: function () {
+//                                              dw.close().remove();
+//                                          }
+//                                      }]
+//
+//                                  })
+//                                  hideLoading();
+//                              });
                                 $('#add3Btn').addClass('hidden');
 
 
@@ -748,16 +858,6 @@ $(function() {
                     }
                 }]
             });
-//          $('#type').change(function(){
-//              var type = $('#type').val();
-//              if(type == '1') {
-//                  $('#value2').parent().css('display','none');
-//                  $('#value3').parent().css('display','none');
-//              }else {
-//                  $('#value2').parent().css('display','block');
-//                  $('#value3').parent().css('display','block');
-//              }
-//          });
             hideLoading();
 
 

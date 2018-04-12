@@ -1,5 +1,6 @@
 $(function() {
 	var code = getQueryString('code');
+	console.log(code);
 	var view = getQueryString('v') || true;
     var fields = [{
         field : 'code1',

@@ -50,7 +50,7 @@ $(function() {
 		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
 		// }
 	});
-	$("#checkBtn").click(function () {
+	$("#checkBtn").off('click').click(function () {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
@@ -58,7 +58,7 @@ $(function() {
         }
         console.log(typeof selRecords[0].status);
         if(selRecords[0].status === '1') {
-            window.location.href = "./shenhechongzhi_check.html";
+            window.location.href = "./shenhechongzhi_check.html?code="+selRecords[0].code;
         }else {
             toastr.info('该状态不可进行审核')
         }

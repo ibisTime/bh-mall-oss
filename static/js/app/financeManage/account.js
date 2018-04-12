@@ -14,5 +14,9 @@ $(function() {
     $("#accouBtn").click(function() {
         window.location.href = 'quxian.html?accountNumber=' + accountNumber;
     });
+    
+    $('#accoutGrantBtn').click(function() {
+    	window.location.href = "./liushui.html";
+    })
 
 });

@@ -156,6 +156,116 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./productList_edit.html?code="+selRecords[0].code;
+        if(selRecords[0].status != '2') {
+        	window.location.href = "./productList_edit.html?code="+selRecords[0].code;
+        }else {
+        	toastr.info('已上架的产品不能修改')
+        }
+        
     });
+    
+    
+    // 规格库存
+    $('#guigeBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        
+        
+        
+        
+        
+        reqApi({
+        	code : '627557',
+        	json : {
+        		code : selRecords[0].code
+        	}
+        }).done(function(data) {
+        	var vir = data.virNumber;
+        	var real = data.realNumber;
+        	
+        	
+        	var dw = dialog({
+                    content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">修改规格库存</li></ul>' +
+                    '</form>'
+                });
+
+                dw.showModal();
+
+                buildDetail({
+                    container: $('#formContainer'),
+                    fields: [{
+                        field: 'vir',
+                        title: '虚拟库存',
+                        readonly: true,
+                        value : vir
+                    },{
+                        field: 'real',
+                        title: '实际库存',
+                        readonly: true,
+                        value : real
+                    },{
+                        field: 'kind',
+                        title: '种类',
+                        required: true,
+                        type: 'select',
+                        data : {'0':'虚拟库存','1':'真实库存'}
+                    },{
+                        field : 'type',
+                        title : '操作类型',
+                        required: true,
+                        type: 'select',
+                        data : {'0':'入库','1':'出库'}
+                    },{
+                    	field : 'number',
+                    	title : '变动数量',
+                    	required : true,
+                    	number : true
+               		}],
+                    buttons: [{
+                        title: '确定',
+                        handler: function () {
+                            if ($('#popForm').valid()) {
+                                var data = $('#popForm').serializeObject();
+                                
+                                data.code = selRecords[0].code;
+                                data.updater = getUserName();
+                                if(data.kind == '0') {
+                                    data.virNumber = data.number;
+                                }else{
+                                    data.realNumber = data.number
+                                }
+                                delete data.number;
+                                reqApi({
+                                    code: '627545',
+                                    json: data
+                                }).done(function () {
+                                    sucList();
+                                    dw.close().remove();
+                                });
+                            }
+                        }
+                    }, {
+                        title: '取消',
+                        handler: function () {
+                            dw.close().remove();
+                        }
+                    }]
+                });
+                hideLoading()
+        	
+        })
+        
+        
+        
+        
+        
+        
+        
+        
+    });
+    
 });
