@@ -31,7 +31,7 @@ $(function(){
 	buildList({
 		router: 'user',
 		columns: columns,
-		pageCode: '627266',
+		pageCode: '627355',
 		searchParams: {
 			kind: 'P',
 			companyCode: OSS.company

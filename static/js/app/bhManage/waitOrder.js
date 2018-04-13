@@ -38,6 +38,7 @@ $(function() {
             title: '订单状态',
             search: true,
             type: 'select',
+            key : 'order_status',
             formatter: Dict.getNameForList('order_status')
         }, {
             field: 'updateDatetime',

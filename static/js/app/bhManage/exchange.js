@@ -26,16 +26,19 @@ $(function() {
         field : 'updateDatetime1',
         title : '下单代理'
     }, {
-        field : 'updateDatetime2',
-        title : '下单代理等级'
+        field : 'level',
+        title : '下单代理等级',
+        type : 'select',
+        listCode : '627006',
+        keyName : 'level',
+        valueName : 'name'
     }, {
         field : 'remark',
         title : '备注'
     }, {
-        field : 'updateDatetime4',
+        field : 'keyword',
         title : '关键字',
         search: true,
-        type: 'select',
         visible: false
     }];
 	buildList({

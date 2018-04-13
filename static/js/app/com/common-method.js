@@ -682,7 +682,8 @@ function buildList(options) {
             $('#' + item.field1).click(function() {
                 var end = $('#' + item.field2).val();
                 var obj = {
-                    elem: '#' + item.field1
+                    elem: '#' + item.field1,
+                    format: item.type == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
                 };
                 end && (obj.max = end);
                 laydate(obj);
@@ -690,7 +691,8 @@ function buildList(options) {
             $('#' + item.field2).click(function() {
                 var start = $('#' + item.field1).val();
                 var obj = {
-                    elem: '#' + item.field2
+                    elem: '#' + item.field2,
+                    format: item.type == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
                 };
                 start && (obj.min = start);
                 laydate(obj);
@@ -958,6 +960,8 @@ function buildList(options) {
     
     if ('exportDataType' in options) {
         exportDataType = options['exportDataType'];
+    }else {
+    	exportDataType = 'all'
     }
     if ('detailFormatter' in options) {
         detailView = true;
@@ -984,11 +988,7 @@ function buildList(options) {
     tableEl.on('page-change.bs.table', function () {
         showLoading()
     });
-    // if (options.container) {
-    //     options.container.append(html);
-    // } else {
-    //     $('.form-info').append(html);
-    // }
+
     
     var tableInfo = JSON.parse(sessionStorage.getItem('tableInfo') || '{}')[location.pathname] || {};
     //表格初始化
@@ -1002,7 +1002,7 @@ function buildList(options) {
         singleSelect: singleSelect,
         detailView: detailView,
         detailFormatter: detailFormatter,
-        exportDataType : exportDataType || 'all',
+        exportDataType : exportDataType,
         queryParams: function(params) {
             var json = {};
             json.start = params.offset / params.limit + 1;

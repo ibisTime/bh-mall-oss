@@ -6,12 +6,14 @@ $(function() {
 		checkbox : true
 	},{
 		field : 'name',
-		title : '产品名称',
-		search: true,
-		type: 'select'
+		title : '产品名称'
 	},{
         field : 'type',
-        title : '变动类型'
+        title : '变动类型',
+        type : 'select',
+        search : true,
+        key : 'product_log_type',
+        formatter : Dict.getNameForList('product_log_type')
     }, {
         field : 'tranCount',
         title : '变动库存'
@@ -24,19 +26,19 @@ $(function() {
     }, {
         field : 'updateDatetime',
         title : '变动时间',
-        formatter: dateTimeFormat
+        formatter: dateTimeFormat,
+        field1: 'dateStart',
+        title1: '日期',
+        field2: 'dateEnd',
+        twoDate: true,
+        search: true,
+        type : 'datetime'
     }, {
         field : 'updater',
         title : '操作人'
     }, {
         field : 'remark',
         title : '备注'
-    }, {
-        field : 'updateDatetime',
-        title : '操作类型',
-        search: true,
-        type: 'select',
-        visible: false
     }];
 	buildList({
 		columns: columns,
