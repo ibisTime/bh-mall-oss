@@ -166,11 +166,13 @@ $(function() {
         });
 
     });
-
-
-
-$('#exportBtn').off('click').click(function () {
-        if (!manager.getSelected()) {
+    
+    
+    
+    
+    $('.toolbar').on('click','#exportBtn',function() {
+    	console.log('1');
+    	if (!manager.getSelected()) {
             alert('bn');
             return;
         }
@@ -270,7 +272,110 @@ $('#exportBtn').off('click').click(function () {
             hideLoading();
         });
 
-    });
+    })
+
+//$('#exportBtn').off('click').click(function () {
+//      if (!manager.getSelected()) {
+//          alert('bn');
+//          return;
+//      }
+//      var dw = dialog({
+//          // content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+//          // '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该喜报的位序</li></ul>' +
+//          // '</form>'
+//          content:
+//          '<div class="right-info">'+
+//          '<form class="search-form">'+
+//          '</form>'+
+//          '<div class="tools" style = "display:block">'+
+//          '<ul class="toolbar1">'+
+////          '<li id="exBtn" style="display : block"><span><img src="/static/images/t01.png"></span>导出</li>'+
+//          '<li></li>'+
+//          '</ul>'+
+//          '</div>'+
+//          '<table id="tableList1"></table>'+
+//          // '<ul></ul>'+
+//          '<input id="exBtn" type="button" class="btn" style="margin-left:40px;display: inline-block;!important;" value="导出"/>'+
+//          '<input id="cancelBtn" type="button" class="btn" style="margin-left:40px;display: inline-block;!important;" value="取消"/>'+
+//          '</div>'
+//
+//      });
+//
+//      dw.showModal();
+//      $('#cancelBtn').click(function () {
+//          dw.close().remove();
+//      })
+//      // var columns=[];
+//      reqApi({
+//          code: '627006',
+//      }, true).then(function (data) {
+//          var items = data.map(function (item) {
+//              return {
+//                  field: item.level,
+//                  title: item.name,
+////                  formatter : function (v, data) {
+////                      if(data.level == item.level) {
+////                          return data.realName+'-'+data.nickname;
+////                      }else {
+////                          return '-'
+////                      }
+////                  }
+//              };
+//          });
+//          buildList({
+//              container: $('.ui-dialog-content'),
+//              columns: items,
+//              pageCode: '627352',
+//              tableId : 'tableList1',
+//              exportDataType : 'combine',
+//              searchParams: {
+//                  userId : manager.getSelected().data.userId
+//              },
+//              afterData: function (res) {
+//                  createList(res.data, true);
+////                  createList(res, true);
+//                  console.log(newList, countMap);
+//                  setTimeout(function () {
+//                      var _table = $('#tableList1');
+//                      for (var k in countMap) {
+//                          if (countMap[k].count > 1) {
+//                              _table.bootstrapTable('mergeCells', {
+//                                  index: countMap[k].index,
+//                                  field: countMap[k].level,
+//                                  colspan: 1,
+//                                  rowspan: countMap[k].count
+//                              });
+//                          }
+//                      }
+//                  }, 100);
+//                  return {
+//                      rows: newList,
+//                      total: newList.length
+//                  }
+//              }
+//          });
+//          $('.search-form').empty();
+//          $('.search-form-li').empty();
+//          $('.toolbar1').css('padding-bottom','80px');
+////          $('.bootstrap-table').css('position','relative');
+//          $('.tableList1').css('position','absolute').css('top','50px');
+//          // $('#exportBtn').css('display','none');
+//          // var tempHtml =  '<ul><li class="search-form-li"><input id="exBtn" type="button" class="btn" value="导出"></li></ul>';
+//          // $('.search-form').append(tempHtml);
+//
+//          $('#exBtn').off('click').click(function () {
+//              // $('#tableList1').tableExport({ type: 'excel', escape: 'false' })
+//              $('.export .btn').click();
+//          });
+//
+//          $('#cancelBtn').click(function () {
+//              dw.close().remove();
+//              $('.fixed-table-container').remove()
+//          });
+//          hideLoading();
+//      });
+//
+//  });
     
     
     
