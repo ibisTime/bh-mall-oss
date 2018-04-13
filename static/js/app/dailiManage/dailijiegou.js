@@ -6,6 +6,111 @@ $(function() {
 
 
     var manager;
+    
+    
+    
+    
+    
+    
+    var dataList = [{
+        userId: 'U201803261916051634664',
+        level: 3,
+        realName: '张三',
+        mobile: '18868824532'
+    }, {
+        userId: 'U201803261916051634665',
+        level: 2,
+        realName: '李四',
+        mobile: '18868824531'
+    }, {
+        userId: 'U201803261916051634666',
+        level: 1,
+        realName: '王五',
+        mobile: '18868824530',
+        userList: [{
+            userId: 'U201803261916051634667',
+            level: 2,
+            realName: '王五1-1',
+            mobile: '18868824530',
+            userList: [{
+                userId: 'U201803261916051634668',
+                level: 3,
+                realName: '王五1-1-1',
+                mobile: '18868824530'
+            }]
+        }, {
+            userId: 'U201803261916051634669',
+            level: 3,
+            realName: '王五1-2',
+            mobile: '18868824529',
+            userList: [{
+                userId: 'U20180326191605163460',
+                level: 4,
+                realName: '王五1-2-1',
+                mobile: '18868824530',
+                userList: [{
+                    userId: 'U201803261916051634661',
+                    level: 5,
+                    realName: '王五1-2-1-1',
+                    mobile: '18868824530'
+                }, {
+                    userId: 'U201803261916051634662',
+                    level: 5,
+                    realName: '王五1-2-1-2',
+                    mobile: '18868824511'
+                }]
+            }]
+        }]
+    }];
+    var newList = [];
+    var countMap = {};
+    function createList(list, first) {
+    	console.log('1')
+        if (first) {
+            newList = [];
+            countMap = {};
+        }
+        for (var i = 0; i < list.length; i++) {
+            list[i].parent = list.parent || null;
+            if (list[i].userList && list[i].userList.length) {
+                list[i].userList.parent = list[i];
+                createList(list[i].userList);
+            } else {
+                var obj = {};
+                var tmp = list[i];
+                obj[tmp.level] = tmp.realName + tmp.userId;
+                countMap[tmp.userId] = countMap[tmp.userId] || {
+                    count: 0,
+                    index: newList.length,
+                    level: tmp.level
+                };
+                countMap[tmp.userId].count++;
+                while(tmp.parent) {
+                    tmp = tmp.parent;
+                    obj[tmp.level] = tmp.realName + tmp.userId;
+                    countMap[tmp.userId] = countMap[tmp.userId] || {
+                        count: 0,
+                        index: newList.length,
+                        level: tmp.level
+                    };
+                    countMap[tmp.userId].count++;
+                }
+                newList.push(obj);
+            }
+        }
+    }
+//     createList(dataList, true);
+//     console.log(newList, countMap);
+       
+//            console.log('newList, countMap');
+
+    
+    
+    
+    
+    
+    
+    
     reqApi({
         code: '627006',
     }, true).then(function (data) {
@@ -64,9 +169,11 @@ $(function() {
 
 
 
-    $('#exportBtn').off('click').click(function () {
-
-
+$('#exportBtn').off('click').click(function () {
+        if (!manager.getSelected()) {
+            alert('bn');
+            return;
+        }
         var dw = dialog({
             // content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
             // '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该喜报的位序</li></ul>' +
@@ -75,14 +182,15 @@ $(function() {
             '<div class="right-info">'+
             '<form class="search-form">'+
             '</form>'+
-            '<div class="tools">'+
+            '<div class="tools" style = "display:block">'+
             '<ul class="toolbar1">'+
-            '<li style="display:inline-block;width:100px；border:1px solid red" id="exBtn"><span><img src="/static/images/t01.png"></span>导出</li>'+
+//          '<li id="exBtn" style="display : block"><span><img src="/static/images/t01.png"></span>导出</li>'+
             '<li></li>'+
             '</ul>'+
             '</div>'+
             '<table id="tableList1"></table>'+
             // '<ul></ul>'+
+            '<input id="exBtn" type="button" class="btn" style="margin-left:40px;display: inline-block;!important;" value="导出"/>'+
             '<input id="cancelBtn" type="button" class="btn" style="margin-left:40px;display: inline-block;!important;" value="取消"/>'+
             '</div>'
 
@@ -100,35 +208,52 @@ $(function() {
                 return {
                     field: item.level,
                     title: item.name,
-                    formatter : function (v, data) {
-                        if(data.level == item.level) {
-                            return data.realName+'-'+data.nickname;
-                        }else {
-                            return '-'
-                        }
-                    }
+//                  formatter : function (v, data) {
+//                      if(data.level == item.level) {
+//                          return data.realName+'-'+data.nickname;
+//                      }else {
+//                          return '-'
+//                      }
+//                  }
                 };
             });
-
-
             buildList({
                 container: $('.ui-dialog-content'),
                 columns: items,
                 pageCode: '627352',
                 tableId : 'tableList1',
+                exportDataType : 'combine',
                 searchParams: {
                     userId : manager.getSelected().data.userId
                 },
-                onLoadSuccess : function(data) {
-                    var data = $('#table').bootstrapTable('getData', true);
-                    //合并单元格
-                    console.log(data);
-                    mergeCells(data, "companyTypeName", 1, $('#table'));
-
-                },
+                afterData: function (res) {
+                    createList(res.data, true);
+//                  createList(res, true);
+                    console.log(newList, countMap);
+                    setTimeout(function () {
+                        var _table = $('#tableList1');
+                        for (var k in countMap) {
+                            if (countMap[k].count > 1) {
+                                _table.bootstrapTable('mergeCells', {
+                                    index: countMap[k].index,
+                                    field: countMap[k].level,
+                                    colspan: 1,
+                                    rowspan: countMap[k].count
+                                });
+                            }
+                        }
+                    }, 100);
+                    return {
+                        rows: newList,
+                        total: newList.length
+                    }
+                }
             });
             $('.search-form').empty();
             $('.search-form-li').empty();
+            $('.toolbar1').css('padding-bottom','80px');
+//          $('.bootstrap-table').css('position','relative');
+            $('.tableList1').css('position','absolute').css('top','50px');
             // $('#exportBtn').css('display','none');
             // var tempHtml =  '<ul><li class="search-form-li"><input id="exBtn" type="button" class="btn" value="导出"></li></ul>';
             // $('.search-form').append(tempHtml);
@@ -146,6 +271,92 @@ $(function() {
         });
 
     });
+    
+    
+    
+
+//  $('#exportBtn').off('click').click(function () {
+//
+//
+//      var dw = dialog({
+//          // content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+//          // '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该喜报的位序</li></ul>' +
+//          // '</form>'
+//          content:
+//          '<div class="right-info">'+
+//          '<form class="search-form">'+
+//          '</form>'+
+//          '<div class="tools">'+
+//          '<ul class="toolbar1">'+
+//          '<li style="display:inline-block;width:100px；border:1px solid red" id="exBtn"><span><img src="/static/images/t01.png"></span>导出</li>'+
+//          '<li></li>'+
+//          '</ul>'+
+//          '</div>'+
+//          '<table id="tableList1"></table>'+
+//          // '<ul></ul>'+
+//          '<input id="cancelBtn" type="button" class="btn" style="margin-left:40px;display: inline-block;!important;" value="取消"/>'+
+//          '</div>'
+//
+//      });
+//
+//      dw.showModal();
+//      $('#cancelBtn').click(function () {
+//          dw.close().remove();
+//      })
+//      // var columns=[];
+//      reqApi({
+//          code: '627006',
+//      }, true).then(function (data) {
+//          var items = data.map(function (item) {
+//              return {
+//                  field: item.level,
+//                  title: item.name,
+//                  formatter : function (v, data) {
+//                      if(data.level == item.level) {
+//                          return data.realName+'-'+data.nickname;
+//                      }else {
+//                          return '-'
+//                      }
+//                  }
+//              };
+//          });
+//
+//
+//          buildList({
+//              container: $('.ui-dialog-content'),
+//              columns: items,
+//              pageCode: '627352',
+//              tableId : 'tableList1',
+//              searchParams: {
+//                  userId : manager.getSelected().data.userId
+//              },
+//              onLoadSuccess : function(data) {
+//                  var data = $('#table').bootstrapTable('getData', true);
+//                  //合并单元格
+//                  console.log(data);
+//                  mergeCells(data, "companyTypeName", 1, $('#table'));
+//
+//              },
+//          });
+//          $('.search-form').empty();
+//          $('.search-form-li').empty();
+//          // $('#exportBtn').css('display','none');
+//          // var tempHtml =  '<ul><li class="search-form-li"><input id="exBtn" type="button" class="btn" value="导出"></li></ul>';
+//          // $('.search-form').append(tempHtml);
+//
+//          $('#exBtn').off('click').click(function () {
+//              // $('#tableList1').tableExport({ type: 'excel', escape: 'false' })
+//              $('.export .btn').click();
+//          });
+//
+//          $('#cancelBtn').click(function () {
+//              dw.close().remove();
+//              $('.fixed-table-container').remove()
+//          });
+//          hideLoading();
+//      });
+//
+//  });
 
 
 

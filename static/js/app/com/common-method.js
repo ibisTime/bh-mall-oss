@@ -955,10 +955,15 @@ function buildList(options) {
     if ('singleSelect' in options) {
         singleSelect = options['singleSelect'];
     }
+    
+    if ('exportDataType' in options) {
+        exportDataType = options['exportDataType'];
+    }
     if ('detailFormatter' in options) {
         detailView = true;
         detailFormatter = options['detailFormatter'];
     }
+    
 
     if ('sortName' in options) {
         sortName = options['sortName'].replace(/[A-Z]/g, function(word) {
@@ -997,6 +1002,7 @@ function buildList(options) {
         singleSelect: singleSelect,
         detailView: detailView,
         detailFormatter: detailFormatter,
+        exportDataType : exportDataType || 'all',
         queryParams: function(params) {
             var json = {};
             json.start = params.offset / params.limit + 1;
@@ -1030,6 +1036,9 @@ function buildList(options) {
         },
         queryParamsType: 'limit',
         responseHandler: function(res) {
+        	if(options.afterData) {
+        		return options.afterData(res);
+        	}
             return {
                 rows: res.data.list || res.data,
                 total: res.data.totalCount || res.data.length
