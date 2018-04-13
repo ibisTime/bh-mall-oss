@@ -25,11 +25,15 @@ $(function() {
         key : 'change_product_status',
         formatter : Dict.getNameForList('change_product_status')
     },{
-        field : 'updateDatetime1',
+        field : 'realName',
         title : '下单代理'
     }, {
         field : 'updateDatetime2',
-        title : '下单代理等级'
+        title : '下单代理等级',
+        type : 'select',
+        listCode : '627006',
+        keyName : 'level',
+        valueName : 'name'
     }, {
         field : 'approveNote',
         title : '审核备注',

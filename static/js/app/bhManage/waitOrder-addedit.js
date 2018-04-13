@@ -14,7 +14,7 @@ $(function() {
             return data.code
         }
     },{
-        field : 'updateDatetime',
+        field : 'applyDatetime',
         title : '下单日期',
         formatter: dateTimeFormat
     }, {
@@ -34,11 +34,15 @@ $(function() {
         formatter: Dict.getNameForList('order_type')
 
     }, {
-        field : 'updateDatetime1',
+        field : 'realName',
         title : '下单代理'
     }, {
         field : 'updateDatetime2',
-        title : '下单代理等级'
+        title : '下单代理等级',
+        type: 'select',
+        listCode: '627006',
+        keyName: 'level',
+        valueName: 'name'
     }, {
         field : 'signer',
         title : '收货人'

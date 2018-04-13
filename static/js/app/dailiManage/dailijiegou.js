@@ -65,7 +65,6 @@ $(function() {
     var newList = [];
     var countMap = {};
     function createList(list, first) {
-    	console.log('1')
         if (first) {
             newList = [];
             countMap = {};

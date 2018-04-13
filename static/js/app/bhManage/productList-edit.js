@@ -251,7 +251,7 @@ $(function() {
         var awardHtml1 = '';
         $('#remark').parent().after(
             '<div style="width:100%">' +
-            '<span style="font-size: 18px">出货奖励机制</span>' +
+            '<span style="font-size: 18px">出货奖励机制(请输入0-1之间的小数)</span>' +
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
             '<div style="border: 1px solid #ced9df">'+
             '<div id="awardTitle">'+
@@ -271,7 +271,7 @@ $(function() {
         var awardHtml = '';
         $('#remark').parent().after(
             '<div style="width:100%">' +
-                '<span style="font-size: 18px">推荐奖励机制</span>' +
+                '<span style="font-size: 18px">推荐奖励机制(请输入0-1之间的小数)</span>' +
                 '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
                 '<div style="border: 1px solid #ced9df">'+
                     '<div id="awardTitle">'+

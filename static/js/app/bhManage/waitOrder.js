@@ -41,7 +41,7 @@ $(function() {
             key : 'order_status',
             formatter: Dict.getNameForList('order_status')
         }, {
-            field: 'updateDatetime',
+            field: 'realName',
             title: '下单代理'
         }, {
             field: 'level',
@@ -65,7 +65,8 @@ $(function() {
             columns: columns,
             pageCode: '627662',
             searchParams: {
-                statusList: '1,2,5'
+                statusList: '1,2,5',
+                
             },
             singleSelect: false
             // beforeEdit: function(r) {

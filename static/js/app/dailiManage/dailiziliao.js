@@ -6,7 +6,7 @@ $(function() {
         title : '',
         checkbox : true
     },{
-        field : 'loginName',
+        field : 'realName',
         title : '姓名',
 
     },{
@@ -15,28 +15,9 @@ $(function() {
         search: true,
         type: 'select',
         listCode: '627006',
-        // params: {
-        //     companyCode : OSS.company,
-        //     kind : 'S',
-        //     start : 1,
-        //     limit : 1000
-        // },
         keyName: 'level',
         valueName: 'name',
-        // formatter: function (v, data) {
-        //     for(var v of items) {
-        //         if(data.level) {
-        //             data.level = data.level.replace(v.level,v.name);
-        //
-        //         }
-        //     }
-        //     return data.level;
-        // }
-    }, {
-        field : 'updateDatetime',
-        title : '余额',
-        formatter: moneyFormat
-    }, {
+    },{
         field : 'mobile',
         title : '联系电话'
     }, {
@@ -72,13 +53,13 @@ $(function() {
         type: 'select',
         formatter : Dict.getNameForList('agent_status')
     },  {
-        field : 'updateDatetime',
-        title : '状态时间',
+        field : 'applyDatetime',
+        title : '申请时间',
         formatter: dateTimeFormat,
-        field1: 'applyDateStart',
-        title1: '状态时间',
+        field1: 'dateStart',
+        title1: '申请时间',
         type: 'date',
-        field2: 'applyDateEnd',
+        field2: 'dateEnd',
         twoDate: true,
         search: true
     }];

@@ -16,15 +16,12 @@ $(function() {
         title : '付款金额',
         formatter: moneyFormat
     }, {
-        field : 'updateDatetime',
+        field : 'status',
         title : '订单状态',
         search: true,
-        type: 'select'
-    }, {
-        field : 'orderType',
-        title : '订单类型',
-        search: true,
-        type: 'select'
+        type: 'select',
+        key : 'inner_order_status',
+        formatter : Dict.getNameForList('inner_order_status')
     }, {
         field : 'updateDatetime2',
         title : '下单代理'
