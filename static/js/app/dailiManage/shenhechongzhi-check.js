@@ -1,6 +1,5 @@
 $(function() {
 	var code = getQueryString('code');
-	console.log(code);
 	var view = getQueryString('v') || true;
     var fields = [{
         field : 'code1',
@@ -16,7 +15,10 @@ $(function() {
         }
     }, {
         field : 'cvalue',
-        title : '充值人团队'
+        title : '充值人团队',
+        formatter : function(v, data) {
+        	return data.user?data.user.teamName : '-'
+        }
     },{
         field : 'amount',
         title : '金额',

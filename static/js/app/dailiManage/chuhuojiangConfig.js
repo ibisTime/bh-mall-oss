@@ -13,7 +13,7 @@ $(function() {
         searchName :'level',
         valueName: 'name'
 	},{
-		field : 'productCode',
+		field : 'productName',
 		title : '产品'
 	}, {
         field : 'value1',

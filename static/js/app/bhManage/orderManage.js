@@ -23,7 +23,7 @@ $(function() {
         key : 'inner_order_status',
         formatter : Dict.getNameForList('inner_order_status')
     }, {
-        field : 'updateDatetime2',
+        field : 'realName',
         title : '下单代理'
     }, {
         field : 'updateDatetime3',

@@ -1,15 +1,35 @@
 $(function() {
 // 代理管理-代理管理-意向代理分配
-	var columns = [{
+
+
+reqApi({
+        code: '627006',
+    }, true).then(function (data) {
+        var items = data.map(function(item){
+            return {
+                level: item.level,
+                name: item.name
+            };
+        });
+        
+        
+        
+        var columns = [{
 		field : '',
 		title : '',
 		checkbox : true
 	},{
-		field : 'realName',
-		title : '姓名'
+		field : 'realname',
+		title : '姓名',
+		formatter : function(v, data) { 
+			return data.user?data.user.realName : '-'
+		}
 	},{
 		field : 'nickname',
-		title : '昵称'
+		title : '昵称',
+		formatter : function(v, data) { 
+			return data.user?data.user.nickname : '-'
+		}
 	},{
 		field : 'level',
 		title : '等级',
@@ -17,29 +37,62 @@ $(function() {
 		type: 'select',
         listCode : '627006',
         keyName : 'level',
-        valueName : 'name'
-	}, {
+        valueName : 'name',
+        visible : false
+	},
+	{
+		field : 'level1',
+		title : '等级',
+        formatter : function(v, data) {
+        	var level = ''
+        	items.map(function(item) {
+        		if(item.level == data.user.level) {
+					level =  item.name
+				}
+        	})
+        	return level
+        }
+	},
+	{
         field : 'mobile',
-        title : '联系电话'
+        title : '联系电话',
+        formatter : function(v, data) {
+			return data.user?data.user.mobile : '-'
+		}
     }, {
         field : 'wxId',
-        title : '微信号'
+        title : '微信号',
+        formatter : function(v, data) {
+			return data.user?data.user.wxId : '-'
+		}
     }, {
         field : 'diyu',
         title : '地域',
         formatter : function (v, data) {
-            return data.area?data.province+' '+data.city+' '+data.area
-                        :data.city?data.province+' '+data.city
-                            :data.province
+            return data.user.area?data.user.province+' '+data.user.city+' '+data.user.area
+                        :data.user.city?data.user.province+' '+data.user.city
+                            :data.user.province?data.user.province : '-'
         }
     }, {
         field : 'status',
         title : '代理状态',
         formatter : Dict.getNameForList('agent_status')
     }, {
-        field : 'updateDatetime',
-        title : '来源'
+        field : 'source',
+        title : '来源',
+        formatter : function(v, data) {
+			return data.user?data.user.source : '-'
+		}
     }, {
+    	// 显示
+        field : 'applyDatetime1',
+        title : '申请时间',
+        formatter: function (v, data) {
+        	return dateTimeFormat(data.user.applyDatetime)
+        },
+        
+    },  {
+    	// 查询
         field : 'applyDatetime',
         title : '申请时间',
         formatter: dateTimeFormat,
@@ -48,7 +101,8 @@ $(function() {
         type: 'datetime',
         field2: 'applyDateEnd',
         twoDate: true,
-        search: true
+        search: true,
+        visible : false
     }, {
         field : 'remark',
         title : '备注'
@@ -60,14 +114,17 @@ $(function() {
 		    status : '3,4'
         }
 	});
-	// 忽略意向
+        
+        
+        
+        // 忽略意向
     $('#hulveBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if(selRecords.length <= 0){
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&userId="+selRecords[0].userId+"&name="+encodeURI(encodeURI(selRecords[0].name));
+        window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&userId="+selRecords[0].applyUser+"&name="+encodeURI(encodeURI(selRecords[0].name));
     });
 
     // 审核分配
@@ -77,7 +134,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId="+selRecords[0].userId+"&name="+encodeURI(encodeURI(selRecords[0].name));
+        window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId="+selRecords[0].applyUser+"&name="+encodeURI(encodeURI(selRecords[0].name));
     });
 
     // 修改资料
@@ -87,6 +144,13 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./yixiangdailifenpei_edit.html?v=0&userId="+selRecords[0].userId;
+        window.location.href = "./yixiangdailifenpei_edit.html?v=0&userId="+selRecords[0].applyUser;
     });
+    
+    
+    
+    
+      })
+	
+	
 });

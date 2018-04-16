@@ -1,26 +1,62 @@
 $(function() {
 // 代理管理-代理管理-代理轨迹
-	var columns = [{
+
+
+reqApi({
+        code: '627006',
+    }, true).then(function (data) {
+        var items = data.map(function(item){
+            return {
+                level: item.level,
+                name: item.name
+            };
+        });
+        
+        
+        var columns = [{
 		field : '',
 		title : '',
 		checkbox : true
 	},{
-		field : 'loginName',
-		title : '姓名'
+		field : 'realname',
+		title : '姓名',
+		formatter : function(v, data) { 
+			return data.user?data.user.realName : '-'
+		}
 	}, {
-        field : 'level',
-        title : '代理等级',
+		field : 'level',
+		title : '等级',
         search: true,
-        type: 'select',
-        listCode: '627006',
-        keyName: 'level',
-        valueName: 'name'
-    },{
+		type: 'select',
+        listCode : '627006',
+        keyName : 'level',
+        valueName : 'name',
+        visible : false
+	},
+	{
+		field : 'level1',
+		title : '等级',
+        formatter : function(v, data) {
+        	var level = ''
+        	items.map(function(item) {
+        		if(item.level == data.user.level) {
+					level =  item.name
+				}
+        	})
+        	return level
+        }
+	},{
 		field : 'mobile',
-		title : '联系电话'
+        title : '手机号',
+        formatter : function(v, data) {
+			return data.user?data.user.mobile : '-'
+		}
 	}, {
         field : 'wxId',
-        title : '微信号'
+        title : '微信号',
+        formatter : function(v, data) {
+			return data.user?data.user.wxId : '-'
+		}
     }, {
         field : 'approveDatetime',
         title : '审核时间',
@@ -55,13 +91,6 @@ $(function() {
 		columns: columns,
 		pageCode: '627359'
 	});
-//  $('#detailBtn').click(function () {
-//      var selRecords = $('#tableList').bootstrapTable('getSelections');
-//      if (selRecords.length <= 0) {
-//          toastr.info("请选择记录");
-//          return;
-//      }
-//
-//      window.location.href = "./dailiguiji_addedit.html?v=1&userId="+selRecords[0].userId;
-//  })
+        
+   })
 });

@@ -3,11 +3,14 @@ $(function() {
 	var view = getQueryString('v');
 
     var fields = [{
-        field : 'name',
+        field : 'productName',
         title : '产品名称'
     },{
         field : 'type',
-        title : '变动类型'
+        title : '变动类型',
+        type : 'select',
+        key : 'product_log_type',
+        formatter : Dict.getNameForList('product_log_type')
     }, {
         field : 'tranCount',
         title : '变动库存'

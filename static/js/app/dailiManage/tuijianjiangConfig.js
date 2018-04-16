@@ -13,13 +13,8 @@ $(function() {
         searchName :'level',
         valueName: 'name'
 	},{
-		field : 'productCode',
-		title : '产品',
-        // type : 'select',
-        // listCode: '627557',
-        // keyName : 'code',
-        // searchName :'code',
-        // valueName: 'name'
+		field : 'productName',
+		title : '产品'
 	}, {
         field : 'value1',
         title : '直推奖励',

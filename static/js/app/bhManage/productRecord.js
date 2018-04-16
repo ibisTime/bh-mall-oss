@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'name',
+		field : 'productName',
 		title : '产品名称'
 	},{
         field : 'type',

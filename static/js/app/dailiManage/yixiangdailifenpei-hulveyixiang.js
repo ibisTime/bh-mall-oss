@@ -1,29 +1,40 @@
 $(function() {
 	var code = getQueryString('code');
 	var userId = getQueryString('userId');
-	var fenepi = getQueryString('fenepi');
+	var fenpei = getQueryString('fenpei');
 	var view = getQueryString('v');
 
+
+	console.log(fenpei);
     var columns = [{
-        field : 'loginName',
+        field : 'realName',
         title : '姓名'
     },{
         field : 'level',
-        title : '等级'
+        title : '等级',
+        listCode : '627006',
+        keyName : 'level',
+        valueName : 'name'
     }, {
         field : 'mobile',
         title : '联系电话'
     }, {
-        field : 'updateDatetime',
+        field : 'wxId',
         title : '微信号'
     }, {
-        field : 'updateDatetime',
-        title : '地域'
+        field : 'diyu',
+        title : '地域',
+        formatter : function (v, data) {
+            return data.area?data.province+' '+data.city+' '+data.area
+                        :data.city?data.province+' '+data.city
+                            :data.province?data.province : '-'
+        }
     }, {
         field : 'status',
-        title : '代理状态'
+        title : '代理状态',
+        formatter : Dict.getNameForList('agent_status')
     }, {
-        field : 'updateDatetime',
+        field : 'source',
         title : '来源'
     }, {
         field : 'createDatetime',
@@ -42,26 +53,35 @@ $(function() {
 
 
 // 审核分配
-    var fenpei = [{
-        field : 'loginName',
+    var fenpei1 = [{
+        field : 'realName',
         title : '姓名'
     },{
         field : 'level',
-        title : '等级'
+        title : '等级',
+        listCode : '627006',
+        keyName : 'level',
+        valueName : 'name'
     }, {
         field : 'mobile',
         title : '联系电话'
     }, {
-        field : 'updateDatetime',
+        field : 'wxId',
         title : '微信号'
     }, {
-        field : 'updateDatetime',
-        title : '地域'
+        field : 'diyu',
+        title : '地域',
+        formatter : function (v, data) {
+            return data.area?data.province+' '+data.city+' '+data.area
+                        :data.city?data.province+' '+data.city
+                            :data.province?data.province : '-'
+        }
     }, {
         field : 'status',
-        title : '代理状态'
+        title : '代理状态',
+        formatter : Dict.getNameForList('agent_status')
     }, {
-        field : 'updateDatetime',
+        field : 'source',
         title : '来源'
     }, {
         field : 'createDatetime',
@@ -123,7 +143,7 @@ $(function() {
             }
         }];
         buildDetail({
-            fields: fenpei,
+            fields: fenpei1,
             code: {
                 userId : userId
             },
@@ -158,6 +178,8 @@ $(function() {
                 goBack();
             }
         }];
+        
+       
         buildDetail({
             fields: columns,
             code: {

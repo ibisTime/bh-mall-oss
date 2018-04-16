@@ -12,11 +12,14 @@ $(function() {
 		title : '充值人',
         search: true,
         formatter : function (v, data) {
-            return data.user?data.user.loginName:'-'
+            return data.user?data.user.realName:'-'
         }
 	}, {
-        field : 'cvalue',
-        title : '充值人团队'
+        field : 'teamName',
+        title : '充值人团队',
+        formatter : function (v, data) {
+            return data.user?data.user.teamName:'-'
+        }
     },{
         field : 'amount',
         title : '金额',
@@ -33,10 +36,10 @@ $(function() {
         key : 'charge_status',
         formatter : Dict.getNameForList('charge_status')
     }, {
-        field : 'cvalue',
+        field : 'payUser',
         title : '审核人'
     }, {
-        field : 'cvalue',
+        field : 'payDatetime',
         title : '审核时间',
         formatter: dateTimeFormat
     }];
@@ -45,10 +48,7 @@ $(function() {
 		pageCode: '627470',
 		searchParams: {
 			companyCode: OSS.company,
-		},
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
+		}
 	});
 	$("#checkBtn").off('click').click(function () {
         var selRecords = $('#tableList').bootstrapTable('getSelections');

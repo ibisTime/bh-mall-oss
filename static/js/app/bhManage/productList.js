@@ -236,7 +236,7 @@ $(function() {
                                 if(data.kind == '0') {
                                     data.virNumber = data.number;
                                 }else{
-                                    data.realNumber = data.number
+                                    data.realNumber = data.number;
                                 }
                                 delete data.number;
                                 reqApi({

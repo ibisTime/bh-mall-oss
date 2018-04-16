@@ -11,7 +11,7 @@ $(function() {
         valueName: 'name',
         readonly: view
     },{
-        field : 'productCode',
+        field : 'productName',
         title : '产品',
         readonly: view
     }, {

@@ -7,7 +7,7 @@ $(function() {
 	var admin = getQueryString('admin');
     var view = true;
     var up1 = [{
-        field : 'loginName',
+        field : 'realName',
         title : '姓名',
         readonly : view
     },{
@@ -18,14 +18,10 @@ $(function() {
         keyName: 'level',
         valueName: 'name',
     }, {
-        field : 'updateDatetime',
-        title : '余额',
-        formatter: moneyFormat
-    }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '联系电话'
     }, {
-        field : 'updateDatetime',
+        field : 'wxId',
         title : '微信号'
     },
     //     {
@@ -36,25 +32,28 @@ $(function() {
     //     title : '上级电话'
     // },
         {
-        field : 'updateDatetime',
+        field : 'teamName',
         title : '团队名称'
     }, {
-        field : 'updateDatetime',
+        field : 'manageName',
         title : '关联管理员'
     }, {
-        field : 'updateDatetime',
-        title : '推荐人'
+        field : 'refereeUserName',
+        title : '推荐人',
+        formatter : function (v, data) {
+            return data.refereeUser?data.refereeUser.realName: '-'
+        }
     }, {
-        field : 'updateDatetime',
-        title : '推荐人电话'
+        field : 'mobile',
+        title : '推荐人电话',
+        formatter : function (v, data) {
+            return data.refereeUser?data.refereeUser.mobile: '-'
+        }
     }, {
-        field : 'updateDatetime',
-        title : '授权状态'
-    },  {
-        field : 'updateDatetime',
-        title : '状态时间',
-        formatter: dateTimeFormat
-    },{
+        field : 'status',
+        title : '授权状态',
+        formatter : Dict.getNameForList('agent_status')
+    }, {
         field :'highUser',
         title : '上级',
         listCode: '627356',
@@ -70,7 +69,7 @@ $(function() {
 
 
     var referee1 = [{
-        field : 'loginName',
+        field : 'realName',
         title : '姓名',
         readonly : view
     },{
@@ -81,28 +80,28 @@ $(function() {
         keyName: 'level',
         valueName: 'name',
     }, {
-        field : 'updateDatetime',
-        title : '余额',
-        formatter: moneyFormat
-    }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '联系电话'
     }, {
-        field : 'updateDatetime',
+        field : 'wxId',
         title : '微信号'
-    },
-        {
-            field : 'updateDatetime',
-            title : '上级'
-        }, {
-            field : 'updateDatetime',
-            title : '上级电话'
-        },
-        {
-            field : 'updateDatetime',
+    },{
+        field : 'highUserName',
+        title : '上级',
+        formatter : function (v, data) {
+        	return data.highUser?data.highUser.realName: '-'
+    	}
+    }, {
+        field : 'higghUserMobile',
+        title : '上级电话',
+        formatter : function (v, data) {
+        	return data.highUser?data.highUser.mobile: '-'
+    	}
+    },{
+            field : 'teamName',
             title : '团队名称'
         }, {
-            field : 'updateDatetime',
+            field : 'manageName',
             title : '关联管理员'
         },
         // {
@@ -113,12 +112,9 @@ $(function() {
         //     title : '推荐人电话'
         // },
         {
-            field : 'updateDatetime',
-            title : '授权状态'
-        },  {
-            field : 'updateDatetime',
-            title : '状态时间',
-            formatter: dateTimeFormat
+            field : 'status',
+            title : '授权状态',
+        	formatter : Dict.getNameForList('agent_status')
         },  {
             field : 'userReferee',
             title : '推荐人',
@@ -135,7 +131,7 @@ $(function() {
 
 
     var admin1 = [{
-        field : 'loginName',
+        field : 'realName',
         title : '姓名',
         readonly : view
     },{
@@ -146,57 +142,58 @@ $(function() {
         keyName: 'level',
         valueName: 'name',
     }, {
-        field : 'updateDatetime',
-        title : '余额',
-        formatter: moneyFormat
-    }, {
-        field : 'updateDatetime',
+        field : 'mobile',
         title : '联系电话'
     }, {
-        field : 'updateDatetime',
+        field : 'wxId',
         title : '微信号'
-    },
-        {
-            field : 'updateDatetime',
-            title : '上级'
-        }, {
-            field : 'updateDatetime',
-            title : '上级电话'
+    },{
+        field : 'highUserName',
+        title : '上级',
+        formatter : function (v, data) {
+        	return data.highUser?data.highUser.realName: '-'
+    	}
+    }, {
+        field : 'higghUserMobile',
+        title : '上级电话',
+        formatter : function (v, data) {
+        	return data.highUser?data.highUser.mobile: '-'
+    	}
+    },{
+        field : 'teamName',
+        title : '团队名称'
+    },{
+        field : 'manageName',
+        title : '关联管理员'
+    },{
+        field : 'refereeUserName',
+        title : '推荐人',
+        formatter : function (v, data) {
+        	return data.refereeUser?data.refereeUser.realName: '-'
+        }
+    }, {
+        field : 'refereeUserMobile',
+        title : '推荐人电话',
+        formatter : function (v, data) {
+            return data.refereeUser?data.refereeUser.mobile: '-'
+        }
+    }, {
+        field : 'status',
+        title : '授权状态',
+        formatter : Dict.getNameForList('agent_status')
+    },  {
+        field : 'manager',
+        title : '管理员',
+        listCode: '627356',
+        type : 'select',
+        params : {
+            kind : 'P'
         },
-        {
-            field : 'updateDatetime',
-            title : '团队名称'
-        },
-        {
-            field : 'updateDatetime',
-            title : '关联管理员'
-        },
-        {
-            field : 'updateDatetime',
-            title : '推荐人'
-        }, {
-            field : 'updateDatetime',
-            title : '推荐人电话'
-        }, {
-            field : 'updateDatetime',
-            title : '授权状态'
-        },  {
-            field : 'updateDatetime',
-            title : '状态时间',
-            formatter: dateTimeFormat
-        }, {
-            field : 'manager',
-            title : '管理员',
-            listCode: '627356',
-            type : 'select',
-            params : {
-                kind : 'P'
-            },
-            keyName : 'userId',
-            searchName :'userId',
-            valueName: 'loginName',
-            readonly : false
-        }];
+        keyName : 'userId',
+        searchName :'userId',
+        valueName: 'loginName',
+        readonly : false
+    }];
 	
 	if(up) {
 

@@ -1,14 +1,26 @@
 $(function() {
     var accountNumber;
+    
+    
     reqApi({
-        code: '627452',
-        json: {
-            'accountNumber' : 'A1321515156456'
+        code: '627451',
+        json : {
+        	type : 'P'
         }
     }).done(function(data) {
-        $("#amount-TG").text("￥" + moneyFormat(data.amount));
-        accountNumber = data.accountNumber;
+        accountNumber = data[0].accountNumber;
+        reqApi({
+        code: '627452',
+        json: {
+            'accountNumber' : accountNumber
+        }
+    	}).done(function(data1) {
+        	$("#amount-TG").text("￥" + moneyFormat(data1.amount));
+
+    	});
     });
+
+    
 
 
     $("#accouBtn").click(function() {

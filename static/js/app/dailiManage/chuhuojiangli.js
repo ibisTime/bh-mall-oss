@@ -22,9 +22,8 @@ $(function() {
     //     field : 'product',
     //     title : '出货产品',
     //     search: true,
-		// type: 'select'
+	//     type: 'select'
     // },
-
     //     {
     //     field: 'realName',
     //     title: '户名',

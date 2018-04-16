@@ -26,30 +26,32 @@ $(function() {
         field : 'mobile',
         title : '联系电话'
     }, {
-        field : 'updateDatetime',
+        field : 'wxId',
         title : '微信号'
     }, {
-        field : 'updateDatetime',
-        title : '上级'
+        field : 'highUserName',
+        title : '上级',
+        formatter : function(v, data) {
+			return data.highUser?data.highUser.realName : '-'
+		}
     }, {
-        field : 'updateDatetime',
+        field : 'teamName',
         title : '团队名称'
     }, {
-        field : 'updateDatetime',
+        field : 'manageName',
         title : '关联管理员'
     }, {
-        field : 'updateDatetime',
-        title : '地域'
+        field : 'diyu',
+        title : '地域',
+        formatter : function (v, data) {
+            return data.area?data.province+' '+data.city+' '+data.area
+                        :data.city?data.province+' '+data.city
+                            :data.province?data.province : '-'
+        }
     }, {
-        field : 'createDatetime',
+        field : 'applyDatetime',
         title : '申请时间',
-        formatter: dateTimeFormat,
-        field1: 'applyDateStart',
-        title1: '申请时间',
-        type: 'date',
-        field2: 'applyDateEnd',
-        twoDate: true,
-        search: true
+        formatter: dateTimeFormat
     },{
         field : 'remark',
         title : '备注',

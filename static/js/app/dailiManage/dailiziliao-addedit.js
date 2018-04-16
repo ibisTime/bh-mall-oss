@@ -4,7 +4,7 @@ $(function() {
 	var edit = getQueryString('edit');
     var view = edit ? false : true
     var fields = [{
-        field : 'loginName',
+        field : 'realName',
         title : '姓名',
         readonly : view
     },{
@@ -15,42 +15,55 @@ $(function() {
         keyName: 'level',
         valueName: 'name',
     }, {
-        field : 'updateDatetime9',
-        title : '余额',
-        formatter: moneyFormat
-    }, {
-        field : 'updateDatetime8',
+        field : 'mobile',
         title : '联系电话'
     }, {
-        field : 'updateDatetime7',
+        field : 'wxId',
         title : '微信号'
     }, {
-        field : 'updateDatetime6',
-        title : '上级'
+        field : 'highUserName',
+        title : '上级',
+        formatter : function(v, data) {
+			return data.highUser?data.highUser.realName : '-'
+		}
     }, {
-        field : 'updateDatetime5',
-        title : '上级电话'
+        field : 'highUserNameMobile',
+        title : '上级电话',
+        formatter : function(v, data) {
+			return data.highUser?data.highUser.mobile : '-'
+		}
     },{
-        field : 'updateDatetime4',
-        title : '团队名称'
+        field : 'teamName',
+        title : '团队名称',
+        formatter : function(v, data) {
+			return data.highUser?data.highUser.teamName : '-'
+		}
     }, {
-        field : 'updateDatetime3',
+        field : 'manageName',
         title : '关联管理员'
     }, {
-        field : 'updateDatetime2',
-        title : '推荐人'
+        field : 'refereeUserName',
+        title : '推荐人',
+        formatter : function (v, data) {
+            return data.refereeUser?data.refereeUser.realName: '-'
+        }
     }, {
-        field : 'updateDatetime1',
-        title : '推荐人电话'
+        field : 'refereeUserMoile',
+        title : '推荐人电话',
+        formatter : function (v, data) {
+            return data.refereeUser?data.refereeUser.mobile: '-'
+        }
     }, {
         field : 'status',
         title : '授权状态',
         formatter : Dict.getNameForList('agent_status')
-    },  {
-        field : 'updateDatetime',
-        title : '状态时间',
-        formatter: dateTimeFormat
-    }];
+    }
+//  ,{
+//      field : 'updateDatetime',
+//      title : '状态时间',
+//      formatter: dateTimeFormat
+//  }
+    ];
 
 
     var edit1 = [{

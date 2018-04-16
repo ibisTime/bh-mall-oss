@@ -2,7 +2,6 @@ $(function() {
 	var code = getQueryString('code');
 	var userId = getQueryString('userId');
 	var view = getQueryString('v');
-    console.log(view);
     view = view == '0'? false : true;
 
     var edit1 = [{

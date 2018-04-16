@@ -4,27 +4,54 @@ $(function() {
 	var koukuan = getQueryString('koukuan');
     var view = getUrlParam('v');
 
-    // 充值
+
+
+reqApi({
+        code: '627006',
+    }, true).then(function (data) {
+        var items = data.map(function(item){
+            return {
+                level: item.level,
+                name: item.name
+            };
+        });
+        
+        
+        // 充值
     var in1 = [{
-        field : 'name',
-        title : '代理',
-        search: true
+        field : 'realName',
+        title : '代理'
     },{
         field : 'mobile',
         title : '代理电话',
-        search: true
+        formatter : function(v, data) {
+			return data.user?data.user.mobile : '-'
+		}
     },{
-        field : 'wx',
+        field : 'wxId',
         title : '代理微信',
-        search: true
+        formatter : function(v, data) {
+			return data.user?data.user.wxId : '-'
+		}
     },{
         field : 'level',
         title : '代理等级',
-        search: true,
-        type: 'select'
+        type: 'select',
+		formatter : function(v, data) {
+			var level = ''
+			items.map(function(item) {
+				if(item.level == data.user.level) {
+					level =  item.name
+				}
+			})
+			return level
+		}
     },{
         field : 'cvalue',
-        title : '代理团队'
+        title : '代理团队',
+        formatter : function(v, data) {
+			return data.user?data.user.teamName : '-'
+		}
     },{
         field : 'amount',
         title : '余额',
@@ -51,25 +78,40 @@ $(function() {
 
     // 扣款
     var out = [{
-        field : 'name',
-        title : '代理',
-        search: true
+        field : 'realName',
+        title : '代理'
     },{
         field : 'mobile',
         title : '代理电话',
-        search: true
+        formatter : function(v, data) {
+			return data.user?data.user.mobile : '-'
+		}
     },{
-        field : 'wx',
+        field : 'wxId',
         title : '代理微信',
-        search: true
+        formatter : function(v, data) {
+			return data.user?data.user.wxId : '-'
+		}
     },{
         field : 'level',
         title : '代理等级',
-        search: true,
-        type: 'select'
+        type: 'select',
+		formatter : function(v, data) {
+			var level = ''
+			items.map(function(item) {
+				if(item.level == data.user.level) {
+					level =  item.name
+				}
+			})
+			return level
+		}
     },{
+        
         field : 'cvalue',
-        title : '代理团队'
+        title : '代理团队',
+        formatter : function(v, data) {
+			return data.user?data.user.teamName : '-'
+		}
     },{
         field : 'amount',
         title : '余额',
@@ -134,4 +176,9 @@ $(function() {
     });
 
     hideLoading();
+        
+        
+        
+      })
+    
 });

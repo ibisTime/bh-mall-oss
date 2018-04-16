@@ -7,7 +7,7 @@ $(function() {
         checkbox : true
     },{
         field : 'realName',
-        title : '姓名',
+        title : '姓名'
 
     },{
         field : 'level',
@@ -24,19 +24,28 @@ $(function() {
         field : 'wxId',
         title : '微信号'
     }, {
-        field : 'updateDatetime',
-        title : '上级'
+        field : 'highUserName',
+        title : '上级',
+        formatter : function(v, data) {
+			return data.highUser?data.highUser.realName : '-'
+		}
     }, {
-        field : 'updateDatetime',
-        title : '上级电话'
+        field : 'highUserNameMobile',
+        title : '上级电话',
+        formatter : function(v, data) {
+			return data.highUser?data.highUser.mobile : '-'
+		}
     },{
-        field : 'updateDatetime',
-        title : '团队名称'
+        field : 'teamName',
+        title : '团队名称',
+        formatter : function(v, data) {
+			return data.highUser?data.highUser.teamName : '-'
+		}
     }, {
-        field : 'updateDatetime',
+        field : 'manageName',
         title : '关联管理员'
     }, {
-        field : 'realName',
+        field : 'refereeUserName',
         title : '推荐人',
         formatter : function (v, data) {
             return data.refereeUser?data.refereeUser.realName: '-'
@@ -52,17 +61,19 @@ $(function() {
         title : '授权状态',
         type: 'select',
         formatter : Dict.getNameForList('agent_status')
-    },  {
-        field : 'applyDatetime',
-        title : '申请时间',
-        formatter: dateTimeFormat,
-        field1: 'dateStart',
-        title1: '申请时间',
-        type: 'date',
-        field2: 'dateEnd',
-        twoDate: true,
-        search: true
-    }];
+    }
+//  ,  {
+//      field : 'applyDatetime',
+//      title : '申请时间',
+//      formatter: dateTimeFormat,
+//      field1: 'dateStart',
+//      title1: '申请时间',
+//      type: 'date',
+//      field2: 'dateEnd',
+//      twoDate: true,
+//      search: true
+//  }
+    ];
     buildList({
         columns: columns,
         pageCode: '627355',
@@ -73,9 +84,9 @@ $(function() {
         // 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
         // }
     });
+    
+    
     // 修改上级
-
-
     $('#changeUpBtn').click(function () {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {

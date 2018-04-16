@@ -12,6 +12,16 @@ $(function() {
         title : '下单日期',
         formatter: dateTimeFormat
     }, {
+        field : 'realName',
+        title : '下单代理'
+    }, {
+        field : 'level',
+        title : '下单代理等级',
+        type : 'select',
+        listCode : '627006',
+        keyName : 'level',
+        valueName : 'name'
+    },{
         field : 'amount',
         title : '付款金额',
         formatter: moneyFormat
@@ -22,19 +32,12 @@ $(function() {
         type: 'select',
         key : 'change_product_status',
         formatter : Dict.getNameForList('change_product_status')
+    }, {
+    	field : 'approver',
+    	title : '审核人'
     },{
-        field : 'realName',
-        title : '下单代理'
-    }, {
-        field : 'level',
-        title : '下单代理等级',
-        type : 'select',
-        listCode : '627006',
-        keyName : 'level',
-        valueName : 'name'
-    }, {
-        field : 'remark',
-        title : '备注'
+        field : 'approveNote',
+        title : '审核备注'
     }, {
         field : 'keyword',
         title : '关键字',
