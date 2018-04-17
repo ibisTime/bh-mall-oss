@@ -117,7 +117,7 @@ reqApi({
         
         
         
-        // 忽略意向
+    // 忽略意向
     $('#hulveBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if(selRecords.length <= 0){

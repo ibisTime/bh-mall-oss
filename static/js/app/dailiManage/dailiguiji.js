@@ -58,27 +58,27 @@ reqApi({
 			return data.user?data.user.wxId : '-'
 		}
     }, {
-        field : 'approveDatetime',
-        title : '审核时间',
-        formatter: dateTimeFormat,
-        field1: 'dateStart',
-        title1: '日期',
-        type: 'datetime',
-        field2: 'dateEnd',
-        twoDate: true,
-        search: true,
-    }, {
         field : 'type',
         title : '操作类型',
         key : 'agnecy_log_type',
         formatter : Dict.getNameForList('agnecy_log_type')
     },{
+        field : 'updateDatetime',
+        title : '推荐人'
+    },{
         field : 'approver',
         title : '审核人'
     }, {
-        field : 'updateDatetime',
-        title : '推荐人'
-    }, {
+        field : 'approveDatetime',
+        title : '审核时间',
+        formatter: dateTimeFormat,
+        field1: 'dateStart',
+        title1: '审核时间',
+        type: 'datetime',
+        field2: 'dateEnd',
+        twoDate: true,
+        search: true,
+    },  {
         field : 'remark',
         title : '备注'
     },{

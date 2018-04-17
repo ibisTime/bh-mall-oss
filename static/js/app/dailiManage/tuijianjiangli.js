@@ -14,14 +14,16 @@ $(function() {
         key: 'channel_type',
         formatter: Dict.getNameForList('channel_type'),
         search: true
-    }, {
-        field: 'bizType',
-        title: '业务类型',
-        type: 'select',
-        key: 'biz_type',
-        formatter: Dict.getNameForList('biz_type'),
-        search: true
-    },{
+    }, 
+//  {
+//      field: 'bizType',
+//      title: '业务类型',
+//      type: 'select',
+//      key: 'biz_type',
+//      formatter: Dict.getNameForList('biz_type'),
+//      search: true
+//  },
+    {
         field : 'inAmount',
         title : '奖励收入',
         formatter: moneyFormat

@@ -80,10 +80,10 @@ reqApi({
         field : 'createDatetime',
         title : '申请时间',
         formatter: dateTimeFormat,
-        field1: 'applyDateStart',
+        field1: 'dateStart',
         title1: '申请时间',
         type: 'datetime',
-        field2: 'applyDateEnd',
+        field2: 'dateEnd',
         twoDate: true,
         search: true,
         visible : false

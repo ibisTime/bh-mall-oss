@@ -10,10 +10,7 @@ $(function() {
 	},{
 		field : 'accountName',
 		title : '充值人',
-        search: true,
-        formatter : function (v, data) {
-            return data.user?data.user.realName:'-'
-        }
+		search : true
 	}, {
         field : 'teamName',
         title : '充值人团队',
