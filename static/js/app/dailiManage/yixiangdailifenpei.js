@@ -124,7 +124,12 @@ reqApi({
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&userId="+selRecords[0].applyUser+"&name="+encodeURI(encodeURI(selRecords[0].name));
+        if(selRecords[0].status == '3') {
+        	window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&userId="+selRecords[0].applyUser+"&name="+encodeURI(encodeURI(selRecords[0].name));
+        }else {
+        	toastr.info('该状态下不可忽略意向');
+        }
+        
     });
 
     // 审核分配
@@ -134,7 +139,15 @@ reqApi({
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId="+selRecords[0].applyUser+"&name="+encodeURI(encodeURI(selRecords[0].name));
+        if(selRecords[0].status == '3') {
+			window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId="+selRecords[0].applyUser+"&name="+encodeURI(encodeURI(selRecords[0].name));
+        }else {
+        	toastr.info('该状态下不可忽略意向');
+        }
+        
+        
+        
+        
     });
 
     // 修改资料
