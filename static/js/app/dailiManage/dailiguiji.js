@@ -63,10 +63,10 @@ reqApi({
         key : 'agnecy_log_type',
         formatter : Dict.getNameForList('agnecy_log_type')
     },{
-        field : 'updateDatetime',
+        field : 'refereeName',
         title : '推荐人'
     },{
-        field : 'approver',
+        field : 'approvName',
         title : '审核人'
     }, {
         field : 'approveDatetime',
