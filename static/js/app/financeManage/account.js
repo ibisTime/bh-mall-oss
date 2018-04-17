@@ -28,7 +28,7 @@ $(function() {
     });
     
     $('#accoutGrantBtn').click(function() {
-    	window.location.href = "./liushui.html";
+    	window.location.href = "./liushui1.html";
     })
 
 });

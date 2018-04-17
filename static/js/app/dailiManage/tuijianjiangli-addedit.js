@@ -16,15 +16,11 @@ $(function() {
             return moneyFormat(data.orderInformation.amount)
         }
     },{
-        field : 'mobile',
-        title : '收货人手机号',
-        formatter : function (v, data) {
-            return data.orderInformation.mobile
-        }
-    }, {
         field : 'productCode',
         title : '出货产品',
-        type: 'select'
+        formatter : function (v, data) {
+            return data.orderInformation.productName
+        }
     }, {
         field : 'signer',
         title : '收货人',
@@ -32,6 +28,20 @@ $(function() {
             return data.orderInformation.signer
         }
     }, {
+        field : 'mobile',
+        title : '收货人手机号',
+        formatter : function (v, data) {
+            return data.orderInformation.mobile
+        }
+    }, {
+        field : 'diyu',
+        title : '收货地址',
+        formatter : function (v, data) {
+            return data.orderInformation.area?data.orderInformation.province+' '+data.orderInformation.city+' '+data.orderInformation.area
+                        :data.orderInformation.city?data.orderInformation.province+' '+data.orderInformation.city
+                            :data.orderInformation.province?data.orderInformation.province : '-'
+        }
+    },{
         field : 'status',
         title : '订单状态',
         formatter: Dict.getNameForList('order_status')
@@ -46,31 +56,5 @@ $(function() {
     });
     $('.search-form').css('display','none');
     $('.toolbar').empty().append('<li style="display:block;" id="exportBtn"><span><img src="/static/images/t01.png"></span>导出</li>')
-    // //支出明细
-    // $('#outRecordBtn').click(function () {
-    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-    //     if (selRecords.length <= 0) {
-    //         toastr.info("请选择记录");
-    //         return;
-    //     }
-    //     if(selRecords[0].outAmount != '0'){
-    //         window.location.href = "./chuhuojiangli_addedit.html?out=1&userId="+selRecords[0].userId
-    //     }else {
-    //         toastr.info('无支出明细')
-    //     }
-    // });
-    //
-    // //收入明细
-    // $('#inRecordBtn').click(function () {
-    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-    //     if (selRecords.length <= 0) {
-    //         toastr.info("请选择记录");
-    //         return;
-    //     }
-    //     if(selRecords[0].inAmount != '0'){
-    //         window.location.href = "./chuhuojiangli_addedit.html?in=1&userId="+selRecords[0].userId
-    //     }else {
-    //         toastr.info('无收入明细')
-    //     }
-    // })
+    
 });

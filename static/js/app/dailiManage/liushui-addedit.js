@@ -74,10 +74,6 @@ $(function() {
         formatter: Dict.getNameForList('jour_status'),
         readonly: true
     }, {
-        field: 'workDate',
-        title: '拟对账时间',
-        readonly: true
-    }, {
         field: 'remark',
         title: '备注',
         readonly: true

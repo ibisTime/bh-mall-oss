@@ -80,12 +80,8 @@ $(function() {
     var options = {
         fields: fields,
         code: code,
-        detailCode: '627492',
-        view: view,
-        beforeSubmit: function(data) {
-            data.order = data.code;
-            return true;
-        }
+        detailCode: '627495',
+        view: view
     };
 
     buildDetail(options);

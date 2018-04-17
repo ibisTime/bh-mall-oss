@@ -31,8 +31,8 @@ reqApi({
 			return data.user?data.user.nickname : '-'
 		}
 	},{
-		field : 'level',
-		title : '等级',
+		field : 'applyLevel',
+		title : '申请等级',
         search: true,
 		type: 'select',
         listCode : '627006',
@@ -41,12 +41,12 @@ reqApi({
         visible : false
 	},
 	{
-		field : 'level1',
-		title : '等级',
+		field : 'applyLevel1',
+		title : '申请等级',
         formatter : function(v, data) {
         	var level = ''
         	items.map(function(item) {
-        		if(item.level == data.user.level) {
+        		if(item.level == data.applyLevel) {
 					level =  item.name
 				}
         	})
@@ -96,10 +96,10 @@ reqApi({
         field : 'applyDatetime',
         title : '申请时间',
         formatter: dateTimeFormat,
-        field1: 'applyDateStart',
+        field1: 'dateStart',
         title1: '申请时间',
         type: 'datetime',
-        field2: 'applyDateEnd',
+        field2: 'dateEnd',
         twoDate: true,
         search: true,
         visible : false

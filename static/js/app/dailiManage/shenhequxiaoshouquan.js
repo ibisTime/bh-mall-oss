@@ -82,7 +82,7 @@ reqApi({
         formatter: dateTimeFormat,
         field1: 'applyDateStart',
         title1: '申请时间',
-        type: 'date',
+        type: 'datetime',
         field2: 'applyDateEnd',
         twoDate: true,
         search: true,

@@ -1,5 +1,6 @@
 $(function() {
 	
+	showPermissionControl();
 
     var columns = [{
         field: '',
@@ -60,5 +61,22 @@ $(function() {
         pageCode: '627490'
 
     });
-    
+    $('.toolbar').empty().append('<li style="display:block;" id="detailBtn"><span><img src="/static/images/t01.png"></span>详情</li><li style="display:block;" id="exportBtn"><span><img src="/static/images/t01.png"></span>导出</li>');
+	
+	// 导出
+	$('#exportBtn').click(function() {
+        $('.export .btn').click();
+    });
+
+
+	// 详情
+	    $('#detailBtn').off('click').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if(selRecords.length <= 0){
+            toastr.info("请选择记录");
+            return;
+        }
+
+        window.location.href = './liushui_addedit1.html?code='+selRecords[0].code;
+    })
 });

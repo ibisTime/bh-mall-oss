@@ -8,7 +8,7 @@ $(function() {
 		field : 'code',
 		title : '编号'
 	},{
-		field : 'cvalue1',
+		field : 'accountName',
 		title : '充值人',
         search: true,
         formatter : function (v, data) {
@@ -56,7 +56,6 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        console.log(typeof selRecords[0].status);
         if(selRecords[0].status === '1') {
             window.location.href = "./shenhechongzhi_check.html?code="+selRecords[0].code;
         }else {

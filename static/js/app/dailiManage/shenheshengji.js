@@ -47,7 +47,7 @@ reqApi({
         }
 	}, {
 		field : 'applyLevel',
-		title : '需升级等级',
+		title : '申请等级',
         search: true,
 		type: 'select',
         listCode : '627006',
@@ -57,11 +57,11 @@ reqApi({
 	},
 	{
 		field : 'applyLevel1',
-		title : '需升级等级',
+		title : '申请等级',
         formatter : function(v, data) {
         	var applyLevel = ''
         	items.map(function(item) {
-        		if(item.level == data.user.applyLevel) {
+        		if(item.level == data.applyLevel) {
 					applyLevel =  item.name
 				}
         	})
@@ -111,7 +111,7 @@ reqApi({
         formatter: dateTimeFormat,
         field1: 'applyDateStart',
         title1: '申请时间',
-        type: 'date',
+        type: 'datetime',
         field2: 'applyDateEnd',
         twoDate: true,
         search: true,

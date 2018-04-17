@@ -16,15 +16,11 @@ $(function() {
             return moneyFormat(data.orderInformation.amount)
         }
     },{
-        field : 'mobile',
-        title : '收货人手机号',
-        formatter : function (v, data) {
-            return data.orderInformation.mobile
-        }
-    }, {
         field : 'productCode',
         title : '出货产品',
-        type: 'select'
+        formatter : function (v, data) {
+            return data.orderInformation.productName
+        }
     }, {
         field : 'signer',
         title : '收货人',
@@ -32,6 +28,20 @@ $(function() {
             return data.orderInformation.signer
         }
     }, {
+        field : 'mobile',
+        title : '收货人手机号',
+        formatter : function (v, data) {
+            return data.orderInformation.mobile
+        }
+    }, {
+        field : 'diyu',
+        title : '收货地址',
+        formatter : function (v, data) {
+            return data.orderInformation.area?data.orderInformation.province+' '+data.orderInformation.city+' '+data.orderInformation.area
+                        :data.orderInformation.city?data.orderInformation.province+' '+data.orderInformation.city
+                            :data.orderInformation.province?data.orderInformation.province : '-'
+        }
+    },{
         field : 'status',
         title : '订单状态',
         formatter: Dict.getNameForList('order_status')

@@ -21,19 +21,17 @@ reqApi({
 		checkbox : true
 	},{
 		field : 'realName',
-		title : '代理',
+		title : '代理姓名',
 		search: true
 	},{
 		field : 'mobile',
 		title : '代理电话',
-        search: true,
         formatter : function(v, data) {
 			return data.user?data.user.mobile : '-'
 		}
 	},{
         field : 'wxId',
         title : '代理微信',
-        search: true,
         formatter : function(v, data) {
 			return data.user?data.user.wxId : '-'
 		}
@@ -42,10 +40,17 @@ reqApi({
         title : '代理等级',
         search: true,
 		type: 'select',
+		listCode : '627006',
+		keyName : 'level',
+		valueName : 'name',
+		visible : false
+    },{
+        field : 'level1',
+        title : '代理等级',
 		formatter : function(v, data) {
 			var level = ''
 			items.map(function(item) {
-				if(item.level == data.user.level) {
+				if(data.user && item.level == data.user.level) {
 					level =  item.name
 				}
 			})
@@ -61,10 +66,45 @@ reqApi({
         field : 'amount',
         title : '余额',
 		formatter: moneyFormat
+    },{
+        field : 'status',
+        title : '状态',
+        type : 'select',
+        search : true,
+        key : 'account_status',
+		formatter: Dict.getNameForList('account_status')
+    },{
+        field : 'currency',
+        title : '类型',
+        type : 'select',
+        search : true,
+        key : 'currency',
+		formatter: Dict.getNameForList('currency')
+    },{
+        field : 'createDatetime',
+        title : '创建时间',
+        formatter: dateTimeFormat,
+        field1: 'dateStart',
+        title1: '创建时间',
+        type: 'datetime',
+        field2: 'dateEnd',
+        twoDate: true,
+        search: true,
+        visible : false,
+        type : 'datetime'
+    }, {
+        field : 'createDatetime1',
+        title : '创建时间',
+        formatter: function(v, data) {
+        	return dateTimeFormat(data.createDatetime)
+        }
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627450'
+		pageCode: '627450',
+		searchParams : {
+			type : 'B'
+		}
 	});
         
         
