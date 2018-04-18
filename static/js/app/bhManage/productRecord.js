@@ -28,7 +28,7 @@ $(function() {
         title : '变动时间',
         formatter: dateTimeFormat,
         field1: 'dateStart',
-        title1: '日期',
+        title1: '变动时间',
         field2: 'dateEnd',
         twoDate: true,
         search: true,

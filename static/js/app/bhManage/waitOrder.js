@@ -20,16 +20,9 @@ $(function() {
             field: 'code',
             title: '订单编号'
         }, {
-            field: 'applyDatetime',
-            title: '下单日期',
-            formatter: dateTimeFormat,
-            field1: 'applyDateStart',
-            title1: '下单日期',
-            type: 'date',
-            field2: 'applyDateEnd',
-            twoDate: true,
-            search: true
-        }, {
+    		field : 'productName',
+    		title : '产品名称',
+    	},{
             field: 'amount',
             title: '付款金额',
             formatter: moneyFormat
@@ -40,23 +33,56 @@ $(function() {
             type: 'select',
             key : 'order_status',
             formatter: Dict.getNameForList('order_status')
-        }, {
+        },{
+        	field : 'kind',
+        	title : '订单类型',
+        	search: true,
+        	type: 'select',
+        	key :'order_type',
+        	formatter : Dict.getNameForList('order_type')
+    	},  {
             field: 'realName',
-            title: '下单代理'
-        }, {
+            title: '下单代理',
+            formatter : function(v, data) {
+            	return data.user?data.user.realName : '-'
+            }
+        },{
             field: 'level',
             title: '下单代理等级',
             search: true,
             type: 'select',
             listCode: '627006',
             keyName: 'level',
-            valueName: 'name'
+            valueName: 'name',
+            visible : false
         }, {
+            field: 'level1',
+            title: '下单代理等级',
+            formatter : function(v, data) {
+            	var level = '';
+            	items.map(function(item) {
+            		if(item.level == data.user.level) {
+            			level = item.name
+            		}
+            	})
+            	return level
+            }
+        },{
             field: 'signer',
             title: '收货人'
         }, {
             field: 'mobile',
             title: '收货人电话'
+        }, {
+            field: 'applyDatetime',
+            title: '下单日期',
+            formatter: dateTimeFormat,
+            field1: 'dateStart',
+            title1: '下单日期',
+            type: 'datetime',
+            field2: 'dateEnd',
+            twoDate: true,
+            search: true
         }, {
             field: 'remark',
             title: '备注'
@@ -65,14 +91,12 @@ $(function() {
             columns: columns,
             pageCode: '627662',
             searchParams: {
-                statusList: '1,2,5',
-                
+                statusList: '1,2,5'
             },
             singleSelect: false
-            // beforeEdit: function(r) {
-            // 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-            // }
         });
+        
+        
         // 批量审单
         $('#shendanBtn').click(function () {
             var selRecords = $('#tableList').bootstrapTable('getSelections');

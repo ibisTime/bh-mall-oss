@@ -8,10 +8,9 @@ $(function() {
         field : 'code',
         title : '订单编号'
     },{
-        field : 'applyDatetime',
-        title : '下单日期',
-        formatter: dateTimeFormat
-    }, {
+    	field : 'productName',
+    	title : '产品名称'
+    },{
         field : 'payAmount',
         title : '付款金额',
         formatter: moneyFormat
@@ -26,8 +25,12 @@ $(function() {
         field : 'realName',
         title : '下单代理'
     }, {
-        field : 'updateDatetime3',
-        title : '下单代理等级'
+        field : 'level',
+        title : '下单代理等级',
+        type : 'select',
+        listCode : '627006',
+        keyName : 'level',
+        valueName : 'name'
     }, {
         field : 'signer',
         title : '收货人'
@@ -35,31 +38,26 @@ $(function() {
         field : 'mobile',
         title : '收货人电话'
     }, {
+        field : 'applyDatetime',
+        title : '下单日期',
+        formatter: dateTimeFormat
+    }, {
         field : 'remark',
         title : '备注'
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627731',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
+		pageCode: '627731'
 	});
 
     // 物流信息
-    $('#wuliuBtn').click(function () {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
-
-        window.location.href = './orderManage_wuliu.html?v=1&code='+selRecords[0].code
-    })
+//  $('#wuliuBtn').click(function () {
+//      var selRecords = $('#tableList').bootstrapTable('getSelections');
+//      if (selRecords.length <= 0) {
+//          toastr.info("请选择记录");
+//          return;
+//      }
+//
+//      window.location.href = './orderManage_wuliu.html?v=1&code='+selRecords[0].code
+//  })
 });

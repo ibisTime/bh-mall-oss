@@ -2,23 +2,30 @@ $(function() {
 	var code = getQueryString('code');
 
     var fields = [{
-        field : 'remark',
-        title : '类型名称'
+        field : 'dvalue',
+        title : '类型名称',
+        required : 'true'
     },{
-        field : 'cvalue',
-        title : '分类'
+        field : 'dkey',
+        title : '分类',
+        required : 'true'
     }, {
-        field : 'updateDatetime',
-        title : '添加时间',
-        formatter: dateTimeFormat
+        field : 'remark',
+        title : '备注'
     }];
 	
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '627927',
-		addCode: '627920',
-		editCode: '627921'
+		detailCode: '627077',
+		addCode: '627070',
+		editCode: '627072',
+		beforeSubmit : function(data) {
+			data.parentKey = 'after_sale_type' ,
+			data.updater = getUserName(),
+			data.type = '1'
+			return data;
+		}
 	});
-	
+	hideLoading();
 });

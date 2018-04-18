@@ -212,13 +212,13 @@ $(function() {
                         title: '种类',
                         required: true,
                         type: 'select',
-                        data : {'0':'虚拟库存','1':'真实库存'}
+                        data : {'0':'虚拟库存','1':'实际库存'}
                     },{
                         field : 'type',
                         title : '操作类型',
                         required: true,
                         type: 'select',
-                        data : {'0':'入库','1':'出库'}
+                        data : {'0':'出库','1':'入库'}
                     },{
                     	field : 'number',
                     	title : '变动数量',

@@ -1,6 +1,18 @@
 $(function() {
-// 报货管理-云仓管理-全部订单
-    var columns = [{
+// 报货管理-云仓管理-置换单
+
+
+reqApi({
+        code: '627006',
+    }, true).then(function (data) {
+        var items = data.map(function (item) {
+            return {
+                level: item.level,
+                name: item.name
+            };
+        });
+        
+var columns = [{
         field : '',
         title : '',
         checkbox : true
@@ -8,19 +20,35 @@ $(function() {
         field : 'code',
         title : '订单编号'
     },{
-        field : 'applyDatetime',
-        title : '下单日期',
-        formatter: dateTimeFormat
+    	field : 'changeProductName',
+    	title : '产品名称'
+    },{
+        field: 'realName',
+        title: '下单代理',
+        formatter : function(v, data) {
+         	return data.user?data.user.realName : '-'
+        }
+    },{
+        field: 'level',
+        title: '下单代理等级',
+        search: true,
+        type: 'select',
+        listCode: '627006',
+        keyName: 'level',
+        valueName: 'name',
+        visible : false
     }, {
-        field : 'realName',
-        title : '下单代理'
-    }, {
-        field : 'level',
-        title : '下单代理等级',
-        type : 'select',
-        listCode : '627006',
-        keyName : 'level',
-        valueName : 'name'
+    	field: 'level1',
+        title: '下单代理等级',
+        formatter : function(v, data) {
+        	var level = '';
+          	items.map(function(item) {
+           		if(data.user && item.level == data.user.level) {
+           			level = item.name
+           		}
+           	})
+           	return level
+        }
     },{
         field : 'amount',
         title : '付款金额',
@@ -32,6 +60,10 @@ $(function() {
         type: 'select',
         key : 'change_product_status',
         formatter : Dict.getNameForList('change_product_status')
+    }, {
+        field : 'applyDatetime',
+        title : '下单日期',
+        formatter: dateTimeFormat
     }, {
     	field : 'approver',
     	title : '审核人'
@@ -63,4 +95,8 @@ $(function() {
         }
 
 	})
+        
+        
+       })
+    
 });

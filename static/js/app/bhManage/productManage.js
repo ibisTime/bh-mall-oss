@@ -132,4 +132,23 @@ $(function() {
 
 
     });
+    
+    
+    
+    
+    // 修改
+    $('#editBtn').off('click').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        if(selRecords[0].status != '2') {
+            window.location.href = "./productManage_addedit.html?v=0&code="+selRecords[0].code;
+        } else {
+            toastr.info('上架状态不可进行修改')
+        }
+
+
+    });
 });

@@ -48,7 +48,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-        pageCode: '627490',
+        pageCode: '627245',
         searchParams: {
             bizType: 'AJ_JSJL',
         }

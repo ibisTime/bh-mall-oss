@@ -21,21 +21,20 @@ $(function() {
             title : '付款金额',
             formatter: moneyFormat
         }, {
-            field : 'updateDatetime',
-            title : '订单状态',
-            search: true,
-            type: 'select'
-        }, {
-            field : 'orderType',
-            title : '订单类型',
-            search: true,
-            type: 'select'
-        }, {
-            field : 'updateDatetime2',
+            field : 'status',
+        	title : '订单状态',
+        	type: 'select',
+        	formatter : Dict.getNameForList('inner_order_status')
+        },  {
+            field : 'realName',
             title : '下单代理'
         }, {
-            field : 'updateDatetime3',
-            title : '下单代理等级'
+            field : 'level',
+        	title : '下单代理等级',
+        	type : 'select',
+        	listCode : '627006',
+        	keyName : 'level',
+        	valueName : 'name'
         }, {
             field : 'signer',
             title : '收货人'

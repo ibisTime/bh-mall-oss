@@ -6,10 +6,18 @@ $(function() {
 		checkbox : true
 	},{
 		field : 'level',
-		title : '代理等级'
+		title : '代理等级',
+		type : 'select',
+        listCode: '627006',
+        keyName : 'level',
+        searchName :'level',
+        valueName: 'name'
 	},{
-		field : 'cvalue',
-		title : '授权本等级直接获利'
+		field : 'percent',
+		title : '授权本等级直接获利',
+		formatter : function(v, data) {
+			return data.percent*100+'%'
+		}
 	}];
 
 	// 隐藏掉搜索栏，不然的话一个空的搜索栏依旧占位，会有一行空白
@@ -22,15 +30,6 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
+		pageCode: '627245'
 	});
 });

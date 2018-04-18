@@ -205,8 +205,8 @@ $(function() {
                         '<div class="dingjiaDom'+v+'">'+
                             '<span style="width : 120px;padding:20px 40px;display: inline-block">'+item.name+'</span>'+
                             '<span style="width : 140px;padding:20px 40px;display: inline-block">'+items[item.specsPriceList[v].level-1].name+'</span>'+
-                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+item.specsPriceList[v].price+'</span>'+
-                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+item.specsPriceList[v].changePrice+'</span>'+
+                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+item.specsPriceList[v].price/1000)+'</span>'+
+                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+item.specsPriceList[v].changePrice/1000)+'</span>'+
                         '</div>'
                     dingjiaHtml += dingjiaTemp;
                 }
@@ -512,8 +512,8 @@ $(function() {
                                                 	
                                                 	var temp1 = {};
                                                 	temp1.level = v.level;
-                                                	temp1.price = data[price1];
-                                                	temp1.changePrice = data[changePrice1];
+                                                	temp1.price = +data[price1]*1000;
+                                                	temp1.changePrice = +data[changePrice1]*1000;
                                                 	
                                                 	specsPriceList.push(temp1);
                                                 }
@@ -527,8 +527,8 @@ $(function() {
                                                 		'<div class="dingjiaDom'+v+'">'+
                                                 			'<span style="width : 120px;padding:20px 40px;display: inline-block">'+temp.name+'</span>'+
                                                 			'<span style="width : 140px;padding:20px 40px;display: inline-block">'+items[specsPriceList[v].level-1].name+'</span>'+
-                                                			'<span style="width : 140px;padding:20px 40px;display: inline-block">'+specsPriceList[v].price+'</span>'+
-                                                			'<span style="width : 140px;padding:20px 40px;display: inline-block">'+specsPriceList[v].changePrice+'</span>'+
+                                                			'<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+specsPriceList[v].price/1000)+'</span>'+
+                                                			'<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+specsPriceList[v].changePrice/1000)+'</span>'+
                                                 		'</div>'
                                             		dingjiaHtml += dingjiaTemp;
                                                 }
