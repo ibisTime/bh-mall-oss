@@ -77,7 +77,7 @@ reqApi({
 		columns: columns,
 		pageCode: '627690'
 	});
-	
+	// 处理
 	$('#chuliBtn').click(function() {
 		var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -85,7 +85,12 @@ reqApi({
             return;
         }
 
-        window.location.href = './shouhouOrder_addedit.html?v=1&code='+selRecords[0].code
+		if(selRecords[0].status == '0') {
+			window.location.href = './shouhouOrder_addedit.html?v=1&code='+selRecords[0].code
+		}else {
+			toastr.info('该状态售后单不可进行处理');
+		}
+        
 	})
         
       })

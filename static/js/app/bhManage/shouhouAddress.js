@@ -8,12 +8,6 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'type',
-		title : '类型',
-		type : 'select',
-		key : 'address_type',
-		formatter : Dict.getNameForList('address_type')
-	},{
 		field : 'province',
 		title : '省'
 	}, {

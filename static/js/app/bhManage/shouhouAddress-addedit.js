@@ -26,7 +26,8 @@ $(function() {
     }, {
         field : 'mobile',
         title : '收货人电话',
-        required: true
+        required: true,
+        mobile : true
     }, {
         field : 'isDefault',
         title : '是否默认地址',

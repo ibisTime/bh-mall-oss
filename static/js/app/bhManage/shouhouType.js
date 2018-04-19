@@ -13,7 +13,7 @@ $(function() {
 		title : '类型值'
 	}, {
         field : 'updateDatetime',
-        title : '添加时间',
+        title : '更新时间',
 		formatter: dateTimeFormat
     }, {
         field : 'remark',

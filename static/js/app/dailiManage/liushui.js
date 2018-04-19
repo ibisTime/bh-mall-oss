@@ -10,7 +10,10 @@ $(function() {
     }, {
         field: 'realName',
         title: '户名',
-        search: true
+        search: true,
+        formatter : function(v, data) {
+        	return data.userInformation?data.userInformation.realName : '-'
+        }
     }, {
         field: 'accountNumber',
         title: '账号'

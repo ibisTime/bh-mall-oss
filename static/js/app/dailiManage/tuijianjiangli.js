@@ -61,11 +61,11 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].outAmount != '0'){
+//      if(selRecords[0].outAmount != '0'){
             window.location.href = "./tuijianjiangli_addedit.html?out=1&userId="+selRecords[0].userId
-        }else {
-            toastr.info('无支出明细')
-        }
+//      }else {
+//          toastr.info('无支出明细')
+//      }
     });
 
     //收入明细
@@ -75,10 +75,10 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].inAmount != '0'){
+//      if(selRecords[0].inAmount != '0'){
             window.location.href = "./tuijianjiangli_addedit.html?in=1&userId="+selRecords[0].userId
-        }else {
-            toastr.info('无收入明细')
-        }
+//      }else {
+//          toastr.info('无收入明细')
+//      }
     })
 });
