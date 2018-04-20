@@ -89,6 +89,29 @@ $(function() {
 
                 console.log(data);
 
+                var type0 = [];
+                var type1 = [];
+                                
+                function ftype0(item){
+                    if(item.type == '0') {
+                        return item
+                    }
+                }
+
+                function ftype1(item){
+                    if(item.type == '1') {
+                        return item
+                    }
+                }
+            
+                type0 = awardList.filter(ftype0); 
+                type1 = awardList.filter(ftype1); 
+
+				if(data.specList.length <=0 || type0.length <=0 || type1.length <=0) {
+					toastr.info('请检查您是否填写规格体系以及奖励机制')
+				}else{
+					return data;
+				}
                 return data;
             },
             afterData : function(data) {

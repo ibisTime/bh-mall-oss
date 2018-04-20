@@ -16,12 +16,7 @@ $(function() {
 		readonly: true
 	}, {
 		title: '新密码',
-		field: 'loginPwd',
-		type: 'password',
-		required: true
-	}, {
-		title: '管理员密码',
-		field: 'adminPwd',
+		field: 'newLoginPwd',
 		type: 'password',
 		required: true
 	}];
@@ -29,7 +24,7 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: {userId:userId},
-		detailCode: '627351',
+		detailCode: '627357',
 		editCode: '627304'
 	});
 });
