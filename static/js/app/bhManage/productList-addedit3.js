@@ -205,8 +205,8 @@ $(function() {
                         '<div class="dingjiaDom'+v+'">'+
                             '<span style="width : 120px;padding:20px 40px;display: inline-block">'+item.name+'</span>'+
                             '<span style="width : 140px;padding:20px 40px;display: inline-block">'+items[item.specsPriceList[v].level-1].name+'</span>'+
-                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+item.specsPriceList[v].price/1000)+'</span>'+
-                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+item.specsPriceList[v].changePrice/1000)+'</span>'+
+                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+moneyFormat(item.specsPriceList[v].price)+'</span>'+
+                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+moneyFormat(item.specsPriceList[v].changePrice)+'</span>'+
                         '</div>'
                     dingjiaHtml += dingjiaTemp;
                 }
