@@ -1955,7 +1955,8 @@
             dataType: this.options.dataType,
             success: function (res) {
             	if (res.errorCode != '0') {
-            		that.$tableLoading.html(res.errorInfo);
+                    that.$tableLoading.html(res.errorInfo);
+                    that.trigger('load-error', 200, res);
             		return;
             	}
                 var _json = JSON.parse(data.json);

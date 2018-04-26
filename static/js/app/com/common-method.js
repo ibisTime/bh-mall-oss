@@ -985,6 +985,9 @@ function buildList(options) {
     	hideLoading();
         updateTableInfo('tableList');
     });
+    tableEl.on('load-error.bs.table', function () {
+    	hideLoading();
+    });
     tableEl.on('page-change.bs.table', function () {
         showLoading()
     });

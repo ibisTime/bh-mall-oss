@@ -90,6 +90,7 @@ function reqApi(options, updateType) {
 
     return dataCache[cache_url].then(function(res, textStatus, jqXHR) {
         if (res.errorCode != '0') {
+            $("#loadingSpin").addClass("hidden");
             toastr.warning(res.errorInfo);
             return $.Deferred().reject(jqXHR, res, 'Not YES').promise();
         } else {

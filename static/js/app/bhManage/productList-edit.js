@@ -30,12 +30,16 @@ $(function() {
         }, {
             field : 'adPrice',
             title : '建议价',
-            formatter: moneyFormat,
+            formatter : function(v, data) {
+                return (data.adPrice/1000).toFixed(2)
+            },
             required : true
         },{
             field : 'price',
             title : '市场价',
-            formatter: moneyFormat,
+            formatter : function(v, data) {
+                return (data.price/1000).toFixed(2)
+            },
             required : true
         },{
             field : 'advPic',
@@ -47,14 +51,6 @@ $(function() {
             title : '缩略图',
             type: 'img',
             single : true,
-            required : true
-        },  {
-            field : 'virNumber',
-            title : '虚拟数量',
-            required : true
-        }, {
-            field : 'realNumber',
-            title : '实际数量',
             required : true
         },{
             field : 'slogan',
@@ -87,7 +83,7 @@ $(function() {
                 data.price *= 1000;
                 // data.changePrice *= 1000;
 
-                console.log(data);
+                // console.log(data);
 
                 var type0 = [];
                 var type1 = [];
@@ -141,13 +137,12 @@ $(function() {
                     
                     var dingjiaHtml = '<div id=dingjiaOutDom'+dingjiaDom+'">';
                     for(var v = 0 ;v<item.priceList.length ;v++ ) {
-//                  	console.log(item.priceList[v]);
 		                var dingjiaTemp =
 		                    '<div class="dingjiaDom'+v+'">'+
 		                        '<span style="width : 120px;padding:20px 40px;display: inline-block">'+item.name+'</span>'+
-		                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+items[item.priceList[v].level-1].name+'</span>'+
-		                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+moneyFormat(item.priceList[v].price)+'</span>'+
-		                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+moneyFormat(item.priceList[v].changePrice)+'</span>'+
+		                        '<span style="width : 120px;padding:20px 30px;display: inline-block">'+items[item.priceList[v].level-1].name+'</span>'+
+		                        '<span style="width : 120px;padding:20px 30px;display: inline-block">'+moneyFormat(item.priceList[v].price)+'</span>'+
+		                        '<span style="width : 120px;padding:20px 30px;display: inline-block">'+moneyFormat(item.priceList[v].changePrice)+'</span>'+
 		                    '</div>'
 		                dingjiaHtml += dingjiaTemp;
 		            }
@@ -166,9 +161,9 @@ $(function() {
             		var awardTemp =
                         '<div id="awardDom'+item+'">'+
                             '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[index.level-1].name+'</span>'+
-                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value1+'</span>'+
-                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value2+'</span>'+
-                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value3+'</span>'+
+                            '<span style="width : 140px;padding:20px 70px;display: inline-block">'+(+index.value1*100+'%')+'</span>'+
+                            '<span style="width : 140px;padding:20px 70px;display: inline-block">'+(+index.value2*100+'%')+'</span>'+
+                            '<span style="width : 140px;padding:20px 70px;display: inline-block">'+(+index.value3*100+'%')+'</span>'+
                             '<input id="editAwardBtn_'+item+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'+
                         '</div>'
                     awardHtml += awardTemp;
@@ -183,7 +178,7 @@ $(function() {
             		var awardTemp =
                         '<div id="awardCHDom'+item+'">'+
                             '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[index.level-1].name+'</span>'+
-                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+index.value1+'</span>'+
+                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+index.value1*100+'%')+'</span>'+
                             '<input id="editAwardCHBtn_'+item+'" type="button" class="btn editAwardCHBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'+
                         '</div>'
                     awardHtml1 += awardTemp;
@@ -258,7 +253,7 @@ $(function() {
                 '<div style="border: 1px solid #ced9df">'+
                     '<label style="padding: 20px 40px"><b>*</b>规格名称</label>'+
                     '<label style="padding: 20px 40px"><b>*</b>规格包含数量</label>'+
-                    '<label style="padding: 20px 40px"><b>*</b>重量</label>'+
+                    '<label style="padding: 20px 40px"><b>*</b>重量(g)</label>'+
                     '<label style="padding: 20px 40px"><b>*</b>是否允许普通单下单</label>'+
                     '<label style="padding: 20px 40px"><b>*</b>是否允许授权单下单</label>'+
                     '<label style="padding: 20px 40px"><b>*</b>是否允许升级单下单</label>'+
@@ -274,12 +269,11 @@ $(function() {
         var awardHtml1 = '';
         $('#remark').parent().after(
             '<div style="width:100%">' +
-            '<span style="font-size: 18px">出货奖励机制(请输入0-1之间的小数)</span>' +
+            '<span style="font-size: 18px">出货奖励机制(请输入0-1之间的小数(%))</span>' +
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
             '<div style="border: 1px solid #ced9df">'+
             '<div id="awardTitle">'+
             '<label style="padding: 20px 40px"><b>*</b>等级</label>'+
-            // '<label style="padding: 20px 40px"><b>*</b>类型</label>'+
             '<label style="padding: 20px 40px"><b>*</b>出货奖励</label>'+
             '</div>'+
             '<div id="awardCHContent"></div>'+
@@ -294,7 +288,7 @@ $(function() {
         var awardHtml = '';
         $('#remark').parent().after(
             '<div style="width:100%">' +
-                '<span style="font-size: 18px">推荐奖励机制(请输入0-1之间的小数)</span>' +
+                '<span style="font-size: 18px">推荐奖励机制(请输入0-1之间的小数(%))</span>' +
                 '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
                 '<div style="border: 1px solid #ced9df">'+
                     '<div id="awardTitle">'+
@@ -405,26 +399,26 @@ $(function() {
     											if ($('#popForm').valid()) {
 												    var data = $('#popForm').serializeObject();
 												    data.level = +index+1;
-												    console.log(data);
-												    console.log(index);
+												    // console.log(data);
+												    // console.log(index);
 												    for(var v in awardList) {
-												        console.log(v);
+												        // console.log(v);
 												        if(awardList[v].level-1 == index && awardList[v].type == data.type) {
 												            awardList[v].value1 = data.value1;
 												            awardList[v].value2 = data.value2;
 												            awardList[v].value3 = data.value3;
 												            // awardList[v].level = +index+1;
-												            console.log(awardList[v]);
+												            // console.log(awardList[v]);
 												        }
 												    }
-												    console.log(awardList);
+												    // console.log(awardList);
 												    var awardTemp =
 												        // '<div id="awardDom'+index+'">'+
 												        '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
 												        // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
-												        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value1+'</span>'+
-												        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
-												        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
+												        '<span style="width : 140px;padding:20px 70px;display: inline-block">'+(+data.value1*100+'%')+'</span>'+
+												        '<span style="width : 140px;padding:20px 70px;display: inline-block">'+(+data.value2*100+'%')+'</span>'+
+												        '<span style="width : 140px;padding:20px 70px;display: inline-block">'+(+data.value3*100+'%')+'</span>'+
 												        '<input id="editAwardBtn_'+index+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
 												        // '</div>'
 												
@@ -433,7 +427,7 @@ $(function() {
 													$('。editAwardBtn').click(function() {
 														editAward(e);
 													})
-												    console.log(awardTemp);
+												    // console.log(awardTemp);
 												    $('#awardDom'+index).empty().append(awardTemp);
 												            dw.close().remove();
 												}
@@ -504,7 +498,7 @@ $(function() {
                                                         // '<div id="awardDom'+index+'">'+
                                                         '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
                                                         // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
-                                                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value1+'</span>'+
+                                                        '<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+data.value1*100+'%')+'</span>'+
                                                         // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
                                                         // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
                                                         '<input id="editAwardCHBtn_'+index+'" type="button" class="btn editAwardCHBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'

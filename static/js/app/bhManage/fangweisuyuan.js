@@ -35,7 +35,7 @@ $(function() {
     }];
 	buildList({
 		columns: columns,
-		pageCode: '627955',
+		// pageCode: '627955',
 		// searchParams: {
 		// 	type: 'android_b',
 		// 	companyCode: OSS.company,
