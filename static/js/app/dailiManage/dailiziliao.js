@@ -8,7 +8,6 @@ $(function() {
     },{
         field : 'realName',
         title : '姓名'
-
     },{
         field : 'level',
         title : '等级',
@@ -102,7 +101,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./dailiziliao_change.html?v=1&referee=1&userId="+selRecords[0].userId;
+        window.location.href = "./dailiziliao_change.html?v=1&referee=1&userId="+selRecords[0].userId+"&level="+selRecords[0].level;
     });
     // 修改管理员
     $('#changeAdminBtn').click(function () {
@@ -132,5 +131,10 @@ $(function() {
             return;
         }
         window.location.href = "./dailiziliao_addedit.html?v=1&userId="+selRecords[0].userId;
+    })
+
+    // 新增代理
+    $('#addDailiBtn').click(function () {
+        window.location.href = "./dailiziliao_addDaili.html"
     })
 });

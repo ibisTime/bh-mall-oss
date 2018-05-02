@@ -8,9 +8,6 @@ $(function() {
         keyName: 'ckey',
         valueName: 'ckey',
         readonly: true
-        // formatter: function (v, data) {
-        //     return data.remark
-        // }
     },{
         field : 'cvalue',
         title : '参数值'
@@ -25,7 +22,11 @@ $(function() {
 		fields: fields,
 		code: code,
 		detailCode: '627086',
-		editCode: '627081'
+        editCode: '627081',
+        beforeSubmit : function(data) {
+            data.remark = $('#remark').text();
+            return data;
+        }
 	});
 	
 });

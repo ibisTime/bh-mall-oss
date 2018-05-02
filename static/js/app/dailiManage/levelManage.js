@@ -42,7 +42,10 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '627005'
+		pageCode: '627005',
+		searchParams: {
+			
+		}
 	});
     // $('#detailBtn').off('click').click(function () {
     //

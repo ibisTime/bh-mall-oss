@@ -172,7 +172,7 @@ $(function() {
     $('.toolbar').on('click','#exportBtn',function() {
     	// console.log('1');
     	if (!manager.getSelected()) {
-            alert('bn');
+            toastr.info('请选择一位代理');
             return;
         }
         var dw = dialog({
@@ -209,6 +209,8 @@ $(function() {
                 return {
                     field: item.level,
                     title: item.name,
+                    align: 'center',
+                    valign: 'middle'
 //                  formatter : function (v, data) {
 //                      if(data.level == item.level) {
 //                          return data.realName+'-'+data.nickname;
@@ -218,42 +220,59 @@ $(function() {
 //                  }
                 };
             });
-            buildList({
-                container: $('.ui-dialog-content'),
-                columns: items,
-                pageCode: '627352',
-                tableId : 'tableList1',
-                exportDataType : 'combine',
-                searchParams: {
-                    userId : manager.getSelected().data.userId
-                },
-                afterData: function (res) {
-                    createList(res.data, true);
-//                  createList(res, true);
-                    // console.log(newList, countMap);
-                    setTimeout(function () {
-                        var _table = $('#tableList1');
-                        for (var k in countMap) {
-                            if (countMap[k].count > 1) {
-                                _table.bootstrapTable('mergeCells', {
-                                    index: countMap[k].index,
-                                    field: countMap[k].level,
-                                    colspan: 1,
-                                    rowspan: countMap[k].count
-                                });
-                            }
-                        }
-                    }, 100);
-                    return {
-                        rows: newList,
-                        total: newList.length
-                    }
+
+            reqApi({
+                code : '627357',
+                json : {
+                    userId :  manager.getSelected().data.userId
                 }
-            });
-            $('.search-form').empty();
-            $('.search-form-li').empty();
-            $('.toolbar1').css('padding-bottom','80px');
-            $('.tableList1').css('position','absolute').css('top','50px');
+            }).then(function(data) {
+                
+                var selectData = [];
+                selectData.push(data);
+                // debugger;
+                buildList({
+                    container: $('.ui-dialog-content'),
+                    columns: items,
+                    pageCode: '627352',
+                    tableId : 'tableList1',
+                    exportDataType : 'combine',
+                    searchParams: {
+                        userId : manager.getSelected().data.userId
+                    },
+                    afterData: function (res) {
+                        selectData[0].userList = res.data;
+                        createList(selectData, true);
+    //                  createList(res, true);
+                        // console.log(newList, countMap);
+                        setTimeout(function () {
+                            var _table = $('#tableList1');
+                            for (var k in countMap) {
+                                if (countMap[k].count > 1) {
+                                    _table.bootstrapTable('mergeCells', {
+                                        index: countMap[k].index,
+                                        field: countMap[k].level,
+                                        colspan: 1,
+                                        rowspan: countMap[k].count
+                                    });
+                                }
+                            }
+                        }, 100);
+                        return {
+                            rows: newList,
+                            total: newList.length
+                        }
+                    }
+                });
+                $('th').css('vertical-align','middle');
+
+            })
+            
+            $('.search-form').css('display','none');
+            // $('.search-form').empty();
+            // $('.search-form-li').empty();
+            // $('.toolbar1').css('padding-bottom','80px');
+            // $('.tableList1').css('position','absolute').css('top','50px');
 
 
             $('#exBtn').off('click').click(function () {
@@ -268,10 +287,6 @@ $(function() {
         });
 
     })
-
-
-
-    //下拉菜单
 
     // 选择时的事件
 
@@ -364,7 +379,7 @@ $(function() {
             }
         }
         for(var prop in sortMap){
-            console.log(prop,sortMap[prop])
+            // console.log(prop,sortMap[prop])
         }
         var index = 0;
         for(var prop in sortMap){

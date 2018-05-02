@@ -54,6 +54,12 @@ $(function() {
         title : '授权状态',
         formatter : Dict.getNameForList('agent_status')
     }, {
+        field :'high',
+        title : '当前上级',
+        formatter : function(v, data) {
+            return data.highUser?data.highUser.realName:'-'
+        }
+    }, {
         field :'highUser',
         title : '上级',
         listCode: '627356',
@@ -63,7 +69,7 @@ $(function() {
         },
         keyName : 'userId',
         searchName :'userId',
-        valueName: 'loginName',
+        valueName: 'realName',
         readonly : false
     }];
 

@@ -60,6 +60,11 @@ jQuery.validator.addMethod("mobile", function(value, element) {
     return this.optional(element) || (mobile.test(value));
 }, "手机格式不对");
 
+//手机验证规则  
+jQuery.validator.addMethod("mobile", function(value, element) {
+    var mobile = /^1[3|4|5|7|8]\d{9}$/;
+    return this.optional(element) || (mobile.test(value));
+}, "手机格式不对");
 //邮箱或手机验证规则  
 jQuery.validator.addMethod("mm", function(value, element) {
     var mm = /^[a-z0-9._%-]+@([a-z0-9-]+\.)+[a-z]{2,4}$|^.*$/;
@@ -120,6 +125,11 @@ $.validator.addMethod("amount1", function(value, element) {
 //汉字
 jQuery.validator.addMethod("chinese", function(value, element) {
     var chinese = /^[\u4E00-\u9FFF]+$/;
+    return this.optional(element) || (chinese.test(value));
+}, "汉字格式不对");
+//0-1小数
+jQuery.validator.addMethod("littleNumber", function(value, element) {
+    var chinese = /^(0.\d+|0|1)$/;
     return this.optional(element) || (chinese.test(value));
 }, "汉字格式不对");
 

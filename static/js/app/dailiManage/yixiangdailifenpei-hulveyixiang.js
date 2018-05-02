@@ -4,8 +4,6 @@ $(function() {
 	var fenpei = getQueryString('fenpei');
 	var view = getQueryString('v');
 
-
-	console.log(fenpei);
     var columns = [{
         field : 'realName',
         title : '姓名'

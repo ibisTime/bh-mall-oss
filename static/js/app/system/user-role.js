@@ -7,10 +7,6 @@ $(function() {
 		type: 'hidden',
 		value: userId
 	}, {
-		field: 'adminUserId',
-		type: 'hidden',
-		value: getUserId()
-	}, {
 		title: '用户名',
 		field: 'loginName',
 		required: true,
@@ -20,7 +16,7 @@ $(function() {
 		field: 'roleCode',
 		type: 'select',
 		required: true,
-		pageCode: '805020',
+		pageCode: '627046',
 		keyName: 'code',
 		valueName: 'name'
 	}, {
@@ -32,8 +28,8 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: {userId:userId},
-		detailCode: '805121',
-		editCode: '805092'
+		detailCode: '627357',
+		editCode: '627311'
 	});
 	
 	

@@ -39,7 +39,7 @@ $(function() {
     var data = { "parentCode": window.parentCode, "type": "1", 'roleCode': sessionStorage.getItem('roleCode') };
     reqApi({
         // code: '805026',
-        code: '627056',
+        code: '627065',
         json: data,
         sync: true
     }, true).done(function(data) {

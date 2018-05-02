@@ -243,7 +243,7 @@ function showPermissionControl() {
             roleCode: getRoleId()
         };
         // reqApi({ code: '805026', json: pData, sync: true }, true).then(function(data) {
-        reqApi({ code: '627056', json: pData, sync: true }, true).then(function(data) {
+        reqApi({ code: '627065', json: pData, sync: true }, true).then(function(data) {
             $('.tools .toolbar').empty();
             for (var i = 0; i < data.length; i++) {
                 var menuUrl = data[i].url;

@@ -20,7 +20,20 @@ $(function() {
     }, {
         field : 'wxId',
         title : '微信号'
-    }, {
+    },{
+        field : 'quyu',
+        title : '区域',
+        formatter : function(v, data) {
+            return data.area?data.province+' '+data.city+' '+data.area
+                        :data.city?data.province+' '+data.city
+                            :data.province?data.province : '-'
+        }
+    },{
+        field : 'address',
+        title : '详细地址',
+        type : 'doubleLine',
+        required :true
+    } ,{
         field : 'highUserName',
         title : '上级',
         formatter : function(v, data) {
@@ -72,7 +85,7 @@ $(function() {
         value : userId,
         type : 'hidden'
     },{
-        field : 'loginName',
+        field : 'realName',
         title : '姓名',
         readonly : view,
         required :true

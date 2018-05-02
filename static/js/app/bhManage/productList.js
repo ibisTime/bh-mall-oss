@@ -6,18 +6,11 @@ $(function() {
 		checkbox : true
 	},{
 		field : 'code',
-		title : '产品编号',
-		search: true
+		title : '产品编号'
 	},{
 		field : 'name',
 		title : '名称'
-	},
-    //     {
-    //     field : 'updateDatetime',
-    //     title : '建议微信价',
-		// formatter: moneyFormat
-    // },
-        {
+	},{
         field : 'price',
         title : '市场价',
         formatter: moneyFormat
@@ -258,13 +251,6 @@ $(function() {
                 hideLoading()
         	
         })
-        
-        
-        
-        
-        
-        
-        
         
     });
     

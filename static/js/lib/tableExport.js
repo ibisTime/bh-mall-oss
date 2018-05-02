@@ -17,7 +17,7 @@
                 csvUseBOM: true,
                 displayTableName: false,
                 escape: false,
-                excelstyles: [], // e.g. ['border-bottom', 'border-top', 'border-left', 'border-right']
+                excelstyles: ['text-align','vertical-align'], // e.g. ['border-bottom', 'border-top', 'border-left', 'border-right']
                 fileName: '表格导出',
                 htmlContent: false,
                 ignoreColumn: [],
@@ -334,7 +334,7 @@
 
                     colNames = GetColumnNames(this);
 
-                    docData += '<table><thead>';
+                    docData += '<table border="1"><thead>';
                     // Header
                     $hrows = $(this).find('thead').first().find(defaults.theadSelector);
                     $hrows.each(function() {
