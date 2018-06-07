@@ -84,6 +84,7 @@ $(function() {
 		detailCode: '627017',
 		editCode: '627012',
         beforeSubmit : function (data) {
+            alert(1);
             data.level = level;
             data.minCharge *= 1000;
             // data.minCharge = (data.minCharge * 1000).toString();

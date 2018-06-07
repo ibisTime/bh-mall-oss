@@ -14,21 +14,21 @@ reqApi({
         
         
         
-        var columns = [{
+    var columns = [{
 		field : '',
 		title : '',
 		checkbox : true
 	},{
 		field : 'realname',
 		title : '姓名',
-		formatter : function(v, data) { 
-			return data.user?data.user.realName : '-'
+		formatter : function(v, data) {
+			return data?data.realName : '-'
 		}
 	},{
 		field : 'nickname',
 		title : '昵称',
 		formatter : function(v, data) { 
-			return data.user?data.user.nickname : '-'
+			return data?data.nickname : '-'
 		}
 	},{
 		field : 'applyLevel',
@@ -57,21 +57,27 @@ reqApi({
         field : 'mobile',
         title : '联系电话',
         formatter : function(v, data) {
-			return data.user?data.user.mobile : '-'
+			return data?data.mobile : '-'
 		}
     }, {
         field : 'wxId',
         title : '微信号',
         formatter : function(v, data) {
-			return data.user?data.user.wxId : '-'
+			return data?data.wxId : '-'
 		}
     }, {
         field : 'diyu',
         title : '地域',
         formatter : function (v, data) {
-            return data.user.area?data.user.province+' '+data.user.city+' '+data.user.area
-                        :data.user.city?data.user.province+' '+data.user.city
-                            :data.user.province?data.user.province : '-'
+            if(data){
+              
+            return data.area?data.province+' '+data.city+' '+data.area
+                        :data.city?data.province+' '+data.city
+                            :data.province?data.province : '-';
+                  
+            }else{
+                return '-'
+            }
         }
     }, {
         field : 'status',
@@ -81,14 +87,14 @@ reqApi({
         field : 'source',
         title : '来源',
         formatter : function(v, data) {
-			return data.user?data.user.source : '-'
+			return data?data.source : '-'
 		}
     }, {
     	// 显示
         field : 'applyDatetime1',
         title : '申请时间',
         formatter: function (v, data) {
-        	return dateTimeFormat(data.user.applyDatetime)
+        	return data?dateTimeFormat(data.applyDatetime):'-';
         },
         
     },  {
@@ -125,7 +131,7 @@ reqApi({
             return;
         }
         if(selRecords[0].status == '3') {
-        	window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&userId="+selRecords[0].applyUser+"&name="+encodeURI(encodeURI(selRecords[0].name));
+        	window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&userId="+selRecords[0].userId+"&name="+encodeURI(encodeURI(selRecords[0].name));
         }else {
         	toastr.info('该状态下不可忽略意向');
         }
@@ -140,7 +146,8 @@ reqApi({
             return;
         }
         if(selRecords[0].status == '3') {
-			window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId="+selRecords[0].applyUser+"&name="+encodeURI(encodeURI(selRecords[0].name));
+            console.log(selRecords[0]);
+			window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId="+selRecords[0].userId+"&name="+encodeURI(encodeURI(selRecords[0].name));
         }else {
         	toastr.info('该状态下不可忽略意向');
         }
@@ -157,7 +164,7 @@ reqApi({
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./yixiangdailifenpei_edit.html?v=0&userId="+selRecords[0].applyUser;
+        window.location.href = "./yixiangdailifenpei_edit.html?v=0&userId="+selRecords[0].userId;
     });
     
     

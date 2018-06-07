@@ -1,3 +1,4 @@
 /dist/
 .project
+/.idea/
 static/node_modules/

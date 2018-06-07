@@ -7,7 +7,7 @@ $(function(){
 		title : '',
 		checkbox : true
 	}, {
-		field : 'loginName',
+		field : 'realName',
 		title : '用户名',
 		search: true
 	}, {

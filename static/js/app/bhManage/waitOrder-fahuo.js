@@ -10,7 +10,7 @@ $(function() {
     },{
         field : 'deliver',
         title : '发货人',
-        value : getUserName(),
+        value : getUserId(),
         hidden : true
     },{
         field : 'isCompanySend',
@@ -44,6 +44,10 @@ $(function() {
 		fields: fields,
 		code: code,
         view : view,
+        beforeSubmit: function (data) {
+            data.updater = getUserId();
+            return data;
+        },
 		detailCode: '627664',
 		addCode: '627645',
 		editCode: '627645'

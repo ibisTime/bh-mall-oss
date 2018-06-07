@@ -17,13 +17,13 @@ reqApi({
 		field : '',
 		title : '',
 		checkbox : true
-	},{
+	}, {
 		field : 'realname',
 		title : '姓名',
 		formatter : function(v, data) { 
-			return data.user?data.user.realName : '-'
+			return data?data.realName : '-'
 		}
-	},{
+	}, {
 		field : 'applyLevel',
 		title : '申请等级',
         search: true,
@@ -32,8 +32,7 @@ reqApi({
         keyName : 'level',
         valueName : 'name',
         visible : false
-	},
-	{
+	}, {
 		field : 'applyLevel1',
 		title : '申请等级',
         formatter : function(v, data) {
@@ -45,29 +44,29 @@ reqApi({
         	})
         	return level
         }
-	},{
+	}, {
         field : 'mobile',
         title : '联系电话',
         formatter : function(v, data) {
-			return data.user?data.user.mobile : '-'
+			return data?data.mobile : '-'
 		}
     }, {
         field : 'wxId',
         title : '微信号',
         formatter : function(v, data) {
-			return data.user?data.user.wxId : '-'
+			return data?data.wxId : '-'
 		}
     }, {
         field : 'highUserName',
         title : '上级',
         formatter : function(v, data) {
-			return data.user.highUser?data.user.highUser.realName : '-'
+			return data?data.realName : '-'
 		}
     }, {
         field : 'teamName',
         title : '团队名称',
         formatter : function(v, data) {
-			return data.user?data.user.teamName : '-'
+			return data?data.teamName : '-'
 		}
     }, {
         field : 'impowerAmount',
@@ -77,9 +76,9 @@ reqApi({
         field : 'diyu',
         title : '地域',
         formatter : function (v, data) {
-            return data.user.area?data.user.province+' '+data.user.city+' '+data.user.area
-                        :data.user.city?data.user.province+' '+data.user.city
-                            :data.user.province?data.user.province : '-'
+            return data.area?data.province+' '+data.city+' '+data.area
+                        :data.city?data.province+' '+data.city
+                            :data.province?data.province : '-'
         }
     }, {
         field : 'createDatetime',
@@ -96,7 +95,7 @@ reqApi({
         field : 'createDatetime1',
         title : '申请时间',
         formatter: function(v, data) {
-        	return data.user?dateTimeFormat(data.user.applyDatetime) : '-'
+        	return data?dateTimeFormat(data.applyDatetime) : '-'
         }
     }];
 	buildList({
@@ -110,13 +109,13 @@ reqApi({
 	
 	
 	
-	$('#checkBtn').off('click').click(function () {
+	$('#checkBtn').off().click(function () {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./shenheshouquan_check.html?v=1&userId="+selRecords[0].applyUser;
+        window.location.href = "./shenheshouquan_check.html?v=1&userId="+selRecords[0].userId;
     })
         
         

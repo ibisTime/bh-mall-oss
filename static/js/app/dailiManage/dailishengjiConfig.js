@@ -35,7 +35,11 @@ $(function() {
         title : '备注'
     }];
 	buildList({
-		columns: columns,
+        columns: columns,
+        searchParams: {
+            orderColumn: 'level',
+            orderDir: 'asc'
+        },
 		pageCode: '627025'
 	});
     // 修改

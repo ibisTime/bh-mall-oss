@@ -12,6 +12,10 @@ $(function() {
 		mobile : true,
 		required : true
 	}, {
+		title: '用户名',
+		field: 'realName',
+		required : true
+	}, {
 		title: '登录密码',
 		field: 'loginPwd',
 		required: true

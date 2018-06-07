@@ -53,7 +53,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].status === '1') {
+        if(selRecords[0].status === '4') {
             window.location.href = "./shenhechongzhi_check.html?code="+selRecords[0].code;
         }else {
             toastr.info('该状态不可进行审核')

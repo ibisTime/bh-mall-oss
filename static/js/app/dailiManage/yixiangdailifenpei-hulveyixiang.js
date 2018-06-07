@@ -87,7 +87,7 @@ $(function() {
         formatter: dateTimeFormat
     }, {
         field : 'toUserId',
-        title : '代理',
+        title : '意向归属人',
         readonly : false,
         listCode : '627356',
         type : 'select',
@@ -95,9 +95,7 @@ $(function() {
             kind  : 'B'
         },
         keyName : 'userId',
-        searchName :'userId',
-        valueName: 'loginName',
-        required : true
+        valueName: 'realName'
     }, {
         field : 'manager',
         title : '管理员',
@@ -108,8 +106,7 @@ $(function() {
             kind  : 'P'
         },
         keyName : 'userId',
-        searchName :'userId',
-        valueName: 'loginName',
+        valueName: 'realName',
         required : true
     }, {
         field: 'reason',

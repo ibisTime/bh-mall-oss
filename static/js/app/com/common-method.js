@@ -1104,6 +1104,9 @@ function buildDetail(options) {
         if (item.required) {
             rules[item.field].required = item.required;
         }
+        if (item.regular) {
+            rules[item.field].regular = item.regular;
+        }
         if (item.number) {
             rules[item.field].number = item.number;
         }

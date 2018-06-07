@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     // 报货管理-云仓管理-待处理订单
 
 
@@ -20,9 +20,9 @@ $(function() {
             field: 'code',
             title: '订单编号'
         }, {
-    		field : 'productName',
-    		title : '产品名称',
-    	},{
+            field: 'productName',
+            title: '产品名称',
+        }, {
             field: 'amount',
             title: '付款金额',
             formatter: moneyFormat
@@ -31,22 +31,22 @@ $(function() {
             title: '订单状态',
             search: true,
             type: 'select',
-            key : 'order_status',
+            key: 'order_status',
             formatter: Dict.getNameForList('order_status')
-        },{
-        	field : 'kind',
-        	title : '订单类型',
-        	search: true,
-        	type: 'select',
-        	key :'order_type',
-        	formatter : Dict.getNameForList('order_type')
-    	},  {
+        }, {
+            field: 'kind',
+            title: '订单类型',
+            search: true,
+            type: 'select',
+            key: 'order_type',
+            formatter: Dict.getNameForList('order_type')
+        }, {
             field: 'realName',
             title: '下单代理',
-            formatter : function(v, data) {
-            	return data.user?data.user.realName : '-'
+            formatter: function (v, data) {
+                return data.user ? data.user.realName : '-'
             }
-        },{
+        }, {
             field: 'level',
             title: '下单代理等级',
             search: true,
@@ -54,20 +54,20 @@ $(function() {
             listCode: '627006',
             keyName: 'level',
             valueName: 'name',
-            visible : false
+            visible: false
         }, {
             field: 'level1',
             title: '下单代理等级',
-            formatter : function(v, data) {
-            	var level = '';
-            	items.map(function(item) {
-            		if(item.level == data.user.level) {
-            			level = item.name
-            		}
-            	})
-            	return level
+            formatter: function (v, data) {
+                var level = '';
+                items.map(function (item) {
+                    if (item.level == data.user.level) {
+                        level = item.name
+                    }
+                })
+                return level
             }
-        },{
+        }, {
             field: 'signer',
             title: '收货人'
         }, {
@@ -95,8 +95,8 @@ $(function() {
             },
             singleSelect: false
         });
-        
-        
+
+
         // 批量审单
         $('#shendanBtn').click(function () {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -111,21 +111,17 @@ $(function() {
                     check = false
                 }
             });
-            if(check) {
+            if (check) {
                 var codeList = [];
-                var temp = {}
                 selRecords.map(function (item) {
-                    temp = {
-                        code : item.code
-                    }
-                    codeList.push(temp);
+                    codeList.push(item.code);
                 });
 
                 confirm('确定批量审单？').then(function () {
                     var dw = dialog({
                         content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                        '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
-                        '</form>'
+                            '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
+                            '</form>'
                     });
 
                     dw.showModal();
@@ -146,7 +142,7 @@ $(function() {
                                         json: {
                                             codeList: codeList,
                                             approver: getUserName(),
-                                            approveNote : data.approveNote
+                                            approveNote: data.approveNote
                                         }
                                     }).done(function () {
                                         sucList();
@@ -163,7 +159,7 @@ $(function() {
                     });
                     hideLoading();
                 })
-            }else {
+            } else {
                 return
             }
 
@@ -175,9 +171,9 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == '0' || selRecords[0].status == '1' || selRecords[0].status == '2') {
-                window.location.href = './waitOrder_changeAddress.html?code='+selRecords[0].code
-            }else {
+            if (selRecords[0].status == '0' || selRecords[0].status == '1' || selRecords[0].status == '2') {
+                window.location.href = './waitOrder_changeAddress.html?code=' + selRecords[0].code
+            } else {
                 toastr.info('该状态下不能修改收货地址')
             }
         });
@@ -189,9 +185,9 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == '2') {
-                window.location.href = './waitOrder_fahuo.html?code='+selRecords[0].code
-            }else {
+            if (selRecords[0].status == '2') {
+                window.location.href = './waitOrder_fahuo.html?code=' + selRecords[0].code
+            } else {
                 toastr.info('该状态下不能发货')
             }
         });
@@ -203,9 +199,9 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == '5') {
-                window.location.href = './waitOrder_addedit.html?cancel=1&code='+selRecords[0].code
-            }else {
+            if (selRecords[0].status == '5') {
+                window.location.href = './waitOrder_addedit.html?cancel=1&code=' + selRecords[0].code
+            } else {
                 toastr.info('该状态下不能审核取消')
             }
         });
