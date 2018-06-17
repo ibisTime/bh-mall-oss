@@ -1,10 +1,12 @@
 $(function() {
 	// 实际上是审核升级的审核页面
 	var code = getQueryString('code');
-	var userId = getQueryString('userId');
+    var userId = getQueryString('userId');
+    console.log(window.location.href);
+    console.log(userId);
 	var view = true;
     var fields = [{
-        field : 'loginName',
+        field : 'realName',
         title : '姓名'
     },{
         field : 'level',

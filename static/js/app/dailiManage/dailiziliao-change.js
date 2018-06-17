@@ -18,8 +18,11 @@ $(function() {
         keyName: 'level',
         valueName: 'name',
     }, {
-        field : 'mobile',
-        title : '联系电话'
+        field : 'mobile1',
+        title : '联系电话',
+        formatter : function(v, data) {
+            return data.mobile;
+        }
     }, {
         field : 'wxId',
         title : '微信号'
