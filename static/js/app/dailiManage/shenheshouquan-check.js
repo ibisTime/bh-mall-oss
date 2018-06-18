@@ -4,8 +4,11 @@ $(function() {
 	var userId = getQueryString('userId');
 	var view = true;
     var fields = [{
-        field : 'realName',
-        title : '姓名'
+        field : 'realName1',
+        title : '姓名',
+        formatter: function(v, data) {
+            return data.realName
+        }
     },{
         field : 'level',
         title : '等级',

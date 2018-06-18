@@ -91,7 +91,7 @@ $(function () {
             columns: columns,
             pageCode: '627662',
             searchParams: {
-                statusList: '1,2,5'
+                statusList: ['1','2','5']
             },
             singleSelect: false
         });
