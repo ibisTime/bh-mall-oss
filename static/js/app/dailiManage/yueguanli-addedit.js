@@ -57,21 +57,15 @@ reqApi({
         title : '余额',
         formatter: moneyFormat
     },{
-        field : 'applyNote',
-        title : '充值说明',
-        readonly : false,
-        required : true
-    },{
-        field : 'chargeAmount',
+        field : 'changeAmount',
         title : '充值金额',
         readonly : false,
-        required : true
+        required : true,
+        number: true
     },{
-        field : 'chargePdf',
-        title : '充值截图',
+        field : 'remark',
+        title : '备注',
         readonly : false,
-        type : 'img',
-        single : true,
         required : true
     }];
 
@@ -117,21 +111,15 @@ reqApi({
         title : '余额',
         formatter: moneyFormat
     },{
-        field : 'applyNote',
-        title : '扣款说明',
-        readonly : false,
-        required : true
-    },{
-        field : 'chargeAmount',
+        field : 'changeAmount',
         title : '扣款金额',
         readonly : false,
-        required : true
+        required : true,
+        number: true
     },{
-        field : 'chargePdf',
-        title : '扣款截图',
+        field : 'remark',
+        title : '备注',
         readonly : false,
-        type : 'img',
-        single : true,
         required : true
     }];
 
@@ -142,15 +130,11 @@ reqApi({
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 // console.log($('.center-img-wrap').children('img').attr('src').split('/')[3].split('?')[0]);
-                data.chargePdf = $('.center-img-wrap').children('img').attr('src').split('/')[3].split('?')[0];
                 data.accountNumber = accountNumber;
-                data.chargeAmount *= 1000;
-                data.applyUser = getUserId();
-                data.accountNumber = accountNumber;
-                data.type=chongzhi?'AJ_CZ':'AJ_KK'
-
+                data.changeAmount *= 1000;
+                data.changeAmount = chongzhi ? data.changeAmount : 0-(+data.changeAmount)
                 reqApi({
-                    code: '627460',
+                    code: '627454',
                     json: data
                 }).done(function() {
                     sucDetail();

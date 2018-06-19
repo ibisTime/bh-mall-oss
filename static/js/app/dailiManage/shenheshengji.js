@@ -112,7 +112,7 @@ reqApi({
 		columns: columns,
         pageCode: '627354',
         searchParams: {
-            status : '12'
+            status : '14'
         }
 	});
         

@@ -106,7 +106,6 @@ $(function() {
                     field: 'approveNote',
                     title: '审批说明',
                     required: true,
-                    number: true,
                     min: '0'
                 }],
                 buttons: [{
