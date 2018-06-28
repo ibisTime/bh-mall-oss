@@ -25,12 +25,12 @@ $(function () {
         }, {
             field: 'adPrice',
             title: '建议价',
-            formatter: moneyFormat,
+            amount: true,
             required: true
         }, {
             field: 'price',
             title: '市场价',
-            formatter: moneyFormat,
+            amount: true,
             required: true
         }, {
             field: 'advPic',
@@ -76,10 +76,6 @@ $(function () {
                 data.specList = specList;
                 // 奖励机制
                 data.awardList = awardList;
-                // 各种价格
-                data.adPrice *= 1000;
-                data.price *= 1000;
-                // data.changePrice *= 1000;
                 var type0 = [];
                 var type1 = [];
                 function ftype0(item) {
@@ -95,7 +91,6 @@ $(function () {
                 type0 = awardList.filter(ftype0);
                 type1 = awardList.filter(ftype1);
 
-                console.log(data);
                 if (data.specList.length <= 0 || type0.length <= 0 || type1.length <= 0) {
                     toastr.info('请检查您是否填写规格体系以及奖励机制');
                     return
@@ -115,10 +110,15 @@ $(function () {
             '<label style="padding: 20px 40px"><b>*</b>等级</label>' +
             '<label style="padding: 20px 40px"><b>*</b>价格</label>' +
             '<label style="padding: 20px 40px"><b>*</b>换货价</label>' +
+            '<label style="padding: 20px 40px"><b>*</b>每日限购</label>' +
+            '<label style="padding: 20px 40px"><b>*</b>每周限购</label>' +
+            '<label style="padding: 20px 40px"><b>*</b>每月限购</label>' +
+            '<label style="padding: 20px 40px"><b>*</b>是否可购买</label>' +
+            '<label style="padding: 20px 40px"><b>*</b>云仓最少发货数量</label>' +
             '</div>' +
             '<div id="dingjiaContent"></div>' +
             '</div>' +
-            '</div>')
+            '</div>');
 
         $('#remark').parent().after(
             '<div style="width:100%">' +
@@ -133,12 +133,7 @@ $(function () {
             '<label style="padding: 20px 40px"><b>*</b>是否允许升级单下单</label>' +
             '<div id="guigeHtml"></div>' +
             '</div>' +
-
-            '</div>')
-
-
-
-
+            '</div>');
 
         var awardHtml1 = '';
         $('#remark').parent().after(
@@ -148,7 +143,6 @@ $(function () {
             '<div style="border: 1px solid #ced9df">' +
             '<div id="awardTitle">' +
             '<label style="padding: 20px 40px"><b>*</b>等级</label>' +
-            // '<label style="padding: 20px 40px"><b>*</b>类型</label>'+
             '<label style="padding: 20px 40px"><b>*</b>出货奖励</label>' +
             '</div>' +
             '<div id="awardCHContent"></div>' +
@@ -163,7 +157,6 @@ $(function () {
             '<div style="border: 1px solid #ced9df">' +
             '<div id="awardTitle">' +
             '<label style="padding: 20px 40px"><b>*</b>等级</label>' +
-            // '<label style="padding: 20px 40px"><b>*</b>类型</label>'+
             '<label style="padding: 20px 40px"><b>*</b>直接推荐奖励</label>' +
             '<label style="padding: 20px 40px"><b>*</b>间接推荐奖励</label>' +
             '<label style="padding: 20px 40px"><b>*</b>次推荐奖励</label>' +
@@ -206,9 +199,14 @@ $(function () {
                     var dingjiaTemp =
                         '<div class="dingjiaDom' + v + '">' +
                         '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.name + '</span>' +
-                        '<span style="width : 140px;padding:20px 40px;display: inline-block">' + items[item.specsPriceList[v].level - 1].name + '</span>' +
-                        '<span style="width : 140px;padding:20px 40px;display: inline-block">' + moneyFormat(item.specsPriceList[v].price) + '</span>' +
-                        '<span style="width : 140px;padding:20px 40px;display: inline-block">' + moneyFormat(item.specsPriceList[v].changePrice) + '</span>' +
+                        '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[item.specsPriceList[v].level - 1].name + '</span>' +
+                        '<span style="width : 120px;padding:20px 22px;display: inline-block">' + moneyFormat(item.specsPriceList[v].price) + '</span>' +
+                        '<span style="width : 120px;padding:20px 12px;display: inline-block">' + moneyFormat(item.specsPriceList[v].changePrice) + '</span>' +
+                        '<span style="width : 120px;padding:20px 12px;display: inline-block">' + item.specsPriceList[v].daillyNumber + '</span>' +
+                        '<span style="width : 120px;padding:20px 26px;display: inline-block">' + item.specsPriceList[v].weeklyNumber + '</span>' +
+                        '<span style="width : 120px;padding:20px 38px;display: inline-block">' + item.specsPriceList[v].monthlyNumber + '</span>' +
+                        '<span style="width : 120px;padding:20px 51px;display: inline-block">' + bool[item.specsPriceList[v].isBuy] + '</span>' +
+                        '<span style="width : 120px;padding:20px 74px;display: inline-block">' + item.specsPriceList[v].minNumber + '</span>' +
                         '</div>'
                     dingjiaHtml += dingjiaTemp;
                 }
@@ -306,8 +304,6 @@ $(function () {
         // 修改出货奖励
         $('#awardCHContent').on('click', '.editAwardCHBtn', function editAwardCH(e) {
             var index = (+e.target.id.split('_')[1]);
-            console.log(index);
-            console.log(items);
             var value = items[index].name;
             var dw2 = dialog({
                 content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
@@ -457,24 +453,26 @@ $(function () {
                             dw.close().remove();
                             var circleList = []
                             for (var p = 0; p < items.length-1; p++) {
-                                var field1 = {
-                                    field: items[p].level,
-                                    title: '等级',
-                                    value: items[p].name,
-                                    readonly: true
-                                };
-                                var field2 = {
-                                    field: 'price' + p,
-                                    title: '价格',
-                                    required: true
-                                };
-                                var field3 = {
-                                    field: 'changePrice' + p,
-                                    title: '换货价',
-                                    required: true
-                                };
+                                if (items[p].level != 6) {
+                                    var field1 = {
+                                        field: items[p].level,
+                                        title: '等级',
+                                        value: items[p].name,
+                                        readonly: true
+                                    };
+                                    var field2 = {
+                                        field: 'price' + p,
+                                        title: '价格',
+                                        required: true
+                                    };
+                                    var field3 = {
+                                        field: 'changePrice' + p,
+                                        title: '换货价',
+                                        required: true
+                                    };
 
-                                circleList.push(field1, field2, field3);
+                                    circleList.push(field1, field2, field3);
+                                }
                             }
 
                             var dw1 = dialog({
@@ -490,60 +488,130 @@ $(function () {
                                 buttons: [{
                                     title: '确定',
                                     handler: function () {
-
                                         if ($('#popFormDingjia').valid()) {
                                             var data = $('#popFormDingjia').serializeObject();
                                             dw1.close().remove();
                                             var specsPriceList = []
                                             for (var v of items) {
-                                                var price1 = 'price' + (v.level - 1);
-                                                var changePrice1 = 'changePrice' + (v.level - 1);
+                                                if (v.level != 6) {
+                                                    var price1 = 'price' + (v.level - 1);
+                                                    var changePrice1 = 'changePrice' + (v.level - 1);
 
-                                                var temp1 = {};
-                                                temp1.level = v.level;
-                                                temp1.price = +data[price1] * 1000;
-                                                temp1.changePrice = +data[changePrice1] * 1000;
+                                                    var temp1 = {};
+                                                    temp1.level = v.level;
+                                                    temp1.price = +data[price1] * 1000;
+                                                    temp1.changePrice = +data[changePrice1] * 1000;
 
-                                                specsPriceList.push(temp1);
+                                                    specsPriceList.push(temp1);
+                                                }
                                             }
-                                            temp.specsPriceList = specsPriceList;
+                                            // temp.specsPriceList = specsPriceList;
 
-
-
-                                            var dingjiaHtml = '<div id=dingjiaOutDom' + dingjiaDom + '">';
-                                            for (var v = 0; v < specsPriceList.length - 1; v++) {
-                                                var dingjiaTemp =
-                                                    '<div class="dingjiaDom' + v + '">' +
-                                                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.name + '</span>' +
-                                                    '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[specsPriceList[v].level - 1].name + '</span>' +
-                                                    '<span style="width : 120px;padding:20px 30px;display: inline-block">' + (+specsPriceList[v].price / 1000) + '</span>' +
-                                                    '<span style="width : 120px;padding:20px 30px;display: inline-block">' + (+specsPriceList[v].changePrice / 1000) + '</span>' +
-                                                    '</div>'
-                                                dingjiaHtml += dingjiaTemp;
+                                            var xiangouList = [];
+                                            var dictInfo = {
+                                                0: '否',
+                                                1: '是'
+                                            };
+                                            for (var p = 0; p < items.length-1; p++) {
+                                                if (items[p].level != 6) {
+                                                    xiangouList = xiangouList.concat([{
+                                                        field: items[p].level,
+                                                        title: '等级',
+                                                        value: items[p].name,
+                                                        readonly: true
+                                                    }, {
+                                                        field: 'daillyNumber' + p,
+                                                        title: '日限购',
+                                                        required: true
+                                                    }, {
+                                                        field: 'weeklyNumber' + p,
+                                                        title: '周限购',
+                                                        required: true
+                                                    }, {
+                                                        field: 'monthlyNumber' + p,
+                                                        title: '月限购',
+                                                        required: true
+                                                    }, {
+                                                        field: 'isBuy' + p,
+                                                        title: '是否可购买',
+                                                        type: 'select',
+                                                        data: dictInfo,
+                                                        required: true
+                                                    }, {
+                                                        field: 'minNumber' + p,
+                                                        title: '云仓最少发货数量',
+                                                        required: true
+                                                    }]);
+                                                }
                                             }
 
-                                            dingjiaHtml += '</div>';
-                                            $('#dingjiaContent').append(dingjiaHtml);
+                                            var dw2 = dialog({
+                                                content: '<form class="pop-form-dingjia" id="popFormXiangou" novalidate="novalidate">' +
+                                                    '<ul class="form-info" id="formContainer_xiangou"><li style="text-align:center;font-size: 15px;">请输入限购设置</li></ul>' +
+                                                    '</form>'
+                                            });
 
-                                            specList.push(temp)
-                                            console.log(specList);
+                                            dw2.showModal();
+                                            buildDetail({
+                                                container: $('#formContainer_xiangou'),
+                                                fields: xiangouList,
+                                                buttons: [{
+                                                    title: '确定',
+                                                    handler: function () {
+                                                        if ($('#popFormXiangou').valid()) {
+                                                            var data = $('#popFormXiangou').serializeObject();
+                                                            dw2.close().remove();
+                                                            // var specsPriceList = []
+                                                            for (var i = 0; i < items.length; i++) {
+                                                                var v = items[i];
+                                                                if (v.level != 6) {
+                                                                    var daillyNumber = 'daillyNumber' + (v.level - 1);
+                                                                    var weeklyNumber = 'weeklyNumber' + (v.level - 1);
+                                                                    var monthlyNumber = 'monthlyNumber' + (v.level - 1);
+                                                                    var isBuy = 'isBuy' + (v.level - 1);
+                                                                    var minNumber = 'minNumber' + (v.level - 1);
+                                                                    specsPriceList[i].daillyNumber = data[daillyNumber];
+                                                                    specsPriceList[i].weeklyNumber = data[weeklyNumber];
+                                                                    specsPriceList[i].monthlyNumber = data[monthlyNumber];
+                                                                    specsPriceList[i].isBuy = data[isBuy];
+                                                                    specsPriceList[i].minNumber = data[minNumber];
+                                                                }
+                                                            }
+                                                            temp.specsPriceList = specsPriceList;
 
+                                                            var dingjiaHtml = '<div id="dingjiaOutDom' + dingjiaDom + '">';
+                                                            for (var v = 0; v < specsPriceList.length - 1; v++) {
+                                                                var dingjiaTemp =
+                                                                    '<div class="dingjiaDom' + v + '">' +
+                                                                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.name + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[specsPriceList[v].level - 1].name + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 22px;display: inline-block">' + (+specsPriceList[v].price / 1000) + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (+specsPriceList[v].changePrice / 1000) + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (specsPriceList[v].daillyNumber) + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 26px;display: inline-block">' + (specsPriceList[v].weeklyNumber) + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 38px;display: inline-block">' + (specsPriceList[v].monthlyNumber) + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 51px;display: inline-block">' + (dictInfo[specsPriceList[v].isBuy]) + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 74px;display: inline-block">' + (specsPriceList[v].minNumber) + '</span>' +
+                                                                    '</div>';
+                                                                dingjiaHtml += dingjiaTemp;
+                                                            }
+
+                                                            dingjiaHtml += '</div>';
+                                                            $('#dingjiaContent').append(dingjiaHtml);
+
+                                                            specList.push(temp)
+                                                            console.log(specList);
+                                                        }
+                                                    }
+                                                }]
+                                            });
+                                            hideLoading();
                                         }
                                     }
-                                }
-                                    // , {
-                                    //     title: '取消',
-                                    //     handler: function () {
-                                    //         dw1.close().remove();
-                                    //     }
-                                    // }
-                                ]
+                                }]
                             });
                             hideLoading();
                             dingjiaDom++;
-
-
-                            //                          g++;
                         }
                     }
                 }, {
@@ -736,7 +804,6 @@ $(function () {
             });
             hideLoading();
         });
-
     });
 
 });

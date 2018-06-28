@@ -17,11 +17,11 @@ $(function() {
         formatter : function (v, data) {
             return data.user?data.user.teamName:'-'
         }
-    },{
+    }, {
         field : 'amount',
         title : '金额',
         formatter: moneyFormat
-    },{
+    }, {
         field : 'applyDatetime',
         title : '申请时间',
 		formatter: dateTimeFormat

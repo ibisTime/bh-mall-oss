@@ -33,6 +33,26 @@ $(function () {
 		title: '红线金额',
 		formatter: moneyFormat
 	}, {
+		field: 'minSurplus',
+        title: '门槛可有余额',
+		formatter: moneyFormat
+	}, {
+		field: 'isSend',
+		title: '授权单是否允许自发',
+		data: {
+			0: '否',
+			1: '是'
+		},
+		type: 'select'
+	}, {
+		field: 'isWareHouse',
+		title: '是否启用云仓',
+		data: {
+			0: '否',
+			1: '是'
+		},
+		type: 'select'
+	}, {
 		field: 'updater',
 		title: '更新人'
 	}, {

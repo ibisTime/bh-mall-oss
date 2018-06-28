@@ -7,7 +7,7 @@ $(function() {
         formatter : function (v, data) {
             return data.code
         }
-    },{
+    }, {
         field : 'cvalue1',
         title : '充值人',
         formatter : function (v, data) {
@@ -19,11 +19,15 @@ $(function() {
         formatter : function(v, data) {
         	return data.user?data.user.teamName : '-'
         }
-    },{
+    }, {
         field : 'amount',
         title : '金额',
         formatter: moneyFormat
-    },{
+    }, {
+        field: 'chargePdf',
+        title: '打款凭证',
+        type: 'img'
+    }, {
         field : 'applyDatetime',
         title : '申请时间',
         formatter: dateTimeFormat
@@ -34,12 +38,12 @@ $(function() {
         type: 'select',
         key : 'charge_status',
         formatter : Dict.getNameForList('charge_status')
-    },{
+    }, {
         field : 'payNote',
         title : '理由',
         readonly : false,
         required : true
-    } ];
+    }];
 
     var buttons = [{
         title: '通过',

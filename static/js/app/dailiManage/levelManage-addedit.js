@@ -8,19 +8,42 @@ $(function() {
     }, {
         field : 'amount',
         title : '首次授权发货金额',
-        formatter: moneyFormat,
+        amount: true,
         required : true
     }, {
         field : 'minChargeAmount',
         title : '本等级最低充值金额',
-        formatter: moneyFormat,
+        amount: true,
         required : true
     }, {
         field : 'redAmount',
         title : '红线金额',
-        formatter: moneyFormat,
+        amount: true,
         required : true
-    },  {
+    }, {
+        field: 'minSurplus',
+        title: '门槛可有余额',
+        amount: true,
+        required : true
+    }, {
+        field: 'isSend',
+        title: '授权单是否允许自发',
+        data: {
+            0: '否',
+            1: '是'
+        },
+        type: 'select',
+        required : true
+    }, {
+        field: 'isWareHouse',
+        title: '是否启用云仓',
+        data: {
+            0: '否',
+            1: '是'
+        },
+        type: 'select',
+        required : true
+    }, {
         field : 'remark',
         title : '备注'
     }];
@@ -36,9 +59,6 @@ $(function() {
 		beforeSubmit : function (data) {
 			data.level = level;
 			data.updater = getUserName();
-			data.amount *= 1000;
-			data.minChargeAmount *= 1000;
-			data.redAmount *= 1000;
 			return data;
         }
 	});

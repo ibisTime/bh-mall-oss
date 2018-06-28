@@ -1596,7 +1596,363 @@ function buildDetail(options) {
     if (options.beforeDetail) {
         options.beforeDetail(detailParams);
     }
+    function addData(d) {
+        var data = d;
+        if (options._keys) {
+            options._keys.forEach(function(key) {
+                data = data[key] || {};
+            });
+        }
+        for (var i = 0, len = imgList.length; i < len; i++) {
+            (function(i) {
+                setTimeout(function() {
+                    var item = imgList[i];
+                    uploadInit.call($('#' + item.field));
+                }, 100);
+            })(i);
+        }
+        $('#code').val(data.code || data.id);
+        for (var i = 0, len = fields.length; i < len; i++) {
+            var item = fields[i];
+            var value = item.value;
+            var displayValue = data[item.field];
+            if (item._keys) {
+                var _value = data,
+                    emptyObj = {};
+                item._keys.forEach(function(key) {
+                    _value = _value[key] == undefined ? emptyObj : _value[key];
+                });
+                displayValue = _value === emptyObj ? "" : _value;
+            }
 
+            if (item.readonly) {
+                if (item.type == 'm2o') {
+                    if (displayValue) {
+                        var clickDiv = $('#' + item.field).html('<a>' + displayValue + '</a>');
+                        (function(a) {
+                            clickDiv.on('click', function() {
+                                window.open(a.url + '?v=1&code=' + data[a.codeField || 'code'], '', 'width=1200,height=800');
+                            });
+                        })(item);
+                    } else {
+                        $('#' + item.field).html(item.defaultValue);
+                    }
+                } else if (item.type == 'o2m') {
+                    if (item.pageCode) {
+                        $('#' + item.field).html('<table id="' + item.field + 'List"></table>');
+                        var searchParams = item.o2mvalue || {};
+                        var options1 = {
+                            columns: item.columns,
+                            pageCode: item.pageCode,
+                            tableId: item.field + 'List',
+                            searchParams: searchParams,
+                            type: 'o2m'
+                        };
+                        item.detailFormatter && (options1.detailFormatter = item.detailFormatter);
+                        buildList(options1);
+                    } else {
+                        if (item.useData) {
+                            displayValue = $.isArray(item.useData) ? item.useData : (data || []);
+                        }
+                        $('#' + item.field).html('<table id="' + item.field + 'List"></table>');
+                        $('#' + item.field + 'List').bootstrapTable({
+                            striped: true,
+                            clickToSelect: true,
+                            singleSelect: true,
+                            columns: item.columns,
+                            data: displayValue
+                        });
+                    }
+                } else if (item.type == 'select' && item.data) {
+                    var realValue = displayValue;
+                    if (item.value) {
+                        if (item.value.call) {
+                            realValue = item.value(data);
+                        } else {
+                            realValue = item.value;
+                        }
+                    }
+                    $('#' + item.field).html(item.data[realValue] || '-');
+                    $('#' + item.field).attr('data-value', realValue);
+                    if (item.onChange) {
+                        item.onChange(realValue);
+                    }
+                } else if (item.type == 'select' && item.key) {
+                    var list = [];
+                    var realValue = displayValue;
+                    if (item.value) {
+                        if (item.value.call) {
+                            realValue = item.value(data);
+                        } else {
+                            realValue = item.value;
+                        }
+                    }
+                    if (!item.multiple) {
+                        if (item.keyCode) {
+                            list = Dict.getName2(item.key, item.keyCode);
+                            $('#' + item.field).html(Dict.getName2(item.key, item.keyCode, realValue || '0'));
+                        } else {
+                            list = Dict.getName(item.key);
+                            $('#' + item.field).html(Dict.getName(item.key, realValue || '0'));
+                        }
+                    } else {
+                        var dv = '';
+                        if (realValue) {
+                            realValue.split('').forEach(function(i) {
+                                dv += Dict.getName(item.key, i) + ' | ';
+                            });
+                            dv = dv.slice(0, dv.length - 3);
+                        }
+                        $('#' + item.field).html(dv || '-');
+                    }
+                    $('#' + item.field).attr('data-value', realValue);
+                    if (item.onChange) {
+                        item.onChange(realValue, Dict.findObj(list, realValue));
+                    }
+                } else if (item.type == 'radio') {
+                    var selectOne = '';
+                    for (var k = 0, len1 = item.items.length; k < len1; k++) {
+                        if (item.items[k].key == displayValue) {
+                            selectOne = item.items[k];
+                            break;
+                        }
+                    }
+                    $('#' + item.field).html('<div class="zmdi ' + selectOne.icon + ' zmdi-hc-5x" title="' + selectOne.value + '"></div>');
+                } else if (item.type == "checkbox") {
+                    var checkData = displayValue.split(/,/);
+                    for (var h = 0; h < checkData.length; h++) {
+                        for (var k = 0, len1 = item.items.length; k < len1; k++) {
+                            var rd = item.items[k];
+                            if (rd.key == checkData[h]) {
+                                $("#" + item.field + "_checkbox" + k).prop("checked", true);
+                                break;
+                            }
+                        }
+                    }
+                } else if (item.type == 'select' && (item.pageCode || item.listCode || item.detailCode)) {
+                    var params = {};
+                    if (!item.detailCode && item.pageCode) {
+                        params = {
+                            start: 1,
+                            limit: 1000000000
+                        };
+                    }
+                    var realValue = displayValue || '';
+                    if (item.value && item.value.call) {
+                        realValue = item.value(data);
+                    }
+                    params[item.detailSearchName || item.keyName] = realValue;
+                    if (!realValue) {
+                        $('#' + item.field).html('-');
+                    } else if (realValue == 0) {
+                        $('#' + item.field).html(item.defaultOption);
+                    } else {
+                        (function(i) {
+                            reqApi({
+                                code: i.detailCode || i.listCode || i.pageCode,
+                                json: params
+                            }).then(function(d) {
+                                var data = (d && d.list && d.list[0]) || d[0] || d;
+                                $('#' + i.field).html(data[i.valueName] || i.valueName.temp(data) || i.defaultOption);
+                                $('#' + i.field).attr('data-value', data[i.keyName]);
+                            });
+                        })(item);
+                    }
+                } else if (item.type == 'img') {
+                    var realValue = displayValue || '';
+                    if ($.isArray(realValue)) {
+                        var imgHtml = '';
+                        realValue.forEach(function(img) {
+                            imgHtml += '<img src="' + src + '" style="max-width: 300px;"/>';
+                        });
+                        $('#' + item.field).html(imgHtml);
+                    } else {
+                        var sp = realValue && realValue.split('||') || [];
+                        var imgsHtml = '';
+                        var defaultFile = getDefaultFileIcon();
+
+                        sp.length && sp.forEach(function(item) {
+                            var suffix = item.slice(item.lastIndexOf('.') + 1);
+                            var src = (item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item));
+                            var src1 = (item.indexOf('http://') > -1 ?
+                                item.substring(item.lastIndexOf("/") + 1) :
+                                item);
+                            var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
+                            if (isDocOrAviOrZip(suffix)) {
+                                imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + getDocOrAviOrZipIcon(suffix) + '" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i></div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
+                            } else if (isAcceptImg(suffix)) {
+                                imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img src="' + src + OSS.picShow + '" class="center-img" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
+                            } else {
+                                imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + defaultFile + '" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
+                            }
+                        });
+                        $('#' + item.field).html(imgsHtml);
+                        $('#' + item.field).find('.zmdi-download').on('click', function(e) {
+                            var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
+                            window.open(dSrc, '_blank');
+                        });
+                    }
+                } else if (item.type == "citySelect") {
+                    $('#province').html(data.province);
+                    data.city && $('#city').html(data.city);
+                    data.area && $('#area').html(data.area);
+                } else {
+                    if (displayValue) {
+                        $('#' + item.field).html(((item.amount || item.amount1) ?
+                            moneyFormat(displayValue) :
+                            displayValue) || '-');
+                    } else {
+                        $('#' + item.field).html('-');
+                    }
+                }
+                if (item.formatter) {
+                    if (item.type == 'img') {
+                        var imgData = item.formatter(displayValue, data);
+                        var sp = imgData && imgData.split('||') || [];
+                        var imgsHtml = '';
+                        var defaultFile = getDefaultFileIcon();
+
+                        sp.length && sp.forEach(function(item) {
+                            var suffix = item.slice(item.lastIndexOf('.') + 1);
+                            var src = item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item);
+                            var src1 = item.indexOf('http://') > -1 ?
+                                item.substring(item.lastIndexOf("/") + 1) : item;
+                            var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
+                            if (isDocOrAviOrZip(suffix)) {
+                                imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + getDocOrAviOrZipIcon(suffix) + '" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i></div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
+                            } else if (isAcceptImg(suffix)) {
+                                imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img src="' + src + OSS.picShow + '" class="center-img" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
+                            } else {
+                                imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + defaultFile + '" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
+                            }
+                        });
+                        $('#' + item.field).html(imgsHtml);
+                        $('#' + item.field).find('.zmdi-download').on('click', function(e) {
+                            var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
+                            window.open(dSrc, '_blank');
+                        });
+                    } else {
+                        $('#' + item.field).html(item.formatter(displayValue, data));
+                    }
+                }
+            } else {
+                if (item.type == 'img') {
+                    var realValue = displayValue || '';
+                    var sp = realValue && realValue.split('||') || [];
+                    var imgsHtml = '';
+                    var defaultFile = getDefaultFileIcon();
+                    sp.length && sp.forEach(function(item) {
+                        var suffix = item.slice(item.lastIndexOf('.') + 1);
+                        var src = item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item);
+                        var src1 = item;
+                        if (item.indexOf('http://') > -1) {
+                            var name = src.substring(src.lastIndexOf("/") + 1);
+                        } else {
+                            var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
+                        }
+                        if (isDocOrAviOrZip(suffix)) {
+                            imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + getDocOrAviOrZipIcon(suffix) + '" />' + '<i class="zmdi zmdi-close-circle-o zmdi-hc-fw"></i>' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
+                        } else if (isAcceptImg(suffix)) {
+                            imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img src="' + src + OSS.picShow + '" class="center-img" />' + '<i class="zmdi zmdi-close-circle-o zmdi-hc-fw"></i>' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
+                        } else {
+                            imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + defaultFile + '" />' + '<i class="zmdi zmdi-close-circle-o zmdi-hc-fw"></i>' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
+                        }
+                    });
+                    $('#' + item.field).html(imgsHtml);
+                    // 如果是只能传单张
+                    item.single && setImgDisabled($('#' + item.field));
+                    $('#' + item.field).find('.zmdi-close-circle-o').on('click', function(e) {
+                        var el = $(this).parent().parent(),
+                            el_parent = el.parent();
+                        el.remove();
+                        el_parent[0].cfg.single && setImgDisabled(el_parent);
+                    });
+                    $('#' + item.field).find('.zmdi-download').on('click', function(e) {
+                        var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
+                        window.open(dSrc, '_blank');
+                    });
+                } else if (item.type == 'radio') {
+                    $('input[name=' + item.field + '][value=' + displayValue + ']').prop('checked', true);
+                } else if (item.type == "checkbox") {
+                    var checkData = displayValue.split(/,/);
+                    for (var h = 0; h < checkData.length; h++) {
+                        for (var k = 0, len1 = item.items.length; k < len1; k++) {
+                            var rd = item.items[k];
+                            if (rd.key == checkData[h]) {
+                                $("#" + item.field + "_checkbox" + k).prop("checked", true);
+                                break;
+                            }
+                        }
+                    }
+                } else if (item.type == 'textarea' && !item.normalArea) {
+                    $('#' + item.field)[0].editor.$txt.html(displayValue);
+                } else if (item.type == 'textarea' && item.normalArea) {
+                    $('#' + item.field).val(displayValue);
+                } else if (item.type == 'citySelect') {
+                    $('#province').val(data.province);
+                    $('#province').trigger('change');
+                    if (!item.onlyProvince) {
+                        $('#city').val(data.city);
+                        $('#city').trigger('change');
+                        $('#area').val(data.area);
+                    }
+                } else if (item.type == "o2m" && item.editTable) {
+                    var innerHtml = '';
+                    if (item.addeditTable) {
+                        innerHtml += '<li id="addBtn-o2m" style="display: inline-block;float: none;"><span><img src="/static/images/t01.png"></span>新增</li>' + '<li id="editBtn-o2m" style="display: inline-block;float: none;"><span><img src="/static/images/t01.png"></span>修改</li>' + '<li id="removeBtn-o2m" style="display: inline-block;float: none;"><span><img src="/static/images/t01.png"></span>删除</li>';
+                    } else {
+                        innerHtml = '<li id="editBtn-o2m" style="display: inline-block;float: none;"><span><img src="/static/images/t01.png"></span>修改</li>';
+                    }
+                    $('#' + item.field).html('<div class="tools">' +
+                        '<ul class="toolbar">' + innerHtml + '</ul>' + '</div><table id="' + item.field + 'List"  data-editable-emptytext="无"></table>');
+                    (function(item, options) {
+                        addEditTableListener1("#addBtn-o2m", "#removeBtn-o2m", "#editBtn-o2m", '#' + item.field + 'List', item.columns, options);
+                    })(item, options);
+                    $('#' + item.field + 'List').bootstrapTable({
+                        striped: true,
+                        clickToSelect: true,
+                        singleSelect: true,
+                        columns: item.columns,
+                        data: displayValue || []
+                    });
+                } else if (item.type == 'datetime' || item.type == 'date') {
+                    $('#' + item.field).val((item.type == 'datetime' ? dateTimeFormat : dateFormat)(displayValue));
+                } else {
+                    if (item.formatter) {
+                        $('#' + item.field).val(item.formatter(displayValue, data));
+                    } else {
+                        $('#' + item.field).val((item.amount || item.amount1) ?
+                            moneyFormat(displayValue) :
+                            displayValue);
+                    }
+                }
+            }
+
+            if ('value' in item) {
+                if (item.value && item.value.call) {
+                    $('#' + item.field).val(item.value(data));
+                } else {
+                    $('#' + item.field).val((item.amount || item.amount1) ?
+                        moneyFormat(item.value) :
+                        item.value);
+                }
+            }
+            if (item.type == 'select') {
+                $('#' + item.field).trigger('change');
+            }
+            if (item.link) {
+                $('#' + item.field).html('<a target="_blank" href="' + displayValue + '">' + displayValue + '</a>');
+            }
+            if (item.type == 'textarea') {
+                $('#' + item.field).css('width', '800px');
+            }
+            if (item.afterSet) {
+                item.afterSet(displayValue, data);
+            }
+        }
+        hideLoading();
+        options.afterData && options.afterData(data);
+    }
     //是否请求详情
     if (code) {
     	showLoading();
@@ -1604,362 +1960,10 @@ function buildDetail(options) {
             code: options.detailCode,
             json: detailParams
         }).then(function(d) {
-        	hideLoading();
-            var data = d;
-            if (options._keys) {
-                options._keys.forEach(function(key) {
-                    data = data[key] || {};
-                });
-            }
-            for (var i = 0, len = imgList.length; i < len; i++) {
-                (function(i) {
-                    setTimeout(function() {
-                        var item = imgList[i];
-                        uploadInit.call($('#' + item.field));
-                    }, 100);
-                })(i);
-            }
-            $('#code').val(data.code || data.id);
-            for (var i = 0, len = fields.length; i < len; i++) {
-                var item = fields[i];
-                var value = item.value;
-                var displayValue = data[item.field];
-                if (item._keys) {
-                    var _value = data,
-                        emptyObj = {};
-                    item._keys.forEach(function(key) {
-                        _value = _value[key] == undefined ? emptyObj : _value[key];
-                    });
-                    displayValue = _value === emptyObj ? "" : _value;
-                }
-
-                if (item.readonly) {
-                    if (item.type == 'm2o') {
-                        if (displayValue) {
-                            var clickDiv = $('#' + item.field).html('<a>' + displayValue + '</a>');
-                            (function(a) {
-                                clickDiv.on('click', function() {
-                                    window.open(a.url + '?v=1&code=' + data[a.codeField || 'code'], '', 'width=1200,height=800');
-                                });
-                            })(item);
-                        } else {
-                            $('#' + item.field).html(item.defaultValue);
-                        }
-                    } else if (item.type == 'o2m') {
-                        if (item.pageCode) {
-                            $('#' + item.field).html('<table id="' + item.field + 'List"></table>');
-                            var searchParams = item.o2mvalue || {};
-                            var options1 = {
-                                columns: item.columns,
-                                pageCode: item.pageCode,
-                                tableId: item.field + 'List',
-                                searchParams: searchParams,
-                                type: 'o2m'
-                            };
-                            item.detailFormatter && (options1.detailFormatter = item.detailFormatter);
-                            buildList(options1);
-                        } else {
-                            if (item.useData) {
-                                displayValue = $.isArray(item.useData) ? item.useData : (data || []);
-                            }
-                            $('#' + item.field).html('<table id="' + item.field + 'List"></table>');
-                            $('#' + item.field + 'List').bootstrapTable({
-                                striped: true,
-                                clickToSelect: true,
-                                singleSelect: true,
-                                columns: item.columns,
-                                data: displayValue
-                            });
-                        }
-                    } else if (item.type == 'select' && item.data) {
-                        var realValue = displayValue;
-                        if (item.value) {
-                            if (item.value.call) {
-                                realValue = item.value(data);
-                            } else {
-                                realValue = item.value;
-                            }
-                        }
-                        $('#' + item.field).html(item.data[realValue] || '-');
-                        $('#' + item.field).attr('data-value', realValue);
-                        if (item.onChange) {
-                            item.onChange(realValue);
-                        }
-                    } else if (item.type == 'select' && item.key) {
-                        var list = [];
-                        var realValue = displayValue;
-                        if (item.value) {
-                            if (item.value.call) {
-                                realValue = item.value(data);
-                            } else {
-                                realValue = item.value;
-                            }
-                        }
-                        if (!item.multiple) {
-                            if (item.keyCode) {
-                                list = Dict.getName2(item.key, item.keyCode);
-                                $('#' + item.field).html(Dict.getName2(item.key, item.keyCode, realValue || '0'));
-                            } else {
-                                list = Dict.getName(item.key);
-                                $('#' + item.field).html(Dict.getName(item.key, realValue || '0'));
-                            }
-                        } else {
-                            var dv = '';
-                            if (realValue) {
-                                realValue.split('').forEach(function(i) {
-                                    dv += Dict.getName(item.key, i) + ' | ';
-                                });
-                                dv = dv.slice(0, dv.length - 3);
-                            }
-                            $('#' + item.field).html(dv || '-');
-                        }
-                        $('#' + item.field).attr('data-value', realValue);
-                        if (item.onChange) {
-                            item.onChange(realValue, Dict.findObj(list, realValue));
-                        }
-                    } else if (item.type == 'radio') {
-                        var selectOne = '';
-                        for (var k = 0, len1 = item.items.length; k < len1; k++) {
-                            if (item.items[k].key == displayValue) {
-                                selectOne = item.items[k];
-                                break;
-                            }
-                        }
-                        $('#' + item.field).html('<div class="zmdi ' + selectOne.icon + ' zmdi-hc-5x" title="' + selectOne.value + '"></div>');
-                    } else if (item.type == "checkbox") {
-                        var checkData = displayValue.split(/,/);
-                        for (var h = 0; h < checkData.length; h++) {
-                            for (var k = 0, len1 = item.items.length; k < len1; k++) {
-                                var rd = item.items[k];
-                                if (rd.key == checkData[h]) {
-                                    $("#" + item.field + "_checkbox" + k).prop("checked", true);
-                                    break;
-                                }
-                            }
-                        }
-                    } else if (item.type == 'select' && (item.pageCode || item.listCode || item.detailCode)) {
-                        var params = {};
-                        if (!item.detailCode && item.pageCode) {
-                            params = {
-                                start: 1,
-                                limit: 1000000000
-                            };
-                        }
-                        var realValue = displayValue || '';
-                        if (item.value && item.value.call) {
-                            realValue = item.value(data);
-                        }
-                        params[item.detailSearchName || item.keyName] = realValue;
-                        if (!realValue) {
-                            $('#' + item.field).html('-');
-                        } else if (realValue == 0) {
-                            $('#' + item.field).html(item.defaultOption);
-                        } else {
-                            (function(i) {
-                                reqApi({
-                                    code: i.detailCode || i.listCode || i.pageCode,
-                                    json: params
-                                }).then(function(d) {
-                                    var data = (d && d.list && d.list[0]) || d[0] || d;
-                                    $('#' + i.field).html(data[i.valueName] || i.valueName.temp(data) || i.defaultOption);
-                                    $('#' + i.field).attr('data-value', data[i.keyName]);
-                                });
-                            })(item);
-                        }
-                    } else if (item.type == 'img') {
-                        var realValue = displayValue || '';
-                        if ($.isArray(realValue)) {
-                            var imgHtml = '';
-                            realValue.forEach(function(img) {
-                                imgHtml += '<img src="' + src + '" style="max-width: 300px;"/>';
-                            });
-                            $('#' + item.field).html(imgHtml);
-                        } else {
-                            var sp = realValue && realValue.split('||') || [];
-                            var imgsHtml = '';
-                            var defaultFile = getDefaultFileIcon();
-
-                            sp.length && sp.forEach(function(item) {
-                                var suffix = item.slice(item.lastIndexOf('.') + 1);
-                                var src = (item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item));
-                                var src1 = (item.indexOf('http://') > -1 ?
-                                    item.substring(item.lastIndexOf("/") + 1) :
-                                    item);
-                                var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
-                                if (isDocOrAviOrZip(suffix)) {
-                                    imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + getDocOrAviOrZipIcon(suffix) + '" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i></div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
-                                } else if (isAcceptImg(suffix)) {
-                                    imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img src="' + src + OSS.picShow + '" class="center-img" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
-                                } else {
-                                    imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + defaultFile + '" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
-                                }
-                            });
-                            $('#' + item.field).html(imgsHtml);
-                            $('#' + item.field).find('.zmdi-download').on('click', function(e) {
-                                var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
-                                window.open(dSrc, '_blank');
-                            });
-                        }
-                    } else if (item.type == "citySelect") {
-                        $('#province').html(data.province);
-                        data.city && $('#city').html(data.city);
-                        data.area && $('#area').html(data.area);
-                    } else {
-                        if (displayValue) {
-                            $('#' + item.field).html(((item.amount || item.amount1) ?
-                                moneyFormat(displayValue) :
-                                displayValue) || '-');
-                        } else {
-                            $('#' + item.field).html('-');
-                        }
-                    }
-                    if (item.formatter) {
-                        if (item.type == 'img') {
-                            var imgData = item.formatter(displayValue, data);
-                            var sp = imgData && imgData.split('||') || [];
-                            var imgsHtml = '';
-                            var defaultFile = getDefaultFileIcon();
-
-                            sp.length && sp.forEach(function(item) {
-                                var suffix = item.slice(item.lastIndexOf('.') + 1);
-                                var src = item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item);
-                                var src1 = item.indexOf('http://') > -1 ?
-                                    item.substring(item.lastIndexOf("/") + 1) : item;
-                                var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
-                                if (isDocOrAviOrZip(suffix)) {
-                                    imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + getDocOrAviOrZipIcon(suffix) + '" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i></div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
-                                } else if (isAcceptImg(suffix)) {
-                                    imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img src="' + src + OSS.picShow + '" class="center-img" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
-                                } else {
-                                    imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + defaultFile + '" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
-                                }
-                            });
-                            $('#' + item.field).html(imgsHtml);
-                            $('#' + item.field).find('.zmdi-download').on('click', function(e) {
-                                var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
-                                window.open(dSrc, '_blank');
-                            });
-                        } else {
-                            $('#' + item.field).html(item.formatter(displayValue, data));
-                        }
-                    }
-                } else {
-                    if (item.type == 'img') {
-                        var realValue = displayValue || '';
-                        var sp = realValue && realValue.split('||') || [];
-                        var imgsHtml = '';
-                        var defaultFile = getDefaultFileIcon();
-                        sp.length && sp.forEach(function(item) {
-                            var suffix = item.slice(item.lastIndexOf('.') + 1);
-                            var src = item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item);
-                            var src1 = item;
-                            if (item.indexOf('http://') > -1) {
-                                var name = src.substring(src.lastIndexOf("/") + 1);
-                            } else {
-                                var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
-                            }
-                            if (isDocOrAviOrZip(suffix)) {
-                                imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + getDocOrAviOrZipIcon(suffix) + '" />' + '<i class="zmdi zmdi-close-circle-o zmdi-hc-fw"></i>' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
-                            } else if (isAcceptImg(suffix)) {
-                                imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img src="' + src + OSS.picShow + '" class="center-img" />' + '<i class="zmdi zmdi-close-circle-o zmdi-hc-fw"></i>' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
-                            } else {
-                                imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + defaultFile + '" />' + '<i class="zmdi zmdi-close-circle-o zmdi-hc-fw"></i>' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
-                            }
-                        });
-                        $('#' + item.field).html(imgsHtml);
-                        // 如果是只能传单张
-                        item.single && setImgDisabled($('#' + item.field));
-                        $('#' + item.field).find('.zmdi-close-circle-o').on('click', function(e) {
-                            var el = $(this).parent().parent(),
-                                el_parent = el.parent();
-                            el.remove();
-                            el_parent[0].cfg.single && setImgDisabled(el_parent);
-                        });
-                        $('#' + item.field).find('.zmdi-download').on('click', function(e) {
-                            var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
-                            window.open(dSrc, '_blank');
-                        });
-                    } else if (item.type == 'radio') {
-                        $('input[name=' + item.field + '][value=' + displayValue + ']').prop('checked', true);
-                    } else if (item.type == "checkbox") {
-                        var checkData = displayValue.split(/,/);
-                        for (var h = 0; h < checkData.length; h++) {
-                            for (var k = 0, len1 = item.items.length; k < len1; k++) {
-                                var rd = item.items[k];
-                                if (rd.key == checkData[h]) {
-                                    $("#" + item.field + "_checkbox" + k).prop("checked", true);
-                                    break;
-                                }
-                            }
-                        }
-                    } else if (item.type == 'textarea' && !item.normalArea) {
-                        $('#' + item.field)[0].editor.$txt.html(displayValue);
-                    } else if (item.type == 'textarea' && item.normalArea) {
-                        $('#' + item.field).val(displayValue);
-                    } else if (item.type == 'citySelect') {
-                        $('#province').val(data.province);
-                        $('#province').trigger('change');
-                        if (!item.onlyProvince) {
-                            $('#city').val(data.city);
-                            $('#city').trigger('change');
-                            $('#area').val(data.area);
-                        }
-                    } else if (item.type == "o2m" && item.editTable) {
-                        var innerHtml = '';
-                        if (item.addeditTable) {
-                            innerHtml += '<li id="addBtn-o2m" style="display: inline-block;float: none;"><span><img src="/static/images/t01.png"></span>新增</li>' + '<li id="editBtn-o2m" style="display: inline-block;float: none;"><span><img src="/static/images/t01.png"></span>修改</li>' + '<li id="removeBtn-o2m" style="display: inline-block;float: none;"><span><img src="/static/images/t01.png"></span>删除</li>';
-                        } else {
-                            innerHtml = '<li id="editBtn-o2m" style="display: inline-block;float: none;"><span><img src="/static/images/t01.png"></span>修改</li>';
-                        }
-                        $('#' + item.field).html('<div class="tools">' +
-                            '<ul class="toolbar">' + innerHtml + '</ul>' + '</div><table id="' + item.field + 'List"  data-editable-emptytext="无"></table>');
-                        (function(item, options) {
-                            addEditTableListener1("#addBtn-o2m", "#removeBtn-o2m", "#editBtn-o2m", '#' + item.field + 'List', item.columns, options);
-                        })(item, options);
-                        $('#' + item.field + 'List').bootstrapTable({
-                            striped: true,
-                            clickToSelect: true,
-                            singleSelect: true,
-                            columns: item.columns,
-                            data: displayValue || []
-                        });
-                    } else if (item.type == 'datetime' || item.type == 'date') {
-                        $('#' + item.field).val((item.type == 'datetime' ? dateTimeFormat : dateFormat)(displayValue));
-                    } else {
-                        if (item.formatter) {
-                            $('#' + item.field).val(item.formatter(displayValue, data));
-                        } else {
-                            $('#' + item.field).val((item.amount || item.amount1) ?
-                                moneyFormat(displayValue) :
-                                displayValue);
-                        }
-                    }
-                }
-
-                if ('value' in item) {
-                    if (item.value && item.value.call) {
-                        $('#' + item.field).val(item.value(data));
-                    } else {
-                        $('#' + item.field).val((item.amount || item.amount1) ?
-                            moneyFormat(item.value) :
-                            item.value);
-                    }
-                }
-                if (item.type == 'select') {
-                    $('#' + item.field).trigger('change');
-                }
-                if (item.link) {
-                    $('#' + item.field).html('<a target="_blank" href="' + displayValue + '">' + displayValue + '</a>');
-                }
-                if (item.type == 'textarea') {
-                    $('#' + item.field).css('width', '800px');
-                }
-                if (item.afterSet) {
-                    item.afterSet(displayValue, data);
-                }
-            }
-            options.afterData && options.afterData(data);
-        },hideLoading);
+            addData(d);
+        }, hideLoading);
+    } else if (options.useData) {
+        addData(options.useData);
     } else {
         for (var i = 0, len = fields.length; i < len; i++) {
             var item = fields[i];
