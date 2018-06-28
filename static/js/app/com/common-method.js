@@ -1597,6 +1597,7 @@ function buildDetail(options) {
         options.beforeDetail(detailParams);
     }
     function addData(d) {
+        hideLoading();
         var data = d;
         if (options._keys) {
             options._keys.forEach(function(key) {
@@ -1950,7 +1951,6 @@ function buildDetail(options) {
                 item.afterSet(displayValue, data);
             }
         }
-        hideLoading();
         options.afterData && options.afterData(data);
     }
     //是否请求详情
@@ -1990,6 +1990,7 @@ function buildDetail(options) {
                 }, 100);
             })(i);
         }
+        hideLoading();
     }
 
     if (!window.parent.frames[1]) {

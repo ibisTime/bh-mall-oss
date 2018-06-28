@@ -1,30 +1,37 @@
 $(function() {
 	var code = getQueryString('code');
-    var view = true;
     var fields = [{
         field : 'level',
         title : '代理等级',
         type : 'select',
-        listCode: '627006',
+        listCode: '627008',
         keyName : 'level',
         searchName :'level',
         valueName: 'name',
-        readonly: view
-    },{
-        field : 'productName',
-        title : '产品',
-        readonly: view
+        readonly: code,
+        required: true
     }, {
-        field : 'value1',
-        title : '出货奖励',
+        field : 'startAmount',
+        title : '奖励区间起始金额',
+        amount: true,
+        required : true
+    }, {
+        field : 'endAmount',
+        title : '奖励区间截止金额',
+        amount: true,
+        required : true
+    }, {
+        field : 'percent',
+        title : '出货奖励(%)',
         required : true
     }];
 	
 	buildDetail({
 		fields: fields,
 		code: code,
-		detailCode: '627592',
-		editCode: '627580'
+		detailCode: '627867',
+        addCode: '627860',
+		editCode: '627862'
 	});
 	
 });

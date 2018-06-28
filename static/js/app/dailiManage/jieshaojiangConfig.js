@@ -4,20 +4,25 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-	},{
+	}, {
 		field : 'level',
 		title : '代理等级',
 		type : 'select',
-        listCode: '627006',
+        listCode: '627008',
         keyName : 'level',
         searchName :'level',
         valueName: 'name'
-	},{
+	}, {
+		field : 'introLevel',
+		title : '介绍等级',
+		type : 'select',
+        listCode: '627008',
+        keyName : 'level',
+        searchName :'level',
+        valueName: 'name'
+	}, {
 		field : 'percent',
-		title : '授权本等级直接获利',
-		formatter : function(v, data) {
-			return data.percent*100+'%'
-		}
+		title : '介绍奖励(%)'
 	}];
 
 	// 隐藏掉搜索栏，不然的话一个空的搜索栏依旧占位，会有一行空白
@@ -30,6 +35,7 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '627245'
+		pageCode: '627245',
+		deleteCode: '627242'
 	});
 });

@@ -8,19 +8,19 @@ $(function() {
 		field : 'level',
 		title : '代理等级',
         type : 'select',
-        listCode: '627006',
+        listCode: '627008',
         keyName : 'level',
         searchName :'level',
         valueName: 'name'
-	},{
-		field : 'productName',
-		title : '产品'
 	}, {
-        field : 'value1',
-        title : '出货奖励',
-        formatter : function (v, data) {
-            return data.value1?data.value1*100+'%':'-';
-        }
+		field : 'startAmount',
+		title : '奖励区间',
+		formatter: function (v, d) {
+			return moneyFormat(d.startAmount) + '~' + moneyFormat(d.endAmount);
+		}
+	}, {
+        field : 'percent',
+        title : '出货奖励(%)'
     }];
 
 	// 隐藏掉搜索栏，不然的话一个空的搜索栏依旧占位，会有一行空白
@@ -33,9 +33,7 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '627590',
-        searchParams: {
-            type: '1',
-        }
+		pageCode: '627865',
+		deleteCode: '627861'
 	});
 });

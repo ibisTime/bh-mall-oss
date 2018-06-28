@@ -70,7 +70,7 @@ reqApi({
 		}
     }, {
         field : 'impowerAmount',
-        title : '授权金额',
+        title : '门槛费',
         formatter: moneyFormat
     }, {
         field : 'diyu',

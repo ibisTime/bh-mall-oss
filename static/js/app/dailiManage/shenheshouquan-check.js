@@ -10,13 +10,20 @@ $(function() {
             return data.realName
         }
     },{
-        field : 'level',
-        title : '等级',
+        field : 'applyLevel',
+        title : '申请等级',
         search: true,
         type: 'select',
-        listCode: '627006',
+        listCode: '627008',
         keyName: 'level',
         valueName: 'name'
+    }, {
+        field : 'idNo',
+        title : '身份证号'
+    }, {
+        field: 'idHand',
+        title: '身份证照片',
+        type: 'img'
     }, {
         field : 'mobile',
         title : '联系电话'
@@ -34,7 +41,7 @@ $(function() {
         title : '团队名称'
     }, {
         field : 'impowerAmount',
-        title : '授权金额',
+        title : '门槛费',
         formatter: moneyFormat
     }, {
         field : 'diyu',

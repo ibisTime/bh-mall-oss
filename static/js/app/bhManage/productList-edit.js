@@ -77,24 +77,16 @@ $(function() {
                 data.awardList = detailData.awardList;
 
                 var type0 = [];
-                var type1 = [];
                                 
                 function ftype0(item){
                     if(item.type == '0') {
                         return item
                     }
                 }
-
-                function ftype1(item){
-                    if(item.type == '1') {
-                        return item
-                    }
-                }
             
                 type0 = awardList.filter(ftype0); 
-                type1 = awardList.filter(ftype1); 
 
-				if(data.specList.length <=0 || type0.length <=0 || type1.length <=0) {
+				if(data.specList.length <=0 || type0.length <=0) {
 					toastr.info('请检查您是否填写规格体系以及奖励机制')
 				}else{
 					return data;
@@ -139,7 +131,7 @@ $(function() {
                             '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[item.priceList[v].level - 1].name + '</span>' +
                             '<span style="width : 120px;padding:20px 22px;display: inline-block">' + moneyFormat(item.priceList[v].price) + '</span>' +
                             '<span style="width : 120px;padding:20px 12px;display: inline-block">' + moneyFormat(item.priceList[v].changePrice) + '</span>' +
-                            '<span style="width : 120px;padding:20px 12px;display: inline-block">' + item.priceList[v].daillyNumber + '</span>' +
+                            '<span style="width : 120px;padding:20px 12px;display: inline-block">' + item.priceList[v].dailyNumber + '</span>' +
                             '<span style="width : 120px;padding:20px 26px;display: inline-block">' + item.priceList[v].weeklyNumber + '</span>' +
                             '<span style="width : 120px;padding:20px 38px;display: inline-block">' + item.priceList[v].monthlyNumber + '</span>' +
                             '<span style="width : 120px;padding:20px 51px;display: inline-block">' + bool[item.priceList[v].isBuy] + '</span>' +
@@ -167,22 +159,6 @@ $(function() {
 
             	})
             	$('#awardContent').append(awardHtml);
-            	
-            	
-            	
-            	// 插入出货奖励
-            	detailData.sendAwardList.map(function (index, item) {
-            		var awardTemp =
-                        '<div id="awardCHDom'+item+'">'+
-                            '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[index.level-1].name+'</span>'+
-                            '<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+index.value1*100+'%')+'</span>'+
-                            '<input id="editAwardCHBtn_'+item+'" type="button" class="btn editAwardCHBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'+
-                        '</div>'
-                    awardHtml1 += awardTemp;
-
-            	})
-            	$('#awardCHContent').append(awardHtml1);
-            	
             	
             	// 规格定价数据格式转换
             	detailData.specsList.map(function (item) {
@@ -217,10 +193,6 @@ $(function() {
             		awardList.push(item);
             	})
             	
-            	
-            	detailData.sendAwardList.map(function (item) {
-            		awardList.push(item);
-            	})
             	detailData.awardList = awardList;
             }
         });
@@ -259,21 +231,6 @@ $(function() {
                 '<tbody id="guigeHtml"></tbody>'+
             '</table>' +
             '</div>');
-
-		// 出货奖励
-        var awardHtml1 = '';
-        $('#remark').parent().after(
-            '<div style="width:100%">' +
-            '<span style="font-size: 18px">出货奖励机制(请输入0-1之间的小数(%))</span>' +
-            '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
-            '<div style="border: 1px solid #ced9df">'+
-            '<div id="awardTitle">'+
-            '<label style="padding: 20px 40px"><b>*</b>等级</label>'+
-            '<label style="padding: 20px 40px"><b>*</b>出货奖励</label>'+
-            '</div>'+
-            '<div id="awardCHContent"></div>'+
-            '</div>'+
-            '</div>')
 
 		// 推荐奖励
         var awardHtml = '';
@@ -476,7 +433,7 @@ $(function() {
                                                         value: items[p].name,
                                                         readonly: true
                                                     }, {
-                                                        field: 'daillyNumber' + p,
+                                                        field: 'dailyNumber' + p,
                                                         title: '日限购',
                                                         required: true
                                                     }, {
@@ -521,12 +478,12 @@ $(function() {
                                                             for (var i = 0; i < items.length; i++) {
                                                                 var v = items[i];
                                                                 if (v.level != 6) {
-                                                                    var daillyNumber = 'daillyNumber' + (v.level - 1);
+                                                                    var dailyNumber = 'dailyNumber' + (v.level - 1);
                                                                     var weeklyNumber = 'weeklyNumber' + (v.level - 1);
                                                                     var monthlyNumber = 'monthlyNumber' + (v.level - 1);
                                                                     var isBuy = 'isBuy' + (v.level - 1);
                                                                     var minNumber = 'minNumber' + (v.level - 1);
-                                                                    specsPriceList[i].daillyNumber = data[daillyNumber];
+                                                                    specsPriceList[i].dailyNumber = data[dailyNumber];
                                                                     specsPriceList[i].weeklyNumber = data[weeklyNumber];
                                                                     specsPriceList[i].monthlyNumber = data[monthlyNumber];
                                                                     specsPriceList[i].isBuy = data[isBuy];
@@ -534,17 +491,15 @@ $(function() {
                                                                 }
                                                             }
                                                             temp.specsPriceList = specsPriceList;
-                                                            console.log(specsPriceList);
                                                             var dingjiaHtml = '<div id="dingjiaOutDom' + g + '">';
                                                             for (var v = 0; v < specsPriceList.length - 1; v++) {
-                                                                console.log(specsPriceList[v].daillyNumber);
                                                                 var dingjiaTemp =
                                                                     '<div class="dingjiaDom' + v + '">' +
                                                                     '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.name + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[specsPriceList[v].level - 1].name + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 22px;display: inline-block">' + (+specsPriceList[v].price / 1000) + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (+specsPriceList[v].changePrice / 1000) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (specsPriceList[v].daillyNumber) + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (specsPriceList[v].dailyNumber) + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 26px;display: inline-block">' + (specsPriceList[v].weeklyNumber) + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 38px;display: inline-block">' + (specsPriceList[v].monthlyNumber) + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 51px;display: inline-block">' + (dictInfo[specsPriceList[v].isBuy]) + '</span>' +
@@ -552,7 +507,6 @@ $(function() {
                                                                     '</div>';
                                                                 dingjiaHtml += dingjiaTemp;
                                                             }
-                                                            console.log(dingjiaHtml);
                                                             dingjiaHtml += '</div>';
                                                             $('#dingjiaOutDom' + g).replaceWith(dingjiaHtml);
 
@@ -629,7 +583,7 @@ $(function() {
                             '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[item.specsPriceList[v].level - 1].name + '</span>' +
                             '<span style="width : 120px;padding:20px 22px;display: inline-block">' + moneyFormat(item.specsPriceList[v].price) + '</span>' +
                             '<span style="width : 120px;padding:20px 12px;display: inline-block">' + moneyFormat(item.specsPriceList[v].changePrice) + '</span>' +
-                            '<span style="width : 120px;padding:20px 12px;display: inline-block">' + item.specsPriceList[v].daillyNumber + '</span>' +
+                            '<span style="width : 120px;padding:20px 12px;display: inline-block">' + item.specsPriceList[v].dailyNumber + '</span>' +
                             '<span style="width : 120px;padding:20px 26px;display: inline-block">' + item.specsPriceList[v].weeklyNumber + '</span>' +
                             '<span style="width : 120px;padding:20px 38px;display: inline-block">' + item.specsPriceList[v].monthlyNumber + '</span>' +
                             '<span style="width : 120px;padding:20px 51px;display: inline-block">' + bool[item.specsPriceList[v].isBuy] + '</span>' +
@@ -687,19 +641,13 @@ $(function() {
 						if ($('#popForm').valid()) {
 						    var data = $('#popForm').serializeObject();
 						    data.level = +index+1;
-						    // console.log(data);
-						    // console.log(index);
 						    for(var v in awardList) {
-						        // console.log(v);
 						        if(awardList[v].level-1 == index && awardList[v].type == data.type) {
 						            awardList[v].value1 = data.value1;
 						            awardList[v].value2 = data.value2;
 						            awardList[v].value3 = data.value3;
-						            // awardList[v].level = +index+1;
-						            // console.log(awardList[v]);
 						        }
 						    }
-						    // console.log(awardList);
 						    var awardTemp =
 						        // '<div id="awardDom'+index+'">'+
 						        '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
@@ -715,7 +663,6 @@ $(function() {
 							$('。editAwardBtn').click(function() {
 								editAward(e);
 							})
-						    // console.log(awardTemp);
 						    $('#awardDom'+index).empty().append(awardTemp);
 						    dw.close().remove();
 						}	
@@ -730,81 +677,6 @@ $(function() {
 			})
 			hideLoading();
         })
-        
-        
-        // 修改出货奖励
-        $('#awardCHContent').on('click', '.editAwardCHBtn', function editAwardCH(e) {
-        	var index = e.target.id.split('_')[1];
-            var value = items[index].name;
-            var dw2 = dialog({
-                content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的出货奖励机制</li></ul>' +
-                '</form>',
-            });
-            dw2.showModal();
-
-            buildDetail({
-                container: $('#formContainer'),
-                fields: [{
-                    field: 'level',
-                    title: '等级',
-                    required: true,
-                    value: value,
-                    readonly: true
-                }, {
-                    field: 'type',
-                    title: '类型',
-                    value : '1',
-                    hidden : true
-                }, {
-                    field: 'value1',
-                    title: '出货奖励',
-                    required: true
-                }],
-                buttons: [{
-                    title: '确定',
-                    handler: function () {
-                        if ($('#popForm').valid()) {
-                            var data = $('#popForm').serializeObject();
-                            data.level = +index+1;
-                            console.log(data);
-                            console.log(index);
-                            for(var v in awardList) {
-                                console.log(v);
-                                if(awardList[v].level-1 == index && awardList[v].type == data.type) {
-                                    awardList[v].value1 = data.value1;
-                                    // awardList[v].level = +index+1;
-                                    console.log(awardList[v]);
-                                }
-                            }
-                            console.log(awardList);
-                            var awardTemp =
-                                // '<div id="awardDom'+index+'">'+
-                                '<span style="width : 120px;padding:20px 40px;display: inline-block">'+items[data.level-1].name+'</span>'+
-                                // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
-                                '<span style="width : 140px;padding:20px 40px;display: inline-block">'+(+data.value1*100+'%')+'</span>'+
-                                // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
-                                // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
-                                '<input id="editAwardCHBtn_'+index+'" type="button" class="btn editAwardCHBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
-                            // '</div>'
-
-                         
-                            console.log(index);
-                            $('#awardCHDom'+index).empty().append(awardTemp);
-                            dw2.close().remove();
-                        }
-
-                    }
-                }, {
-                    title: '取消',
-                    handler: function () {
-                        dw.close().remove();
-                    }
-                }]
-
-            })
-            hideLoading();
-        });
 
         var b = 0;
         
@@ -976,7 +848,7 @@ $(function() {
                                                     value: items[p].name,
                                                     readonly: true
                                                 }, {
-                                                    field: 'daillyNumber' + p,
+                                                    field: 'dailyNumber' + p,
                                                     title: '日限购',
                                                     required: true
                                                 }, {
@@ -1020,12 +892,12 @@ $(function() {
                                                             for (var i = 0; i < items.length; i++) {
                                                                 if (v.level != 6) {
                                                                     var v = items[i];
-                                                                    var daillyNumber = 'daillyNumber' + (v.level - 1);
+                                                                    var dailyNumber = 'dailyNumber' + (v.level - 1);
                                                                     var weeklyNumber = 'weeklyNumber' + (v.level - 1);
                                                                     var monthlyNumber = 'monthlyNumber' + (v.level - 1);
                                                                     var isBuy = 'isBuy' + (v.level - 1);
                                                                     var minNumber = 'minNumber' + (v.level - 1);
-                                                                    specsPriceList[i].daillyNumber = data[daillyNumber];
+                                                                    specsPriceList[i].dailyNumber = data[dailyNumber];
                                                                     specsPriceList[i].weeklyNumber = data[weeklyNumber];
                                                                     specsPriceList[i].monthlyNumber = data[monthlyNumber];
                                                                     specsPriceList[i].isBuy = data[isBuy];
@@ -1042,7 +914,7 @@ $(function() {
                                                                     '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[specsPriceList[v].level - 1].name + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 22px;display: inline-block">' + (+specsPriceList[v].price / 1000) + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (+specsPriceList[v].changePrice / 1000) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (specsPriceList[v].daillyNumber) + '</span>' +
+                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (specsPriceList[v].dailyNumber) + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 26px;display: inline-block">' + (specsPriceList[v].weeklyNumber) + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 38px;display: inline-block">' + (specsPriceList[v].monthlyNumber) + '</span>' +
                                                                     '<span style="width : 120px;padding:20px 51px;display: inline-block">' + (dictInfo[specsPriceList[v].isBuy]) + '</span>' +
