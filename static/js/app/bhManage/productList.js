@@ -21,6 +21,9 @@ $(function() {
         field : 'realNumber',
         title : '实际库存'
     }, {
+        field : 'whNumber',
+        title : '云库存'
+    }, {
         field : 'status',
         title : '状态',
 		search: true,

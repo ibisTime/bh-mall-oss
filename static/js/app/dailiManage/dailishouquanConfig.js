@@ -8,7 +8,7 @@ $(function() {
 		field : 'level',
 		title : '等级名称',
         type: 'select',
-        listCode: '627006',
+        listCode: '627008',
         keyName : 'level',
         searchName :'level',
         valueName: 'name'

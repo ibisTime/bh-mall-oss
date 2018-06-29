@@ -75,6 +75,7 @@ $(function() {
                 data.specList = detailData.specsList;
                 // 奖励机制
                 data.awardList = detailData.awardList;
+                data.code = code;
 
                 var type0 = [];
                                 
@@ -86,12 +87,11 @@ $(function() {
             
                 type0 = awardList.filter(ftype0); 
 
-				if(data.specList.length <=0 || type0.length <=0) {
+				if (data.specList.length <=0 || type0.length <=0) {
 					toastr.info('请检查您是否填写规格体系以及奖励机制')
-				}else{
+				} else {
 					return data;
 				}
-                data.code = code;
                 return data;
             },
             afterData : function(data) {
@@ -123,24 +123,26 @@ $(function() {
                         '</tr>';
                     $('#guigeHtml').append(guigeTemp);
 
-                    var dingjiaHtml = '<div id="dingjiaOutDom'+dingjiaDom+'">';
+                    // var dingjiaHtml = '<div id="dingjiaOutDom'+dingjiaDom+'">';
+                    var dingjiaHtml = '';
                     for(var v = 0 ;v<item.priceList.length ;v++ ) {
                         var dingjiaTemp =
-                            '<div class="dingjiaDom' + v + '">' +
-                            '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.name + '</span>' +
-                            '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[item.priceList[v].level - 1].name + '</span>' +
-                            '<span style="width : 120px;padding:20px 22px;display: inline-block">' + moneyFormat(item.priceList[v].price) + '</span>' +
-                            '<span style="width : 120px;padding:20px 12px;display: inline-block">' + moneyFormat(item.priceList[v].changePrice) + '</span>' +
-                            '<span style="width : 120px;padding:20px 12px;display: inline-block">' + item.priceList[v].dailyNumber + '</span>' +
-                            '<span style="width : 120px;padding:20px 26px;display: inline-block">' + item.priceList[v].weeklyNumber + '</span>' +
-                            '<span style="width : 120px;padding:20px 38px;display: inline-block">' + item.priceList[v].monthlyNumber + '</span>' +
-                            '<span style="width : 120px;padding:20px 51px;display: inline-block">' + bool[item.priceList[v].isBuy] + '</span>' +
-                            '<span style="width : 120px;padding:20px 74px;display: inline-block">' + item.priceList[v].minNumber + '</span>' +
-                            '</div>';
+                            '<tr data-index="'+ dingjiaDom +'" class="dingjiaDom' + v + '">' +
+                                '<td>' + item.name + '</td>' +
+                                '<td>' + items[item.priceList[v].level - 1].name + '</td>' +
+                                '<td>' + moneyFormat(item.priceList[v].price) + '</td>' +
+                                '<td>' + moneyFormat(item.priceList[v].changePrice) + '</td>' +
+                                '<td>' + item.priceList[v].dailyNumber + '</td>' +
+                                '<td>' + item.priceList[v].weeklyNumber + '</td>' +
+                                '<td>' + item.priceList[v].monthlyNumber + '</td>' +
+                                '<td>' + bool[item.priceList[v].isBuy] + '</td>' +
+                                '<td>' + item.priceList[v].minNumber + '</td>' +
+                                '<td>' + item.priceList[v].minQuantity + '</td>' +
+                            '</tr>';
 		                dingjiaHtml += dingjiaTemp;
 		            }
 		
-					dingjiaHtml += '</div>';
+					// dingjiaHtml += '</div>';
 					$('#dingjiaContent').append(dingjiaHtml);
                     g++;       
             	})
@@ -203,21 +205,15 @@ $(function() {
             '<div style="width:100%">' +
             '<span style="font-size: 18px">规格定价</span>' +
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
-            	'<div style="border: 1px solid #ced9df">'+
-            		'<div id="dingjiaTitle">'+
-            			'<label style="padding: 20px 40px"><b>*</b>规格</label>'+
-            			'<label style="padding: 20px 40px"><b>*</b>等级</label>'+
-            			'<label style="padding: 20px 40px"><b>*</b>价格</label>'+
-            			'<label style="padding: 20px 40px"><b>*</b>换货价</label>'+
-                        '<label style="padding: 20px 40px"><b>*</b>每日限购</label>' +
-                        '<label style="padding: 20px 40px"><b>*</b>每周限购</label>' +
-                        '<label style="padding: 20px 40px"><b>*</b>每月限购</label>' +
-                        '<label style="padding: 20px 40px"><b>*</b>是否可购买</label>' +
-                        '<label style="padding: 20px 40px"><b>*</b>云仓最少发货数量</label>' +
-            		'</div>'+
-            		'<div id="dingjiaContent"></div>'+
-            	'</div>'+
-            '</div>')
+                '<div style="border: 1px solid #ced9df">' +
+                    '<table id="dingjiaTitle" style="width: 100%;">' +
+                        '<thead>' +
+                            '<tr><th>规格</th><th>等级</th><th>价格</th><th>换货价</th><th>每日限购</th><th>每周限购</th><th>每月限购</th><th>是否可购买</th><th>云仓最少发货数量</th><th>起购数量</th></tr>'+
+                        '</thead>' +
+                        '<tbody id="dingjiaContent"></tbody>' +
+                    '</table>' +
+                '</div>' +
+            '</div>');
 
 		// 规格
         $('#remark').parent().after(
@@ -454,6 +450,10 @@ $(function() {
                                                         field: 'minNumber' + p,
                                                         title: '云仓最少发货数量',
                                                         required: true
+                                                    }, {
+                                                        field: 'minQuantity' + p,
+                                                        title: '起购数量',
+                                                        required: true
                                                     }]);
                                                 }
                                             }
@@ -483,34 +483,39 @@ $(function() {
                                                                     var monthlyNumber = 'monthlyNumber' + (v.level - 1);
                                                                     var isBuy = 'isBuy' + (v.level - 1);
                                                                     var minNumber = 'minNumber' + (v.level - 1);
+                                                                    var minQuantity = 'minQuantity' + (v.level - 1);
                                                                     specsPriceList[i].dailyNumber = data[dailyNumber];
                                                                     specsPriceList[i].weeklyNumber = data[weeklyNumber];
                                                                     specsPriceList[i].monthlyNumber = data[monthlyNumber];
                                                                     specsPriceList[i].isBuy = data[isBuy];
                                                                     specsPriceList[i].minNumber = data[minNumber];
+                                                                    specsPriceList[i].minQuantity = data[minQuantity];
                                                                 }
                                                             }
                                                             temp.specsPriceList = specsPriceList;
-                                                            var dingjiaHtml = '<div id="dingjiaOutDom' + g + '">';
-                                                            for (var v = 0; v < specsPriceList.length - 1; v++) {
-                                                                var dingjiaTemp =
-                                                                    '<div class="dingjiaDom' + v + '">' +
-                                                                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.name + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[specsPriceList[v].level - 1].name + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 22px;display: inline-block">' + (+specsPriceList[v].price / 1000) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (+specsPriceList[v].changePrice / 1000) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (specsPriceList[v].dailyNumber) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 26px;display: inline-block">' + (specsPriceList[v].weeklyNumber) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 38px;display: inline-block">' + (specsPriceList[v].monthlyNumber) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 51px;display: inline-block">' + (dictInfo[specsPriceList[v].isBuy]) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 74px;display: inline-block">' + (specsPriceList[v].minNumber) + '</span>' +
-                                                                    '</div>';
-                                                                dingjiaHtml += dingjiaTemp;
-                                                            }
-                                                            dingjiaHtml += '</div>';
-                                                            $('#dingjiaOutDom' + g).replaceWith(dingjiaHtml);
-
+                                                            $('#dingjiaContent').empty();
                                                             detailData.specsList.splice(g, 1, temp);
+                                                            detailData.specsList.map(function (item) {
+                                                                var dingjiaHtml = '';
+                                                                var priceList = item.specsPriceList || item.priceList;
+                                                                for(var v = 0 ; v < priceList.length; v++) {
+                                                                    var dingjiaTemp =
+                                                                        '<tr data-index="'+ dingjiaDom +'" class="dingjiaDom' + v + '">' +
+                                                                            '<td>' + item.name + '</td>' +
+                                                                            '<td>' + items[priceList[v].level - 1].name + '</td>' +
+                                                                            '<td>' + moneyFormat(priceList[v].price) + '</td>' +
+                                                                            '<td>' + moneyFormat(priceList[v].changePrice) + '</td>' +
+                                                                            '<td>' + priceList[v].dailyNumber + '</td>' +
+                                                                            '<td>' + priceList[v].weeklyNumber + '</td>' +
+                                                                            '<td>' + priceList[v].monthlyNumber + '</td>' +
+                                                                            '<td>' + bool[priceList[v].isBuy] + '</td>' +
+                                                                            '<td>' + priceList[v].minNumber + '</td>' +
+                                                                            '<td>' + priceList[v].minQuantity + '</td>' +
+                                                                        '</tr>';
+                                                                    dingjiaHtml += dingjiaTemp;
+                                                                }
+                                                                $('#dingjiaContent').append(dingjiaHtml);    
+                                                            })
                                                         }
                                                     }
                                                 }]
@@ -575,24 +580,27 @@ $(function() {
                             
             	$('#guigeHtml').append(guigeTemp);
 
-				var dingjiaHtml = '<div id="dingjiaOutDom'+a+'">';
-                for(var v = 0 ;v<item.specsPriceList.length ;v++ ) {
+				// var dingjiaHtml = '<div id="dingjiaOutDom'+a+'">';
+                var dingjiaHtml = '';
+                var priceList = item.specsPriceList || item.priceList;
+                for(var v = 0 ; v < priceList.length; v++) {
                     var dingjiaTemp =
-                        '<div class="dingjiaDom' + v + '">' +
-                            '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.name + '</span>' +
-                            '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[item.specsPriceList[v].level - 1].name + '</span>' +
-                            '<span style="width : 120px;padding:20px 22px;display: inline-block">' + moneyFormat(item.specsPriceList[v].price) + '</span>' +
-                            '<span style="width : 120px;padding:20px 12px;display: inline-block">' + moneyFormat(item.specsPriceList[v].changePrice) + '</span>' +
-                            '<span style="width : 120px;padding:20px 12px;display: inline-block">' + item.specsPriceList[v].dailyNumber + '</span>' +
-                            '<span style="width : 120px;padding:20px 26px;display: inline-block">' + item.specsPriceList[v].weeklyNumber + '</span>' +
-                            '<span style="width : 120px;padding:20px 38px;display: inline-block">' + item.specsPriceList[v].monthlyNumber + '</span>' +
-                            '<span style="width : 120px;padding:20px 51px;display: inline-block">' + bool[item.specsPriceList[v].isBuy] + '</span>' +
-                            '<span style="width : 120px;padding:20px 74px;display: inline-block">' + item.specsPriceList[v].minNumber + '</span>' +
-                        '</div>'
+                        '<tr data-index="' + a + '" class="dingjiaDom' + v + '">' +
+                            '<td>' + item.name + '</td>' +
+                            '<td>' + items[priceList[v].level - 1].name + '</td>' +
+                            '<td>' + moneyFormat(priceList[v].price) + '</td>' +
+                            '<td>' + moneyFormat(priceList[v].changePrice) + '</td>' +
+                            '<td>' + priceList[v].dailyNumber + '</td>' +
+                            '<td>' + priceList[v].weeklyNumber + '</td>' +
+                            '<td>' + priceList[v].monthlyNumber + '</td>' +
+                            '<td>' + bool[priceList[v].isBuy] + '</td>' +
+                            '<td>' + priceList[v].minNumber + '</td>' +
+                            '<td>' + priceList[v].minQuantity + '</td>' +
+                        '</tr>'
                     dingjiaHtml += dingjiaTemp;
                 }
 
-				dingjiaHtml += '</div>';
+				// dingjiaHtml += '</div>';
 				$('#dingjiaContent').append(dingjiaHtml);
 				a++;
             });
@@ -736,13 +744,11 @@ $(function() {
                 }, { 
                     field : 'refCode',
                     title : '关联拆单编号',
-                    required: true,
                     type: 'select',
                     data : globalSpecialList
                 }, { 
                     field : 'singleNumber',
-                    title : '拆单数量',
-                    required: true
+                    title : '拆单数量'
                 }],
                 buttons: [{
                     title: '确定',
@@ -869,6 +875,10 @@ $(function() {
                                                     field: 'minNumber' + p,
                                                     title: '云仓最少发货数量',
                                                     required: true
+                                                }, {
+                                                    field: 'minQuantity' + p,
+                                                    title: '起购数量',
+                                                    required: true
                                                 }]);
                                             }
 
@@ -888,42 +898,44 @@ $(function() {
                                                         if ($('#popFormXiangou').valid()) {
                                                             var data = $('#popFormXiangou').serializeObject();
                                                             dw2.close().remove();
-                                                            // var specsPriceList = []
                                                             for (var i = 0; i < items.length; i++) {
+                                                                var v = items[i];
                                                                 if (v.level != 6) {
-                                                                    var v = items[i];
                                                                     var dailyNumber = 'dailyNumber' + (v.level - 1);
                                                                     var weeklyNumber = 'weeklyNumber' + (v.level - 1);
                                                                     var monthlyNumber = 'monthlyNumber' + (v.level - 1);
                                                                     var isBuy = 'isBuy' + (v.level - 1);
                                                                     var minNumber = 'minNumber' + (v.level - 1);
+                                                                    var minQuantity = 'minQuantity' + (v.level - 1);
                                                                     specsPriceList[i].dailyNumber = data[dailyNumber];
                                                                     specsPriceList[i].weeklyNumber = data[weeklyNumber];
                                                                     specsPriceList[i].monthlyNumber = data[monthlyNumber];
                                                                     specsPriceList[i].isBuy = data[isBuy];
                                                                     specsPriceList[i].minNumber = data[minNumber];
+                                                                    specsPriceList[i].minQuantity = data[minQuantity];
                                                                 }
                                                             }
                                                             temp.specsPriceList = specsPriceList;
 
-                                                            var dingjiaHtml = '<div id=dingjiaOutDom' + dingjiaDom + '">';
-                                                            for (var v = 0; v < specsPriceList.length - 1; v++) {
+                                                            // var dingjiaHtml = '<div id=dingjiaOutDom' + dingjiaDom + '">';
+                                                            var dingjiaHtml = '';
+                                                            for (var v = 0; v < specsPriceList.length; v++) {
                                                                 var dingjiaTemp =
-                                                                    '<div class="dingjiaDom' + v + '">' +
-                                                                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.name + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 30px;display: inline-block">' + items[specsPriceList[v].level - 1].name + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 22px;display: inline-block">' + (+specsPriceList[v].price / 1000) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (+specsPriceList[v].changePrice / 1000) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 12px;display: inline-block">' + (specsPriceList[v].dailyNumber) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 26px;display: inline-block">' + (specsPriceList[v].weeklyNumber) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 38px;display: inline-block">' + (specsPriceList[v].monthlyNumber) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 51px;display: inline-block">' + (dictInfo[specsPriceList[v].isBuy]) + '</span>' +
-                                                                    '<span style="width : 120px;padding:20px 74px;display: inline-block">' + (specsPriceList[v].minNumber) + '</span>' +
-                                                                    '</div>';
+                                                                    '<tr data-index="' + dingjiaDom + '" class="dingjiaDom' + v + '">' +
+                                                                        '<td>' + temp.name + '</td>' +
+                                                                        '<td>' + items[specsPriceList[v].level - 1].name + '</td>' +
+                                                                        '<td>' + (+specsPriceList[v].price / 1000) + '</td>' +
+                                                                        '<td>' + (+specsPriceList[v].changePrice / 1000) + '</td>' +
+                                                                        '<td>' + (specsPriceList[v].dailyNumber) + '</td>' +
+                                                                        '<td>' + (specsPriceList[v].weeklyNumber) + '</td>' +
+                                                                        '<td>' + (specsPriceList[v].monthlyNumber) + '</td>' +
+                                                                        '<td>' + (dictInfo[specsPriceList[v].isBuy]) + '</td>' +
+                                                                        '<td>' + (specsPriceList[v].minNumber) + '</td>' +
+                                                                        '<td>' + (specsPriceList[v].minQuantity) + '</td>' +
+                                                                    '</tr>';
                                                                 dingjiaHtml += dingjiaTemp;
                                                             }
 
-                                                            dingjiaHtml += '</div>';
                                                             $('#dingjiaContent').append(dingjiaHtml);
 
                                                             detailData.specsList.push(temp)

@@ -18,6 +18,14 @@ $(function() {
         field : 'mobile',
         title : '联系电话'
     }, {
+        field: 'mkAmount',
+        title: '门槛余额',
+        amount: true
+    }, {
+        field: 'whAmount',
+        title: '云仓余额',
+        amount: true
+    }, {
         field : 'wxId',
         title : '微信号'
     },{

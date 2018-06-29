@@ -33,7 +33,6 @@ $(function() {
         field : 'pdf',
         title : '物流单',
         type : 'img',
-        required :true,
         single : true
     },{
         field : 'remark',

@@ -92,7 +92,8 @@ $(function() {
         listCode : '627356',
         type : 'select',
         params : {
-            kind  : 'B'
+            kind  : 'B',
+            statusList: [7, 12, 13, 14]
         },
         keyName : 'userId',
         valueName: 'realName'

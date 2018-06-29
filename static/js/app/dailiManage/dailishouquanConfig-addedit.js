@@ -46,33 +46,12 @@ $(function() {
         required : true,
         type : 'select',
         data : {'1':'是','0':'否'}
-    },
-    //     {
-    //     field : 'impowerAmount',
-    //     title : '本等级授权首单总额',
-    //     required : true,
-    //     formatter: moneyFormat
-    // },
-        {
+    },{
         field : 'minCharge',
         title : '本等级授权充值门槛',
         required : true,
-        formatter: moneyFormat
-    },
-    //     {
-    //     field : 'redPercent',
-    //     title : '红线设置',
-    //     required : true,
-    //     formatter: moneyFormat
-    // },
-    //     {
-    //     field : 'isSummary',
-    //     title : '本等级授权单是否汇总',
-    //     type : 'select',
-    //     data : {'1':'是','0':'否'},
-    //     required : true
-    // },
-        {
+        amount: true
+    },{
         field : 'remark',
         title : '备注'
     }];
@@ -84,11 +63,7 @@ $(function() {
 		detailCode: '627017',
 		editCode: '627012',
         beforeSubmit : function (data) {
-            alert(1);
             data.level = level;
-            data.minCharge *= 1000;
-            // data.minCharge = (data.minCharge * 1000).toString();
-
             return data;
         }
 	});

@@ -17,22 +17,13 @@ $(function() {
 		title : '产品'
 	}, {
         field : 'value1',
-        title : '直推奖励',
-		formatter : function (v, data) {
-			return data.value1?data.value1*100+'%':'-';
-        }
+        title : '直推奖励(%)'
     }, {
         field : 'value2',
-        title : '间推奖励',
-        formatter : function (v, data) {
-        return data.value2?data.value2*100+'%':'-';
-    }
+        title : '间推奖励(%)'
     }, {
         field : 'value3',
-        title : '次推奖励',
-        formatter : function (v, data) {
-            return data.value3?data.value3*100+'%':'-';
-        }
+        title : '次推奖励(%)'
     }];
 
 	// 隐藏掉搜索栏，不然的话一个空的搜索栏依旧占位，会有一行空白

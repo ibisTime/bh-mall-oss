@@ -51,7 +51,7 @@ $(function () {
             title: '下单代理等级',
             search: true,
             type: 'select',
-            listCode: '627006',
+            listCode: '627008',
             keyName: 'level',
             valueName: 'name',
             visible: false

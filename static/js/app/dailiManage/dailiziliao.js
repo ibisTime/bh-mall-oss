@@ -5,10 +5,10 @@ $(function() {
         field: '',
         title: '',
         checkbox: true
-    },{
+    }, {
         field: 'realName',
         title: '姓名'
-    },{
+    }, {
         field: 'level',
         title: '等级',
         search: true,
@@ -16,9 +16,17 @@ $(function() {
         listCode: '627006',
         keyName: 'level',
         valueName: 'name',
-    },{
+    }, {
         field: 'mobile',
         title: '联系电话'
+    }, {
+        field: 'mkAmount',
+        title: '门槛余额',
+        amount: true
+    }, {
+        field: 'whAmount',
+        title: '云仓余额',
+        amount: true
     }, {
         field: 'wxId',
         title: '微信号'
@@ -34,7 +42,7 @@ $(function() {
         formatter: function(v, data) {
 			return data.highUser?data.highUser.mobile: '-'
 		}
-    },{
+    }, {
         field: 'teamName',
         title: '团队名称',
         formatter: function(v, data) {
