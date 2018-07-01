@@ -1,0 +1,38 @@
+<link rel="import" href="../head.html?__inline">
+<script src="../../js/app/bhManage/lineCode.js"></script>
+<script src="../../js/lib/jquery-ean13.min.js"></script>
+<script type="text/javascript" src="../../js/lib/qrcode.js"></script>
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
+<script type="text/javascript" src="../../js/lib/html2canvas.min.js"></script>
+<style>
+    ul li:last-child {
+        margin-right: 0 !important;
+    }
+</style>
+<div class="place">
+	<span>位置：</span>
+	<ul>
+	</ul>
+</div>
+<div class="right-info">
+    <form class="search-form">
+        <ul>
+            <li class="search-form-li" style="width: 50%;">
+                <label>请输入盒数</label>
+                <input id="number" name="number" type="text" class="lay-input" />
+                <input id="search" type="button" class="btn" value="查询" />
+                <input id=download type="button" class="btn" value="下载" />
+            </li>
+        </ul>
+    </form>
+    <div class="tools">
+        <ul class="toolbar">
+        </ul>
+    </div>
+    <table id="tableList"></table>
+
+    <div id="downloadPic" style="display: inline-block;">
+
+    </div>
+</div>
+<link rel="import" href="../foot.html?__inline">

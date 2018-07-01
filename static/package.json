@@ -1,16 +1,17 @@
 {
-    "name": "bhxt-oss",
-    "version": "1.0.0",
-    "description": "xn-bh-oss",
-    "main": "fis-conf.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "fis3 release -d D:/chengdai_dabao/bhxt_oss -w",
-        "build": "fis3 release -d D:/chengdai_dabao/bhxt_oss prod"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "fis3-postpackager-loader": "^2.1.4"
-    }
+  "name": "bhxt-oss",
+  "version": "1.0.0",
+  "description": "xn-bh-oss",
+  "main": "fis-conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "fis3 release -d /usr/local/Cellar/nginx/1.15.0/html/bhxtoss -w",
+    "build": "fis3 release -d /usr/local/Cellar/nginx/1.15.0/html/bhxtoss prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fis3": "^3.4.39",
+    "fis3-postpackager-loader": "^2.1.4"
+  }
 }
