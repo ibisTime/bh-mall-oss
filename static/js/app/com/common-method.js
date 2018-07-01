@@ -871,7 +871,7 @@ function buildList(options) {
                 });
             }
             var data = codeParams;
-			
+
 			showLoading();
             reqApi({ code: options.deleteCode, json: data }).done(function(data) {
                 sucList();
@@ -957,7 +957,7 @@ function buildList(options) {
     if ('singleSelect' in options) {
         singleSelect = options['singleSelect'];
     }
-    
+
     if ('exportDataType' in options) {
         exportDataType = options['exportDataType'];
     }else {
@@ -967,7 +967,7 @@ function buildList(options) {
         detailView = true;
         detailFormatter = options['detailFormatter'];
     }
-    
+
 
     if ('sortName' in options) {
         sortName = options['sortName'].replace(/[A-Z]/g, function(word) {
@@ -992,7 +992,7 @@ function buildList(options) {
         showLoading()
     });
 
-    
+
     var tableInfo = JSON.parse(sessionStorage.getItem('tableInfo') || '{}')[location.pathname] || {};
     //表格初始化
     tableEl.bootstrapTable({
@@ -1315,7 +1315,7 @@ function buildDetail(options) {
 	    $('#backBtn').click(function() {
 	        goBack();
 	    });
-	
+
 	    $('#subBtn').click(function() {
 	        if ($('#jsForm').valid()) {
 	            var data = $('#jsForm').serializeObject();
@@ -1358,7 +1358,7 @@ function buildDetail(options) {
 	                    return;
 	                }
 	            }
-	
+
 	            var request = function() {
 	            	showLoading();
 	                reqApi({
@@ -1369,14 +1369,14 @@ function buildDetail(options) {
 	                	sucDetail();
 	                },hideLoading);
 	            };
-	
+
 	            if (options.beforeSubmitAsync) {
 	                options.beforeSubmitAsync.callback = request;
 	                options.beforeSubmitAsync(data);
 	            } else {
 	                request();
 	            }
-	
+
 	        }
 	    });
     }
@@ -1931,9 +1931,9 @@ function buildDetail(options) {
 
             if ('value' in item) {
                 if (item.value && item.value.call) {
-                    $('#' + item.field).val(item.value(data));
+                    $('#' + item.field)[item.readonly ? 'text' : 'val'](item.value(data));
                 } else {
-                    $('#' + item.field).val((item.amount || item.amount1) ?
+                    $('#' + item.field)[item.readonly ? 'text' : 'val']((item.amount || item.amount1) ?
                         moneyFormat(item.value) :
                         item.value);
                 }
@@ -3186,7 +3186,7 @@ function buildCharts(options) {
         json.systemCode = sessionStorage.getItem('systemCode');
 
         $.extend(json, options.searchParams, searchFormParams);
-		
+
 		showLoading();
         reqApi({
             code: options.pageCode,
