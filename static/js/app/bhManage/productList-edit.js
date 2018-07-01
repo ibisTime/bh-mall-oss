@@ -78,33 +78,33 @@ $(function() {
                 data.code = code;
 
                 var type0 = [];
-                                
+
                 function ftype0(item){
                     if(item.type == '0') {
                         return item
                     }
                 }
-            
-                type0 = awardList.filter(ftype0); 
 
-				if (data.specList.length <=0 || type0.length <=0) {
-					toastr.info('请检查您是否填写规格体系以及奖励机制')
-				} else {
-					return data;
-				}
+                type0 = awardList.filter(ftype0);
+
+								if (data.specList.length <=0 || type0.length <=0) {
+										toastr.info('请检查您是否填写规格体系以及奖励机制')
+								} else {
+										return data;
+								}
                 return data;
             },
             afterData : function(data) {
-            	detailData = data;
+            		detailData = data;
                 var spList = data.specsList;
                 var obj = {};
                 for (var i = 0; i < spList.length; i++) {
                     obj[spList[i].code] = spList[i].name;
                 }
-            	globalSpecialList = obj;
-            	// 插入规格和定价
-            	var g=0;
-            	detailData.specsList.map(function (item) {
+	            	globalSpecialList = obj;
+	            	// 插入规格和定价
+	            	var g=0;
+	            	detailData.specsList.map(function (item) {
                     var guigeTemp =
                         '<tr id="guigeDom'+g+'">'+
                             '<td>'+item.name+'</td>'+
@@ -125,7 +125,7 @@ $(function() {
 
                     // var dingjiaHtml = '<div id="dingjiaOutDom'+dingjiaDom+'">';
                     var dingjiaHtml = '';
-                    for(var v = 0 ;v<item.priceList.length ;v++ ) {
+                    for (var v = 0; v < item.priceList.length; v++) {
                         var dingjiaTemp =
                             '<tr data-index="'+ dingjiaDom +'" class="dingjiaDom' + v + '">' +
                                 '<td>' + item.name + '</td>' +
@@ -141,12 +141,12 @@ $(function() {
                             '</tr>';
 		                dingjiaHtml += dingjiaTemp;
 		            }
-		
-					// dingjiaHtml += '</div>';
-					$('#dingjiaContent').append(dingjiaHtml);
-                    g++;       
-            	})
-            	
+
+								// dingjiaHtml += '</div>';
+								$('#dingjiaContent').append(dingjiaHtml);
+                    g++;
+            		})
+
             	// 插入推荐奖励
             	detailData.directAwardList.map(function (index, item) {
             		var awardTemp =
@@ -161,7 +161,7 @@ $(function() {
 
             	})
             	$('#awardContent').append(awardHtml);
-            	
+
             	// 规格定价数据格式转换
             	detailData.specsList.map(function (item) {
             		return {
@@ -181,20 +181,20 @@ $(function() {
             				}
             			})
             		}
-            	}) 
-            	
+            	})
+
             	detailData.specsList.map(function (item) {
             		item.specsPriceList = item.priceList;
             		delete item.priceList;
             	})
-            	
-            	
+
+
             	// 奖励数据格式转换
-            	
+
             	detailData.directAwardList.map(function (item) {
             		awardList.push(item);
             	})
-            	
+
             	detailData.awardList = awardList;
             }
         });
@@ -309,18 +309,18 @@ $(function() {
                     required: true,
                     type: 'select',
                     data : {'0':'否','1':'是'}
-                }, { 
+                }, {
                     field : 'isSingle',
                     title : '是否可拆单',
                     required: true,
                     type: 'select',
                     data : {'0':'否','1':'是'}
-                }, { 
+                }, {
                     field : 'refCode',
                     title : '关联拆单编号',
                     type: 'select',
                     data : globalSpecialList
-                }, { 
+                }, {
                     field : 'singleNumber',
                     title : '拆单数量'
                 }],
@@ -359,7 +359,7 @@ $(function() {
                                 '</tr>';
 
                             $('#guigeDom' + g).replaceWith(guigeTemp);
-                            
+
                             dw.close().remove();
                             var circleList = []
                             for(var p=0;p<items.length;p++) {
@@ -380,11 +380,11 @@ $(function() {
                                         title : '换货价',
                                         required : true
                                     };
-                                    
+
                                     circleList.push(field1,field2,field3);
                                 }
                             }
-                            
+
                             var dw1 = dialog({
                                 content: '<form class="pop-form-dingjia" id="popFormDingjia" novalidate="novalidate">' +
                                 '<ul class="form-info" id="formContainer_dingjia"><li style="text-align:center;font-size: 15px;">请输入规格定价</li></ul>' +
@@ -406,12 +406,12 @@ $(function() {
                                                 if (v.level != 6) {
                                                     var price1= 'price'+(v.level-1);
                                                     var changePrice1= 'changePrice'+(v.level-1);
-                                                    
+
                                                     var temp1 = {};
                                                     temp1.level = v.level;
                                                     temp1.price = data[price1]*1000;
                                                     temp1.changePrice = data[changePrice1]*1000;
-                                                    
+
                                                     specsPriceList.push(temp1);
                                                 }
                                             }
@@ -492,7 +492,13 @@ $(function() {
                                                                     specsPriceList[i].minQuantity = data[minQuantity];
                                                                 }
                                                             }
-                                                            temp.specsPriceList = specsPriceList;
+																														var useSpecList = useData.specsPriceList || useData.priceList;
+																														if (useSpecList[0].code) {
+																															for (var j = 0; j < useSpecList.length; j++) {
+																																specsPriceList[j].code = useSpecList[j].code;
+																															}
+																														}
+																														temp.specsPriceList = specsPriceList;
                                                             $('#dingjiaContent').empty();
                                                             detailData.specsList.splice(g, 1, temp);
                                                             detailData.specsList.map(function (item) {
@@ -514,7 +520,7 @@ $(function() {
                                                                         '</tr>';
                                                                     dingjiaHtml += dingjiaTemp;
                                                                 }
-                                                                $('#dingjiaContent').append(dingjiaHtml);    
+                                                                $('#dingjiaContent').append(dingjiaHtml);
                                                             })
                                                         }
                                                     }
@@ -536,7 +542,7 @@ $(function() {
                 }]
             });
             hideLoading();
-            
+
         });
 
 		// 删除规格定价
@@ -555,7 +561,7 @@ $(function() {
                     delete globalSpecialList[key];
                 }
             }
-            
+
             $('#guigeHtml').empty();
             $('#dingjiaContent').empty();
             var a = 0;
@@ -576,8 +582,8 @@ $(function() {
                             '<input id="editBtn_'+a+'" data-code="'+item.code+'" data-name="'+item.name+'" type="button" class="btn delguigeEditBtn" style="margin-left:0px;margin-top: 0;" value="修改"/>'+
                         '</td>'+
                     '</tr>';
-                            
-                            
+
+
             	$('#guigeHtml').append(guigeTemp);
 
 				// var dingjiaHtml = '<div id="dingjiaOutDom'+a+'">';
@@ -605,7 +611,7 @@ $(function() {
 				a++;
             });
         });
-        
+
         // 修改推荐奖奖励
         $('#awardContent').on('click', '.editAwardBtn', function editAward(e) {
 			var index = e.target.id.split('_')[1];
@@ -665,15 +671,15 @@ $(function() {
 						        '<span style="width : 140px;padding:20px 70px;display: inline-block">'+(+data.value3*100+'%')+'</span>'+
 						        '<input id="editAwardBtn_'+index+'" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
 						        // '</div>'
-						
-						
-						
+
+
+
 							$('。editAwardBtn').click(function() {
 								editAward(e);
 							})
 						    $('#awardDom'+index).empty().append(awardTemp);
 						    dw.close().remove();
-						}	
+						}
 					}
 				}, {
 					title: '取消',
@@ -687,7 +693,7 @@ $(function() {
         })
 
         var b = 0;
-        
+
         var dingjiaDom = 0;
         // 添加产品规格
         $('#add1Btn').click(function () {
@@ -735,18 +741,18 @@ $(function() {
                     required: true,
                     type: 'select',
                     data : {'0':'否','1':'是'}
-                }, { 
+                }, {
                     field : 'isSingle',
                     title : '是否可拆单',
                     required: true,
                     type: 'select',
                     data : {'0':'否','1':'是'}
-                }, { 
+                }, {
                     field : 'refCode',
                     title : '关联拆单编号',
                     type: 'select',
                     data : globalSpecialList
-                }, { 
+                }, {
                     field : 'singleNumber',
                     title : '拆单数量'
                 }],
@@ -784,7 +790,7 @@ $(function() {
                                 '</tr>';
 
                             $('#guigeHtml').append(guigeTemp);
-                            
+
                             dw.close().remove();
                             var circleList = []
                             for(var p=0;p<items.length;p++) {
@@ -805,11 +811,11 @@ $(function() {
                                 		title : '换货价',
                                 		required : true
                                 	};
-                                	
+
                                 	circleList.push(field1,field2,field3);
                                 }
                             }
-                            
+
                             var dw1 = dialog({
                                 content: '<form class="pop-form-dingjia" id="popFormDingjia" novalidate="novalidate">' +
                                 '<ul class="form-info" id="formContainer_dingjia"><li style="text-align:center;font-size: 15px;">请输入规格定价</li></ul>' +
@@ -823,7 +829,7 @@ $(function() {
                                 buttons: [{
                                     title: '确定',
                                     handler: function () {
-                                        
+
                                         if ($('#popFormDingjia').valid()) {
                                             var data = $('#popFormDingjia').serializeObject();
                                             dw1.close().remove();
@@ -832,12 +838,12 @@ $(function() {
                                                 if (v.level != 6) {
                                                     var price1= 'price'+(v.level-1);
                                                     var changePrice1= 'changePrice'+(v.level-1);
-                                                    
+
                                                     var temp1 = {};
                                                     temp1.level = v.level;
                                                     temp1.price = data[price1]*1000;
                                                     temp1.changePrice = data[changePrice1]*1000;
-                                                    
+
                                                     specsPriceList.push(temp1);
                                                 }
                                             }
@@ -960,12 +966,12 @@ $(function() {
                 }]
             });
             hideLoading();
-            
+
         });
 
         var awardList = [];
         var v = 0;
 
     });
-    
+
 });

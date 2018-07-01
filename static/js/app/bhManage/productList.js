@@ -1,57 +1,57 @@
 $(function() {
-// 报货管理-云仓管理-产品列表
-	var columns = [{
-		field : '',
-		title : '',
-		checkbox : true
-	},{
-		field : 'code',
-		title : '产品编号'
-	},{
-		field : 'name',
-		title : '名称'
-	},{
-        field : 'price',
-        title : '市场价',
-        formatter: moneyFormat
-    }, {
-        field : 'virNumber',
-        title : '虚拟库存'
-    }, {
-        field : 'realNumber',
-        title : '实际库存'
-    }, {
-        field : 'whNumber',
-        title : '云库存'
-    }, {
-        field : 'status',
-        title : '状态',
-		search: true,
-		type: 'select',
-        key: 'product_status',
-        formatter: Dict.getNameForList("product_status")
-    }, {
-	    field : 'isFree',
-        title : '是否包邮',
-        type: 'select',
-        data : {'1':'是','0':'否'}
-    },  {
-        field : 'isTotal',
-        title : '是否计入出货',
-        type : 'select',
-        data : {'1':'是','0':'否'}
-    }, {
-        field : 'orderNo',
-        title : '排序'
-    }, {
-        field : 'updateDatetime',
-        title : '添加时间',
-        formatter: dateTimeFormat
-    }];
-	buildList({
-		columns: columns,
-		pageCode: '627554'
-	});
+		// 报货管理-云仓管理-产品列表
+		var columns = [{
+				field : '',
+				title : '',
+				checkbox : true
+		},{
+				field : 'code',
+				title : '产品编号'
+		},{
+				field : 'name',
+				title : '名称'
+		},{
+	      field : 'price',
+	      title : '市场价',
+	      formatter: moneyFormat
+	  }, {
+	      field : 'virNumber',
+	      title : '虚拟库存'
+	  }, {
+	      field : 'realNumber',
+	      title : '实际库存'
+	  }, {
+	      field : 'whNumber',
+	      title : '云库存'
+	  }, {
+	      field : 'status',
+	      title : '状态',
+				search: true,
+				type: 'select',
+	      key: 'product_status',
+	      formatter: Dict.getNameForList("product_status")
+	  }, {
+				field : 'isFree',
+	      title : '是否包邮',
+	      type: 'select',
+	      data : {'1':'是','0':'否'}
+	  },  {
+	      field : 'isTotal',
+	      title : '是否计入出货',
+	      type : 'select',
+	      data : {'1':'是','0':'否'}
+	  }, {
+	      field : 'orderNo',
+	      title : '排序'
+	  }, {
+	      field : 'updateDatetime',
+	      title : '添加时间',
+	      formatter: dateTimeFormat
+	  }];
+		buildList({
+			columns: columns,
+			pageCode: '627554'
+		});
     // 上架
     $('#upBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -157,10 +157,10 @@ $(function() {
         }else {
         	toastr.info('已上架的产品不能修改')
         }
-        
+
     });
-    
-    
+
+
     // 规格库存
     $('#guigeBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -168,11 +168,11 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        
-        
-        
-        
-        
+
+
+
+
+
         reqApi({
         	code : '627557',
         	json : {
@@ -181,8 +181,8 @@ $(function() {
         }).done(function(data) {
         	var vir = data.virNumber;
         	var real = data.realNumber;
-        	
-        	
+
+
         	var dw = dialog({
                     content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
                     '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">修改规格库存</li></ul>' +
@@ -226,7 +226,7 @@ $(function() {
                         handler: function () {
                             if ($('#popForm').valid()) {
                                 var data = $('#popForm').serializeObject();
-                                
+
                                 data.code = selRecords[0].code;
                                 data.updater = getUserName();
                                 if(data.kind == '0') {
@@ -252,9 +252,9 @@ $(function() {
                     }]
                 });
                 hideLoading()
-        	
+
         })
-        
+
     });
-    
+
 });
