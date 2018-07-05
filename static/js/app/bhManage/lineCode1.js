@@ -105,7 +105,9 @@ $(function() {
             if ($('#popForm').valid()) {
               // debugger;
               var data = $('#popForm').serializeObject();
-              for(var i = 0 ;i < data.quantity; i++) {
+              var urlArr = [];
+              for(var j = 0 ;j < data.quantity; j++) {
+                console.log(j);
                 reqApi({
                   code: '627871',
                   json: {
@@ -113,15 +115,21 @@ $(function() {
                     quantity: 1
                   }
                 }).then(function (data) {
-                  var boxHtml;
+                  debugger;
+                  var boxHtml = '';
                   var url = '';
-                  data.map(function (item) {
-                    url = item.url;
-                    console.log(url);
-                    code = item.code;
-                    boxHtml += '<div class="downloadPic" width="4400px" style="display: inline-block;padding: 20px; width: 1100px"></div>'
-                    item.stList.forEach(function (a, i) {
-                      url += '?traceCode='+ a.traceCode;
+                  // urlArr[j] = [];
+                  // data.map(function (item) {
+                    url = data[0].url;
+                    code = data[0].code;
+                    boxHtml += '<div class="downloadPic" width="4400px" style="display: inline-block; padding: 20px; width: 1100px"></div>';
+                    // $('.right-info').append(boxHtml);
+                  data[0].stList.forEach(function (a, i) {
+                      // urlArr[j].push(url + '?traceCode='+ a.traceCode);
+                      urlArr.push(url + '?traceCode='+ a.traceCode);
+                      console.log(a.traceCode);
+                      // console.log(urlArr[0][0]);
+                      console.log(urlArr.length);
                       if (i % 8 == 0) {
                         if (i == 0) {
                           boxHtml += '<ul>';
@@ -137,7 +145,7 @@ $(function() {
                           '<p style="white-space: nowrap;transform: scale(0.43);margin-right: 59px;font-size: 12px;margin-top: -11px;">扫描二维码，查防伪，查溯源</p>'+
                           '</div>'+
                           '<div class="center" style="text-align: center;font-size: 0;margin-top: -4px;margin-bottom: 5px">'+
-                          '<div class="erweimaPic" style="width: 50px;height: 50px;display: inline-block;"></div>'+
+                          '<div class="erweimaPic erweimaPic'+urlArr.length+' style="width: 70px;height: 70px;display: inline-block;"></div>'+
                           '</div>'+
                           '<div class="text" style="width: 100%;text-align: center;margin-bottom: 0.5rem;margin-top: -4px;">'+
                           '<p style="font-size: 0.54rem;transform: scale(0.55);margin-right: 11px;">'+ a.securityCode +'</p>'+
@@ -145,18 +153,31 @@ $(function() {
                           '</div>'+
                           '</li>';
                     });
-                  })
                   boxHtml += '</ul>';
                   $('.downloadPic').html(boxHtml);
-                  $('.erweimaPic').each(function (i, ele) {
+                  for(var a=1; a<=$('.erweimaPic').length; a++) {
+                    var ele = document.getElementsByClassName("erweimaPic"+a)[0];
                     new QRCode(ele, {
-                      width : 50,
-                      height : 50,
+                      width : 70,
+                      height : 70,
                       typeNumber : 4,
                       colorDark : "#000000",
                       colorLight : "#ffffff"
-                    }).makeCode(url);
-                  });
+                    }).makeCode(urlArr[a-1]);
+                  }
+                  // $('.erweimaPic').each(function (i, ele) {
+                  //   // console.log(urlArr);
+                  //   // console.log(ele);
+                  //   // console.log(i);
+                  //
+                  //   new QRCode(ele, {
+                  //     width : 70,
+                  //     height : 70,
+                  //     typeNumber : 4,
+                  //     colorDark : "#000000",
+                  //     colorLight : "#ffffff"
+                  //   }).makeCode(urlArr[i]);
+                  // });
                   $('.downloadPic').append('<div style="text-align: right;"><div class="box" style="width: 6cm; height: 4cm; display: inline-block;padding: 0 20px">' +
                       '<div id="txm">' +
                       '<div class="zzsc" style="display: inline-block;">' +
@@ -176,7 +197,14 @@ $(function() {
                   $("#ean").EAN13(code,{
                     color:'#000000'
                   });
+
                   $('.right-info').append(boxHtml);
+                  html2canvas($('.downloadPic')[0], {
+                    scale: 10
+                  }).then(function (canvas) {
+                    var b64 = canvas.toDataURL("image/jpeg");
+                    uploadByBase64(b64);
+                  });
                 })
               }
             }
@@ -215,10 +243,6 @@ function a() {
       a();
     });
   }
-}
-function updateListSearch() {
-  var params = $('.search-form').serializeObject();
-  return params.number;
 }
 
 function uploadByBase64(base64) {
