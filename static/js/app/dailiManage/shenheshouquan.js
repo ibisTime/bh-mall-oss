@@ -60,7 +60,7 @@ reqApi({
         field : 'highUserName',
         title : '上级',
         formatter : function(v, data) {
-			return data?data.realName : '-'
+			return data.highUser?data.highUser.realName : '-'
 		}
     }, {
         field : 'teamName',
