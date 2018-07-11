@@ -11,12 +11,8 @@ $(function() {
         title : '姓名',
         readonly : view
     },{
-        field : 'level',
-        title : '等级',
-        type: 'select',
-        listCode: '627006',
-        keyName: 'level',
-        valueName: 'name',
+        field : 'levelName',
+        title : '等级'
     }, {
         field : 'mobile1',
         title : '联系电话',

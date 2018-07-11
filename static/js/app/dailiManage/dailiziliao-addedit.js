@@ -55,10 +55,7 @@ $(function() {
 		}
     },{
         field : 'teamName',
-        title : '团队名称',
-        formatter : function(v, data) {
-			return data.highUser?data.highUser.teamName : '-'
-		}
+        title : '团队名称'
     }, {
         field : 'manageName',
         title : '关联管理员'

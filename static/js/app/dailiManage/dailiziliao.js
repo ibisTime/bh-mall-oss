@@ -44,10 +44,7 @@ $(function() {
 		}
     }, {
         field: 'teamName',
-        title: '团队名称',
-        formatter: function(v, data) {
-			return data.highUser?data.highUser.teamName: '-'
-		}
+        title: '团队名称'
     }, {
         field: 'manageName',
         title: '关联管理员'
@@ -74,6 +71,11 @@ $(function() {
         title: '授权状态',
         type: 'select',
         formatter: Dict.getNameForList('agent_status')
+    },{
+      field : 'keyword',
+      title : '关键字',
+      search : true,
+      visible : false
     }];
     buildList({
         columns: columns,
