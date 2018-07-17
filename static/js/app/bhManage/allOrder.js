@@ -68,8 +68,29 @@ reqApi({
             return level
         }
     },{
-        field : 'signer',
+        field : 'leaderName',
+        title : '团队长名称'
+    }, {
+        field : 'teamName',
+        title : '团队名称',
+        formatter: function (v, data) {
+          return data.user.teamName
+        }
+    }, {
+        field : 'signeName',
         title : '收货人'
+    }, {
+        field : 'province',
+        title : '省'
+    }, {
+        field : 'city',
+        title : '市'
+    }, {
+        field : 'area',
+        title : '区'
+    }, {
+        field : 'address',
+        title : '详细地址'
     }, {
         field : 'mobile',
         title : '收货人电话'
@@ -90,7 +111,19 @@ reqApi({
 		columns: columns,
 		pageCode: '627662'
 	});
-        
+  $('#wuliuBtn').off('click').click(function() {
+    var selRecords = $('#tableList').bootstrapTable('getSelections');
+    if (selRecords.length <= 0) {
+      toastr.info("请选择记录");
+      return;
+    }
+    if(selRecords[0].status == '3' || selRecords[0].status == '4') {
+      window.location.href = "./wuliu.html?v=1&code="+selRecords[0].code;
+    }else {
+      toastr.info('只有待收货和已收货的订单可以查看物流');
+    }
+
+  })
         
       })
     

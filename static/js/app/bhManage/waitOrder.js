@@ -23,6 +23,12 @@ $(function () {
             field: 'productName',
             title: '产品名称',
         }, {
+          field: 'quantity',
+          title: '购买数量',
+        }, {
+          field: 'productSpecsName',
+          title: '产品规格',
+        }, {
             field: 'amount',
             title: '付款金额',
             formatter: moneyFormat
@@ -68,8 +74,29 @@ $(function () {
                 return level
             }
         }, {
-            field: 'signer',
-            title: '收货人'
+          field : 'leaderName',
+          title : '团队长名称'
+        }, {
+          field : 'teamName',
+          title : '团队名称',
+          formatter: function (v, data) {
+            return data.user.teamName
+          }
+        }, {
+          field : 'signeName',
+          title : '收货人'
+        }, {
+          field : 'province',
+          title : '省'
+        }, {
+          field : 'city',
+          title : '市'
+        }, {
+          field : 'area',
+          title : '区'
+        }, {
+          field : 'address',
+          title : '详细地址'
         }, {
             field: 'mobile',
             title: '收货人电话'
@@ -86,7 +113,12 @@ $(function () {
         }, {
             field: 'remark',
             title: '备注'
-        }];
+        }, {
+            field : 'keyword',
+            title : '产品名称',
+            search: true,
+            visible: false
+      }];
         buildList({
             columns: columns,
             pageCode: '627662',
