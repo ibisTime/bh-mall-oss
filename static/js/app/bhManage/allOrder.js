@@ -102,7 +102,7 @@ reqApi({
         field : 'remark',
         title : '备注'
     }, {
-        field : 'updateDatetime4',
+        field : 'keyword',
         title : '关键字',
         search: true,
         visible: false

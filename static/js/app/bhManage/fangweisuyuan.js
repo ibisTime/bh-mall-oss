@@ -5,45 +5,48 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'remark',
-		title : '系统',
-		search: true,
-		type: 'select'
+		field : 'securityCode',
+		title : '防伪码'
 	},{
-		field : 'cvalue',
-		title : '箱码'
+		field : 'traceCode',
+		title : '溯源码'
 	}, {
-        field : 'updateDatetime',
-        title : '箱码是否使用',
-        search: true,
-        type: 'select'
+        field : 'orderCode',
+        title : '关联订单编号'
     }, {
-        field : 'updateDatetime',
-        title : '防伪码'
-    }, {
-        field : 'updateDatetime',
-        title : '溯源码'
-    }, {
-        field : 'updateDatetime',
-        title : '溯源码是否使用'
-    }, {
-        field : 'updateDatetime',
-        title : '盒码状态',
-        search: true,
+        field : 'refCode',
+        title : '关联箱码编号'
+    },{
+        field : 'useDatetime',
+        title : '使用时间',
+        formatter: dateTimeFormat
+    },{
+        field : 'status',
+        title : '状态',
+        key: 'code_status',
         type: 'select',
-        visible: false
+        formatter: Dict.getNameForList('code_status')
     }];
 	buildList({
 		columns: columns,
-		// pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
+		pageCode: '627885',
+    searchParams: {
+        statusList: ['1','2']
+    }
 	});
+    $('#suyuanjiluBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        if (selRecords[0].orderCode) {
+            window.location.href = "./fangweisuyuan-suyuan.html?v=1&code="+selRecords[0].orderCode;
+        } else {
+            toastr.info("该盒码还未使用过");
+            return;
+        }
+
+    })
+
 });
