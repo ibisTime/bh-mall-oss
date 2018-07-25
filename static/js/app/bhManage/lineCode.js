@@ -94,25 +94,24 @@ $(function() {
           required: true,
           number: true,
           min: '0'
+        } ,{
+          field : 'quantity',
+          title : '张数',
+          required: true,
+          number: true,
+          min: '1'
         }
-        // ,{
-        //   field : 'quantity',
-        //   title : '张数',
-        //   required: true,
-        //   number: true,
-        //   min: '0'
-        // }
         ],
         buttons: [{
           title: '确定',
-          handler: function () {
+          handler: async function () {
             if ($('#popForm').valid()) {
               var data = $('#popForm').serializeObject();
-                reqApi({
+                await reqApi({
                   code: '627871',
                   json: {
                     number: data.number,
-                    quantity: 1
+                    quantity: data.quantity
                   }
                 }).done(function (res) {
                   $('.downloadPic').remove();
@@ -183,7 +182,6 @@ $(function() {
                     $me.EAN13(code, { color: '#000000' });
                   });
                   pageIndex = 0;
-                  downUrl = [];
                   downloadPage();
                 })
             }
@@ -210,16 +208,13 @@ function downloadPage() {
       scale: 15
     }).then(function (canvas) {
       var b64 = canvas.toDataURL("image/jpeg");
-      // setTimeout(function () {
-        uploadByBase64(b64);
-        downloadPage();
-      // },200)
+      uploadByBase64(b64);
+      downloadPage();
     }).catch(function (reason) {
       console.log(reason);
     });
   }
 }
-var downUrl = [];
 function uploadByBase64(base64) {
   reqApi({
     code: '627091',
@@ -231,35 +226,18 @@ function uploadByBase64(base64) {
     var timestamp = (new Date()).valueOf();
     var key = Base64.encode(timestamp + '0845.jpg');
     $.ajax({
+      // url: 'http://up-z0.qiniup.com/putb64/-1/key/' + key,
       url: 'http://up-z2.qiniu.com/putb64/-1/key/' + key,
-      // url: 'http://up-z2.qiniup.com//putb64/-1/key/' + key,
-      // url: 'http://up.qiniu.com//putb64/-1/key/' + key,
-      // url: 'http://up.qiniu.com//putb64/-1/key/' + key,
       type: 'post',
       data: base64,
+      async: true,
       contentType: 'application/octet-stream',
       headers: {
         'Authorization': 'UpToken ' + token
       }
     }).done(function (res) {
-      console.log(res);
-      // $("iframe").remove();
-      // console.log('1');
-      // var iframe = document.createElement('iframe');
-      // // iframe.src = 'http://otoieuivb.bkt.clouddn.com/' + res.key + '?attname='+ res.key;
-      // iframe.src = 'http://ounm8iw2d.bkt.clouddn.com/' + res.key + '?attname='+ res.key;
-      // document.body.appendChild(iframe);
-      // setTimeout(function () {
-      //   location.href = 'http://otoieuivb.bkt.clouddn.com/' + res.key + '?attname='+ res.key;
-        location.href = 'http://ounm8iw2d.bkt.clouddn.com/' + res.key + '?attname='+ res.key;
-      // }, 200)
+      // window.open('http://bh.img.zjqiyu.com/' + res.key + '?attname='+ res.key);
+      window.open('http://ounm8iw2d.bkt.clouddn.com/' + res.key + '?attname='+ res.key);
     });
   });
 }
-// function download() {
-//   downUrl.forEach(function (url, i) {
-//     setTimeout(function () {
-//       location.href = url;
-//     }, (i - 1) * 1000);
-//   });
-// }
