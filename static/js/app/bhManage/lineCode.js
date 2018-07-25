@@ -122,7 +122,7 @@ $(function() {
                     zhang.stList.forEach(function (he, i) {
                       var url = zhang.url + '?code='+ he.traceCode;
                       // urlArr.push(url + '?traceCode='+ he.traceCode);
-                      if (i % 8 == 0) {
+                      if (i % 9 == 0) {
                         if (i == 0) {
                           boxHtml += '<ul>';
                         } else {
