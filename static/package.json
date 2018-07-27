@@ -5,8 +5,8 @@
   "main": "fis-conf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "fis3 release -d E:\\xiangmu\\bhxt_oss -w",
-    "build": "fis3 release -d E:\\xiangmu\\bhxt_oss prod"
+    "dev": "fis3 release -d F:\\work\\xn-build\\bhxt_oss -w",
+    "build": "fis3 release -d F:\\work\\xn-build\\bhxt_oss prod"
   },
   "author": "",
   "license": "ISC",

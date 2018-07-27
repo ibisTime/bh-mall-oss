@@ -238,6 +238,20 @@ $(function () {
                 toastr.info('该状态下不能审核取消')
             }
         });
+
+        // 订单作废
+        $('#cancellationBtn').click(function () {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            if (selRecords[0].status == '0' || selRecords[0].status == '1'){
+                window.location.href = './waitOrder_cancellation.html?cancel=1&code=' + selRecords[0].code
+            } else {
+                toastr.info('该状态下不能订单作废')
+            }
+        });
     })
 
 });

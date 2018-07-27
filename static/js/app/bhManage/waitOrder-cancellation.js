@@ -1,15 +1,15 @@
 $(function() {
-	var code = getQueryString('code');
-	var cancel = getQueryString('cancel');
-	var view = getQueryString('v');
+    var code = getQueryString('code');
+    var cancel = getQueryString('cancel');
+    var view = getQueryString('v');
 
 
-	if(cancel == '1') {
-	    view = true
+    if(cancel == '1') {
+        view = true
     }
-	
-	
-	reqApi({
+    
+    
+    reqApi({
         code: '627006',
     }, true).then(function (data) {
         var items = data.map(function (item) {
@@ -27,8 +27,8 @@ $(function() {
             return data.code
         }
     },{
-    	field : 'productName',
-    	title : '产品名称',
+        field : 'productName',
+        title : '产品名称',
     },{
         field : 'amount',
         title : '付款金额',
@@ -49,19 +49,19 @@ $(function() {
         field: 'realName',
         title: '下单代理',
         formatter : function(v, data) {
-        	return data.user?data.user.realName : '-'
+            return data.user?data.user.realName : '-'
         }
     },{
         field: 'level',
         title: '下单代理等级',
         formatter : function(v, data) {
-           	var level = '';
-           	items.map(function(item) {
-           		if(item.level == data.user.level) {
-           			level = item.name
-           		}
+            var level = '';
+            items.map(function(item) {
+                if(item.level == data.user.level) {
+                    level = item.name
+                }
             })
-           	return level
+            return level
         }
     },{
         field : 'signeName',
@@ -81,55 +81,40 @@ $(function() {
     }];
 
   var buttons = [{
-        title: '通过',
+        title: '确定',
         handler: function() {
 
             var data = $('#popForm').serializeObject();
             data.code = code;
             data.result = "1";
+            data.remark = $('#remark').val();
             data.updater = getUserName();
             reqApi({
-                code: '627647',
-                json: data
-            }).done(function(data) {
-                sucDetail();
-                dw.close().remove();
-            });
-
-        }
-    }, {
-        title: '不通过',
-        handler: function() {
-            var data = $('#popForm').serializeObject();
-            data.code = code;
-            data.result = "0";
-            data.updater = getUserName();
-            reqApi({
-                code: '627647',
+                code: '627650',
                 json: data
             }).done(function(data) {
                 sucDetail();
                 dw.close().remove();
             });
         }
-    }, {
+    },{
         title: '取消',
         handler: function() {
             dw.close().remove();
         }
     }];
 
-	buildDetail({
-		fields: fields,
-		code: code,
+    buildDetail({
+        fields: fields,
+        code: code,
         view : view,
         buttons : cancel?buttons: null,
-		detailCode: '627664',
-		addCode: '627920',
-		editCode: '627921'
-	});
+        detailCode: '627664',
+        addCode: '627920',
+        editCode: '627921'
+    });
         
       })
     
-	
+    
 });

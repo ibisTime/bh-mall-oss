@@ -130,7 +130,7 @@ $(function() {
             },
             keyName : 'userId',
             searchName :'userId',
-            valueName: 'loginName',
+            valueName: '{{realName.DATA}}-{{mobile.DATA}}',//'{{mobile.DATA}}-{{kindName.DATA}}-{{nickname.DATA}}'
             readonly : false
         }];
 

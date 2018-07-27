@@ -59,7 +59,7 @@ $(function() {
             return level
         }
     }, {
-        field : 'signer',
+        field : 'signeName',
         title : '收货人'
     }, {
         field : 'mobile',

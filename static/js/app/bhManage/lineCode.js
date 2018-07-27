@@ -89,13 +89,13 @@ $(function() {
       buildDetail({
         container: $('#formContainer'),
         fields: [{
-          field: 'number',
+          field: 'pageSize',
           title: '每页数量',
           required: true,
           number: true,
           min: '0'
         } ,{
-          field : 'quantity',
+          field : 'pageNo',
           title : '张数',
           required: true,
           number: true,
@@ -110,8 +110,8 @@ $(function() {
                 await reqApi({
                   code: '627871',
                   json: {
-                    number: data.number,
-                    quantity: data.quantity
+                    pageSize: data.pageSize,
+                    pageNo: data.pageNo
                   }
                 }).done(function (res) {
                   $('.downloadPic').remove();
@@ -205,7 +205,7 @@ function downloadPage() {
     var ele = $('.page' + pageIndex)[0];
     pageIndex++;
     html2canvas(ele, {
-      scale: 15
+      scale: 2
     }).then(function (canvas) {
       var b64 = canvas.toDataURL("image/jpeg");
       uploadByBase64(b64);
@@ -226,8 +226,8 @@ function uploadByBase64(base64) {
     var timestamp = (new Date()).valueOf();
     var key = Base64.encode(timestamp + '0845.jpg');
     $.ajax({
-      // url: 'http://up-z0.qiniup.com/putb64/-1/key/' + key,
-      url: 'http://up-z2.qiniu.com/putb64/-1/key/' + key,
+      url: 'http://up-z0.qiniup.com/putb64/-1/key/' + key,
+      // url: 'http://up-z2.qiniu.com/putb64/-1/key/' + key,
       type: 'post',
       data: base64,
       async: true,
@@ -236,8 +236,8 @@ function uploadByBase64(base64) {
         'Authorization': 'UpToken ' + token
       }
     }).done(function (res) {
-      // window.open('http://bh.img.zjqiyu.com/' + res.key + '?attname='+ res.key);
-      window.open('http://ounm8iw2d.bkt.clouddn.com/' + res.key + '?attname='+ res.key);
+      window.open('http://bh.img.zjqiyu.com/' + res.key + '?attname='+ res.key);
+      // window.open('http://ounm8iw2d.bkt.clouddn.com/' + res.key + '?attname='+ res.key);
     });
   });
 }

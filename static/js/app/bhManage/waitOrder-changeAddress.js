@@ -12,7 +12,7 @@ $(function() {
         title : '收货电话',
         required :true
     },{
-        field : 'signer',
+        field : 'signeName',
         title : '收货人',
         required :true
     },{
