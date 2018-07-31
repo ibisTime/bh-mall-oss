@@ -104,10 +104,10 @@ $(function() {
         ],
         buttons: [{
           title: '确定',
-          handler: async function () {
+          handler: function () {
             if ($('#popForm').valid()) {
               var data = $('#popForm').serializeObject();
-                await reqApi({
+                reqApi({
                   code: '627871',
                   json: {
                     pageSize: data.pageSize,
@@ -205,7 +205,7 @@ function downloadPage() {
     var ele = $('.page' + pageIndex)[0];
     pageIndex++;
     html2canvas(ele, {
-      scale: 2
+      scale: 3
     }).then(function (canvas) {
       var b64 = canvas.toDataURL("image/jpeg");
       uploadByBase64(b64);
@@ -227,7 +227,7 @@ function uploadByBase64(base64) {
     var key = Base64.encode(timestamp + '0845.jpg');
     $.ajax({
       url: 'http://up-z0.qiniup.com/putb64/-1/key/' + key,
-      // url: 'http://up-z2.qiniu.com/putb64/-1/key/' + key,
+      // url: 'http://up-z2.qiniu.com/putb64/-1/key/' + key, //正式
       type: 'post',
       data: base64,
       async: true,
@@ -237,7 +237,7 @@ function uploadByBase64(base64) {
       }
     }).done(function (res) {
       window.open('http://bh.img.zjqiyu.com/' + res.key + '?attname='+ res.key);
-      // window.open('http://ounm8iw2d.bkt.clouddn.com/' + res.key + '?attname='+ res.key);
+      // window.open('http://ounm8iw2d.bkt.clouddn.com/' + res.key + '?attname='+ res.key);  // 正式
     });
   });
 }
