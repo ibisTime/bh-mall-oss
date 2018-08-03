@@ -1,11 +1,11 @@
-$(function () {
+$(function() {
     // 报货管理-云仓管理-待处理订单
 
 
     reqApi({
         code: '627006',
-    }, true).then(function (data) {
-        var items = data.map(function (item) {
+    }, true).then(function(data) {
+        var items = data.map(function(item) {
             return {
                 level: item.level,
                 name: item.name
@@ -23,11 +23,11 @@ $(function () {
             field: 'productName',
             title: '产品名称',
         }, {
-          field: 'quantity',
-          title: '购买数量',
+            field: 'quantity',
+            title: '购买数量',
         }, {
-          field: 'productSpecsName',
-          title: '产品规格',
+            field: 'productSpecsName',
+            title: '产品规格',
         }, {
             field: 'amount',
             title: '付款金额',
@@ -49,7 +49,7 @@ $(function () {
         }, {
             field: 'realName',
             title: '下单代理',
-            formatter: function (v, data) {
+            formatter: function(v, data) {
                 return data.user ? data.user.realName : '-'
             }
         }, {
@@ -64,9 +64,9 @@ $(function () {
         }, {
             field: 'level1',
             title: '下单代理等级',
-            formatter: function (v, data) {
+            formatter: function(v, data) {
                 var level = '';
-                items.map(function (item) {
+                items.map(function(item) {
                     if (item.level == data.user.level) {
                         level = item.name
                     }
@@ -74,29 +74,29 @@ $(function () {
                 return level
             }
         }, {
-          field : 'leaderName',
-          title : '团队长名称'
+            field: 'teamLeader',
+            title: '团队长名称'
         }, {
-          field : 'teamName',
-          title : '团队名称',
-          formatter: function (v, data) {
-            return data.user.teamName
-          }
+            field: 'teamName',
+            title: '团队名称',
+            formatter: function(v, data) {
+                return data.user.teamName
+            }
         }, {
-          field : 'signeName',
-          title : '收货人'
+            field: 'signeName',
+            title: '收货人'
         }, {
-          field : 'province',
-          title : '省'
+            field: 'province',
+            title: '省'
         }, {
-          field : 'city',
-          title : '市'
+            field: 'city',
+            title: '市'
         }, {
-          field : 'area',
-          title : '区'
+            field: 'area',
+            title: '区'
         }, {
-          field : 'address',
-          title : '详细地址'
+            field: 'address',
+            title: '详细地址'
         }, {
             field: 'mobile',
             title: '收货人电话'
@@ -114,16 +114,16 @@ $(function () {
             field: 'remark',
             title: '备注'
         }, {
-            field : 'keyword',
-            title : '产品名称',
+            field: 'keyword',
+            title: '产品名称',
             search: true,
             visible: false
-      }];
+        }];
         buildList({
             columns: columns,
             pageCode: '627662',
             searchParams: {
-                statusList: ['1','2','5'],
+                statusList: ['1', '2', '5'],
                 toUserId: getUserId()
             },
             singleSelect: false
@@ -131,26 +131,26 @@ $(function () {
 
 
         // 批量审单
-        $('#shendanBtn').click(function () {
+        $('#shendanBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if (selRecords.length <= 0) {
                 toastr.info("请选择记录");
                 return;
             }
             var check = true;
-            selRecords.map(function (item) {
-                if(item.status != '1') {
+            selRecords.map(function(item) {
+                if (item.status != '1') {
                     toastr.info('包含不可审单的订单')
                     check = false
                 }
             });
             if (check) {
                 var codeList = [];
-                selRecords.map(function (item) {
+                selRecords.map(function(item) {
                     codeList.push(item.code);
                 });
 
-                confirm('确定批量审单？').then(function () {
+                confirm('确定批量审单？').then(function() {
                     var dw = dialog({
                         content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
                             '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
@@ -167,7 +167,7 @@ $(function () {
                         }],
                         buttons: [{
                             title: '确定',
-                            handler: function () {
+                            handler: function() {
                                 if ($('#popForm').valid()) {
                                     var data = $('#popForm').serializeObject();
                                     reqApi({
@@ -177,7 +177,7 @@ $(function () {
                                             approver: getUserName(),
                                             approveNote: data.approveNote
                                         }
-                                    }).done(function () {
+                                    }).done(function() {
                                         sucList();
                                         dw.close().remove();
                                     });
@@ -185,7 +185,7 @@ $(function () {
                             }
                         }, {
                             title: '取消',
-                            handler: function () {
+                            handler: function() {
                                 dw.close().remove();
                             }
                         }]
@@ -198,7 +198,7 @@ $(function () {
 
         });
         // 修改收货
-        $('#changeAddressBtn').click(function () {
+        $('#changeAddressBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if (selRecords.length <= 0) {
                 toastr.info("请选择记录");
@@ -212,7 +212,7 @@ $(function () {
         });
 
         // 发货
-        $('#fahuoBtn').click(function () {
+        $('#fahuoBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if (selRecords.length <= 0) {
                 toastr.info("请选择记录");
@@ -226,7 +226,7 @@ $(function () {
         });
 
         // 审核取消
-        $('#cancelBtn').click(function () {
+        $('#cancelBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if (selRecords.length <= 0) {
                 toastr.info("请选择记录");
@@ -240,13 +240,13 @@ $(function () {
         });
 
         // 订单作废
-        $('#cancellationBtn').click(function () {
+        $('#cancellationBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if (selRecords.length <= 0) {
                 toastr.info("请选择记录");
                 return;
             }
-            if (selRecords[0].status == '0' || selRecords[0].status == '1'){
+            if (selRecords[0].status == '0' || selRecords[0].status == '1') {
                 window.location.href = './waitOrder_cancellation.html?cancel=1&code=' + selRecords[0].code
             } else {
                 toastr.info('该状态下不能订单作废')
