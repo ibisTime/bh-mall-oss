@@ -67,11 +67,17 @@ $(function() {
             formatter: function(v, data) {
                 var level = '';
                 items.map(function(item) {
-                    if (item.level == data.user.level) {
+                    if (item.level == data.level) {
                         level = item.name
                     }
                 })
                 return level
+            }
+        }, {
+            field: 'realName',
+            title: '上级代理',
+            formatter: function(v, data) {
+                return data.user ? data.user.realName : '-'
             }
         }, {
             field: 'teamLeader',
@@ -80,23 +86,11 @@ $(function() {
             field: 'teamName',
             title: '团队名称',
             formatter: function(v, data) {
-                return data.user.teamName
+                return data.teamName
             }
         }, {
             field: 'signeName',
             title: '收货人'
-        }, {
-            field: 'province',
-            title: '省'
-        }, {
-            field: 'city',
-            title: '市'
-        }, {
-            field: 'area',
-            title: '区'
-        }, {
-            field: 'address',
-            title: '详细地址'
         }, {
             field: 'mobile',
             title: '收货人电话'

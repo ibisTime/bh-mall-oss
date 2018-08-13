@@ -1,48 +1,45 @@
 $(function() {
-	var code = getQueryString('code');
-	var view = getQueryString('v') || true;
+    var code = getQueryString('code');
+    var view = getQueryString('v') || true;
     var fields = [{
-        field : 'code1',
-        title : '编号',
-        formatter : function (v, data) {
+        field: 'code1',
+        title: '编号',
+        formatter: function(v, data) {
             return data.code
         }
     }, {
-        field : 'cvalue1',
-        title : '充值人',
-        formatter : function (v, data) {
-            return data.user?data.user.loginName:'-'
+        field: 'cvalue1',
+        title: '充值人',
+        formatter: function(v, data) {
+            return data.user ? data.user.loginName : '-'
         }
     }, {
-        field : 'cvalue',
-        title : '充值人团队',
-        formatter : function(v, data) {
-        	return data.user?data.user.teamName : '-'
-        }
+        field: 'teamName',
+        title: '充值人团队'
     }, {
-        field : 'amount',
-        title : '金额',
+        field: 'amount',
+        title: '金额',
         formatter: moneyFormat
     }, {
         field: 'chargePdf',
         title: '打款凭证',
         type: 'img'
     }, {
-        field : 'applyDatetime',
-        title : '申请时间',
+        field: 'applyDatetime',
+        title: '申请时间',
         formatter: dateTimeFormat
     }, {
-        field : 'status',
-        title : '状态',
+        field: 'status',
+        title: '状态',
         search: true,
         type: 'select',
-        key : 'charge_status',
-        formatter : Dict.getNameForList('charge_status')
+        key: 'charge_status',
+        formatter: Dict.getNameForList('charge_status')
     }, {
-        field : 'payNote',
-        title : '理由',
-        readonly : false,
-        required : true
+        field: 'payNote',
+        title: '理由',
+        readonly: false,
+        required: true
     }];
 
     var buttons = [{
@@ -91,12 +88,12 @@ $(function() {
     }];
 
 
-	buildDetail({
-		fields: fields,
-		view : view,
-		code: code,
-        buttons : buttons,
-		detailCode: '627472'
-	});
-	hideLoading();
+    buildDetail({
+        fields: fields,
+        view: view,
+        code: code,
+        buttons: buttons,
+        detailCode: '627472'
+    });
+    hideLoading();
 });

@@ -1,25 +1,33 @@
 $(function() {
 
-	var columns = [{
-		field : 'remark',
-		title : '团队',
-		search: true,
-		type: 'select'
-	},{
-		field : 'cvalue',
-		title : '最高代理名字'
-	}, {
-        field : 'updateDatetime',
-        title : '产品1'
+    var columns = [{
+        field: 'teamName',
+        title: '团队',
+        search: true
     }, {
-        field : 'updateDatetime',
-        title : '产品2'
+        field: 'teamLeader',
+        title: '最高代理名字'
     }, {
-        field : 'updateDatetime',
-        title : '产品3'
+        field: 'updateDatetime1',
+        title: '产品1',
+        formatter: function(v, data) {
+            return data.productQuantity[0];
+        }
     }, {
-        field : 'updateDatetime',
-        title : '日期',
+        field: 'updateDatetime2',
+        title: '产品2',
+        formatter: function(v, data) {
+            return data.productQuantity[1];
+        }
+    }, {
+        field: 'updateDatetime3',
+        title: '产品3',
+        formatter: function(v, data) {
+            return data.productQuantity[2];
+        }
+    }, {
+        field: 'updateDatetime',
+        title: '日期',
         formatter: dateTimeFormat,
         field1: 'applyDateStart',
         title1: '日期',
@@ -29,17 +37,17 @@ $(function() {
         search: true,
         visible: false
     }];
-	buildList({
-		columns: columns,
-		// pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
-	});
+    buildList({
+        columns: columns,
+        pageCode: '627851'
+            // searchParams: {
+            // 	type: 'android_b',
+            // 	companyCode: OSS.company,
+            // 	orderColumn:'id',
+            // 	orderDir: 'asc'
+            // },
+            // beforeEdit: function(r) {
+            // 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
+            // }
+    });
 });

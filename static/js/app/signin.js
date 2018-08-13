@@ -1,4 +1,5 @@
 $('title').html(OSS.systemName);
+
 function getQueryString(name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
     var r = window.location.search.substr(1).match(reg);
@@ -10,8 +11,8 @@ function getQueryString(name) {
 sessionStorage.setItem('loginKind', getQueryString('kind') || 'P');
 sessionStorage.setItem('listSearchs', '');
 $(function() {
-	$('#hello-text').html(OSS.systemName);
-	$('#footer-system').html(OSS.companyName);
+    $('#hello-text').html(OSS.systemName);
+    $('#footer-system').html(OSS.companyName);
     window.sessionStorage.setItem('systemCode', OSS.system);
     // frameset框架嵌套，跳转到最外层
     if (top.location != self.location) {
@@ -20,7 +21,7 @@ $(function() {
 
     function login() {
         if (!$('#loginName').val()) {
-            toastr.info('请输入用户名');
+            toastr.info('请输入用户名1');
             $('#loginName')[0].focus();
         } else if (!$('#loginPwd').val()) {
             toastr.info('请输入密码');
@@ -41,23 +42,23 @@ $(function() {
                 data[this.name] = this.value;
                 data.systemCode = OSS.system;
             });
-			//获取七牛地址
-			reqApi({
-	            code: '627087',
-	            json: {
-	            	ckey:'qiniu_domain'
-	            },
-				sync: true
-	        }).then(function(data) {
-	            window.sessionStorage.setItem('qiniuUrl', 'http://'+data.cvalue);
-	        });
-			
-			//获取用户详情
+            //获取七牛地址
+            reqApi({
+                code: '627087',
+                json: {
+                    ckey: 'qiniu_domain'
+                },
+                sync: true
+            }).then(function(data) {
+                window.sessionStorage.setItem('qiniuUrl', 'http://' + data.cvalue);
+            });
+
+            //用户登录
             reqApi({
                 // code: '805050',
-                code: '627300',
+                code: '627111',
                 json: data,
-				sync: true
+                sync: true
             }).then(function(data) {
                 location.href = "main.html";
                 window.sessionStorage.setItem('token', data.token || data.userId);
@@ -65,7 +66,7 @@ $(function() {
             });
         }
     }
-    
+
     // 登录
     $('#loginBtn').click(function() {
         login();

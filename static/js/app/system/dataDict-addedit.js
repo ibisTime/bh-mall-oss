@@ -28,8 +28,7 @@ $(function() {
     }, {
         title: '字典值',
         field: 'dvalue',
-        required: true,
-        maxlength: 15
+        required: true
     }, {
         title: '备注',
         field: 'remark',

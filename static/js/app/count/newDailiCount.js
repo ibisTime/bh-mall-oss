@@ -1,44 +1,42 @@
 $(function() {
-
-	var columns = [{
-		field : 'name',
-		title : '姓名'
-	},{
-		field : 'value',
-		title : '等级'
-	},{
-        field : 'mobile',
-        title : '手机号'
-    },{
-        field : 'cvalue',
-        title : '微信号'
-    }, {
-        field : 'updateDatetime',
-        title : '授权时间',
-		formatter: dateTimeFormat
-    }, {
-        field : 'updateDatetime',
-        title : '日期',
-        formatter: dateTimeFormat,
-        field1: 'applyDateStart',
-        title1: '日期',
-        // type: 'date',
-        field2: 'applyDateEnd',
-        twoDate: true,
-        search: true,
-        visible: false
-    }];
-	buildList({
-		columns: columns,
-		// pageCode: '627955',
-		// searchParams: {
-		// 	type: 'android_b',
-		// 	companyCode: OSS.company,
-		// 	orderColumn:'id',
-		// 	orderDir: 'asc'
-		// },
-		// beforeEdit: function(r) {
-		// 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-		// }
-	});
-});
+    reqApi({
+        code: '627006',
+    }, true).then(function(data) {
+        var items = data.map(function(item) {
+            return {
+                level: item.level,
+                name: item.name
+            };
+        });
+        var columns = [{
+            field: 'realName',
+            title: '姓名'
+        }, {
+            field: 'level',
+            title: '等级',
+            formatter: function(v, data) {
+                var level = '';
+                items.map(function(item) {
+                    if (item.level == data.level) {
+                        level = item.name
+                    }
+                })
+                return level
+            }
+        }, {
+            field: 'mobile',
+            title: '手机号'
+        }, {
+            field: 'wxId',
+            title: '微信号'
+        }, {
+            field: 'impowerDatetime',
+            title: '授权时间',
+            formatter: dateTimeFormat
+        }];
+        buildList({
+            columns: columns,
+            pageCode: '627850'
+        });
+    });
+})

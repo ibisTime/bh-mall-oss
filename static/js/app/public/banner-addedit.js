@@ -1,7 +1,6 @@
 $(function() {
     var code = getQueryString('code');
     var view = getQueryString('v');
-
     var fields = [{
         field: "status",
         required: 'true',
@@ -64,7 +63,7 @@ $(function() {
         title: "banner图片",
         field: "pic",
         type: "img",
-		single: true,
+        single: true,
         required: true,
         readonly: view
     }, {
@@ -88,5 +87,5 @@ $(function() {
         editCode: "627032",
         detailCode: '627037'
     });
-hideLoading();
+    hideLoading();
 });

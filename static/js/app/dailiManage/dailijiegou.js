@@ -1,63 +1,23 @@
 $(function() {
     $("#code").val(getQueryString("code"));
     $("#name").val(decodeURI(getQueryString("name")));
-
+    let toorter = getQueryString("toorter");
+    let setUserId = getQueryString("userId");
     showPermissionControl();
     var manager;
-
-    var dataList = [{
-        userId: 'U201803261916051634664',
-        level: 3,
-        realName: '张三',
-        mobile: '18868824532'
-    }, {
-        userId: 'U201803261916051634665',
-        level: 2,
-        realName: '李四',
-        mobile: '18868824531'
-    }, {
-        userId: 'U201803261916051634666',
-        level: 1,
-        realName: '王五',
-        mobile: '18868824530',
-        userList: [{
-            userId: 'U201803261916051634667',
-            level: 2,
-            realName: '王五1-1',
-            mobile: '18868824530',
-            userList: [{
-                userId: 'U201803261916051634668',
-                level: 3,
-                realName: '王五1-1-1',
-                mobile: '18868824530'
-            }]
-        }, {
-            userId: 'U201803261916051634669',
-            level: 3,
-            realName: '王五1-2',
-            mobile: '18868824529',
-            userList: [{
-                userId: 'U20180326191605163460',
-                level: 4,
-                realName: '王五1-2-1',
-                mobile: '18868824530',
-                userList: [{
-                    userId: 'U201803261916051634661',
-                    level: 5,
-                    realName: '王五1-2-1-1',
-                    mobile: '18868824530'
-                }, {
-                    userId: 'U201803261916051634662',
-                    level: 5,
-                    realName: '王五1-2-1-2',
-                    mobile: '18868824511'
-                }]
-            }]
-        }]
-    }];
     var newList = [];
     var countMap = {};
-
+    var columns = [{
+        field: '',
+        title: '',
+        checkbox: true
+    }, {
+        field: 'code',
+        title: '管理员',
+        search: true,
+        visible: false
+    }];
+    ///////////////////////////////////////////////////////////////////////////////////////////////
     function createList(list, first) {
         if (first) {
             newList = [];
@@ -92,11 +52,21 @@ $(function() {
             }
         }
     }
-
+    if (toorter) {
+        $('.toolbar li').remove();
+        let html = `<div><div class="per">
+                    <li style="display:block;" id="exportBtn">
+                        <span>
+                            <img src="/static/images/t01.png">
+                        </span>导出
+                    </li>
+                </div></div>`;
+        let divHtml = $(html).find('.per').html();
+        $('.toolbar').append(divHtml);
+    }
     reqApi({
         code: '627006',
     }, true).then(function(data) {
-        //console.log(data);
         var items = data.map(function(item) {
             return {
                 level: item.level,
@@ -104,11 +74,12 @@ $(function() {
             };
         });
         var ligerTreeData = [];
-
         reqApi({
-            code: '627352'
+            code: '627321',
+            json: {
+                userId: toorter ? setUserId : getUserId()
+            }
         }).then(function(d) {
-            //console.log('d:', d[0]);
             d.forEach(function(d, i) {
                 for (var v of items) {
                     d.level += '';
@@ -116,7 +87,7 @@ $(function() {
                 }
                 var tmpl = {
                     userId: d.userId,
-                    loginName: d.realName ? d.realName + '-' + d.mobile : '-',
+                    realName: d.realName ? d.realName + ' (电话号：' + d.mobile + ' )' : '-' + d.mobile,
                     nickname: d.nickname ? d.nickname : '-',
                     level: d.level ? d.level : '-'
                 };
@@ -132,7 +103,7 @@ $(function() {
                 checkbox: false,
                 isExpand: true,
                 textFieldName1: 'level',
-                textFieldName2: 'loginName',
+                textFieldName2: 'realName',
                 onSelect: onSelect,
                 onClick: onClick,
                 onCollapse: collapseAll,
@@ -143,7 +114,6 @@ $(function() {
                     // parentIDFieldName: 'parentCode',
             });
             manager = $("#treeMenu").ligerGetTreeManager();
-            console.log('manager:', manager);
         });
 
     });
@@ -200,26 +170,23 @@ $(function() {
                             //                  }
                     };
                 });
-
                 reqApi({
-                    code: '627352',
-                    // json: {
-                    //     userId: manager.getSelected().data.userId
-                    // }
+                    code: '627321'
                 }).then(function(data) {
                     var selectData = data.userList;
-                    // selectData.push(data);
                     buildList({
                         container: $('.ui-dialog-content'),
                         columns: items,
-                        pageCode: '627352',
+                        pageCode: '627321',
+                        searchParams: {
+                            userId: toorter ? setUserId : ''
+                        },
                         tableId: 'tableList1',
                         exportDataType: 'combine',
                         // searchParams: {
                         //     userId: manager.getSelected().data.userId
                         // },
                         afterData: function(res) {
-                            console.log('res:', res);
                             selectData = res.data;
                             createList(selectData, true);
                             //                  createList(res, true);
@@ -244,6 +211,18 @@ $(function() {
                         }
                     });
                     $('th').css('vertical-align', 'middle');
+                    if (toorter) {
+                        $('.toolbar li').remove();
+                        let html = `<div><div class="per">
+                                    <li style="display:block;" id="exportBtn">
+                                        <span>
+                                            <img src="/static/images/t01.png">
+                                        </span>导出
+                                    </li>
+                                </div></div>`;
+                        let divHtml = $(html).find('.per').html();
+                        $('.toolbar').append(divHtml);
+                    }
 
                 })
 
@@ -289,13 +268,11 @@ $(function() {
 
                 var ligerTreeData = [];
                 reqApi({
-                    code: '627352',
+                    code: '627321',
                     json: {
-                        'userId': note.data.userId
+                        'userId': toorter ? setUserId : note.data.userId
                     }
                 }).then(function(d) {
-
-
                     d.forEach(function(d, i) {
                         for (var v of items) {
                             d.level += '';
@@ -304,7 +281,7 @@ $(function() {
 
                         var tmpl = {
                             userId: d.userId,
-                            loginName: d.realName ? d.realName + '-' + d.mobile : '-',
+                            realName: d.realName ? d.realName + ' (电话号：' + d.mobile + ' )' : '-' + d.mobile,
                             nickname: d.nickname ? d.nickname : '-',
                             level: d.level ? d.level : '-'
 

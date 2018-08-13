@@ -7,7 +7,7 @@ $(function() {
     }, {
         field: 'code',
         title: '编号',
-        search : true
+        search: true
     }, {
         field: 'accountNumber',
         title: '账号'
@@ -24,141 +24,148 @@ $(function() {
     }, {
         field: 'loginName',
         title: '申请人',
-        formatter : function (v, data) {
-            return data.user?data.user.loginName : '-'
+        formatter: function(v, data) {
+            return data.user ? data.user.loginName : '-'
         }
-    },{
+    }, {
         field: 'applyDatetime',
         title: '申请时间',
         formatter: dateTimeFormat
     }, {
         field: 'status',
         title: '状态',
-        type : 'select',
-        key : 'withdraw_status',
-        formatter : Dict.getNameForList('withdraw_status')
+        type: 'select',
+        key: 'withdraw_status',
+        formatter: Dict.getNameForList('withdraw_status')
     }, {
-        field: 'payUser',
+        field: 'applyUser',
         title: '审核人'
     }, {
-        field: 'payDatetime',
+        field: 'applyDatetime',
         title: '审核时间',
+        formatter: dateTimeFormat
+    }, {
+        field: 'payUser',
+        title: '回录人'
+    }, {
+        field: 'payDatetime',
+        title: '回录时间',
         formatter: dateTimeFormat
     }];
     buildList({
         columns: columns,
         pageCode: '627510',
-        singleSelect : false,
+        singleSelect: false,
         searchParams: {
             companyCode: OSS.company
         }
 
     });
     // 代申请
-    $('#daishenqingBtn').click(function () {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
-        window.location.href = "./underlineQuxian_daishenqing.html?accountNumber="+selRecords[0].accountNumber
-
-    })
-    // 批量审核
-    $('#checkBtn').off('click').click(function () {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
-
-        var test = selRecords.map(function (item) {
-            if(item.status !== '1') {
-                toastr.info("包含一条或多条非待审批记录");
-                return false
+    $('#daishenqingBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
             }
-            return true
-        });
-        var result = false;
-        if($.inArray(false, test) == -1) {
-            result = true
-        }
-        if(!result) {
-            return;
-        }else {
-            var codeList = selRecords.map(function (item) {
-                return item.code;
+            window.location.href = "./underlineQuxian_daishenqing.html?accountNumber=" + selRecords[0].accountNumber
+
+        })
+        // 批量审核
+    $('#checkBtn').off('click').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+
+            var test = selRecords.map(function(item) {
+                if (item.status !== '1') {
+                    toastr.info("包含一条或多条非待审批记录");
+                    return false
+                }
+                return true
             });
+            var result = false;
+            if ($.inArray(false, test) == -1) {
+                result = true
+            }
+            if (!result) {
+                return;
+            } else {
+                var codeList = selRecords.map(function(item) {
+                    return item.code;
+                });
 
-            var dw = dialog({
-                content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
-                '' +
-                '</form>'
-            });
+                var dw = dialog({
+                    content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                        '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
+                        '' +
+                        '</form>'
+                });
 
-            dw.showModal();
+                dw.showModal();
 
-            buildDetail({
-                container: $('#formContainer'),
-                fields: [{
-                    field: 'approveNote',
-                    title: '审批说明',
-                    required: true,
-                    min: '0'
-                }],
-                buttons: [{
-                    title: '通过',
-                    handler: function () {
-                        if ($('#popForm').valid()) {
-                            var data = $('#popForm').serializeObject();
-                            reqApi({
-                                code: '627502',
-                                json: {
-                                    codeList: codeList,
-                                    approveUser: getUserName(),
-                                    approveResult: '1'
-                                }
-                            }).done(function () {
-                                sucList();
-                                dw.close().remove();
-                            });
+                buildDetail({
+                    container: $('#formContainer'),
+                    fields: [{
+                        field: 'approveNote',
+                        title: '审批说明',
+                        required: true,
+                        min: '0'
+                    }],
+                    buttons: [{
+                        title: '通过',
+                        handler: function() {
+                            if ($('#popForm').valid()) {
+                                var data = $('#popForm').serializeObject();
+                                reqApi({
+                                    code: '627502',
+                                    json: {
+                                        codeList: codeList,
+                                        approveUser: getUserName(),
+                                        approveResult: '1'
+                                    }
+                                }).done(function() {
+                                    sucList();
+                                    dw.close().remove();
+                                });
+                            }
                         }
-                    }
-                }, {
-                    title: '不通过',
-                    handler: function () {
-                        if ($('#popForm').valid()) {
-                            var data = $('#popForm').serializeObject();
-                            reqApi({
-                                code: '627502',
-                                json: {
-                                    codeList: codeList,
-                                    approveUser: getUserName(),
-                                    approveResult: '0'
-                                }
-                            }).done(function () {
-                                sucList();
-                                dw.close().remove();
-                            });
+                    }, {
+                        title: '不通过',
+                        handler: function() {
+                            if ($('#popForm').valid()) {
+                                var data = $('#popForm').serializeObject();
+                                reqApi({
+                                    code: '627502',
+                                    json: {
+                                        codeList: codeList,
+                                        approveUser: getUserName(),
+                                        approveResult: '0'
+                                    }
+                                }).done(function() {
+                                    sucList();
+                                    dw.close().remove();
+                                });
+                            }
                         }
-                    }
-                }, {
-                    title: '取消',
-                    handler: function () {
-                        dw.close().remove();
-                    }
-                }]
-            });
-            hideLoading();
-        }
+                    }, {
+                        title: '取消',
+                        handler: function() {
+                            dw.close().remove();
+                        }
+                    }]
+                });
+                hideLoading();
+            }
 
 
 
-    })
-    // 批量回录
-    $('#huiluBtn').off('click').click(function () {
+        })
+        // 批量回录
+    $('#huiluBtn').off('click').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
 
         if (selRecords.length <= 0) {
@@ -166,28 +173,28 @@ $(function() {
             return;
         }
 
-        var test = selRecords.map(function (item) {
-            if(item.status !== '3') {
+        var test = selRecords.map(function(item) {
+            if (item.status !== '3') {
                 toastr.info("包含一条或多条非审核通过记录");
                 return false
             }
             return true
         });
         var result = false;
-        if($.inArray(false, test) == -1) {
+        if ($.inArray(false, test) == -1) {
             result = true
         }
-        if(!result) {
+        if (!result) {
             return;
-        }else {
-            var codeList = selRecords.map(function (item) {
+        } else {
+            var codeList = selRecords.map(function(item) {
                 return item.code;
             });
 
             var dw = dialog({
                 content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
-                '</form>'
+                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
+                    '</form>'
             });
 
             dw.showModal();
@@ -203,7 +210,7 @@ $(function() {
                 }],
                 buttons: [{
                     title: '通过',
-                    handler: function () {
+                    handler: function() {
                         if ($('#popForm').valid()) {
                             var data = $('#popForm').serializeObject();
                             reqApi({
@@ -213,7 +220,7 @@ $(function() {
                                     payUser: getUserName(),
                                     payResult: '1'
                                 }
-                            }).done(function () {
+                            }).done(function() {
                                 sucList();
                                 dw.close().remove();
                             });
@@ -221,7 +228,7 @@ $(function() {
                     }
                 }, {
                     title: '不通过',
-                    handler: function () {
+                    handler: function() {
                         if ($('#popForm').valid()) {
                             var data = $('#popForm').serializeObject();
                             reqApi({
@@ -231,7 +238,7 @@ $(function() {
                                     payUser: getUserName(),
                                     payResult: '0'
                                 }
-                            }).done(function () {
+                            }).done(function() {
                                 sucList();
                                 dw.close().remove();
                             });
@@ -239,7 +246,7 @@ $(function() {
                     }
                 }, {
                     title: '取消',
-                    handler: function () {
+                    handler: function() {
                         dw.close().remove();
                     }
                 }]

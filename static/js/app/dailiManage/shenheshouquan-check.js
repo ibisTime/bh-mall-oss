@@ -1,65 +1,73 @@
 $(function() {
-	// 实际上是审核授权的审核页面
-	var code = getQueryString('code');
-	var userId = getQueryString('userId');
-	var view = true;
+    // 实际上是审核授权的审核页面
+    var code = getQueryString('code');
+    var userId = getQueryString('userId');
+    var view = true;
     var fields = [{
-        field : 'realName1',
-        title : '姓名',
+        field: 'realName1',
+        title: '姓名',
         formatter: function(v, data) {
             return data.realName
         }
-    },{
-        field : 'applyLevel',
-        title : '申请等级',
+    }, {
+        field: 'applyLevel',
+        title: '申请等级',
         search: true,
         type: 'select',
         listCode: '627008',
         keyName: 'level',
         valueName: 'name'
     }, {
-        field : 'idNo',
-        title : '身份证号'
+        field: 'idNo',
+        title: '身份证号'
     }, {
         field: 'idHand',
         title: '身份证照片',
         type: 'img'
     }, {
-        field : 'mobile',
-        title : '联系电话'
+        field: 'mobile',
+        title: '联系电话'
     }, {
-        field : 'wxId',
-        title : '微信号'
+        field: 'wxId',
+        title: '微信号'
     }, {
-        field : 'highUserName',
-        title : '上级',
-        formatter : function(v, data) {
-			return data.highUser?data.highUser.realName : '-'
-		}
-    }, {
-        field : 'teamName',
-        title : '团队名称'
-    }, {
-        field : 'impowerAmount',
-        title : '门槛费',
-        formatter: moneyFormat
-    }, {
-        field : 'diyu',
-        title : '地域',
-        formatter : function (v, data) {
-            return data.area?data.province+' '+data.city+' '+data.area
-                        :data.city?data.province+' '+data.city
-                            :data.province?data.province : '-'
+        field: 'highUserName',
+        title: '上级',
+        formatter: function(v, data) {
+            return data.highUser ? data.highUser.realName : '-'
         }
     }, {
-        field : 'applyDatetime',
-        title : '申请时间',
+        field: 'teamName',
+        title: '团队名称'
+    }, {
+        field: 'impowerAmount',
+        title: '门槛费',
+        formatter: moneyFormat
+    }, {
+        field: 'diyu',
+        title: '地域',
+        formatter: function(v, data) {
+            return data.area ? data.province + ' ' + data.city + ' ' + data.area :
+                data.city ? data.province + ' ' + data.city :
+                data.province ? data.province : '-'
+        }
+    }, {
+        field: 'applyDatetime',
+        title: '申请时间',
         formatter: dateTimeFormat
-    },{
-    	field : 'remark',
-		title : '备注',
-		readonly : false
-	}];
+    }, {
+        field: 'manager',
+        title: '管理员',
+        type: 'select',
+        listCode: '627126',
+        valueName: 'realName',
+        readonly: false
+    }, {
+        field: 'remark',
+        title: '理由',
+        required: true,
+        readonly: false
+    }];
 
 
     var buttons = [{
@@ -72,7 +80,7 @@ $(function() {
                 data.userId = userId;
                 data.remark = $('#remark').val();
                 reqApi({
-                    code: '627257',
+                    code: '627272',
                     json: data
                 }).done(function(data) {
                     sucDetail();
@@ -89,7 +97,7 @@ $(function() {
                 data.userId = userId;
                 data.remark = $('#remark').val();
                 reqApi({
-                    code: '627257',
+                    code: '627272',
                     json: data
                 }).done(function() {
                     sucDetail();
@@ -103,16 +111,16 @@ $(function() {
         }
     }];
 
-	buildDetail({
-		fields: fields,
-		view : view,
-		buttons : buttons,
-		code: {
-			userId : userId
-		},
-		detailCode: '627357',
-		addCode: '627920',
-		editCode: '627921'
-	});
-	hideLoading();
+    buildDetail({
+        fields: fields,
+        view: view,
+        buttons: buttons,
+        code: {
+            userId: userId
+        },
+        detailCode: '627287',
+        addCode: '627920',
+        editCode: '627921'
+    });
+    hideLoading();
 });

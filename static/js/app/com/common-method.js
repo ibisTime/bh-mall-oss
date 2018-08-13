@@ -514,6 +514,10 @@ function getRoleId() {
     return sessionStorage.getItem('roleCode');
 }
 
+function getApprover() {
+    return sessionStorage.getItem('approver');
+}
+
 function getUserName() {
     return sessionStorage.getItem('userName');
 }
@@ -596,7 +600,7 @@ function goBack() {
     //     }
     //     window.location = document.referrer;
     // } else {
-        window.history.back();
+    window.history.back();
     // }
 }
 
@@ -621,7 +625,7 @@ function objectArrayFilter(arr, keys) {
 }
 
 function buildList(options) {
-	showLoading();
+    showLoading();
     options = options || {};
     var searchs = JSON.parse(sessionStorage.getItem('listSearchs') || '{}')[location.pathname];
 
@@ -872,7 +876,7 @@ function buildList(options) {
             }
             var data = codeParams;
 
-			showLoading();
+            showLoading();
             reqApi({ code: options.deleteCode, json: data }).done(function(data) {
                 sucList();
             });
@@ -960,8 +964,8 @@ function buildList(options) {
 
     if ('exportDataType' in options) {
         exportDataType = options['exportDataType'];
-    }else {
-    	exportDataType = 'all'
+    } else {
+        exportDataType = 'all'
     }
     if ('detailFormatter' in options) {
         detailView = true;
@@ -981,14 +985,14 @@ function buildList(options) {
     if (options.tableId) {
         tableEl = $('#' + options.tableId);
     }
-    tableEl.on('load-success.bs.table', function () {
-    	hideLoading();
+    tableEl.on('load-success.bs.table', function() {
+        hideLoading();
         updateTableInfo('tableList');
     });
-    tableEl.on('load-error.bs.table', function () {
-    	hideLoading();
+    tableEl.on('load-error.bs.table', function() {
+        hideLoading();
     });
-    tableEl.on('page-change.bs.table', function () {
+    tableEl.on('page-change.bs.table', function() {
         showLoading()
     });
 
@@ -1005,7 +1009,7 @@ function buildList(options) {
         singleSelect: singleSelect,
         detailView: detailView,
         detailFormatter: detailFormatter,
-        exportDataType : exportDataType,
+        exportDataType: exportDataType,
         queryParams: function(params) {
             var json = {};
             json.start = params.offset / params.limit + 1;
@@ -1039,9 +1043,9 @@ function buildList(options) {
         },
         queryParamsType: 'limit',
         responseHandler: function(res) {
-        	if(options.afterData) {
-        		return options.afterData(res);
-        	}
+            if (options.afterData) {
+                return options.afterData(res);
+            }
             return {
                 rows: res.data.list || res.data,
                 total: res.data.totalCount || res.data.length
@@ -1074,7 +1078,7 @@ function selectImage(file, name) {
 }
 
 function buildDetail(options) {
-	showLoading();
+    showLoading();
     options = options || {};
     var code = options.code;
     var fields = options.fields;
@@ -1254,11 +1258,11 @@ function buildDetail(options) {
                 html += '<input id="' + item.field + '" name="' + item.field + '" class="lay-input"/></li>';
             } else if (item.type == "o2m") {
                 html += '<div id="' + item.field + '" style="display: inline-block;"></div>';
-            } else if(item.type == 'doubleLine'){
-            html += '<textarea id="' + item.field + '" rows="2" style="height:80px;" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
+            } else if (item.type == 'doubleLine') {
+                html += '<textarea id="' + item.field + '" rows="2" style="height:80px;" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
                     ('placeholder="' + item.placeholder + '"') :
                     '') + '/></li>';
-        }else {
+            } else {
                 html += '<input id="' + item.field + '" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
                     ('placeholder="' + item.placeholder + '"') :
                     '') + '/></li>';
@@ -1269,7 +1273,7 @@ function buildDetail(options) {
     var btnHandlers = [];
     if (options.buttons) {
         var btnHtml = '<li>';
-        for (var i = 0, len = options.buttons.length; i < len; i++) {
+        for (let i = 0, len = options.buttons.length; i < len; i++) {
             var item = options.buttons[i];
             var id = 'btn-' + i;
             btnHandlers.push({ id: id, handler: item.handler });
@@ -1307,78 +1311,79 @@ function buildDetail(options) {
         $('#subBtn').remove();
     }
 
-    for (var i = 0, len = btnHandlers.length; i < len; i++) {
+    for (let i = 0, len = btnHandlers.length; i < len; i++) {
         $('#' + btnHandlers[i].id).on('click', btnHandlers[i].handler);
     }
 
-	if (!options.buttons) {
-	    $('#backBtn').click(function() {
-	        goBack();
-	    });
+    if (!options.buttons) {
+        $('#backBtn').click(function() {
+            goBack();
+        });
 
-	    $('#subBtn').click(function() {
-	        if ($('#jsForm').valid()) {
-	            var data = $('#jsForm').serializeObject();
-	            $('#jsForm').find('.btn-file [type=file]').parent().next().each(function(i, el) {
-	                var values = [];
-	                var imgs = $(el).find('.img-ctn');
-	                imgs.each(function(index, img) {
-	                    values.push($(img).attr('data-src') || $(img).find('img').attr('data-src'));
-	                });
-	                data[el.id] = values.join('||');
-	            });
-	            if ($('#jsForm').find('#province')[0]) {
-	                var province = $('#province').val();
-	                var city = $('#city').val();
-	                var area = $('#area').val();
-	                if (!city) {
-	                    data['city'] = province;
-	                    data['area'] = province;
-	                } else if (!area) {
-	                    data['city'] = province;
-	                    data['area'] = city;
-	                }
-	            }
-	            for (var i = 0, len = fields.length; i < len; i++) {
-	                var item = fields[i];
-	                if (item.equal && (!$('#' + item.field).is(':hidden') || !$('#' + item.field + 'Img').is(':hidden'))) {
-	                    data[item.equal] = $('#' + item.field).val() || $('#' + item.field).attr('src');
-	                } else if (item.emptyValue && !data[item.field]) {
-	                    data[item.field] = item.emptyValue;
-	                } else if (item.readonly && item.pass) {
-	                    data[item.field] = $('#' + item.field).attr('data-value') || $('#' + item.field).html();
-	                }
-	                if (item.type == 'select' && item.passValue) {
-	                    data[item.field] = $('#' + item.field).find('option:selected').html();
-	                }
-	            }
-	            data['id'] = data['code'];
-	            if (options.beforeSubmit) {
-	                if (!options.beforeSubmit(data)) {
-	                    return;
-	                }
-	            }
+        $('#subBtn').click(function() {
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                $('#jsForm').find('.btn-file [type=file]').parent().next().each(function(i, el) {
+                    var values = [];
+                    var imgs = $(el).find('.img-ctn');
+                    imgs.each(function(index, img) {
+                        values.push($(img).attr('data-src') || $(img).find('img').attr('data-src'));
+                    });
+                    data[el.id] = values.join('||');
+                });
+                if ($('#jsForm').find('#province')[0]) {
+                    var province = $('#province').val();
+                    var city = $('#city').val();
+                    var area = $('#area').val();
+                    if (!city) {
+                        data['city'] = province;
+                        data['area'] = province;
+                    } else if (!area) {
+                        data['city'] = province;
+                        data['area'] = city;
+                    }
+                }
+                for (var i = 0, len = fields.length; i < len; i++) {
+                    var item = fields[i];
+                    if (item.equal && (!$('#' + item.field).is(':hidden') || !$('#' + item.field + 'Img').is(':hidden'))) {
+                        data[item.equal] = $('#' + item.field).val() || $('#' + item.field).attr('src');
+                    } else if (item.emptyValue && !data[item.field]) {
+                        data[item.field] = item.emptyValue;
+                    } else if (item.readonly && item.pass) {
+                        data[item.field] = $('#' + item.field).attr('data-value') || $('#' + item.field).html();
+                    }
+                    if (item.type == 'select' && item.passValue) {
+                        data[item.field] = $('#' + item.field).find('option:selected').html();
+                    }
+                }
+                data['id'] = data['code'];
+                if (options.beforeSubmit) {
+                    if (!options.beforeSubmit(data)) {
+                        return;
+                    }
+                }
 
-	            var request = function() {
-	            	showLoading();
-	                reqApi({
-	                    code: code ?
-	                        options.editCode : options.addCode,
-	                    json: data
-	                }).then(function(data){
-	                	sucDetail();
-	                },hideLoading);
-	            };
+                var request = function() {
+                    showLoading();
+                    data.teamName = sessionStorage.getItem('teamName');
+                    reqApi({
+                        code: code ?
+                            options.editCode : options.addCode,
+                        json: data
+                    }).then(function(data) {
+                        sucDetail();
+                    }, hideLoading);
+                };
 
-	            if (options.beforeSubmitAsync) {
-	                options.beforeSubmitAsync.callback = request;
-	                options.beforeSubmitAsync(data);
-	            } else {
-	                request();
-	            }
+                if (options.beforeSubmitAsync) {
+                    options.beforeSubmitAsync.callback = request;
+                    options.beforeSubmitAsync(data);
+                } else {
+                    request();
+                }
 
-	        }
-	    });
+            }
+        });
     }
 
     //valid验证
@@ -1596,6 +1601,7 @@ function buildDetail(options) {
     if (options.beforeDetail) {
         options.beforeDetail(detailParams);
     }
+
     function addData(d) {
         hideLoading();
         var data = d;
@@ -1955,11 +1961,13 @@ function buildDetail(options) {
     }
     //是否请求详情
     if (code) {
-    	showLoading();
+        showLoading();
         reqApi({
             code: options.detailCode,
             json: detailParams
         }).then(function(d) {
+            sessionStorage.setItem('approver', d.approver);
+            sessionStorage.setItem('teamName', d.teamName);
             addData(d);
         }, hideLoading);
     } else if (options.useData) {
@@ -2247,14 +2255,14 @@ function sleep(ms) {
 }
 
 function sucList() {
-	hideLoading();
+    hideLoading();
     toastr.success('操作成功');
     var option = $('#tableList').bootstrapTable('getOptions');
     $('#tableList').bootstrapTable('refreshOptions', { pageNumber: option.pageNumber, pageSize: option.pageSize });
 }
 
 function sucDetail() {
-	hideLoading();
+    hideLoading();
     toastr.success('操作成功');
     sleep(1000).then(function() {
         goBack();
@@ -3187,7 +3195,7 @@ function buildCharts(options) {
 
         $.extend(json, options.searchParams, searchFormParams);
 
-		showLoading();
+        showLoading();
         reqApi({
             code: options.pageCode,
             json: json,
@@ -3298,9 +3306,10 @@ function buildCharts(options) {
 
 
                 //图表数据
-                $.each(settings.legendData, function(i, d) {  $.each(data, function(j, d) {
-                    xAxisDate.push(dateFormat(d[settings.xAxisData], 'yyyy-MM-dd'))
-                });
+                $.each(settings.legendData, function(i, d) {
+                    $.each(data, function(j, d) {
+                        xAxisDate.push(dateFormat(d[settings.xAxisData], 'yyyy-MM-dd'))
+                    });
                     var seriesDate = [] //每个类的数据
                     $.each(data, function(j, d1) {
                         seriesDate.push(settings.seriesDataType == 'amount' ? moneyFormat(d1[settings.seriesDataName[i]]) : d1[settings.seriesDataName[i]])
@@ -3397,7 +3406,7 @@ function buildCharts(options) {
 
 
             myChart.setOption(chartOption);
-        },hideLoading);
+        }, hideLoading);
     }
 
 }
@@ -3418,15 +3427,15 @@ function calculateSecurityLevel(password) {
         // 数字
         if (code >= 48 && code <= 57) {
             strength_L++;
-        // 小写字母 大写字母
+            // 小写字母 大写字母
         } else if ((code >= 65 && code <= 90) ||
-          (code >= 97 && code <= 122)) {
-          strength_M++;
-        // 特殊符号
+            (code >= 97 && code <= 122)) {
+            strength_M++;
+            // 特殊符号
         } else if ((code >= 32 && code <= 47) ||
-          (code >= 58 && code <= 64) ||
-          (code >= 94 && code <= 96) ||
-          (code >= 123 && code <= 126)) {
+            (code >= 58 && code <= 64) ||
+            (code >= 94 && code <= 96) ||
+            (code >= 123 && code <= 126)) {
             strength_H++;
         }
     }
@@ -3780,9 +3789,11 @@ function updateTableInfo(id) {
     searchs[pathName] = params;
     sessionStorage.setItem('tableInfo', JSON.stringify(searchs));
 }
+
 function showLoading() {
     $("#loadingSpin").removeClass("hidden");
 }
+
 function hideLoading() {
     $("#loadingSpin").addClass("hidden");
 }

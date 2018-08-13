@@ -7,7 +7,7 @@ $(function() {
     }, {
         field: 'code',
         title: '编号',
-        search : true
+        search: true
     }, {
         field: 'accountNumber',
         title: '账号'
@@ -24,25 +24,32 @@ $(function() {
     }, {
         field: 'loginName',
         title: '申请人',
-        formatter : function (v, data) {
-            return data.user?data.user.loginName : '-'
+        formatter: function(v, data) {
+            return data.user ? data.user.loginName : '-'
         }
-    },{
+    }, {
         field: 'applyDatetime',
         title: '申请时间',
         formatter: dateTimeFormat
     }, {
         field: 'status',
         title: '状态',
-        type : 'select',
-        key : 'withdraw_status',
-        formatter : Dict.getNameForList('withdraw_status')
+        type: 'select',
+        key: 'withdraw_status',
+        formatter: Dict.getNameForList('withdraw_status')
     }, {
-        field: 'payUser',
+        field: 'applyUser',
         title: '审核人'
     }, {
-        field: 'payDatetime',
+        field: 'applyDatetime',
         title: '审核时间',
+        formatter: dateTimeFormat
+    }, {
+        field: 'payUser',
+        title: '回录人'
+    }, {
+        field: 'payDatetime',
+        title: '回录时间',
         formatter: dateTimeFormat
     }];
     buildList({

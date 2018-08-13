@@ -1,15 +1,15 @@
 $('title', window.parent.document).html(OSS.systemName);
 $(function() {
     if (!sessionStorage.getItem('token')) {
-		//判断域名是 hhr开头 合伙人域名 kind为11
-		var kind = document.domain.substr(0, 1)=='h'?'PA':(sessionStorage.getItem('loginKind') || '01')
+        //判断域名是 hhr开头 合伙人域名 kind为11
+        var kind = document.domain.substr(0, 1) == 'h' ? 'PA' : (sessionStorage.getItem('loginKind') || '01')
         location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || 'P')
         return;
     }
 
-    // 获取用户
+    // 获取用户信息
     reqApi({
-        code: '627230',
+        code: '627127',
         cache: true,
         sync: true,
         json: {
@@ -19,7 +19,9 @@ $(function() {
         window.ossKind = data ? data.kind : '';
         $('#topUserName').html(data.loginName);
         $('#userName').html(data.loginName);
-        sessionStorage.setItem('roleCode', data.roleCode);
+        if (data.roleCode) {
+            sessionStorage.setItem('roleCode', data.roleCode);
+        }
         sessionStorage.setItem('userName', data.loginName);
     });
 

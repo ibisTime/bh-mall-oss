@@ -1,49 +1,56 @@
 $(function() {
-// 代理管理-系统设置-代理授权设置
-	var columns = [{
-		field : '',
-		title : '',
-		checkbox : true
-	},{
-		field : 'level',
-		title : '等级名称',
+    // 代理管理-系统设置-代理授权设置
+    var columns = [{
+        field: '',
+        title: '',
+        checkbox: true
+    }, {
+        field: 'level',
+        title: '等级名称',
         type: 'select',
         listCode: '627008',
-        keyName : 'level',
-        searchName :'level',
+        keyName: 'level',
+        searchName: 'level',
         valueName: 'name'
-	},{
-		field : 'level',
-		title : '等级',
+    }, {
+        field: 'level',
+        title: '等级',
         search: true,
-		type: 'select'
-	},{
-        field : 'isIntent',
-        title : '本等级是否可被意向',
-        type : 'select',
-        data : {'1':'是','0':'否'}
-    },{
-        field : 'isIntro',
-        title : '本等级是否可被介绍',
-        type : 'select',
-        data : {'1':'是','0':'否'}
-    },{
-        field : 'isRealName',
-        title : '本等级是否需要实名',
-        type : 'select',
-        data : {'1':'是','0':'否'}
-    },{
-        field : 'remark',
-        title : '备注'
+        type: 'select'
+    }, {
+        field: 'isIntent',
+        title: '本等级是否可被意向',
+        type: 'select',
+        data: { '1': '是', '0': '否' }
+    }, {
+        field: 'isIntro',
+        title: '本等级是否可被介绍',
+        type: 'select',
+        data: { '1': '是', '0': '否' }
+    }, {
+        field: 'isRealName',
+        title: '本等级是否需要实名',
+        type: 'select',
+        data: { '1': '是', '0': '否' }
+    }, {
+        field: 'updater',
+        title: '更新人'
+    }, {
+        field: 'updateDatetime',
+        title: '更新时间',
+        formatter: dateTimeFormat
+    }, {
+        field: 'remark',
+        title: '备注'
     }];
-	buildList({
+    buildList({
         columns: columns,
         searchParams: {
             orderColumn: 'level',
             orderDir: 'asc'
         },
-		pageCode: '627015'   //627015
-	});
+        pageCode: '627005' //627015
+    });
     /*
     ,{
         field : 'isCompanyImpower',
@@ -104,13 +111,13 @@ $(function() {
         title: '更新人'
     }
      */
-	// 修改
-	$('#editBtn').off('click').click(function () {
+    // 修改
+    $('#editBtn').off('click').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = './dailishouquanConfig_addedit.html?level='+selRecords[0].level+'&v=0&code='+selRecords[0].code;
+        window.location.href = './dailishouquanConfig_addedit.html?level=' + selRecords[0].level + '&v=0&code=' + selRecords[0].code + '&name=' + selRecords[0].name;
     })
 });
