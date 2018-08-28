@@ -2,19 +2,19 @@ $(function() {
     // 代理管理-代理管理-代理资料
     let userId = getQueryString('userId');
     var columns = [{
-        field: '',
-        title: ''
-    }, {
         field: 'realName',
         title: '户名'
     }, {
-        field: 'realName',
+        field: 'bankName',
+        title: '银行名称'
+    }, {
+        field: 'bankcardNumber',
         title: '卡号'
     }, {
-        field: 'realName',
+        field: 'subbranch',
         title: '开户行'
     }, {
-        field: 'realName',
+        field: 'payCardInfo',
         title: '开户支行'
     }];
     buildList({

@@ -88,19 +88,22 @@ $(function() {
 
             buildDetail({
                 container: $('#formContainer'),
-                fields: [{
-                    field: 'pageSize',
-                    title: '每页数量',
-                    required: true,
-                    number: true,
-                    min: '0'
-                }, {
-                    field: 'pageNo',
-                    title: '张数',
-                    required: true,
-                    number: true,
-                    min: '1'
-                }],
+                fields: [
+                    /* {
+                                        field: 'pageSize',
+                                        title: '每页数量',
+                                        required: true,
+                                        number: true,
+                                        min: '0'
+                                    },  */
+                    {
+                        field: 'pageNo',
+                        title: '张数',
+                        required: true,
+                        number: true,
+                        min: '1'
+                    }
+                ],
                 buttons: [{
                     title: '确定',
                     handler: function() {
@@ -109,7 +112,7 @@ $(function() {
                             reqApi({
                                 code: '627871',
                                 json: {
-                                    pageSize: data.pageSize,
+                                    // pageSize: data.pageSize,
                                     pageNo: data.pageNo
                                 }
                             }).done(function(res) {
@@ -141,7 +144,7 @@ $(function() {
                                             '<div data-url="' + url + '" class="erweimaPic" width="330" height="330" style="width: 70px;height: 70px;display: inline-block;"></div>' +
                                             '</div>' +
                                             '<div class="text" style="width: 100%;text-align: center;margin-bottom: 0.5rem;margin-top: -4px;">' +
-                                            '<p style="font-size: 0.54rem;transform: scale(0.55);margin-right: 11px;">' + he.securityCode + '</p>' +
+                                            '<p style="font-size: 0.54rem;transform: scale(0.55);margin-right: 11px;">' + he.miniCode + '</p>' +
                                             '<div style="height: 0.5rem"></div>' +
                                             '</div>' +
                                             '</li>';
@@ -229,8 +232,8 @@ function uploadByBase64(base64) {
         var key = Base64.encode(imgcode[i] + '.jpg');
         i++;
         $.ajax({
-            url: 'http://up-z0.qiniup.com/putb64/-1/key/' + key,
-            // url: 'http://up-z2.qiniu.com/putb64/-1/key/' + key, //正式
+            // url: 'http://up-z0.qiniup.com/putb64/-1/key/' + key,
+            url: 'http://up-z2.qiniu.com/putb64/-1/key/' + key, //正式
             type: 'post',
             data: base64,
             async: true,
@@ -239,8 +242,8 @@ function uploadByBase64(base64) {
                 'Authorization': 'UpToken ' + token
             }
         }).done(function(res) {
-            window.open('http://bh.img.zjqiyu.com/' + res.key + '?attname=' + res.key);
-            // window.open('http://ounm8iw2d.bkt.clouddn.com/' + res.key + '?attname=' + res.key); // 正式
+            // window.open('http://bh.img.zjqiyu.com/' + res.key + '?attname=' + res.key);
+            window.open('http://ounm8iw2d.bkt.clouddn.com/' + res.key + '?attname=' + res.key); // 正式
         });
     });
 }

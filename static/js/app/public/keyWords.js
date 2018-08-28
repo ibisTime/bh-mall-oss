@@ -32,7 +32,7 @@ $(function() {
         getImportData: function(list) {
             var reqList = list;
             for (var i = 0, length = reqList.length; i < length; i++) {
-                reqList[i].updater = getUserName();
+                reqList[i].updater = getUserId();
                 reqList[i].weight = "1";
                 reqList[i].level = "0";
                 reqList[i].reaction = "3";

@@ -97,7 +97,7 @@ $(function() {
     }, {
         field: 'checkUser',
         type: 'hidden',
-        value: getUserName()
+        value: getUserId()
     }];
 
     var options = {

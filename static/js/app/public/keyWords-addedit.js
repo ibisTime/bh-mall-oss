@@ -35,7 +35,7 @@ $(function() {
         title: '更新人',
         field: 'updater',
         hidden: true,
-        value: getUserName(),
+        value: getUserId(),
         required: true
     }];
 

@@ -11,20 +11,24 @@ $(function() {
         listCode: '627006',
         keyName: 'level',
         searchName: 'level',
-        valueName: 'name'
+        valueName: 'name',
+        params: {
+            highLevel: 6
+        }
     }, {
         field: 'level',
         title: '等级',
         search: true,
         type: 'select'
     }, {
-        field: 'isCompanyApprove',
+        field: 'isCompanyImpower',
         title: '本等级升级是否公司审核',
         type: 'select',
         data: { '1': '是', '0': '否' }
     }, {
         field: 'amount',
         title: '本等级升级首单总额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'reNumber',
@@ -36,7 +40,8 @@ $(function() {
         data: { '1': '是', '0': '否' }
     }, {
         field: 'updater',
-        title: '更新人'
+        title: '更新人',
+        readonly: true
     }, {
         field: 'updateDatetime',
         title: '更新时间',
@@ -49,7 +54,8 @@ $(function() {
         columns: columns,
         searchParams: {
             orderColumn: 'level',
-            orderDir: 'asc'
+            orderDir: 'asc',
+            highLevel: 6
         },
         pageCode: '627005'
     });

@@ -9,13 +9,18 @@ $(function() {
         title: '订单编号'
     }, {
         field: 'productName',
-        title: '产品'
+        title: '产品',
+        search: true
     }, {
         field: 'quantity',
-        title: '数量'
+        title: '数量',
+        formatter(v, data) {
+            return data.quantity;
+        }
     }, {
         field: 'amount',
         title: '订单金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'status',
@@ -27,14 +32,19 @@ $(function() {
         formatter: Dict.getNameForList("in_order_status")
     }, {
         field: 'realName',
-        title: '下单代理'
+        title: '下单代理',
+        search: true
     }, {
         field: 'level',
         title: '下单代理等级',
         type: 'select',
         listCode: '627006',
         keyName: 'level',
-        valueName: 'name'
+        valueName: 'name',
+        search: true,
+        params: {
+            highLevel: 6
+        }
     }, {
         field: 'toUserName',
         title: '上级代理'

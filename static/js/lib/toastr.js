@@ -11,9 +11,9 @@
  * Project: https://github.com/CodeSeven/toastr
  */
 /* global define */
-(function (define) {
-    define(['jquery'], function ($) {
-        return (function () {
+(function(define) {
+    define(['jquery'], function($) {
+        return (function() {
             var $container;
             var listener;
             var toastId = 0;
@@ -121,20 +121,20 @@
 
             // internal functions
 
-            function clearContainer (options) {
+            function clearContainer(options) {
                 var toastsToClear = $container.children();
                 for (var i = toastsToClear.length - 1; i >= 0; i--) {
                     clearToast($(toastsToClear[i]), options);
                 }
             }
 
-            function clearToast ($toastElement, options, clearOptions) {
+            function clearToast($toastElement, options, clearOptions) {
                 var force = clearOptions && clearOptions.force ? clearOptions.force : false;
                 if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
                     $toastElement[options.hideMethod]({
                         duration: options.hideDuration,
                         easing: options.hideEasing,
-                        complete: function () { removeToast($toastElement); }
+                        complete: function() { removeToast($toastElement); }
                     });
                     return true;
                 }
@@ -203,7 +203,7 @@
                 var options = getOptions();
                 var iconClass = map.iconClass || options.iconClass;
 
-                if (typeof (map.optionsOverride) !== 'undefined') {
+                if (typeof(map.optionsOverride) !== 'undefined') {
                     options = $.extend(options, map.optionsOverride);
                     iconClass = map.optionsOverride.iconClass || iconClass;
                 }
@@ -276,7 +276,7 @@
                     switch (map.iconClass) {
                         case 'toast-success':
                         case 'toast-info':
-                            ariaValue =  'polite';
+                            ariaValue = 'polite';
                             break;
                         default:
                             ariaValue = 'assertive';
@@ -294,7 +294,7 @@
                     }
 
                     if (options.closeButton && $closeElement) {
-                        $closeElement.click(function (event) {
+                        $closeElement.click(function(event) {
                             if (event.stopPropagation) {
                                 event.stopPropagation();
                             } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
@@ -310,7 +310,7 @@
                     }
 
                     if (options.onclick) {
-                        $toastElement.click(function (event) {
+                        $toastElement.click(function(event) {
                             options.onclick(event);
                             hideToast();
                         });
@@ -320,9 +320,7 @@
                 function displayToast() {
                     $toastElement.hide();
 
-                    $toastElement[options.showMethod](
-                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
-                    );
+                    $toastElement[options.showMethod]({ duration: options.showDuration, easing: options.showEasing, complete: options.onShown });
 
                     if (options.timeOut > 0) {
                         intervalId = setTimeout(hideToast, options.timeOut);
@@ -413,7 +411,7 @@
                     return $toastElement[method]({
                         duration: duration,
                         easing: easing,
-                        complete: function () {
+                        complete: function() {
                             removeToast($toastElement);
                             clearTimeout(intervalId);
                             if (options.onHidden && response.state !== 'hidden') {
@@ -437,9 +435,7 @@
                 function stickAround() {
                     clearTimeout(intervalId);
                     progressBar.hideEta = 0;
-                    $toastElement.stop(true, true)[options.showMethod](
-                        {duration: options.showDuration, easing: options.showEasing}
-                    );
+                    $toastElement.stop(true, true)[options.showMethod]({ duration: options.showDuration, easing: options.showEasing });
                 }
 
                 function updateProgress() {
@@ -467,7 +463,7 @@
 
         })();
     });
-}(typeof define === 'function' && define.amd ? define : function (deps, factory) {
+}(typeof define === 'function' && define.amd ? define : function(deps, factory) {
     if (typeof module !== 'undefined' && module.exports) { //Node
         module.exports = factory(require('jquery'));
     } else {

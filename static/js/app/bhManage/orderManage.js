@@ -13,6 +13,7 @@ $(function() {
     }, {
         field: 'payAmount',
         title: '付款金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'status',
@@ -118,7 +119,7 @@ $(function() {
                                     code: '627727',
                                     json: {
                                         codeList: codeList,
-                                        approver: getUserName(),
+                                        approver: getUserId(),
                                         approveNote: data.approveNote
                                     }
                                 }).done(function() {

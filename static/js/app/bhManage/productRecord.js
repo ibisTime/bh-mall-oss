@@ -1,8 +1,7 @@
 $(function() {
     // 报货管理-云仓管理-产品库存记录
-    let toorter = getQueryString('toorter');
     let code = getQueryString('code');
-
+    let toorter = getQueryString('toorter');
     var columns = [{
         field: '',
         title: '',
@@ -10,6 +9,10 @@ $(function() {
     }, {
         field: 'productName',
         title: '产品名称'
+    }, {
+        field: 'specsName',
+        title: '产品规格',
+        required: true
     }, {
         field: 'type',
         title: '变动类型',
@@ -19,13 +22,22 @@ $(function() {
         formatter: Dict.getNameForList('product_log_type')
     }, {
         field: 'tranCount',
-        title: '变动库存'
+        title: '变动库存',
+        formatter(v, data) {
+            return data.tranCount;
+        }
     }, {
         field: 'preCount',
-        title: '变动前库存'
+        title: '变动前库存',
+        formatter(v, data) {
+            return data.preCount;
+        }
     }, {
         field: 'postCount',
-        title: '变动后库存'
+        title: '变动后库存',
+        formatter(v, data) {
+            return data.postCount;
+        }
     }, {
         field: 'updateDatetime',
         title: '变动时间',
@@ -48,9 +60,10 @@ $(function() {
         columns: columns,
         pageCode: '627610',
         searchParams: {
-            code: code ? code : ''
+            productCode: code ? code : '',
         }
     });
+
     if (toorter) {
         $('.toolbar').empty();
         let html = `<div><div class="per">
@@ -68,7 +81,16 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            window.location.href = "./productRecord_addedit.html?v=1&userId=" + selRecords[0].userId + '&code=' + selRecords[0].code;
+            window.location.href = "./productRecord_addedit.html?v=1&direct=1&userId=" + selRecords[0].userId + '&code=' + selRecords[0].code;
         })
     }
+
+    $('#detailBtn').off().click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "./productRecord_addedit.html?v=1&direct=1" + '&code=' + selRecords[0].code;
+    })
 });

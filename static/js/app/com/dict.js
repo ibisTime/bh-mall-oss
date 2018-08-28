@@ -80,7 +80,7 @@ Dict.getNameForList = function(type, code) {
     return res;
 }
 Dict.getNameForList1 = function(type, code, key) {
-   var k;
+    var k;
     reqApi({
         code: code || '627076',
         cache: true,

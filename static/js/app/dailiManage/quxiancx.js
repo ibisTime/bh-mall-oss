@@ -5,15 +5,12 @@ $(function() {
         title: '',
         checkbox: true
     }, {
-        field: 'code',
-        title: '编号',
-        search: true
-    }, {
         field: 'accountNumber',
         title: '账号'
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'payCardInfo',
@@ -23,11 +20,9 @@ $(function() {
         field: 'payCardNo',
         title: '卡号'
     }, {
-        field: 'loginName',
+        field: 'accountName',
         title: '申请人',
-        formatter: function(v, data) {
-            return data.agent ? data.agent.realName : '-'
-        }
+        search: true
     }, {
         field: 'applyDatetime',
         title: '申请时间',
@@ -39,15 +34,14 @@ $(function() {
         key: 'withdraw_status',
         formatter: Dict.getNameForList('withdraw_status')
     }, {
-        field: 'payUser',
+        field: 'approveName',
         title: '审核人'
     }, {
-        field: 'payDatetime',
-        title: '审核时间',
-        formatter: dateTimeFormat
+        field: 'payUserName',
+        title: '回录人'
     }, {
-        field: 'payDatetime',
-        title: '回录人',
+        field: 'approveDatetime',
+        title: '审核时间',
         formatter: dateTimeFormat
     }, {
         field: 'payDatetime',

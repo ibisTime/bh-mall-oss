@@ -1,8 +1,6 @@
 $(function() {
-	var accountNumber = getQueryString('accountNumber');
-	
-//	$('#inBtn').attr('id','detailBtn').attr('innerText','详情');
-	
+    var accountNumber = getQueryString('accountNumber');
+
     var columns = [{
         field: '',
         title: '',
@@ -10,10 +8,7 @@ $(function() {
     }, {
         field: 'realName',
         title: '户名',
-        search: true,
-        formatter : function(v, data) {
-        	return data.userInformation?data.userInformation.realName : '-'
-        }
+        search: true
     }, {
         field: 'accountNumber',
         title: '账号'
@@ -55,32 +50,39 @@ $(function() {
         title: '创建时间',
         formatter: dateTimeFormat
     }, {
-        field: 'reamrk',
+        title: "充值截图",
+        field: "pic",
+        type: "img",
+        single: true,
+        readonly: false,
+        required: true
+    }, {
+        field: 'remark',
         title: '备注'
     }];
     buildList({
         columns: columns,
         pageCode: '627490',
-		searchParams :{
-			accountNumber : accountNumber
-		}
+        searchParams: {
+            accountNumber: accountNumber
+        }
     });
     $('.toolbar').empty().append('<li style="display:block;" id="detailBtn"><span><img src="/static/images/t01.png"></span>详情</li><li style="display:block;" id="exportBtn"><span><img src="/static/images/t01.png"></span>导出</li>');
-	
-	// 导出
-	$('#exportBtn').click(function() {
+
+    // 导出
+    $('#exportBtn').click(function() {
         $('.export .btn').click();
     });
 
 
-	// 详情
-	    $('#detailBtn').off('click').click(function () {
+    // 详情
+    $('#detailBtn').off('click').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if(selRecords.length <= 0){
+        if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
 
-        window.location.href = './liushui_addedit.html?code='+selRecords[0].code;
+        window.location.href = './liushui_addedit.html?code=' + selRecords[0].code;
     })
 });

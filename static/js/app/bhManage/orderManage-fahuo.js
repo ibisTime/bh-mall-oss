@@ -8,16 +8,10 @@ $(function() {
         value: code,
         hidden: true
     }, {
-        field: 'deliver',
+        field: 'deliverer',
         title: '发货人',
         value: getUserId(),
         hidden: true
-    }, {
-        field: 'isCompanySend',
-        title: '是否云仓发货',
-        type: 'select',
-        data: { '0': '否', '1': '是' },
-        required: true
     }, {
         field: 'logisticsCode',
         title: '物流编号',
@@ -47,9 +41,8 @@ $(function() {
             data.updater = getUserId();
             return data;
         },
-        detailCode: '627664',
-        addCode: '627645',
-        editCode: '627645'
+        detailCode: '627733',
+        editCode: '627723'
     });
 
 });

@@ -19,40 +19,22 @@ $(function() {
                 checkbox: true
             }, {
                 field: 'realName',
-                title: '代理姓名',
-                search: true,
-                visible: false
+                title: '姓名',
+                search: true
             }, {
                 field: 'mobile',
-                title: '代理手机号',
-                search: true,
-                visible: false
-            }, {
-                field: 'wxId',
-                title: '代理微信号',
-                search: true,
-                visible: false
-            }, {
-                field: 'realName',
-                title: '姓名'
-            }, {
-                field: 'mobile',
-                title: '手机号'
+                title: '手机号',
+                search: true
             }, {
                 field: 'wxId',
                 title: '微信号',
+                search: true
             }, {
                 field: 'level',
-                title: '授权等级',
-                type: 'select',
-                listCode: '627006',
-                keyName: 'level',
-                valueName: 'name',
-                visible: false
-            },
-            {
-                field: 'level1',
-                title: '授权等级',
+                title: '当前等级',
+                params: {
+                    highLevel: 6
+                },
                 formatter: function(v, data) {
                     var level = '';
                     items.map(function(item) {
@@ -63,6 +45,45 @@ $(function() {
                     return level
                 }
             }, {
+                field: 'applyLevel',
+                title: '申请等级',
+                params: {
+                    highLevel: 6
+                },
+                formatter: function(v, data) {
+                    var level = '';
+                    items.map(function(item) {
+                        if (item.level == data.applyLevel) {
+                            level = item.name
+                        }
+                    })
+                    return level
+                }
+            }, {
+                field: 'approveName',
+                title: '审核人'
+            }, {
+                field: 'userReferrerName',
+                title: '推荐人'
+            }, {
+                field: 'toUserName',
+                title: '归属人'
+            }, {
+                field: 'introduceName',
+                title: '介绍人'
+            }, {
+                field: 'type',
+                title: '操作类型',
+                key: 'agnecy_log_type',
+                formatter: Dict.getNameForList('agnecy_log_type')
+
+            }, {
+                field: 'status',
+                title: '状态',
+                key: 'agent_log_status',
+                formatter: Dict.getNameForList('agent_log_status')
+
+            }, {
                 field: 'approveDatetime',
                 title: '授权时间',
                 formatter: dateTimeFormat,
@@ -71,12 +92,6 @@ $(function() {
                 type: 'datetime',
                 field2: 'dateEnd',
                 twoDate: true,
-            }, {
-                field: 'approveName',
-                title: '审核人'
-            }, {
-                field: 'referrerName',
-                title: '推荐人'
             }
             /* , {
                             field: 'remark',

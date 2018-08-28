@@ -37,6 +37,6 @@ $(function() {
         view: view,
         detailCode: '627247',
         addCode: '627240',
-        editCode: '627241'
+        editCode: '627242'
     });
 });

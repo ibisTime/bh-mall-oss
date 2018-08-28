@@ -16,6 +16,7 @@ $(function() {
         var html = '<div>';
         var guigeHtml = '';
         var dingjiaHtml = '';
+        var allData = '';
         var temp = '';
         for (var v of items) {
             html += '<label style="padding: 20px 40px"><b>*</b>' + v.name + '</label>'
@@ -26,15 +27,8 @@ $(function() {
             title: '产品名称',
             required: true
         }, {
-            field: 'adPrice',
-            title: '建议价',
-            amount: true,
-            required: true
-        }, {
-            field: 'price',
-            title: '市场价',
-            amount: true,
-            required: true
+            field: 'orderNo',
+            title: '排序'
         }, {
             field: 'advPic',
             title: '广告图',
@@ -59,17 +53,54 @@ $(function() {
             code: code,
             detailCode: '627712',
             addCode: '627700',
-            editCode: '627701',
+            editCode: '627702',
             beforeSubmit: function(data) {
-                console.log(data);
-                //产品规格
-                data.specsList = specList;
-                // 奖励机制
-                data.awardList = awardList;
+                if (allData) {
+                    data.specsList = allData.specsList;
+                }
+                if (specList.length > 0) {
+                    //产品规格
+                    data.specsList = specList;
+                }
+                if (awardList.length > 0) {
+                    // 奖励机制
+                    data.awardList = awardList;
+                }
+
+                data.updater = getUserId();
 
                 return data
+            },
+            afterData: function(data) {
+                allData = data;
             }
         });
+        if (code) {
+            reqApi({
+                code: '627712',
+                json: {
+                    code: code
+                }
+            }, true).then(function(data) {
+                let specsList = data.specsList;
+                let a = 0;
+                specsList.map(function(item) {
+                    item.price = item.price / 1000;
+                    var guigeTemp = '<div id="guigeDom' + a + '">' +
+                        '<span style="width : 150px;padding:20px 60px;display: inline-block">' + item.name + '</span>' +
+                        '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.number + '</span>' +
+                        '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.stockNumber + '</span>' +
+                        '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.weight + '</span>' +
+                        '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.price + '</span>' +
+                        '<span style="width : 120px;padding:20px 40px;display: inline-block">' + bool[item.isSingle] + '</span>' +
+                        '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.singleNumber + '</span>' +
+                        '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="display: inline-block;!important;" value="删除"/>' +
+                        '</div>';
+                    $('#guigeHtml').append(guigeTemp);
+                    a++;
+                });
+            })
+        }
         hideLoading();
         $('#remark').parent().after(
             '<div style="width:100%">' +
@@ -78,9 +109,11 @@ $(function() {
             '<div style="border: 1px solid #ced9df">' +
             '<label style="padding: 20px 40px"><b>*</b>规格名称</label>' +
             '<label style="padding: 20px 40px"><b>*</b>规格包含数量</label>' +
+            '<label style="padding: 20px 40px"><b>*</b>库存</label>' +
             '<label style="padding: 20px 40px"><b>*</b>重量(g)</label>' +
             '<label style="padding: 20px 40px"><b>*</b>价格</label>' +
             '<label style="padding: 20px 40px"><b>*</b>是否允许拆单</label>' +
+            '<label style="padding: 20px 40px"><b>*</b>拆单数量</label>' +
             '<div id="guigeHtml"></div>' +
             '</div>' +
             '</div>');
@@ -104,10 +137,12 @@ $(function() {
                 var guigeTemp = '<div id="guigeDom' + a + '">' +
                     '<span style="width : 150px;padding:20px 60px;display: inline-block">' + item.name + '</span>' +
                     '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.number + '</span>' +
-                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.weight + '</span>' +
-                    '<span style="width : 180px;padding:20px 40px;display: inline-block">' + item.price + '</span>' +
-                    '<span style="width : 170px;padding:20px 40px;display: inline-block">' + bool[item.issingle] + '</span>' +
-                    '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="margin-left:40px;display: inline-block;!important;" value="删除"/>' +
+                    '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.stockNumber + '</span>' +
+                    '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.weight + '</span>' +
+                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.price + '</span>' +
+                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + bool[item.isSingle] + '</span>' +
+                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.singleNumber + '</span>' +
+                    '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="display: inline-block;!important; margin-left: 0px;" value="删除"/>' +
                     '</div>';
 
 
@@ -126,7 +161,7 @@ $(function() {
                         '<td>' + item.specsPriceList[v].monthlyNumber + '</td>' +
                         '<td>' + bool[item.specsPriceList[v].isBuy] + '</td>' +
                         '<td>' + item.specsPriceList[v].minNumber + '</td>' +
-                        '<td>' + item.specsPriceList[v].minQuantity + '</td>' +
+                        '<td>' + item.specsPriceList[v].singleNumber + '</td>' +
                         '</tr>'
                     dingjiaHtml += dingjiaTemp;
                 }
@@ -192,7 +227,7 @@ $(function() {
                 }, {
                     title: '取消',
                     handler: function() {
-                        dw.close().remove();
+                        goBack();
                     }
                 }]
 
@@ -221,6 +256,13 @@ $(function() {
                 }, {
                     field: 'number',
                     title: '规格包含数量',
+                    required: true,
+                    formatter(v, data) {
+                        return data.number;
+                    }
+                }, {
+                    field: 'stockNumber',
+                    title: '库存',
                     required: true
                 }, {
                     field: 'weight',
@@ -232,7 +274,7 @@ $(function() {
                     amount: true,
                     required: true
                 }, {
-                    field: 'issingle',
+                    field: 'isSingle',
                     title: '是否允许拆单',
                     required: true,
                     type: 'select',
@@ -240,6 +282,9 @@ $(function() {
                         '1': '是',
                         '0': '否'
                     }
+                }, {
+                    field: 'singleNumber',
+                    title: '拆单数量'
                 }],
                 buttons: [{
                     title: '确定',
@@ -247,18 +292,29 @@ $(function() {
 
                         if ($('#popForm').valid()) {
                             var data = $('#popForm').serializeObject();
+                            if (data.singleNumber <= 0 && data.isSingle != 0) {
+                                $('#singleNumber').css('border', '1px solid red');
+                                toastr.info('拆单数量不能小于或等于0');
+                                return;
+                            } else {
+                                $('#singleNumber').css('border', '1px solid #ced9df');
+                            }
                             temp.name = data.name;
                             temp.number = data.number;
+                            temp.stockNumber = data.stockNumber;
+                            temp.singleNumber = data.singleNumber;
                             temp.weight = data.weight;
                             temp.price = data.price;
-                            temp.issingle = data.issingle;
+                            temp.isSingle = data.isSingle;
 
                             var guigeTemp = '<div id="guigeDom' + g + '">' +
                                 '<span style="width : 150px;padding:20px 60px;display: inline-block">' + temp.name + '</span>' +
                                 '<span style="width : 150px;padding:20px 40px;display: inline-block">' + temp.number + '</span>' +
+                                '<span style="width : 150px;padding:20px 40px;display: inline-block">' + temp.stockNumber + '</span>' +
                                 '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.weight + '</span>' +
-                                '<span style="width : 180px;padding:20px 40px;display: inline-block">' + temp.price / 1000 + '</span>' +
-                                '<span style="width : 170px;padding:20px 40px;display: inline-block">' + bool[temp.issingle] + '</span>' +
+                                '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.price / 1000 + '</span>' +
+                                '<span style="width : 120px;padding:20px 40px;display: inline-block">' + bool[temp.isSingle] + '</span>' +
+                                '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.singleNumber + '</span>' +
                                 '<input id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:40px;display: inline-block;!important;" value="删除"/>'
                             '</div>';
 

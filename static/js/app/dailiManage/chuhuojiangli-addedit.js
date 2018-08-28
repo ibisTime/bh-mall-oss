@@ -16,6 +16,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '订单金额',
+        amount: true,
         formatter: function(v, data) {
             return moneyFormat(data.orderInformation.amount)
         }

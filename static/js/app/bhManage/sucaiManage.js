@@ -37,8 +37,13 @@ $(function() {
                 required: true
             },
             {
-                field: 'updateDatetime',
-                title: '是否显示在列表'
+                field: 'status',
+                title: '是否显示在列表',
+                type: 'select',
+                data: {
+                    '1': '是',
+                    '0': '否'
+                }
             }, {
                 field: 'updateDatetime',
                 title: '添加时间',
@@ -65,7 +70,15 @@ $(function() {
             pageCode: '627430',
             deleteCode: '627422'
         });
+        // 详情
+        $('#ydetailBtn').off().click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            window.location.href = './sucaiManage_addedit.html?detail=ok&code=' + selRecords[0].code + '&v=1';
+        });
     })
-
 
 });

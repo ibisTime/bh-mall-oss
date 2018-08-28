@@ -65,6 +65,20 @@ $(function() {
         formatter: dateTimeFormat,
         readonly: true
     }, {
+        field: 'payCardInfo',
+        title: '支付渠道信息',
+        readonly: true,
+        formatter(v, data) {
+            return data.withdraw.payCardInfo;
+        }
+    }, {
+        field: 'payCardNo',
+        title: '支付渠道账号',
+        readonly: true,
+        formatter(v, data) {
+            return data.withdraw.payCardNo;
+        }
+    }, {
         field: 'status',
         title: '状态',
         type: 'select',
@@ -77,10 +91,12 @@ $(function() {
         readonly: true
     }];
 
+
+
     var options = {
         fields: fields,
         code: code,
-        detailCode: '627492',
+        detailCode: '627495',
         view: view,
         beforeSubmit: function(data) {
             data.order = data.code;

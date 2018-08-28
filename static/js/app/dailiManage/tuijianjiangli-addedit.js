@@ -14,6 +14,7 @@ $(function() {
         search: true
     }, {
         field: 'amount',
+        amount: true,
         title: '订单金额',
         formatter: function(v, data) {
             return moneyFormat(data.orderInformation.amount)

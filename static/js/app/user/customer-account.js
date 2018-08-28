@@ -21,10 +21,12 @@ $(function() {
         title: '账号'
     }, {
         field: 'amount',
+        amount: true,
         title: '余额',
         formatter: moneyFormat
     }, {
         field: 'frozenAmount',
+        amount: true,
         title: '冻结金额',
         formatter: moneyFormat
     }, {

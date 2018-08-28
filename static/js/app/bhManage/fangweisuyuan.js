@@ -5,7 +5,7 @@ $(function() {
         title: '',
         checkbox: true
     }, {
-        field: 'code',
+        field: 'refCode',
         title: '箱码'
     }, {
         field: 'miniCode',
@@ -17,9 +17,6 @@ $(function() {
         field: 'orderCode',
         title: '关联订单编号',
         search: true
-    }, {
-        field: 'refCode',
-        title: '关联箱码编号'
     }, {
         field: 'useDatetime',
         title: '使用时间',
@@ -33,7 +30,7 @@ $(function() {
     }];
     buildList({
         columns: columns,
-        pageCode: '627895',
+        pageCode: '627885',
         searchParams: {
             statusList: ['2', '3']
         }

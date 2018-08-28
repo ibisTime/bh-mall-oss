@@ -24,8 +24,35 @@ $(function() {
                 return data.code
             }
         }, {
+            field: 'productName',
+            title: '产品名称',
+            required: true
+        }, {
+            field: 'quantity',
+            title: '数量',
+            required: true,
+            formatter(v, data) {
+                return data.quantity;
+            }
+        }, {
+            field: 'specsName',
+            title: '产品规格',
+            required: true
+        }, {
             field: 'changeProductName',
-            title: '产品名称'
+            title: '置换产品',
+            required: true
+        }, {
+            field: 'canChangeQuantity',
+            title: '置换数量',
+            required: true,
+            formatter: function(v, data) {
+                return data.canChangeQuantity;
+            }
+        }, {
+            field: 'changeSpecsName',
+            title: '置换产品规格',
+            required: true
         }, {
             field: 'amount',
             title: '付款金额',
@@ -62,7 +89,8 @@ $(function() {
         }, {
             field: 'approveNote',
             title: '审核备注',
-            readonly: false
+            readonly: false,
+            required: true
         }];
 
 
@@ -103,7 +131,7 @@ $(function() {
         }, {
             title: '取消',
             handler: function() {
-                dw.close().remove();
+                goBack();
             }
         }];
 

@@ -16,7 +16,7 @@ $(function() {
         field: 'roleCode',
         type: 'select',
         required: true,
-        pageCode: '627045',
+        listCode: '627046',
         keyName: 'code',
         valueName: 'name'
     }, {

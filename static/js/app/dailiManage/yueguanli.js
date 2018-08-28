@@ -39,7 +39,10 @@ $(function() {
             listCode: '627006',
             keyName: 'level',
             valueName: 'name',
-            visible: false
+            visible: false,
+            params: {
+                highLevel: 6
+            }
         }, {
             field: 'level1',
             title: '代理等级',
@@ -61,7 +64,7 @@ $(function() {
         }, {
             field: 'amount',
             title: '余额',
-            formatter: moneyFormat
+            amount: true
         }, {
             field: 'status',
             title: '状态',

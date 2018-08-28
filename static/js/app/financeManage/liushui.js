@@ -1,17 +1,17 @@
 $(function() {
-	
+
 
     var columns = [{
         field: '',
         title: '',
         checkbox: true
     }, {
+        field: 'accountNumber',
+        title: '账号'
+    }, {
         field: 'realName',
         title: '户名',
-        search: true,
-        formatter : function(v, data) {
-        	return data.userInformation?data.userInformation.realName : '-'
-        }
+        search: true
     }, {
         field: 'accountNumber',
         title: '账号'
@@ -53,15 +53,18 @@ $(function() {
         title: '创建时间',
         formatter: dateTimeFormat
     }, {
-        field: 'reamrk',
+        field: 'remark',
         title: '备注'
     }];
-    
+
 
     buildList({
         columns: columns,
-        pageCode: '627490'
-
+        pageCode: '627490',
+        searchParams: {
+            limit: '10',
+            type: 'P'
+        }
     });
-    
+
 });

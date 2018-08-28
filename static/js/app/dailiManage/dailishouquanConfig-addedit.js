@@ -6,13 +6,8 @@ $(function() {
     view === '1' ? view = true : view = false;
 
     var fields = [{
-        field: 'level',
+        field: 'name',
         title: '等级名称',
-        type: 'select',
-        listCode: '627006',
-        keyName: 'level',
-        searchName: 'level',
-        valueName: 'name',
         readonly: true
     }, {
         field: 'level1',
@@ -30,7 +25,7 @@ $(function() {
         type: 'select',
         data: { '1': '是', '0': '否' }
     }, {
-        field: 'isIntro',
+        field: 'isJsAward',
         title: '本等级是否可被介绍',
         required: true,
         type: 'select',
@@ -62,7 +57,7 @@ $(function() {
         code: code,
         view: view,
         detailCode: '627007',
-        editCode: '627002',
+        editCode: '627001',
         beforeSubmit: function(data) {
             data.level = level;
             data.name = name;

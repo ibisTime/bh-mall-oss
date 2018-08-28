@@ -46,10 +46,7 @@ $(function() {
         title: '位置',
         field: 'location',
         type: "select",
-        data: {
-            "index_banner": "首页"
-        },
-        value: "index_banner",
+        key: 'bananer_belong',
         required: true,
         readonly: view
     }, {

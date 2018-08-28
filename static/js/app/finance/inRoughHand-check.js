@@ -33,6 +33,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         formatter: moneyFormat,
         readonly: true
     }, {
@@ -124,7 +125,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 data.adjustResult = '1';
-                data.adjustUser = getUserName();
+                data.adjustUser = getUserId();
                 reqApi({
                     code: '802801',
                     json: data
@@ -139,7 +140,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 data.adjustResult = '0';
-                data.adjustUser = getUserName();
+                data.adjustUser = getUserId();
                 reqApi({
                     code: '802801',
                     json: data

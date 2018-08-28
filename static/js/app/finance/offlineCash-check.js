@@ -19,7 +19,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 data.approveResult = '1';
-                data.approveUser = getUserName();
+                data.approveUser = getUserId();
                 data.codeList = [data.code];
                 reqApi({
                     code: '802752',
@@ -35,7 +35,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 data.approveResult = '0';
-                data.approveUser = getUserName();
+                data.approveUser = getUserId();
                 data.codeList = [data.code];
                 reqApi({
                     code: '802752',
@@ -103,6 +103,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         formatter: moneyFormat
     }, {
 

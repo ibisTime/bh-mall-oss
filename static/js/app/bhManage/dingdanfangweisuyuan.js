@@ -1,11 +1,11 @@
 $(function() {
-// 报货管理-云仓管理-全部订单
+    // 报货管理-云仓管理-全部订单
 
 
     reqApi({
         code: '627006',
-    }, true).then(function (data) {
-        var items = data.map(function (item) {
+    }, true).then(function(data) {
+        var items = data.map(function(item) {
             return {
                 level: item.level,
                 name: item.name
@@ -13,38 +13,38 @@ $(function() {
         });
 
         var columns = [{
-            field : '',
-            title : '',
-            checkbox : true
-        },{
-            field : 'code',
-            title : '订单编号'
-        },{
-            field : 'productName',
-            title : '产品名称',
-        },{
-            field : 'amount',
-            title : '付款金额',
+            field: '',
+            title: '',
+            checkbox: true
+        }, {
+            field: 'code',
+            title: '订单编号'
+        }, {
+            field: 'productName',
+            title: '产品名称',
+        }, {
+            field: 'amount',
+            title: '付款金额',
             formatter: moneyFormat
         }, {
-            field : 'status',
-            title : '订单状态',
+            field: 'status',
+            title: '订单状态',
             search: true,
             type: 'select',
-            key : 'order_status',
-            formatter : Dict.getNameForList('order_status')
+            key: 'order_status',
+            formatter: Dict.getNameForList('order_status')
         }, {
-            field : 'kind',
-            title : '订单类型',
+            field: 'kind',
+            title: '订单类型',
             search: true,
             type: 'select',
-            key :'order_type',
-            formatter : Dict.getNameForList('order_type')
+            key: 'order_type',
+            formatter: Dict.getNameForList('order_type')
         }, {
             field: 'realName',
             title: '下单代理',
-            formatter : function(v, data) {
-                return data.user?data.user.realName : '-'
+            formatter: function(v, data) {
+                return data.user ? data.user.realName : '-'
             }
         }, {
             field: 'level',
@@ -54,53 +54,53 @@ $(function() {
             listCode: '627006',
             keyName: 'level',
             valueName: 'name',
-            visible : false
+            visible: false
         }, {
             field: 'level1',
             title: '下单代理等级',
-            formatter : function(v, data) {
+            formatter: function(v, data) {
                 var level = '';
                 items.map(function(item) {
-                    if(item.level == data.user.level) {
+                    if (item.level == data.user.level) {
                         level = item.name
                     }
                 })
                 return level
             }
-        },{
-            field : 'signer',
-            title : '收货人'
         }, {
-            field : 'mobile',
-            title : '收货人电话'
+            field: 'signer',
+            title: '收货人'
         }, {
-            field : 'applyDatetime',
-            title : '下单日期',
+            field: 'mobile',
+            title: '收货人电话'
+        }, {
+            field: 'applyDatetime',
+            title: '下单日期',
             formatter: dateTimeFormat
         }, {
-            field : 'remark',
-            title : '备注'
+            field: 'remark',
+            title: '备注'
         }, {
-            field : 'keyword',
-            title : '关键字',
+            field: 'keyword',
+            title: '关键字',
             search: true,
             visible: false
         }];
         buildList({
             columns: columns,
             pageCode: '627662',
-            searchParams:{
-                statusList: ['3','4']
+            searchParams: {
+                statusList: ['3', '4']
             }
         });
 
-        $('#suyuanjiluBtn').click(function () {
+        $('#suyuanjiluBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if (selRecords.length <= 0) {
                 toastr.info("请选择记录");
                 return;
             }
-            window.location.href = "./fangweisuyuan-suyuan.html?v=1&code="+selRecords[0].code;
+            window.location.href = "./fangweisuyuan-suyuan.html?v=1&code=" + selRecords[0].code;
         })
     })
 

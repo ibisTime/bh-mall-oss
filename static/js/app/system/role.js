@@ -8,13 +8,6 @@ $(function() {
         title: '角色名称',
         search: true
     }, {
-        field: 'level',
-        title: '角色等级',
-        formatter: Dict.getNameForList('role_level'),
-        search: true,
-        type: 'select',
-        key: 'role_level'
-    }, {
         field: 'updater',
         title: '更新人'
     }, {

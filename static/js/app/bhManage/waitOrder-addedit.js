@@ -30,27 +30,35 @@ $(function() {
             field: 'productName',
             title: '产品名称',
         }, {
+            field: 'quantity',
+            title: '购买数量',
+            formatter(v, data) {
+                return data.quantity;
+            }
+        }, {
+            field: 'specsName',
+            title: '产品规格',
+        }, {
             field: 'amount',
             title: '付款金额',
+            amount: true,
             formatter: moneyFormat
         }, {
             field: 'status',
             title: '订单状态',
             type: 'select',
-            formatter: Dict.getNameForList('order_status')
+            key: 'out_order_status',
+            formatter: Dict.getNameForList('out_order_status')
 
         }, {
             field: 'kind',
             title: '订单类型',
             type: 'select',
-            formatter: Dict.getNameForList('order_type')
+            formatter: Dict.getNameForList('out_order_type')
 
         }, {
             field: 'realName',
-            title: '下单代理',
-            formatter: function(v, data) {
-                return data.user ? data.realName : '-'
-            }
+            title: '下单代理'
         }, {
             field: 'level',
             title: '下单代理等级',
@@ -64,11 +72,28 @@ $(function() {
                 return level
             }
         }, {
-            field: 'signeName',
+            field: 'teamLeader',
+            title: '团队长名称'
+        }, {
+            field: 'teamName',
+            title: '团队名称',
+            formatter: function(v, data) {
+                return data.teamName
+            }
+        }, {
+            field: 'signer',
             title: '收货人'
         }, {
             field: 'mobile',
             title: '收货人电话'
+        }, {
+            field: 'quyu',
+            title: '区域',
+            required: true,
+            type: 'citySelect'
+        }, {
+            field: 'address',
+            title: '详细地址'
         }, {
             field: 'applyDatetime',
             title: '下单日期',
@@ -87,7 +112,7 @@ $(function() {
                 var data = $('#popForm').serializeObject();
                 data.code = code;
                 data.result = "1";
-                data.updater = getUserName();
+                data.updater = getUserId();
                 reqApi({
                     code: '627647',
                     json: data
@@ -103,7 +128,7 @@ $(function() {
                 var data = $('#popForm').serializeObject();
                 data.code = code;
                 data.result = "0";
-                data.updater = getUserName();
+                data.updater = getUserId();
                 reqApi({
                     code: '627647',
                     json: data
@@ -121,7 +146,10 @@ $(function() {
 
         buildDetail({
             fields: fields,
-            code: code,
+            code: {
+                code,
+                updater: getUserId()
+            },
             view: view,
             buttons: cancel ? buttons : null,
             detailCode: '627664',

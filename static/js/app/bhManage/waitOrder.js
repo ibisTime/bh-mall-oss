@@ -25,33 +25,33 @@ $(function() {
         }, {
             field: 'quantity',
             title: '购买数量',
+            formatter(v, data) {
+                return data.quantity;
+            }
         }, {
-            field: 'productSpecsName',
+            field: 'specsName',
             title: '产品规格',
         }, {
             field: 'amount',
             title: '付款金额',
-            formatter: moneyFormat
+            amount: true
         }, {
             field: 'status',
             title: '订单状态',
             search: true,
             type: 'select',
-            key: 'order_status',
-            formatter: Dict.getNameForList('order_status')
+            key: 'out_order_status',
+            formatter: Dict.getNameForList('out_order_status')
         }, {
             field: 'kind',
             title: '订单类型',
             search: true,
             type: 'select',
-            key: 'order_type',
-            formatter: Dict.getNameForList('order_type')
+            key: 'out_order_type',
+            formatter: Dict.getNameForList('out_order_type')
         }, {
             field: 'realName',
-            title: '下单代理',
-            formatter: function(v, data) {
-                return data.user ? data.user.realName : '-'
-            }
+            title: '下单代理'
         }, {
             field: 'level',
             title: '下单代理等级',
@@ -74,11 +74,8 @@ $(function() {
                 return level
             }
         }, {
-            field: 'realName',
-            title: '上级代理',
-            formatter: function(v, data) {
-                return data.user ? data.user.realName : '-'
-            }
+            field: 'highUserName',
+            title: '上级代理'
         }, {
             field: 'teamLeader',
             title: '团队长名称'
@@ -89,7 +86,7 @@ $(function() {
                 return data.teamName
             }
         }, {
-            field: 'signeName',
+            field: 'signer',
             title: '收货人'
         }, {
             field: 'mobile',
@@ -118,6 +115,7 @@ $(function() {
             pageCode: '627662',
             searchParams: {
                 statusList: ['1', '2', '5'],
+                isWareSend: 1,
                 toUserId: getUserId()
             },
             singleSelect: false
@@ -168,7 +166,7 @@ $(function() {
                                         code: '627644',
                                         json: {
                                             codeList: codeList,
-                                            approver: getUserName(),
+                                            approver: getUserId(),
                                             approveNote: data.approveNote
                                         }
                                     }).done(function() {

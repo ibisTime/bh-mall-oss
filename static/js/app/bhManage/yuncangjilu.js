@@ -8,19 +8,29 @@ $(function() {
         checkbox: true
     }, {
         field: 'productName',
-        title: '产品名称'
+        title: '产品名称',
+        search: true
     }, {
         field: 'specsName',
         title: '规格名称'
     }, {
         field: 'tranNumber',
-        title: '变动库存'
+        title: '变动库存',
+        formatter(v, data) {
+            return data.tranNumber;
+        }
     }, {
         field: 'beforeNumber',
-        title: '变动前库存'
+        title: '变动前库存',
+        formatter(v, data) {
+            return data.beforeNumber;
+        }
     }, {
         field: 'afterNumber',
-        title: '变动后库存'
+        title: '变动后库存',
+        formatter(v, data) {
+            return data.afterNumber;
+        }
     }, {
         field: 'applyDatetime',
         title: '变动时间',
@@ -53,6 +63,11 @@ $(function() {
                     <img src="/static/images/t01.png">
                 </span>详情
             </li>
+            <li style="display:block;" id="gobackBtn">
+                <span>
+                    <img src="/static/images/t01.png">
+                </span>返回
+            </li>
         </div></div>`;
         let divHtml = $(html).find('.per').html();
         $('.toolbar').append(divHtml);
@@ -63,6 +78,9 @@ $(function() {
                 return;
             }
             window.location.href = "./productRecord_addedit.html?v=1&userId=" + selRecords[0].userId + '&code=' + selRecords[0].code;
+        })
+        $('#gobackBtn').off().click(function() {
+            window.location.href = "./yuncangchaxun.html";
         })
     }
 });

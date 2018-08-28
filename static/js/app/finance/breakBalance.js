@@ -24,10 +24,12 @@ $(function() {
     }, {
         field: 'amount',
         title: '余额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'frozenAmount',
         title: '冻结金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'currency',

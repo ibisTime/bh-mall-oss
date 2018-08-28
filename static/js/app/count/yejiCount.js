@@ -33,6 +33,7 @@ $(function() {
         }, {
             field: 'yjAmount',
             title: '余额',
+            amount: true,
             formatter: moneyFormat
         }, {
             field: 'sendAward',
@@ -43,7 +44,18 @@ $(function() {
         }, {
             field: 'intrAward',
             title: '介绍总额'
-        }];
+        }, {
+            field: 'impowerDatetime',
+            title: '日期',
+            formatter: dateTimeFormat,
+            field1: 'dateStart',
+            title1: '日期',
+            // type: 'date',
+            field2: 'dateEnd',
+            twoDate: true,
+            search: true,
+            visible: false
+        }, ];
         buildList({
             columns: columns,
             pageCode: '627850'

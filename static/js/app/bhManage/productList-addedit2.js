@@ -35,7 +35,7 @@ $(function() {
         }, {
             field: 'price',
             title: '市场价',
-            formatter: moneyFormat,
+            amount: true,
             required: true
         }, {
             field: 'advPic',
@@ -51,18 +51,24 @@ $(function() {
         }, {
             field: 'virNumber',
             title: '虚拟数量',
-            required: true
+            required: true,
+            formatter(v, data) {
+                return data.virNumber;
+            }
         }, {
             field: 'realNumber',
             title: '实际数量',
-            required: true
+            required: true,
+            formatter(v, data) {
+                return data.realNumber;
+            }
         }, {
             field: 'slogan',
             title: '广告语',
             required: true
         }, {
             field: 'isTotal',
-            title: '是否计入出货',
+            title: '是否计入出货奖励',
             type: 'select',
             data: { '1': '是', '0': '否' },
             required: true
@@ -165,7 +171,10 @@ $(function() {
                 }, {
                     field: 'number',
                     title: '规格包含数量',
-                    required: true
+                    required: true,
+                    formatter(v, data) {
+                        return data.number;
+                    }
                 }, {
                     field: 'weight',
                     title: '重量',

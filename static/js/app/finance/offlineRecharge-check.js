@@ -19,7 +19,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 data.payResult = '1';
-                data.payUser = getUserName();
+                data.payUser = getUserId();
                 data.codeList = [data.code];
                 reqApi({
                     code: '802701',
@@ -35,7 +35,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 data.payResult = '0';
-                data.payUser = getUserName();
+                data.payUser = getUserId();
                 data.codeList = [data.code];
                 reqApi({
                     code: '802701',
@@ -92,6 +92,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'currency',

@@ -23,24 +23,42 @@ $(function() {
             field: 'productName',
             title: '产品名称'
         }, {
+            field: 'specsName',
+            title: '产品规格',
+            required: true
+        }, {
             field: 'quantity',
-            title: '数量'
+            title: '数量',
+            formatter(v, data) {
+                return data.quantity;
+            }
         }, {
             field: 'amount',
             title: '付款金额',
             formatter: moneyFormat
         }, {
             field: 'changeProductName',
-            title: '置换产品',
-            formatter: moneyFormat
+            title: '置换产品'
+        }, {
+            field: 'changeSpecsName',
+            title: '置换产品规格',
+            required: true
         }, {
             field: 'canChangeQuantity',
             title: '置换数量',
-            formatter: moneyFormat
+            formatter(v, data) {
+                return data.canChangeQuantity;
+            }
         }, {
             field: 'changePrice',
             title: '换货价',
-            formatter: moneyFormat
+            formatter(v, data) {
+                if (data.changePrice) {
+                    return (parseInt(data.changePrice) / 1000) + '.00'
+                } else {
+                    return '-'
+                }
+            }
         }, {
             field: 'realName',
             title: '下单代理',
@@ -55,7 +73,10 @@ $(function() {
             listCode: '627006',
             keyName: 'level',
             valueName: 'name',
-            visible: false
+            visible: false,
+            params: {
+                highLevel: 6
+            }
         }, {
             field: 'status',
             title: '订单状态',
@@ -76,9 +97,6 @@ $(function() {
         }];
         buildList({
             columns: columns,
-            searchParams: {
-                status: 0
-            },
             pageCode: '627800'
         });
 
@@ -94,6 +112,17 @@ $(function() {
             } else {
                 toastr.info('该状态下不可进行审核');
             }
+
+        })
+
+        $('#ydetailBtn').off('click').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+
+            window.location.href = "./exchange_detail.html?v=1&code=" + selRecords[0].code;
 
         })
 

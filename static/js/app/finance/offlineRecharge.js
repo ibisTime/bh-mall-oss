@@ -21,6 +21,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '充值金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'bizType',
@@ -141,7 +142,7 @@ $(function() {
                             var data = $('#popForm').serializeObject();
                             data.codeList = dataCode;
                             data.payResult = "1";
-                            data.payUser = getUserName();
+                            data.payUser = getUserId();
                             reqApi({
                                 code: '802701',
                                 json: data
@@ -161,7 +162,7 @@ $(function() {
                             var data = [];
                             data.codeList = dataCode;
                             data.payResult = "1";
-                            data.payUser = getUserName();
+                            data.payUser = getUserId();
                             reqApi({
                                 code: '802701',
                                 json: data

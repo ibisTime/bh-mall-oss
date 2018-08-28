@@ -22,13 +22,16 @@ $(function() {
                 title: '姓名'
             }, {
                 field: 'level',
-                title: '目前等级',
+                title: '等级',
                 search: true,
                 type: 'select',
                 listCode: '627006',
                 keyName: 'level',
                 valueName: 'name',
-                visible: false
+                visible: false,
+                params: {
+                    highLevel: 6
+                }
             },
             {
                 field: 'level1',
@@ -65,16 +68,23 @@ $(function() {
                 }
             }, {
                 field: 'mobile',
-                title: '联系电话'
+                title: '联系电话',
+                formatter: function(v, data) {
+                    if (data.user) {
+                        return data.user.mobile;
+                    }
+                }
             }, {
                 field: 'wxId',
-                title: '微信号'
-            }, {
-                field: 'highUserName',
-                title: '新上级',
+                title: '微信号',
                 formatter: function(v, data) {
-                    return data.highUser ? data.highUser.realName : '-'
+                    if (data.user) {
+                        return data.user.wxId;
+                    }
                 }
+            }, {
+                field: 'toUserName',
+                title: '新上级'
             }, {
                 field: 'teamName',
                 title: '团队名称'
@@ -106,11 +116,22 @@ $(function() {
                 formatter: function(v, data) {
                     return dateTimeFormat(data.applyDatetime)
                 }
+            }, {
+                field: 'status',
+                title: '状态',
+                key: 'sj_status',
+                data: {
+                    '14': '通过',
+                    '15': '不通过'
+                }
             }
         ];
         buildList({
             columns: columns,
-            pageCode: '627305'
+            pageCode: '627305',
+            searchParams: {
+                status: '13',
+            }
         });
 
 

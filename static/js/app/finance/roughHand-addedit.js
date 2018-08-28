@@ -33,6 +33,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         formatter: moneyFormat,
         readonly: true
     }, {

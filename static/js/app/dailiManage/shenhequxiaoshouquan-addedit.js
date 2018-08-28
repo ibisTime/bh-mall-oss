@@ -54,7 +54,7 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                data.approver = getUserName();
+                data.approver = getUserId();
                 data.result = '1';
                 data.userId = userId;
                 data.remark = $('#remark').val();
@@ -71,7 +71,7 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                data.approver = getUserName();
+                data.approver = getUserId();
                 data.result = '0';
                 data.userId = userId;
                 data.remark = $('#remark').val();

@@ -23,7 +23,7 @@ $(function() {
         type: 'select',
         data: { '1': '是', '0': '否' }
     }, {
-        field: 'isIntro',
+        field: 'isJsAward',
         title: '本等级是否可被介绍',
         type: 'select',
         data: { '1': '是', '0': '否' }
@@ -33,8 +33,18 @@ $(function() {
         type: 'select',
         data: { '1': '是', '0': '否' }
     }, {
+        field: 'isCompanyImpower',
+        title: '授权是否需要公司审核',
+        type: 'select',
+        data: { '1': '是', '0': '否' }
+    }, {
+        field: 'minCharge',
+        title: '门槛款',
+        formatter: moneyFormat
+    }, {
         field: 'updater',
-        title: '更新人'
+        title: '更新人',
+        readonly: true
     }, {
         field: 'updateDatetime',
         title: '更新时间',
@@ -47,7 +57,8 @@ $(function() {
         columns: columns,
         searchParams: {
             orderColumn: 'level',
-            orderDir: 'asc'
+            orderDir: 'asc',
+            highLevel: 6
         },
         pageCode: '627005' //627015
     });

@@ -93,7 +93,7 @@ $(function() {
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
                     data.result = '1';
-                    data.approver = getUserName();
+                    data.approver = getUserId();
                     data.code = code;
                     reqApi({
                         code: '801021',
@@ -109,7 +109,7 @@ $(function() {
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
                     data.result = '0';
-                    data.approver = getUserName();
+                    data.approver = getUserId();
                     data.code = code;
                     reqApi({
                         code: '801021',

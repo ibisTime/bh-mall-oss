@@ -2,7 +2,8 @@ $(function() {
     var code = getQueryString('code');
     var userId = getQueryString('userId');
     var edit = getQueryString('edit');
-    var view = edit ? false : true
+    var view = edit ? false : true;
+    var le = '';
     var fields = [{
             field: 'realName',
             title: '姓名',
@@ -20,11 +21,11 @@ $(function() {
         }, {
             field: 'mkAmount',
             title: '门槛余额',
-            amount: true
+            formatter: moneyFormat
         }, {
-            field: 'whAmount',
+            field: 'wareAmount',
             title: '云仓余额',
-            amount: true
+            formatter: moneyFormat
         }, {
             field: 'wxId',
             title: '微信号'
@@ -43,16 +44,10 @@ $(function() {
             required: true
         }, {
             field: 'highUserName',
-            title: '上级',
-            formatter: function(v, data) {
-                return data.highUser ? data.highUser.realName : '-'
-            }
+            title: '上级'
         }, {
-            field: 'highUserNameMobile',
-            title: '上级电话',
-            formatter: function(v, data) {
-                return data.highUser ? data.highUser.mobile : '-'
-            }
+            field: 'highUserMobile',
+            title: '上级电话'
         }, {
             field: 'teamName',
             title: '团队名称'
@@ -60,17 +55,17 @@ $(function() {
             field: 'manageName',
             title: '关联管理员'
         }, {
-            field: 'refereeUserName',
-            title: '推荐人',
-            formatter: function(v, data) {
-                return data.refereeUser ? data.refereeUser.realName : '-'
-            }
+            field: 'introduceName',
+            title: '介绍人'
         }, {
-            field: 'refereeUserMoile',
-            title: '推荐人电话',
-            formatter: function(v, data) {
-                return data.refereeUser ? data.refereeUser.mobile : '-'
-            }
+            field: 'introduceMobile',
+            title: '介绍人电话'
+        }, {
+            field: 'userRefreeName',
+            title: '推荐人'
+        }, {
+            field: 'userRefreeMobile',
+            title: '推荐人电话'
         }, {
             field: 'status',
             title: '授权状态',
@@ -101,7 +96,8 @@ $(function() {
         listCode: '627006',
         keyName: 'level',
         valueName: 'name',
-        required: true
+        required: true,
+        readonly: true
     }, {
         field: 'teamName',
         title: '团队名称',
@@ -126,20 +122,36 @@ $(function() {
         required: true
     }];
 
+    var buttons = [{
+        title: '确定',
+        handler: function() {
+            var data = $('#jsForm').serializeObject();
+            data.userId = userId;
+            reqApi({
+                code: '627314',
+                json: data
+            }).done(function(data) {
+                sucDetail();
+            });
+
+        }
+    }, {
+        title: '取消',
+        handler: function() {
+            goBack();
+        }
+    }];
+
 
 
     buildDetail({
         fields: edit ? edit1 : fields,
         view: view,
+        buttons: edit ? buttons : '',
         code: {
             userId: userId
         },
-        detailCode: '627327',
-        editCode: '627314',
-        beforeEdit: function(data) {
-            data.userId = userId;
-            return data;
-        }
+        detailCode: '627327'
     });
     hideLoading();
 });

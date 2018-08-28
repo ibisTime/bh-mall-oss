@@ -1,6 +1,6 @@
 $(function() {
     var code = getQueryString('code');
-    
+
     var userId = getQueryString('userId');
     var view = !!getQueryString('v');
 
@@ -79,9 +79,17 @@ $(function() {
         readonly: true
     }];
 
+    var buttons = [{
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
+    }];
+
     var options = {
         fields: fields,
         code: code,
+        buttons,
         detailCode: '627495',
         view: view,
         beforeSubmit: function(data) {

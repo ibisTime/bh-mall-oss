@@ -22,6 +22,8 @@ $(function() {
         if (data.roleCode) {
             sessionStorage.setItem('roleCode', data.roleCode);
         }
+        sessionStorage.setItem('realName', data.realName);
+        sessionStorage.setItem('mobile', data.mobile);
         sessionStorage.setItem('userName', data.loginName);
     });
 

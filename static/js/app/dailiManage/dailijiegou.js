@@ -4,7 +4,7 @@ $(function() {
     let toorter = getQueryString("toorter");
     let setUserId = getQueryString("userId");
     showPermissionControl();
-    var manager;
+    var manager = null;
     var newList = [];
     var countMap = {};
     var columns = [{
@@ -77,14 +77,17 @@ $(function() {
         reqApi({
             code: '627321',
             json: {
-                userId: toorter ? setUserId : getUserId()
+                userId: toorter ? setUserId : '',
+                status: '8'
             }
         }).then(function(d) {
+            console.log(d)
             d.forEach(function(d, i) {
                 for (var v of items) {
                     d.level += '';
                     d.level = d.level.replace(v.level, v.name);
                 }
+                d.mobile = d.mobile ? d.mobile : '-';
                 var tmpl = {
                     userId: d.userId,
                     realName: d.realName ? d.realName + ' (电话号：' + d.mobile + ' )' : '-' + d.mobile,
@@ -106,8 +109,6 @@ $(function() {
                 textFieldName2: 'realName',
                 onSelect: onSelect,
                 onClick: onClick,
-                onCollapse: collapseAll,
-                onExpand: expandAll,
                 combine: true
                     // isLeaf : hasChildren
                     // idFieldName: 'code',
@@ -171,7 +172,10 @@ $(function() {
                     };
                 });
                 reqApi({
-                    code: '627321'
+                    code: '627321',
+                    json: {
+                        status: '8'
+                    }
                 }).then(function(data) {
                     var selectData = data.userList;
                     buildList({
@@ -179,7 +183,8 @@ $(function() {
                         columns: items,
                         pageCode: '627321',
                         searchParams: {
-                            userId: toorter ? setUserId : ''
+                            userId: toorter ? setUserId : '',
+                            status: '8'
                         },
                         tableId: 'tableList1',
                         exportDataType: 'combine',
@@ -270,7 +275,8 @@ $(function() {
                 reqApi({
                     code: '627321',
                     json: {
-                        'userId': toorter ? setUserId : note.data.userId
+                        'userId': note.data.userId,
+                        status: '8'
                     }
                 }).then(function(d) {
                     d.forEach(function(d, i) {
@@ -299,17 +305,14 @@ $(function() {
 
 
 
-        // var manager = $("#treeMenu").ligerGetTreeManager();
-
-
     }
 
     function collapseAll() {
-        manager.onExpand();
+
     }
 
     function expandAll() {
-        manager.onCollapse();
+
     }
 
     function onSelect(note) {
@@ -358,7 +361,7 @@ $(function() {
         var data = {
             roleCode: $("#code").val(),
             menuCodeList: menuList,
-            updater: getUserName()
+            updater: getUserId()
         };
         reqApi({
             code: '627060',

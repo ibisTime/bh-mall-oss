@@ -28,6 +28,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '取现金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'status',
@@ -68,9 +69,9 @@ $(function() {
         field2: 'approveDateEnd',
         twoDate: true,
         search: true,
-    },{
-        field:"payUser",
-        title:"回录人"
+    }, {
+        field: "payUser",
+        title: "回录人"
     }, {
         field: 'payDatetime',
         title: '回录时间',
@@ -141,7 +142,7 @@ $(function() {
                             var data = $('#popForm').serializeObject();
                             data.codeList = dataCode;
                             data.payResult = "1";
-                            data.payUser = getUserName();
+                            data.payUser = getUserId();
                             reqApi({
                                 code: '802753',
                                 json: data
@@ -161,7 +162,7 @@ $(function() {
                             var data = $('#popForm').serializeObject();
                             data.codeList = dataCode;
                             data.payResult = '0';
-                            data.payUser = getUserName();
+                            data.payUser = getUserId();
                             reqApi({
                                 code: '802753',
                                 json: data
@@ -233,7 +234,7 @@ $(function() {
                             var data = $('#popForm').serializeObject();
                             data.codeList = dataCode;
                             data.approveResult = "1";
-                            data.approveUser = getUserName();
+                            data.approveUser = getUserId();
                             reqApi({
                                 code: '802752',
                                 json: data
@@ -252,7 +253,7 @@ $(function() {
                             var data = $('#popForm').serializeObject();
                             data.codeList = dataCode;
                             data.approveResult = "0";
-                            data.approveUser = getUserName();
+                            data.approveUser = getUserId();
                             reqApi({
                                 code: '802752',
                                 json: data

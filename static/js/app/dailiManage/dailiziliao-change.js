@@ -3,7 +3,8 @@ $(function() {
     var userId = getQueryString('userId');
     var up = getQueryString('up');
     var level = getQueryString('level');
-    var referee = getQueryString('referee');
+    var referrer = getQueryString('referrer');
+    var isreferrer = getQueryString('isref');
     var admin = getQueryString('admin');
     var highUserId = getQueryString('high');
     var view = true;
@@ -12,8 +13,12 @@ $(function() {
             title: '姓名',
             readonly: view
         }, {
-            field: 'levelName',
-            title: '等级'
+            field: 'level',
+            title: '等级',
+            type: 'select',
+            listCode: '627006',
+            keyName: 'level',
+            valueName: 'name'
         }, {
             field: 'mobile1',
             title: '联系电话',
@@ -48,16 +53,20 @@ $(function() {
             title: '授权状态',
             formatter: Dict.getNameForList('agent_status')
         }, {
-            field: 'high',
-            title: '当前上级',
-            formatter: function(v, data) {
-                return data.highUser ? data.highUser.realName : '-'
-            }
+            field: 'highUserName',
+            title: '当前上级'
         }, {
             field: 'highUser',
             title: '新上级',
             type: 'select',
             listCode: level == 1 ? 627126 : 627326,
+            params: {
+                kind: 'B',
+                statusList: [8],
+                noUserId: highUserId,
+                highLevel: level
+            },
+            keyName: 'userId',
             valueName: '{{realName.DATA}}' + '-' + '{{mobile.DATA}}',
             readonly: false,
             required: true
@@ -65,62 +74,60 @@ $(function() {
     ];
 
 
-    var referee1 = [{
-            field: 'realName',
-            title: '姓名',
-            readonly: view
-        }, {
-            field: 'level',
-            title: '等级',
-            type: 'select',
-            listCode: '627006',
-            keyName: 'level',
-            valueName: 'name',
-        }, {
-            field: 'mobile',
-            title: '联系电话'
-        }, {
-            field: 'wxId',
-            title: '微信号'
-        }, {
-            field: 'highUserName',
-            title: '上级',
-            formatter: function(v, data) {
-                return data.highUser ? data.highUser.realName : '-'
-            }
-        }, {
-            field: 'higghUserMobile',
-            title: '上级电话',
-            formatter: function(v, data) {
-                return data.highUser ? data.highUser.mobile : '-'
-            }
-        }, {
-            field: 'teamName',
-            title: '团队名称'
-        }, {
-            field: 'manageName',
-            title: '关联管理员'
+    var referrer1 = [{
+        field: 'realName',
+        title: '姓名',
+        readonly: view
+    }, {
+        field: 'level',
+        title: '等级',
+        type: 'select',
+        listCode: '627006',
+        keyName: 'level',
+        valueName: 'name',
+    }, {
+        field: 'mobile',
+        title: '联系电话'
+    }, {
+        field: 'wxId',
+        title: '微信号'
+    }, {
+        field: 'highUserName',
+        title: '上级'
+    }, {
+        field: 'highUserMobile',
+        title: '上级电话'
+    }, {
+        field: 'teamName',
+        title: '团队名称'
+    }, {
+        field: 'manageName',
+        title: '关联管理员'
+    }, {
+        field: 'userRefreeName',
+        title: '推荐人'
+    }, {
+        field: 'userRefreeMobile',
+        title: '推荐人电话'
+    }, {
+        field: 'status',
+        title: '授权状态',
+        formatter: Dict.getNameForList('agent_status')
+    }, {
+        field: 'userreferrer',
+        title: '新推荐人姓名',
+        listCode: '627326',
+        params: {
+            kind: 'B',
+            statusList: [8],
+            noUserList: [userId, referrer],
+            level: level
         },
-        // {
-        //     field : 'updateDatetime',
-        //     title : '推荐人'
-        // }, {
-        //     field : 'updateDatetime',
-        //     title : '推荐人电话'
-        // },
-        {
-            field: 'status',
-            title: '授权状态',
-            formatter: Dict.getNameForList('agent_status')
-        }, {
-            field: 'userReferee',
-            title: '新推荐人姓名',
-            listCode: '627326',
-            type: 'select',
-            valueName: '{{realName.DATA}}-{{mobile.DATA}}', //'{{mobile.DATA}}-{{kindName.DATA}}-{{nickname.DATA}}'
-            readonly: false
-        }
-    ];
+        type: 'select',
+        keyName: 'userId',
+        valueName: '{{realName.DATA}}-{{mobile.DATA}}', //'{{mobile.DATA}}-{{kindName.DATA}}-{{nickname.DATA}}'
+        readonly: false
+    }];
 
 
     var admin1 = [{
@@ -142,16 +149,10 @@ $(function() {
         title: '微信号'
     }, {
         field: 'highUserName',
-        title: '上级',
-        formatter: function(v, data) {
-            return data.highUser ? data.highUser.realName : '-'
-        }
+        title: '上级'
     }, {
-        field: 'higghUserMobile',
-        title: '上级电话',
-        formatter: function(v, data) {
-            return data.highUser ? data.highUser.mobile : '-'
-        }
+        field: 'highUserMobile',
+        title: '上级电话'
     }, {
         field: 'teamName',
         title: '团队名称'
@@ -159,17 +160,11 @@ $(function() {
         field: 'manageName',
         title: '关联管理员'
     }, {
-        field: 'refereeUserName',
-        title: '推荐人',
-        formatter: function(v, data) {
-            return data.refereeUser ? data.refereeUser.realName : '-'
-        }
+        field: 'userRefreeName',
+        title: '推荐人'
     }, {
-        field: 'refereeUserMobile',
-        title: '推荐人电话',
-        formatter: function(v, data) {
-            return data.refereeUser ? data.refereeUser.mobile : '-'
-        }
+        field: 'userRefreeMobile',
+        title: '推荐人电话'
     }, {
         field: 'status',
         title: '授权状态',
@@ -197,7 +192,6 @@ $(function() {
                     var data = $('#jsForm').serializeObject();
                     data['updater'] = getUserId();
                     data["userId"] = userId;
-                    data['highUser'] = highUserId;
                     reqApi({
                         code: "627312",
                         json: data
@@ -224,15 +218,14 @@ $(function() {
             editCode: '627921'
         });
         hideLoading();
-    } else if (referee) {
+    } else if (isreferrer) {
         var buttons = [{
             title: '确认',
             handler: function() {
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
-                    data['updater'] = getUserName();
+                    data['updater'] = getUserId();
                     data["userId"] = userId;
-                    data['userReferee'] = userId;
                     reqApi({
                         code: "627313",
                         json: data
@@ -248,7 +241,7 @@ $(function() {
             }
         }];
         buildDetail({
-            fields: referee1,
+            fields: referrer1,
             view: view,
             buttons: buttons,
             code: {
@@ -266,7 +259,7 @@ $(function() {
             handler: function() {
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
-                    data['updater'] = getUserName();
+                    data['updater'] = getUserId();
                     data["userId"] = userId;
                     reqApi({
                         code: "627317",

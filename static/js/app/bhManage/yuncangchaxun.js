@@ -20,19 +20,25 @@ $(function() {
             search: true
         }, {
             field: 'productName',
-            title: '名称'
+            title: '产品名称'
+        }, {
+            field: 'specsName',
+            title: '产品规格',
+            required: true
         }, {
             field: 'price',
             title: '单价',
-            formatter: moneyFormat
+            formatter: moneyFormat,
+            amount: true
         }, {
             field: 'quantity',
             title: '库存'
         }, {
             field: 'amount',
-            title: '总价'
+            title: '总价',
+            amount: true
         }, {
-            field: 'realName',
+            field: 'keyword',
             title: '代理人',
             search: true,
             formatter: function(v, data) {
@@ -46,7 +52,10 @@ $(function() {
             listCode: '627006',
             keyName: 'level',
             valueName: 'name',
-            visible: false
+            visible: false,
+            params: {
+                highLevel: 6
+            }
         }, {
             field: 'level1',
             title: '代理人等级',

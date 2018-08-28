@@ -26,12 +26,9 @@ $(function() {
     }, {
         title: '位置',
         field: 'location',
-        formatter: function(v) {
-            if (v == "index_banner") {
-                return '首页';
-            }
-        },
         type: 'select',
+        key: 'bananer_belong',
+        formatter: Dict.getNameForList('bananer_belong'),
         search: true
 
     }, {

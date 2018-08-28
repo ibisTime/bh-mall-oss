@@ -8,6 +8,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         readonly: true,
         formatter: moneyFormat
     }, {

@@ -26,13 +26,13 @@ $(function() {
             return data.productQuantity[2];
         }
     }, {
-        field: 'updateDatetime',
+        field: 'impowerDatetime',
         title: '日期',
         formatter: dateTimeFormat,
-        field1: 'applyDateStart',
+        field1: 'dateStart',
         title1: '日期',
         // type: 'date',
-        field2: 'applyDateEnd',
+        field2: 'dateEnd',
         twoDate: true,
         search: true,
         visible: false

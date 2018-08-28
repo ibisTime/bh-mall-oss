@@ -7,30 +7,34 @@ $(function() {
         }, {
             field: 'accountNumber',
             title: '账号'
+        }, {
+            field: 'realName',
+            title: '代理人',
+            formatter(v, data) {
+                return data.agent ? data.agent.realName : '-'
+            }
+        }, {
+            field: 'mobile',
+            title: '代理电话',
+            formatter: function(v, data) {
+                return data.agent ? data.agent.mobile : '-'
+            }
+        }, {
+            field: 'teamName',
+            title: '代理团队',
+            formatter: function(v, data) {
+                return data.agent ? data.agent.teamName : '-'
+            }
         },
-        /* {
-               field: 'channelType',
-               title: '渠道',
-               type: 'select',
-               key: 'channel_type',
-               formatter: Dict.getNameForList('channel_type'),
-               search: true
-           },  */
-        //  {
-        //      field: 'bizType',
-        //      title: '业务类型',
-        //      type: 'select',
-        //      key: 'biz_type',
-        //      formatter: Dict.getNameForList('biz_type'),
-        //      search: true
-        //  },
         {
             field: 'inAmount',
             title: '奖励收入',
+            amount: true,
             formatter: moneyFormat
         }, {
             field: 'outAmount',
             title: '奖励支出',
+            amount: true,
             formatter: moneyFormat
         }, {
             field: 'status',
@@ -55,7 +59,6 @@ $(function() {
             bizType: 'AJ_JSJL',
         }
     });
-
     //支出明细
     $('#outRecordBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -83,4 +86,5 @@ $(function() {
             //          toastr.info('无收入明细')
             //      }
     })
+
 });

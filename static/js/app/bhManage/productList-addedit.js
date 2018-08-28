@@ -38,9 +38,9 @@ $(function() {
                 formatter: moneyFormat,
                 required: true
             }, {
-                field: 'price',
-                title: '市场价',
-                formatter: moneyFormat,
+                field: 'adPrice',
+                title: '建议价',
+                amount: true,
                 required: true
             }, {
                 field: 'changePrice',
@@ -61,18 +61,24 @@ $(function() {
             }, {
                 field: 'virNumber',
                 title: '虚拟数量',
-                required: true
+                required: true,
+                formatter(v, data) {
+                    return data.virNumber;
+                }
             }, {
                 field: 'realNumber',
                 title: '实际数量',
-                required: true
+                required: true,
+                formatter(v, data) {
+                    return data.realNumber;
+                }
             }, {
                 field: 'slogan',
                 title: '广告语',
                 required: true
             }, {
                 field: 'isTotal',
-                title: '是否计入出货',
+                title: '是否计入出货奖励',
                 type: 'select',
                 data: { '1': '是', '0': '否' },
                 required: true

@@ -14,6 +14,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'payCardInfo',
@@ -22,11 +23,9 @@ $(function() {
         field: 'payCardNo',
         title: '卡号'
     }, {
-        field: 'loginName',
+        field: 'accountName',
         title: '申请人',
-        formatter: function(v, data) {
-            return data.user ? data.user.loginName : '-'
-        }
+        search: true
     }, {
         field: 'applyDatetime',
         title: '申请时间',
@@ -38,14 +37,14 @@ $(function() {
         key: 'withdraw_status',
         formatter: Dict.getNameForList('withdraw_status')
     }, {
-        field: 'applyUser',
+        field: 'approveName',
         title: '审核人'
     }, {
         field: 'applyDatetime',
         title: '审核时间',
         formatter: dateTimeFormat
     }, {
-        field: 'payUser',
+        field: 'payUserName',
         title: '回录人'
     }, {
         field: 'payDatetime',

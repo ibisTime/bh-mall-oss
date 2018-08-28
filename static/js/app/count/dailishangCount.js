@@ -10,6 +10,17 @@ $(function() {
         type: 'select',
         keyName: 'level',
         valueName: 'name',
+        visible: false,
+        params: {
+            highLevel: 6
+        }
+    }, {
+        field: 'status',
+        title: '授权状态',
+        type: 'select',
+        key: 'agent_status',
+        valueName: 'name',
+        search: true,
         visible: false
     }, {
         field: 'teamName',

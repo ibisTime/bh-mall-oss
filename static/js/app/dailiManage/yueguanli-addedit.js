@@ -37,10 +37,10 @@ $(function() {
                 return level
             }
         }, {
-            field: 'mobile',
+            field: 'impowerDatetime',
             title: '授权时间',
             formatter: function(v, data) {
-                return data.agent ? data.agent.mobile : '-'
+                return dateTimeFormat(data.agent.approveDatetime);
             }
         }, {
             field: 'mobile',
@@ -67,15 +67,13 @@ $(function() {
         }, {
             field: 'changeAmount',
             title: '充值金额',
+            amount: true,
             readonly: false,
             required: true,
-            number: true
-        }, {
-            field: 'changeAmount',
-            title: '充值原因',
-            readonly: false,
-            required: true,
-            number: true
+            number: true,
+            formatter(v, data) {
+                return null;
+            }
         }, {
             title: "充值截图",
             field: "pic",
@@ -100,34 +98,39 @@ $(function() {
             title: '代理等级',
             type: 'select',
             formatter: function(v, data) {
-                var level = ''
-                items.map(function(item) {
-                    if (item.user) {
-                        if (item.level == data.user.level) {
+                var level = '';
+                if (data.agent) {
+                    items.map(function(item) {
+                        if (item.level == data.agent.level) {
                             level = item.name
                         }
-                    }
-                })
+                    })
+                }
                 return level
+            }
+        }, {
+            field: 'impowerDatetime',
+            title: '授权时间',
+            formatter: function(v, data) {
+                return dateTimeFormat(data.agent.approveDatetime);
             }
         }, {
             field: 'mobile',
             title: '代理电话',
             formatter: function(v, data) {
-                return data.user ? data.user.mobile : '-'
+                return data.agent ? data.agent.mobile : '-'
             }
         }, {
             field: 'wxId',
             title: '代理微信',
             formatter: function(v, data) {
-                return data.user ? data.user.wxId : '-'
+                return data.agent ? data.agent.wxId : '-'
             }
         }, {
-
             field: 'cvalue',
             title: '代理团队',
             formatter: function(v, data) {
-                return data.user ? data.user.teamName : '-'
+                return data.agent ? data.agent.teamName : '-'
             }
         }, {
             field: 'amount',
@@ -136,15 +139,13 @@ $(function() {
         }, {
             field: 'changeAmount',
             title: '扣款金额',
+            amount: true,
             readonly: false,
             required: true,
-            number: true
-        }, {
-            field: 'changeAmount',
-            title: '扣款原因',
-            readonly: false,
-            required: true,
-            number: true
+            number: true,
+            formatter(v, data) {
+                return null;
+            }
         }, {
             title: "扣款截图",
             field: "pic",
@@ -167,7 +168,6 @@ $(function() {
                     var data = $('#jsForm').serializeObject();
                     // console.log($('.center-img-wrap').children('img').attr('src').split('/')[3].split('?')[0]);
                     data.accountNumber = accountNumber;
-                    data.changeAmount *= 1000;
                     data.changeAmount = chongzhi ? data.changeAmount : 0 - (+data.changeAmount);
                     data.remark = $('#remark').val();
                     reqApi({

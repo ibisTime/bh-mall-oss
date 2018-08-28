@@ -9,11 +9,12 @@ $(function() {
             return data.code;
         }
     }, {
-        field: 'amobile',
+        field: 'amount',
         title: '订单金额',
         formatter: moneyFormat
     }, {
         field: 'realName',
+        readonly: true,
         title: '下单代理'
     }, {
         field: 'level',
@@ -43,19 +44,37 @@ $(function() {
         title: '商品规格'
     }, {
         field: 'price',
-        title: '产品单价'
+        title: '产品单价',
+        amount: true
     }, {
         field: 'remark',
         title: '备注',
+        readonly: false,
         required: true
     }];
 
     var buttons = [{
-        title: '确定',
+        title: '通过',
         handler: function() {
             var data = $('#jsForm').serializeObject();
             data.code = code;
             data.result = "1";
+            data.approver = getUserId();
+            data.approveNote = $('#approveNote').val();
+            reqApi({
+                code: '627904',
+                json: data
+            }).done(function(data) {
+                sucDetail();
+            });
+
+        }
+    }, {
+        title: '不通过',
+        handler: function() {
+            var data = $('#jsForm').serializeObject();
+            data.code = code;
+            data.result = "0";
             data.approver = getUserId();
             data.approveNote = $('#approveNote').val();
             reqApi({
@@ -74,6 +93,7 @@ $(function() {
     }];
     buildDetail({
         fields: fields,
+        view: '1',
         code: code,
         buttons,
         detailCode: '627917'

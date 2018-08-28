@@ -17,6 +17,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'applyDatetime',
@@ -30,7 +31,7 @@ $(function() {
         key: 'charge_status',
         formatter: Dict.getNameForList('charge_status')
     }, {
-        field: 'payUser',
+        field: 'payUserName',
         title: '审核人'
     }, {
         field: 'payDatetime',

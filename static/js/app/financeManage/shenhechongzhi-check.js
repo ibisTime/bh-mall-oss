@@ -8,17 +8,15 @@ $(function() {
             return data.code
         }
     }, {
-        field: 'cvalue1',
-        title: '充值人',
-        formatter: function(v, data) {
-            return data.user ? data.user.loginName : '-'
-        }
+        field: 'accountName',
+        title: '充值人'
     }, {
         field: 'teamName',
         title: '充值人团队'
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'chargePdf',
@@ -93,7 +91,11 @@ $(function() {
         view: view,
         code: code,
         buttons: buttons,
-        detailCode: '627472'
+        detailCode: '627472',
+        beforeSubmit: function(data) {
+            data.updater = getUserId();
+            return data;
+        }
     });
     hideLoading();
 });

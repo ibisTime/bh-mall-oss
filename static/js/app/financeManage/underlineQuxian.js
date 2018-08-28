@@ -14,6 +14,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '金额',
+        amount: true,
         formatter: moneyFormat
     }, {
         field: 'payCardInfo',
@@ -22,11 +23,9 @@ $(function() {
         field: 'payCardNo',
         title: '卡号'
     }, {
-        field: 'loginName',
+        field: 'accountName',
         title: '申请人',
-        formatter: function(v, data) {
-            return data.user ? data.user.loginName : '-'
-        }
+        search: true
     }, {
         field: 'applyDatetime',
         title: '申请时间',
@@ -35,17 +34,18 @@ $(function() {
         field: 'status',
         title: '状态',
         type: 'select',
+        search: true,
         key: 'withdraw_status',
         formatter: Dict.getNameForList('withdraw_status')
     }, {
-        field: 'applyUser',
+        field: 'approveName',
         title: '审核人'
     }, {
         field: 'applyDatetime',
         title: '审核时间',
         formatter: dateTimeFormat
     }, {
-        field: 'payUser',
+        field: 'payUserName',
         title: '回录人'
     }, {
         field: 'payDatetime',
@@ -57,19 +57,16 @@ $(function() {
         pageCode: '627510',
         singleSelect: false,
         searchParams: {
+            type: 'B',
             companyCode: OSS.company
         }
 
     });
     // 代申请
     $('#daishenqingBtn').click(function() {
-            var selRecords = $('#tableList').bootstrapTable('getSelections');
-            if (selRecords.length <= 0) {
-                toastr.info("请选择记录");
-                return;
-            }
-            window.location.href = "./underlineQuxian_daishenqing.html?accountNumber=" + selRecords[0].accountNumber
-
+            // var selRecords = $('#tableList').bootstrapTable('getSelections');
+            // window.location.href = "./underlineQuxian_daishenqing.html?accountNumber=" + selRecords[0].accountNumber
+            window.location.href = "./underlineQuxian_daishenqing.html";
         })
         // 批量审核
     $('#checkBtn').off('click').click(function() {
@@ -124,7 +121,7 @@ $(function() {
                                     code: '627502',
                                     json: {
                                         codeList: codeList,
-                                        approveUser: getUserName(),
+                                        approveUser: getUserId(),
                                         approveResult: '1'
                                     }
                                 }).done(function() {
@@ -142,7 +139,7 @@ $(function() {
                                     code: '627502',
                                     json: {
                                         codeList: codeList,
-                                        approveUser: getUserName(),
+                                        approveUser: getUserId(),
                                         approveResult: '0'
                                     }
                                 }).done(function() {
@@ -205,7 +202,6 @@ $(function() {
                     field: 'payNote',
                     title: '审批说明',
                     required: true,
-                    number: true,
                     min: '0'
                 }],
                 buttons: [{
@@ -217,7 +213,7 @@ $(function() {
                                 code: '627503',
                                 json: {
                                     codeList: codeList,
-                                    payUser: getUserName(),
+                                    payUser: getUserId(),
                                     payResult: '1'
                                 }
                             }).done(function() {
@@ -235,7 +231,7 @@ $(function() {
                                 code: '627503',
                                 json: {
                                     codeList: codeList,
-                                    payUser: getUserName(),
+                                    payUser: getUserId(),
                                     payResult: '0'
                                 }
                             }).done(function() {

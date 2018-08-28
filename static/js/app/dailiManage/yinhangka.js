@@ -9,7 +9,7 @@ $(function() {
         search: true
     }, {
         field: 'bankCode',
-        title: '银行简称'
+        title: '银行别称'
     }, {
         field: 'updateName',
         title: '最新修改人'

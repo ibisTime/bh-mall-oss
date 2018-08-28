@@ -21,15 +21,15 @@ $(function() {
     }, {
         field: 'applyDatetime',
         title: '申请时间',
-        amount: true,
-        required: true
+        required: true,
+        formatter: dateTimeFormat
     }, {
         field: 'status',
         title: '状态',
         key: 'charge_status',
         formatter: Dict.getNameForList('charge_status')
     }, {
-        field: 'payUser',
+        field: 'payUserName',
         title: '审核人'
     }, {
         field: 'payDatetime',
@@ -45,7 +45,7 @@ $(function() {
         editCode: '627002',
         beforeSubmit: function(data) {
             data.level = level;
-            data.updater = getUserName();
+            data.updater = getUserId();
             return data;
         }
     });

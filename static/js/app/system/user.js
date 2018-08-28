@@ -57,13 +57,22 @@ $(function() {
         location.href = "user_pwd_reset.html?userId=" + selRecords[0].userId + '&loginName=' + selRecords[0].loginName;
     });
 
-    $('#ueditBtn').click(function() {
+    $('#ueditjBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
         location.href = "user_uedit.html?userId=" + selRecords[0].userId + '&loginName=' + selRecords[0].loginName;
+    });
+
+    $('#ydetailBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        location.href = "user_ydetail.html?userId=" + selRecords[0].userId + '&loginName=' + selRecords[0].loginName;
     });
 
     //激活

@@ -1,6 +1,4 @@
 $(function() {
-    // hideLoading();
-    var code = getQueryString('code');
 
     var fields = [{
         field: 'kind',
@@ -18,6 +16,7 @@ $(function() {
     }, {
         title: '登录密码',
         field: 'loginPwd',
+        type: 'password',
         required: true
     }, {
         title: '备注',
@@ -27,8 +26,6 @@ $(function() {
 
     buildDetail({
         fields: fields,
-        code: code,
-        detailCode: '627327',
         addCode: '627110'
     });
     hideLoading();

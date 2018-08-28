@@ -1,5 +1,5 @@
 $(function() {
-    var accountNumber;
+    var accountNumber, id;
 
 
     reqApi({
@@ -8,8 +8,10 @@ $(function() {
             type: 'P'
         }
     }).done(function(data) {
-        console.log(data);
-        accountNumber = data[0].accountNumber;
+        if (data[0].accountNumber) {
+            accountNumber = data[0].accountNumber;
+        }
+        code = data[0].userId;
         reqApi({
             code: '627452',
             json: {
@@ -29,7 +31,7 @@ $(function() {
     });
 
     $('#accoutGrantBtn').click(function() {
-        window.location.href = "./liushui1.html";
+        window.location.href = './liushui1.html?accountNumber=' + accountNumber;
     })
 
 });

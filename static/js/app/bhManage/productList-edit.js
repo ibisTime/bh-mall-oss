@@ -3,7 +3,8 @@ $(function() {
     var detailData = {};
     var specList = [];
     var awardList = [];
-    var globalSpecialList;
+    var shopIndex = 0;
+    var globalSpecialList, gloData;
     reqApi({
         code: '627006',
     }, true).then(function(data) {
@@ -58,7 +59,7 @@ $(function() {
             required: true
         }, {
             field: 'isTotal',
-            title: '是否计入出货',
+            title: '是否计入出货奖励',
             type: 'select',
             data: {
                 '1': '是',
@@ -79,7 +80,6 @@ $(function() {
             beforeSubmit: function(data) {
                 //产品规格
                 data.specList = detailData.specsList;
-                console.log('beforeSubmit-detailData:', detailData.awardList[0]);
                 // 奖励机制
                 data.awardList = detailData.awardList;
                 data.code = code;
@@ -93,8 +93,9 @@ $(function() {
                 }
 
                 type0 = awardList.filter(ftype0);
+                data.updater = getUserId();
 
-                if (data.specList.length <= 0 || type0.length <= 0) {
+                if (data.specList.length <= 0 || awardList.length <= 0) {
                     toastr.info('请检查您是否填写规格体系以及奖励机制')
                 } else {
                     return data;
@@ -113,20 +114,22 @@ $(function() {
                     obj[spList[i].code] = spList[i].name;
                 }
                 globalSpecialList = obj;
+                gloData = JSON.parse(JSON.stringify(obj));
                 // 插入规格和定价
-                console.log(data)
                 for (let i = 0, len = spList.length; i < len; i++) {
+                    let singNum = spList[i].singleNumber == 0 ? '0' : spList[i].singleNumber;
                     var guigeTemp = `<tr id="guigeDom${i}">
-                        <td> ${spList[i].name ? spList[i].name : '-'} </td>
-                        <td> ${spList[i].number ? spList[i].number : '-'} </td>
-                        <td> ${spList[i].weight ? spList[i].weight : '-'} </td>
-                        <td> ${bool[spList[i].isNormalOrder] ? bool[spList[i].isNormalOrder] : '-'} </td>
-                        <td> ${bool[spList[i].isSqOrder] ? bool[spList[i].isSqOrder] : '-'} </td>
-                        <td> ${bool[spList[i].isSjOrder] ? bool[spList[i].isSjOrder] : '-'} </td>
-                        <td> ${bool[spList[i].isSingle] ? bool[spList[i].isSingle] : '-'} </td>
+                        <td> ${spList[i].name} </td>
+                        <td> ${spList[i].number} </td>
+                        <td> ${spList[i].stockNumber} </td>
+                        <td> ${spList[i].weight} </td>
+                        <td> ${bool[spList[i].isNormalOrder]} </td>
+                        <td> ${bool[spList[i].isSqOrder]} </td>
+                        <td> ${bool[spList[i].isSjOrder]} </td>
+                        <td> ${bool[spList[i].isSingle]} </td>
                         <td> ${globalSpecialList[spList[i].refCode] ? globalSpecialList[spList[i].refCode] : '-'} </td>
-                        <td> ${spList[i].singleNumber ? spList[i].singleNumber : '-'} </td>
-                        <td>
+                        <td> ${singNum ? singNum : '-'} </td>
+                        <td style="display: flex;">
                         <input id="delguigeBtn_${i}" data-name="${spList[i].name}" type="button" class="btn delguigeBtn" style="margin-left:0px;margin-top: 0;" value="删除"/>
                         <input id="editBtn_${i}" data-code="${spList[i].code}" data-name="${spList[i].name}" type="button" class="btn delguigeEditBtn" style="margin-left:0px;margin-top: 0;" value="修改"/>
                         </td>
@@ -144,18 +147,19 @@ $(function() {
                     } else {
                         isshow = true;
                     }
+                    dingjiaDom = i;
                     for (let v = 0; v < spList[i].priceList.length; v++) {
                         var dingjiaTemp = `<tr data-index="${dingjiaDom}" class="dingjiaDom${v}">
-                            <td> ${spList[i].name ? spList[i].name : '-'} </td>
-                            <td> ${items[spList[i].priceList[v].level - 1].name ? items[spList[i].priceList[v].level - 1].name : '-'} </td>
-                            <td> ${moneyFormat(spList[i].priceList[v].price) ? moneyFormat(spList[i].priceList[v].price) : '-'} </td>
-                            <td> ${moneyFormat(spList[i].priceList[v].changePrice) ? moneyFormat(spList[i].priceList[v].changePrice) : '-'} </td>
-                            <td> ${spList[i].priceList[v].dailyNumber ? spList[i].priceList[v].dailyNumber : '-'} </td>
-                            <td> ${spList[i].priceList[v].weeklyNumber ? spList[i].priceList[v].weeklyNumber : '-'} </td>
-                            <td> ${spList[i].priceList[v].monthlyNumber ? spList[i].priceList[v].monthlyNumber : '-'} </td>
-                            <td> ${bool[spList[i].priceList[v].isBuy] ? bool[spList[i].priceList[v].isBuy] : '-'} </td>
-                            <td> ${spList[i].priceList[v].minNumber ? spList[i].priceList[v].minNumber : '-'} </td>
-                            <td> ${spList[i].priceList[v].startNumber ? spList[i].priceList[v].startNumber : '-'} </td>
+                            <td class="shopName${shopIndex}"> ${spList[i].name} </td>
+                            <td> ${items[spList[i].priceList[v].level - 1].name} </td>
+                            <td> ${moneyFormat(spList[i].priceList[v].price)} </td>
+                            <td> ${moneyFormat(spList[i].priceList[v].changePrice)} </td>
+                            <td> ${spList[i].priceList[v].dailyNumber} </td>
+                            <td> ${spList[i].priceList[v].weeklyNumber} </td>
+                            <td> ${spList[i].priceList[v].monthlyNumber} </td>
+                            <td> ${bool[spList[i].priceList[v].isBuy]} </td>
+                            <td> ${spList[i].priceList[v].minNumber} </td>
+                            <td> ${spList[i].priceList[v].startNumber} </td>
                             <td>
                             <input data-index="${dingjiaDom}" data-sindex="${v}" data-code="${spList[i].code}" data-name="${spList[i].name}" type="button" class="btn specEditBtn" style="margin-left:0px;margin-top: 0;" value="修改"/>
                             </td>
@@ -170,9 +174,9 @@ $(function() {
                 detailData.directAwardList.map(function(index, item) {
                     var awardTemp = '<div id="awardDom' + item + '">' +
                         '<span style="width : 120px;padding:20px 40px;display: inline-block">' + items[index.level - 1].name + '</span>' +
-                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value1 * 100 + '%') + '</span>' +
-                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value2 * 100 + '%') + '</span>' +
-                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value3 * 100 + '%') + '</span>' +
+                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value1) + '</span>' +
+                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value2) + '</span>' +
+                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value3) + '</span>' +
                         '<input id="editAwardBtn_' + item + '" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>' +
                         '</div>'
                     awardHtml += awardTemp;
@@ -247,7 +251,7 @@ $(function() {
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
             '<table style="border: 1px solid #ced9df;width: 100%;">' +
             '<thead>' +
-            '<tr><th>规格名称</th><th>规格包含数量</th><th>重量(g)</th><th>是否允许普通单下单</th><th>是否允许授权单下单</th><th>是否允许升级单下单</th><th>是否可拆单</th><th>关联拆单编号</th><th>拆单数量</th><th>操作</th></tr>' +
+            '<tr><th>规格名称</th><th>规格包含数量</th><th>库存</th><th>重量(g)</th><th>是否允许普通单下单</th><th>是否允许授权单下单</th><th>是否允许升级单下单</th><th>是否可拆单</th><th>关联规格</th><th>拆单数量</th><th style="padding-left: 100px;">操作</th></tr>' +
             '</thead>' +
             '<tbody id="guigeHtml"></tbody>' +
             '</table>' +
@@ -257,7 +261,7 @@ $(function() {
         var awardHtml = '';
         $('#remark').parent().after(
             '<div style="width:100%">' +
-            '<span style="font-size: 18px">推荐奖励机制(请输入0-1之间的小数(%))</span>' +
+            '<span style="font-size: 18px">推荐奖励机制(请输入0-100之间的小数(%))</span>' +
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
             '<div style="border: 1px solid #ced9df">' +
             '<div id="awardTitle">' +
@@ -272,6 +276,7 @@ $(function() {
 
         // 修改产品规格
         $('#guigeHtml').on('click', '.delguigeEditBtn', function(e) {
+            globalSpecialList = JSON.parse(JSON.stringify(gloData));
             specList = detailData.specsList;
             var g = specList.length - 1;
             var code = $(this).data('code');
@@ -293,7 +298,10 @@ $(function() {
             }
             var useData = specList[g];
             useData.name0 = useData.name;
-            useData.isSqOrder0 = useData.isSqOrder;
+            delete globalSpecialList[useData.code];
+            console.log(useData);
+            console.log(globalSpecialList)
+            useData.isSqOrder = useData.isSqOrder;
 
             var dw = dialog({
                 content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
@@ -314,6 +322,10 @@ $(function() {
                     title: '规格包含数量',
                     required: true
                 }, {
+                    field: 'stockNumber',
+                    title: '库存',
+                    required: true
+                }, {
                     field: 'weight',
                     title: '重量',
                     required: true
@@ -327,7 +339,7 @@ $(function() {
                         '1': '是'
                     }
                 }, {
-                    field: 'isSqOrder0',
+                    field: 'isSqOrder',
                     title: '是否允许授权单下单',
                     required: true,
                     type: 'select',
@@ -355,7 +367,7 @@ $(function() {
                     }
                 }, {
                     field: 'refCode',
-                    title: '关联拆单编号',
+                    title: '关联规格编号',
                     type: 'select',
                     data: globalSpecialList
                 }, {
@@ -368,20 +380,32 @@ $(function() {
                     handler: function() {
                         if ($('#popForm').valid()) {
                             var temp = $('#popForm').serializeObject();
+                            if (temp.isSingle == 0) {
+                                data.singleNumber = 0;
+                            }
+                            if (temp.singleNumber <= 0 && temp.isSingle != 0) {
+                                $('#singleNumber').css('border', '1px solid red');
+                                toastr.info('拆单数量不能小于或等于0');
+                                return;
+                            } else {
+                                $('#singleNumber').css('border', '1px solid #ced9df');
+                            }
                             temp.code = useData.code || '';
                             temp.name = temp.name0;
-                            temp.isSqOrder = temp.isSqOrder0;
+                            temp.isSqOrder = temp.isSqOrder;
+                            let refCode = globalSpecialList[temp.refCode] ? globalSpecialList[temp.refCode] : '-';
                             var guigeTemp = '<tr id="guigeDom' + g + '">' +
                                 '<td>' + temp.name + '</td>' +
                                 '<td>' + temp.number + '</td>' +
+                                '<td>' + temp.stockNumber + '</td>' +
                                 '<td>' + temp.weight + '</td>' +
                                 '<td>' + bool[temp.isNormalOrder] + '</td>' +
                                 '<td>' + bool[temp.isSqOrder] + '</td>' +
                                 '<td>' + bool[temp.isSjOrder] + '</td>' +
                                 '<td>' + bool[temp.isSingle] + '</td>' +
-                                '<td>' + globalSpecialList[temp.refCode] + '</td>' +
+                                '<td>' + refCode + '</td>' +
                                 '<td>' + temp.singleNumber + '</td>' +
-                                '<td>' +
+                                '<td style="display:flex;">' +
                                 '<input data-name="' + temp.name + '" id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:0px;margin-top: 0;" value="删除"/>' +
                                 '<input id="editBtn_' + g + '" data-code="' + temp.code + '" data-name="' + temp.name + '" type="button" class="btn delguigeEditBtn" style="margin-left:0px;margin-top: 0;" value="修改"/>' +
                                 '</td>' +
@@ -395,6 +419,13 @@ $(function() {
                             } else {
                                 $('.delguigeBtn').attr('disabled', false);
                             }
+                            detailData.specsList[g] = {
+                                ...detailData.specsList[g],
+                                ...temp
+                            }
+                            Array.from($('.shopName' + g)).forEach((item) => {
+                                $(item).text(temp.name);
+                            })
                             hideLoading();
                         }
                     }
@@ -404,6 +435,7 @@ $(function() {
                         dw.close().remove();
                     }
                 }]
+
             });
             hideLoading();
         });
@@ -436,17 +468,19 @@ $(function() {
             $('#guigeHtml').empty();
             $('#dingjiaContent').empty();
             specList.map(function(item, index) {
+                let refCode = item.refCode ? item.refCode : '-';
                 var guigeTemp = '<tr id="guigeDom' + index + '">' +
                     '<td>' + item.name + '</td>' +
                     '<td>' + item.number + '</td>' +
+                    '<td>' + item.stockNumber + '</td>' +
                     '<td>' + item.weight + '</td>' +
                     '<td>' + bool[item.isNormalOrder] + '</td>' +
                     '<td>' + bool[item.isSqOrder] + '</td>' +
                     '<td>' + bool[item.isSjOrder] + '</td>' +
                     '<td>' + bool[item.isSingle] + '</td>' +
-                    '<td>' + item.refCode + '</td>' +
+                    '<td>' + refCode + '</td>' +
                     '<td>' + item.singleNumber + '</td>' +
-                    '<td>' +
+                    '<td style="display: flex;">' +
                     '<input id="delguigeBtn_' + index + '" data-name="' + item.name + '" type="button" class="btn delguigeBtn" style="margin-left:0px;margin-top:0px;" value="删除"/>' +
                     '<input id="editBtn_' + index + '" data-code="' + item.code + '" data-name="' + item.name + '" type="button" class="btn delguigeEditBtn" style="margin-left:0px;margin-top: 0;" value="修改"/>' +
                     '</td>' +
@@ -493,6 +527,10 @@ $(function() {
         $('#awardContent').on('click', '.editAwardBtn', function editAward(e) {
             var index = e.target.id.split('_')[1];
             var value = items[index].name;
+            let awardData = detailData.directAwardList[index];
+            let value1 = (awardData.value1);
+            let value2 = (awardData.value2);
+            let value3 = (awardData.value3);
             var dw = dialog({
                 content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
                     '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的奖励机制</li></ul>' +
@@ -515,16 +553,19 @@ $(function() {
                     hidden: true
                 }, {
                     field: 'value1',
-                    title: '直接推荐奖励',
-                    required: true
+                    title: '直接推荐奖励(%)',
+                    required: true,
+                    value: value1
                 }, {
                     field: 'value2',
-                    title: '间接推荐奖励',
-                    required: true
+                    title: '间接推荐奖励(%)',
+                    required: true,
+                    value: value2
                 }, {
                     field: 'value3',
-                    title: '次推荐奖励',
-                    required: true
+                    title: '次推荐奖励(%)',
+                    required: true,
+                    value: value3
                 }],
                 buttons: [{
                     title: '确定',
@@ -533,7 +574,7 @@ $(function() {
                             var data = $('#popForm').serializeObject();
                             data.level = +index + 1;
                             for (var v in awardList) {
-                                if (awardList[v].level - 1 == index && awardList[v].type == data.type) {
+                                if (awardList[v].level - 1 == index) {
                                     awardList[v].value1 = data.value1;
                                     awardList[v].value2 = data.value2;
                                     awardList[v].value3 = data.value3;
@@ -543,15 +584,15 @@ $(function() {
                                 // '<div id="awardDom'+index+'">'+
                                 '<span style="width : 120px;padding:20px 40px;display: inline-block">' + items[data.level - 1].name + '</span>' +
                                 // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
-                                '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+data.value1 * 100 + '%') + '</span>' +
-                                '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+data.value2 * 100 + '%') + '</span>' +
-                                '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+data.value3 * 100 + '%') + '</span>' +
+                                '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+data.value1) + '</span>' +
+                                '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+data.value2) + '</span>' +
+                                '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+data.value3) + '</span>' +
                                 '<input id="editAwardBtn_' + index + '" type="button" class="btn editAwardBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
                                 // '</div>'
 
 
 
-                            $('。editAwardBtn').click(function() {
+                            $('.editAwardBtn').click(function() {
                                 editAward(e);
                             })
                             $('#awardDom' + index).empty().append(awardTemp);
@@ -645,6 +686,7 @@ $(function() {
                             specsPrice.code = priceInfo.code || '';
                             specsPrice.level = priceInfo.level;
                             priceInfo = specsPrice;
+                            let startNumber = priceInfo.startNumber;
                             specList.splice(sIndex, 1, priceInfo);
                             detailData.specsList.splice(index, 1, specs);
                             $('.dingjiaDom' + sIndex + '[data-index=' + index + ']').replaceWith(
@@ -658,7 +700,7 @@ $(function() {
                                 <td> ${priceInfo.monthlyNumber} </td>
                                 <td> ${bool[priceInfo.isBuy]} </td>
                                 <td> ${priceInfo.minNumber} </td>
-                                <td> ${priceInfo.startNumber} </td>
+                                <td> ${startNumber} </td>
                                 <td>
                                 <input data-index=${index} data-sindex=${sIndex} data-code=${priceInfo.code} data-name=${specs.name} type="button" class="btn specEditBtn" style="margin-left:0px;margin-top: 0;" value="修改"/>
                                 </td>
@@ -704,6 +746,10 @@ $(function() {
                     title: '规格包含数量',
                     required: true
                 }, {
+                    field: 'stockNumber',
+                    title: '库存',
+                    required: true
+                }, {
                     field: 'weight',
                     title: '重量',
                     required: true
@@ -745,7 +791,7 @@ $(function() {
                     }
                 }, {
                     field: 'refCode',
-                    title: '关联拆单编号',
+                    title: '关联规格编号',
                     type: 'select',
                     data: globalSpecialList
                 }, {
@@ -756,9 +802,21 @@ $(function() {
                     title: '确定',
                     handler: function() {
                         if ($('#popForm').valid()) {
+                            shopIndex++;
                             var data = $('#popForm').serializeObject();
+                            if (temp.isSingle == 0) {
+                                data.singleNumber = 0;
+                            }
+                            if (data.singleNumber <= 0 && data.isSingle != 0) {
+                                $('#singleNumber').css('border', '1px solid red');
+                                toastr.info('拆单数量不能小于或等于0');
+                                return;
+                            } else {
+                                $('#singleNumber').css('border', '1px solid #ced9df');
+                            }
                             temp.name = data.name;
                             temp.number = data.number;
+                            temp.stockNumber = data.stockNumber;
                             temp.weight = data.weight;
                             temp.isNormalOrder = data.isNormalOrder;
                             temp.isSqOrder = data.isSqOrder;
@@ -766,52 +824,47 @@ $(function() {
                             temp.isSingle = data.isSingle;
                             temp.refCode = data.refCode;
                             temp.singleNumber = data.singleNumber;
-
+                            let refCode = globalSpecialList[temp.refCode] ? globalSpecialList[temp.refCode] : '-';
                             var guigeTemp = '<tr id="guigeDom' + g + '">' +
                                 '<td>' + temp.name + '</td>' +
                                 '<td>' + temp.number + '</td>' +
+                                '<td>' + temp.stockNumber + '</td>' +
+                                '<td>' + temp.weight + '</td>' +
                                 '<td>' + temp.weight + '</td>' +
                                 '<td>' + bool[temp.isNormalOrder] + '</td>' +
                                 '<td>' + bool[temp.isSqOrder] + '</td>' +
                                 '<td>' + bool[temp.isSjOrder] + '</td>' +
                                 '<td>' + bool[temp.isSingle] + '</td>' +
-                                '<td>' + globalSpecialList[temp.refCode] + '</td>' +
+                                '<td>' + refCode + '</td>' +
                                 '<td>' + temp.singleNumber + '</td>' +
-                                '<td>' +
+                                '<td style="display: flex;">' +
                                 '<input data-name="' + temp.name + '" id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:0px;margin-top: 0;" value="删除"/>' +
                                 '<input id="editBtn_' + g + '" data-code="' + temp.code + '" data-name="' + temp.name + '" type="button" class="btn delguigeEditBtn" style="margin-left:0px;margin-top: 0;" value="修改"/>' +
                                 '</td>' +
                                 '</tr>';
 
                             $('#guigeHtml').append(guigeTemp);
-                            if (detailData.specsList.length <= 1) {
-                                $('.delguigeBtn').attr('disabled', true);
-                            } else {
-                                $('.delguigeBtn').attr('disabled', false);
-                            }
                             dw.close().remove();
                             var circleList = []
                             for (var p = 0; p < items.length; p++) {
-                                if (items[p].level != 6) {
-                                    var field1 = {
-                                        field: items[p].level,
-                                        title: '等级',
-                                        value: items[p].name,
-                                        readonly: true
-                                    };
-                                    var field2 = {
-                                        field: 'price' + p,
-                                        title: '价格',
-                                        required: true
-                                    };
-                                    var field3 = {
-                                        field: 'changePrice' + p,
-                                        title: '换货价',
-                                        required: true
-                                    };
+                                var field1 = {
+                                    field: items[p].level,
+                                    title: '等级',
+                                    value: items[p].name,
+                                    readonly: true
+                                };
+                                var field2 = {
+                                    field: 'price' + p,
+                                    title: '价格',
+                                    required: true
+                                };
+                                var field3 = {
+                                    field: 'changePrice' + p,
+                                    title: '换货价',
+                                    required: true
+                                };
 
-                                    circleList.push(field1, field2, field3);
-                                }
+                                circleList.push(field1, field2, field3);
                             }
 
                             var dw1 = dialog({
@@ -833,17 +886,15 @@ $(function() {
                                             dw1.close().remove();
                                             var specsPriceList = []
                                             for (var v of items) {
-                                                if (v.level != 6) {
-                                                    var price1 = 'price' + (v.level - 1);
-                                                    var changePrice1 = 'changePrice' + (v.level - 1);
+                                                var price1 = 'price' + (v.level - 1);
+                                                var changePrice1 = 'changePrice' + (v.level - 1);
 
-                                                    var temp1 = {};
-                                                    temp1.level = v.level;
-                                                    temp1.price = data[price1] * 1000;
-                                                    temp1.changePrice = data[changePrice1] * 1000;
+                                                var temp1 = {};
+                                                temp1.level = v.level;
+                                                temp1.price = data[price1] * 1000;
+                                                temp1.changePrice = data[changePrice1] * 1000;
 
-                                                    specsPriceList.push(temp1);
-                                                }
+                                                specsPriceList.push(temp1);
                                             }
 
                                             var xiangouList = [];
@@ -851,7 +902,7 @@ $(function() {
                                                 0: '否',
                                                 1: '是'
                                             };
-                                            for (var p = 0; p < items.length - 1; p++) {
+                                            for (var p = 0; p < items.length; p++) {
                                                 xiangouList = xiangouList.concat([{
                                                     field: items[p].level,
                                                     title: '等级',
@@ -904,20 +955,18 @@ $(function() {
                                                             dw2.close().remove();
                                                             for (var i = 0; i < items.length; i++) {
                                                                 var v = items[i];
-                                                                if (v.level != 6) {
-                                                                    var dailyNumber = 'dailyNumber' + (v.level - 1);
-                                                                    var weeklyNumber = 'weeklyNumber' + (v.level - 1);
-                                                                    var monthlyNumber = 'monthlyNumber' + (v.level - 1);
-                                                                    var isBuy = 'isBuy' + (v.level - 1);
-                                                                    var minNumber = 'minNumber' + (v.level - 1);
-                                                                    var startNumber = 'startNumber' + (v.level - 1);
-                                                                    specsPriceList[i].dailyNumber = data[dailyNumber];
-                                                                    specsPriceList[i].weeklyNumber = data[weeklyNumber];
-                                                                    specsPriceList[i].monthlyNumber = data[monthlyNumber];
-                                                                    specsPriceList[i].isBuy = data[isBuy];
-                                                                    specsPriceList[i].minNumber = data[minNumber];
-                                                                    specsPriceList[i].startNumber = data[startNumber];
-                                                                }
+                                                                var dailyNumber = 'dailyNumber' + (v.level - 1);
+                                                                var weeklyNumber = 'weeklyNumber' + (v.level - 1);
+                                                                var monthlyNumber = 'monthlyNumber' + (v.level - 1);
+                                                                var isBuy = 'isBuy' + (v.level - 1);
+                                                                var minNumber = 'minNumber' + (v.level - 1);
+                                                                var startNumber = 'startNumber' + (v.level - 1);
+                                                                specsPriceList[i].dailyNumber = data[dailyNumber];
+                                                                specsPriceList[i].weeklyNumber = data[weeklyNumber];
+                                                                specsPriceList[i].monthlyNumber = data[monthlyNumber];
+                                                                specsPriceList[i].isBuy = data[isBuy];
+                                                                specsPriceList[i].minNumber = data[minNumber];
+                                                                specsPriceList[i].startNumber = data[startNumber];
                                                             }
                                                             temp.specsPriceList = specsPriceList;
 
@@ -925,7 +974,7 @@ $(function() {
                                                             var dingjiaHtml = '';
                                                             for (var v = 0; v < specsPriceList.length; v++) {
                                                                 var dingjiaTemp = '<tr data-index="' + dingjiaDom + '" class="dingjiaDom' + v + '">' +
-                                                                    '<td>' + temp.name + '</td>' +
+                                                                    '<td class="shopName' + shopIndex + '">' + temp.name + '</td>' +
                                                                     '<td>' + items[specsPriceList[v].level - 1].name + '</td>' +
                                                                     '<td>' + (moneyFormat(specsPriceList[v].price)) + '</td>' +
                                                                     '<td>' + (moneyFormat(specsPriceList[v].changePrice)) + '</td>' +
@@ -940,6 +989,11 @@ $(function() {
                                                                     '</td>' +
                                                                     '</tr>';
                                                                 dingjiaHtml += dingjiaTemp;
+                                                            }
+                                                            if (detailData.specsList.length <= 1) {
+                                                                $('.delguigeBtn').attr('disabled', true);
+                                                            } else {
+                                                                $('.delguigeBtn').attr('disabled', false);
                                                             }
 
                                                             $('#dingjiaContent').append(dingjiaHtml);

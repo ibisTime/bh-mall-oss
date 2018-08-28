@@ -15,13 +15,22 @@ $(function() {
         formatter: dateTimeFormat
     }, {
         field: 'beforeNumber',
-        title: '变动前库存'
+        title: '变动前库存',
+        formatter(v, data) {
+            return data.beforeNumber;
+        }
     }, {
         field: 'tranNumber',
-        title: '变动库存'
+        title: '变动库存',
+        formatter(v, data) {
+            return data.tranNumber;
+        }
     }, {
         field: 'afterNumber',
-        title: '变动后库存'
+        title: '变动后库存',
+        formatter(v, data) {
+            return data.afterNumber;
+        }
     }, {
         field: 'remark',
         title: '备注'

@@ -29,7 +29,6 @@ $(function() {
         title: '渠道类型',
         type: 'select',
         key: 'channel_type',
-
         formatter: Dict.getNameForList('channel_type'),
         readonly: true
     }, {
@@ -60,6 +59,20 @@ $(function() {
         formatter: moneyFormat,
         readonly: true
     }, {
+        field: 'payCardInfo',
+        title: '支付渠道信息',
+        readonly: true,
+        formatter(v, data) {
+            return data.withdraw.payCardInfo;
+        }
+    }, {
+        field: 'payCardNo',
+        title: '支付渠道账号',
+        readonly: true,
+        formatter(v, data) {
+            return data.withdraw.payCardNo;
+        }
+    }, {
         field: 'createDatetime',
         title: '金额変动时间',
         formatter: dateTimeFormat,
@@ -77,11 +90,19 @@ $(function() {
         readonly: true
     }];
 
+    var buttons = [{
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
+    }];
+
     var options = {
         fields: fields,
         code: code,
         detailCode: '627495',
-        view: view
+        view: view,
+        buttons
     };
 
     buildDetail(options);

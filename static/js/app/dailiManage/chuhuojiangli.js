@@ -4,51 +4,29 @@ $(function() {
             field: '',
             title: '',
             checkbox: true
+        }, {
+            field: 'realName',
+            title: '代理人',
+            formatter(v, data) {
+                return data.agent ? data.agent.realName : '-'
+            }
+        }, {
+            field: 'mobile',
+            title: '代理电话',
+            formatter: function(v, data) {
+                return data.agent ? data.agent.mobile : '-'
+            }
+        }, {
+            field: 'teamName',
+            title: '代理团队',
+            formatter: function(v, data) {
+                return data.agent ? data.agent.teamName : '-'
+            }
         },
-        //     {
-        // field : 'remark',
-        // title : '出货人',
-        // search: true
-        // },{
-        // field : 'mobile',
-        // title : '出货人手机'
-        // }, {
-        //     field : 'level',
-        //     title : '出货人等级'
-        // }, {
-        //     field : 'updateDatetime',
-        //     title : '出货人团队'
-        // }, {
-        //     field : 'product',
-        //     title : '出货产品',
-        //     search: true,
-        //     type: 'select'
-        // },
-        //     {
-        //     field: 'realName',
-        //     title: '户名',
-        //     search: true
-        // },
         {
             field: 'accountNumber',
             title: '账号'
         },
-        /* {
-               field: 'channelType',
-               title: '渠道',
-               type: 'select',
-               key: 'channel_type',
-               formatter: Dict.getNameForList('channel_type'),
-               search: true
-           }, */
-        //  {
-        //      field: 'bizType',
-        //      title: '业务类型',
-        //      type: 'select',
-        //      key: 'biz_type',
-        //      formatter: Dict.getNameForList('biz_type'),
-        //      search: true
-        //  },
         {
             field: 'inAmount',
             title: '奖励收入',

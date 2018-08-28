@@ -72,16 +72,10 @@ $(function() {
         title: '微信号'
     }, {
         field: 'highUserName',
-        title: '上级',
-        formatter: function(v, data) {
-            return data.highUser ? data.highUser.realName : '-'
-        }
+        title: '上级'
     }, {
-        field: 'higghUserMobile',
-        title: '上级电话',
-        formatter: function(v, data) {
-            return data.highUser ? data.highUser.mobile : '-'
-        }
+        field: 'highUserMobile',
+        title: '上级电话'
     }, {
         field: 'teamName',
         title: '团队名称'
@@ -105,7 +99,7 @@ $(function() {
             handler: function() {
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
-                    data['updater'] = getUserName();
+                    data['updater'] = getUserId();
                     data["userId"] = userId;
                     data.remark = $('#remark').val();
                     reqApi({
@@ -141,7 +135,7 @@ $(function() {
             handler: function() {
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
-                    data['updater'] = getUserName();
+                    data['updater'] = getUserId();
                     data["userId"] = userId;
                     reqApi({
                         code: "627261",

@@ -25,6 +25,6 @@ $(function() {
         fields: fields,
         code: { userId: userId },
         detailCode: '627127',
-        editCode: '627115'
+        editCode: '627113'
     });
 });

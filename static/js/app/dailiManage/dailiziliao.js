@@ -17,9 +17,12 @@ $(function() {
             listCode: '627006',
             keyName: 'level',
             valueName: 'name',
+            params: {
+                highLevel: 6
+            }
         }, {
-            field: 'mkAmount',
-            title: '余额',
+            field: 'wareAmount',
+            title: '云仓余额',
             amount: true
         }, {
             field: 'mobile',
@@ -37,7 +40,7 @@ $(function() {
             field: 'highUserName',
             title: '上级'
         }, {
-            field: 'highUserNameMobile',
+            field: 'highUserMobile',
             title: '上级电话'
         }, {
             field: 'teamName',
@@ -52,19 +55,13 @@ $(function() {
         }, {
             field: 'userRefreeMobile',
             title: '推荐人电话'
+        }, {
+            field: 'introduceName',
+            title: '介绍人'
+        }, {
+            field: 'introduceMobile',
+            title: '介绍人电话'
         },
-        /* {
-               field: 'toUserName',
-               title: '意向归属人',
-               formatter: function(v, data) {
-                   let mobile = data.toUserMobile ? data.toUserMobile : '';
-                   return v ? v + '-' + mobile : '';
-               }
-           }, {
-               field: 'impowerDatetime',
-               title: '授权时间',
-               formatter: dateTimeFormat
-           },  */
         {
             field: 'status',
             title: '授权状态',
@@ -72,13 +69,22 @@ $(function() {
             search: true,
             key: 'agent_status',
             formatter: Dict.getNameForList('agent_status')
+        }, {
+            field: 'quyu',
+            title: '区域',
+            formatter: function(v, data) {
+                return data.area ? data.province + ' ' + data.city + ' ' + data.area :
+                    data.city ? data.province + ' ' + data.city :
+                    data.province ? data.province : '-'
+            }
         }
     ];
     buildList({
         columns: columns,
         pageCode: '627325',
         searchParams: {
-            kind: 'B'
+            kind: 'B',
+            statusList: ['3', '4', '6', '7', '8', '9']
         }
     });
     /* 
@@ -109,6 +115,10 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
+        if (!selRecords[0].level) {
+            toastr.info("你还没有被授权");
+            return;
+        }
         window.location.href = "./dailiziliao_change.html?v=1&up=1&userId=" + selRecords[0].userId + '&level=' + selRecords[0].level + '&high=' + selRecords[0].highUserId;
     });
     // 修改推荐人
@@ -118,13 +128,21 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "./dailiziliao_change.html?v=1&referee=1&userId=" + selRecords[0].userId + "&level=" + selRecords[0].level;
+        if (!selRecords[0].level) {
+            toastr.info("你还没有被授权");
+            return;
+        }
+        window.location.href = "./dailiziliao_change.html?v=1&isref=1&userId=" + selRecords[0].userId + "&level=" + selRecords[0].level + "&referrer=" + selRecords[0].referrer;
     });
     // 修改管理员
     $('#changeAdminBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
+            return;
+        }
+        if (!selRecords[0].level) {
+            toastr.info("你还没有被授权");
             return;
         }
         window.location.href = "./dailiziliao_change.html?v=1&admin=1&userId=" + selRecords[0].userId;

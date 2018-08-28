@@ -31,7 +31,10 @@ $(function() {
             listCode: '627006',
             keyName: 'level',
             valueName: 'name',
-            visible: false
+            visible: false,
+            params: {
+                highLevel: 6
+            }
         }, {
             field: 'applyLevel1',
             title: '申请等级',
@@ -57,20 +60,15 @@ $(function() {
                 return data ? data.wxId : '-'
             }
         }, {
-            field: 'highUserName',
-            title: '上级',
-            formatter: function(v, data) {
-                return data ? data.agent.highUserName : '-'
-            }
+            field: 'toUserName',
+            title: '上级'
         }, {
             field: 'teamName',
-            title: '团队名称',
-            formatter: function(v, data) {
-                return data ? data.agent.teamName : '-'
-            }
+            title: '团队名称'
         }, {
             field: 'impowerAmount',
             title: '授权金额',
+            amount: true,
             formatter: moneyFormat
         }, {
             field: 'diyu',
@@ -86,8 +84,8 @@ $(function() {
             type: 'select',
             search: true,
             data: {
-                '5': '授权待公司审核',
-                '9': '申请退出待公司审核'
+                '7': '授权待公司审核',
+                '11': '授权退出'
             }
         }, {
             field: 'createDatetime',
@@ -111,8 +109,7 @@ $(function() {
             columns: columns,
             pageCode: '627285',
             searchParams: {
-                statusList: ['5', '9'],
-                userId: getUserId()
+                statusList: ['7', '11']
             }
         });
 
@@ -128,6 +125,14 @@ $(function() {
             window.location.href = "./shenheshouquan_check.html?v=1&userId=" + selRecords[0].userId;
         })
 
+        $('#qxcheckBtn').off().click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            window.location.href = "./shenheshouquan_check.html?v=1&userId=" + selRecords[0].userId + '&qx=1';
+        })
 
     })
 

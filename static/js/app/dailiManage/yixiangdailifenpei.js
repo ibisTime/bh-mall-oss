@@ -38,7 +38,10 @@ $(function() {
                 listCode: '627006',
                 keyName: 'level',
                 valueName: 'name',
-                visible: false
+                visible: false,
+                params: {
+                    highLevel: 6
+                }
             },
             {
                 field: 'applyLevel1',
@@ -82,12 +85,12 @@ $(function() {
             }, {
                 field: 'status',
                 title: '代理状态',
-                formatter: Dict.getNameForList('agent_status')
+                formatter: Dict.getNameForList('yx_status')
             }, {
-                field: 'source',
+                field: 'fromInfo',
                 title: '来源',
                 formatter: function(v, data) {
-                    return data ? data.source : '-'
+                    return data ? data.fromInfo : '-'
                 }
             }, {
                 // 显示
@@ -128,7 +131,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if (selRecords[0].status == '3') {
+            if (selRecords[0].status == '0') {
                 window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name));
             } else {
                 toastr.info('该状态下不可忽略意向');
@@ -146,6 +149,19 @@ $(function() {
 
         });
 
+        $('#edityxBtn').off().click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            if (selRecords[0].applyLevel > 1) {
+                toastr.info('非最高等级代理不可接受，请分配到其他代理');
+                return;
+            }
+            window.location.href = "./yixiangdailifenpei_edit.html?v=1&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name));
+        })
+
         // 审核分配
         $('#checkBtn').off().click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -153,16 +169,15 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if (selRecords[0].status == '3') {
-                console.log(selRecords[0]);
-                window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name));
+            if (selRecords[0].applyLevel == 1) {
+                toastr.info('该等级下不可分配');
+                return;
+            };
+            if (selRecords[0].status == '0') {
+                window.location.href = "./yixiangdailifenpei_hulveyixiang.html?v=1&fenpei=1&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name)) + '&lev=' + selRecords[0].applyLevel;
             } else {
                 toastr.info('该状态下不可忽略意向');
             }
-
-
-
-
         });
 
         // 修改资料

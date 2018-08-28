@@ -10,7 +10,7 @@ $(function() {
             return data.code;
         }
     }, {
-        field: 'amobile',
+        field: 'amount',
         title: '订单金额',
         readonly: view,
         formatter: moneyFormat
@@ -47,7 +47,8 @@ $(function() {
         title: '商品规格'
     }, {
         field: 'price',
-        title: '产品单价'
+        title: '产品单价',
+        amount: true
     }];
 
 

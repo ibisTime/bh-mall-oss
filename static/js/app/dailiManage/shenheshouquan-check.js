@@ -2,6 +2,7 @@ $(function() {
     // 实际上是审核授权的审核页面
     var code = getQueryString('code');
     var userId = getQueryString('userId');
+    var qx = getQueryString('qx');
     var view = true;
     var fields = [{
         field: 'realName1',
@@ -16,7 +17,10 @@ $(function() {
         type: 'select',
         listCode: '627008',
         keyName: 'level',
-        valueName: 'name'
+        valueName: 'name',
+        params: {
+            highLevel: 6
+        }
     }, {
         field: 'idNo',
         title: '身份证号'
@@ -31,17 +35,14 @@ $(function() {
         field: 'wxId',
         title: '微信号'
     }, {
-        field: 'highUserName',
-        title: '上级',
-        formatter: function(v, data) {
-            return data.highUser ? data.highUser.realName : '-'
-        }
+        field: 'toUserName',
+        title: '上级'
     }, {
         field: 'teamName',
         title: '团队名称'
     }, {
         field: 'impowerAmount',
-        title: '门槛费',
+        title: '授权金额',
         formatter: moneyFormat
     }, {
         field: 'diyu',
@@ -52,16 +53,19 @@ $(function() {
                 data.province ? data.province : '-'
         }
     }, {
+        field: 'address',
+        title: '详细地址'
+    }, {
         field: 'applyDatetime',
         title: '申请时间',
         formatter: dateTimeFormat
     }, {
         field: 'manager',
         title: '管理员',
-        type: 'select',
-        listCode: '627126',
-        valueName: 'realName',
-        readonly: false
+        readonly: true,
+        formatter(v, data) {
+            return sessionStorage.getItem('realName') + '-' + sessionStorage.getItem('mobile');
+        }
     }, {
         field: 'remark',
         title: '理由',
@@ -75,16 +79,27 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                data.approver = getUserName();
+                data.approver = getUserId();
+                data.updater = getUserId();
+                data.manager = getUserId();
                 data.result = '1';
                 data.userId = userId;
                 data.remark = $('#remark').val();
-                reqApi({
-                    code: '627272',
-                    json: data
-                }).done(function(data) {
-                    sucDetail();
-                });
+                if (qx) {
+                    reqApi({
+                        code: '627275',
+                        json: data
+                    }).done(function(data) {
+                        sucDetail();
+                    });
+                } else {
+                    reqApi({
+                        code: '627272',
+                        json: data
+                    }).done(function(data) {
+                        sucDetail();
+                    });
+                }
             }
         }
     }, {
@@ -92,16 +107,27 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                data.approver = getUserName();
+                data.approver = getUserId();
+                data.updater = getUserId();
+                data.manager = sessionStorage.getItem('realName') + '-' + sessionStorage.getItem('mobile');
                 data.result = '0';
                 data.userId = userId;
                 data.remark = $('#remark').val();
-                reqApi({
-                    code: '627272',
-                    json: data
-                }).done(function() {
-                    sucDetail();
-                });
+                if (qx) {
+                    reqApi({
+                        code: '627275',
+                        json: data
+                    }).done(function() {
+                        sucDetail();
+                    });
+                } else {
+                    reqApi({
+                        code: '627272',
+                        json: data
+                    }).done(function() {
+                        sucDetail();
+                    });
+                }
             }
         }
     }, {
