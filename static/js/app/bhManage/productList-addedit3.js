@@ -15,15 +15,10 @@ $(function() {
             '0': '否',
             '1': '是'
         };
-        var html = '<div>';
         var guigeHtml = '';
         var dingjiaHtml = '';
         var temp = '';
         var dingjiaDom = 0;
-        for (var v of items) {
-            html += '<label style="padding: 20px 40px"><b>*</b>' + v.name + '</label>'
-        }
-        html += '</div>';
         var fields = [{
             field: 'name',
             title: '产品名称',
@@ -52,10 +47,12 @@ $(function() {
         }, {
             field: 'virNumber',
             title: '虚拟库存',
+            'Z+': true,
             required: true
         }, {
             field: 'realNumber',
             title: '实际库存',
+            'Z+': true,
             required: true
         }, {
             field: 'slogan',
@@ -122,21 +119,27 @@ $(function() {
             '<div style="width:100%">' +
             '<span style="font-size: 18px">产品规格<input id="add1Btn" type="button" class="btn" style="margin-left:20px;display: inline-block;!important;" value="添加"/></span>' +
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
-            '<div style="border: 1px solid #ced9df;">' +
-            '<div style="display: flex;">' +
-            '<label style="padding: 20px 20px"><b>*</b>规格名称</label>' +
-            '<label style="padding: 20px 20px"><b>*</b>规格包含数量</label>' +
-            '<label style="padding: 20px 20px"><b>*</b>库存</label>' +
-            '<label style="padding: 20px 20px"><b>*</b>重量(g)</label>' +
-            '<label style="padding: 20px 20px"><b>*</b>是否允许普通单下单</label>' +
-            '<label style="padding: 20px 20px"><b>*</b>是否允许授权单下单</label>' +
-            '<label style="padding: 20px 20px"><b>*</b>是否允许升级单下单</label>' +
-            '<label style="padding: 20px 20px"><b>*</b>是否可拆单</label>' +
-            '<label style="padding: 20px 20px"><b>*</b>拆单数量</label>' +
-            '<label style="padding: 20px 40px"><b>*</b>操作</label>' +
-            '</div>' +
-            '<div id="guigeHtml"></div>' +
-            '</div>' +
+            '<table style="border: 1px solid #ced9df;width: 100%;">' +
+            '<thead>' +
+            '<tr><th>规格名称</th><th>规格包含数量</th><th>库存</th><th>重量(g)</th><th>是否允许普通单下单</th><th>是否允许授权单下单</th><th>是否允许升级单下单</th><th>是否可拆单</th><th>拆单数量</th><th>操作</th></tr>' +
+            '</thead>' +
+            '<tbody id="guigeHtml"></tbody>' +
+            '</table>' +
+            // '<div style="border: 1px solid #ced9df;">' +
+            // '<div style="display: flex;">' +
+            // '<label style="padding: 20px 20px"><b>*</b>规格名称</label>' +
+            // '<label style="padding: 20px 20px"><b>*</b>规格包含数量</label>' +
+            // '<label style="padding: 20px 20px"><b>*</b>库存</label>' +
+            // '<label style="padding: 20px 20px"><b>*</b>重量(g)</label>' +
+            // '<label style="padding: 20px 20px"><b>*</b>是否允许普通单下单</label>' +
+            // '<label style="padding: 20px 20px"><b>*</b>是否允许授权单下单</label>' +
+            // '<label style="padding: 20px 20px"><b>*</b>是否允许升级单下单</label>' +
+            // '<label style="padding: 20px 20px"><b>*</b>是否可拆单</label>' +
+            // '<label style="padding: 20px 20px"><b>*</b>拆单数量</label>' +
+            // '<label style="padding: 20px 40px"><b>*</b>操作</label>' +
+            // '</div>' +
+            // '<div id="guigeHtml"></div>' +
+            // '</div>' +
             '</div>');
 
         // var awardHtml1 = '';
@@ -219,10 +222,10 @@ $(function() {
                         '<td>' + item.specsPriceList[v].minNumber + '</td>' +
                         '<td>' + item.specsPriceList[v].startNumber + '</td>' +
                         `<td>
-                            <input data-index="${a}" 
-                            data-sindex="${v}"  
-                            data-name="${item.name}" 
-                            type="button" class="btn specEditBtn" 
+                            <input data-index="${a}"
+                            data-sindex="${v}"
+                            data-name="${item.name}"
+                            type="button" class="btn specEditBtn"
                             style="margin-left:0px;margin-top: 0;" value="修改"/>
                         </td>` +
                         '</tr>'
@@ -262,16 +265,19 @@ $(function() {
                 }, {
                     field: 'value1',
                     title: '直接推荐奖励(%)',
+                    'Z+': true,
                     required: true,
                     value: value1
                 }, {
                     field: 'value2',
                     title: '间接推荐奖励(%)',
+                    'Z+': true,
                     required: true,
                     value: value2
                 }, {
                     field: 'value3',
                     title: '次推荐奖励(%)',
+                    'Z+': true,
                     required: true,
                     value: value3
                 }],
@@ -401,14 +407,17 @@ $(function() {
                 }, {
                     field: 'number',
                     title: '规格包含数量',
+                    'Z+': true,
                     required: true
                 }, {
                     field: 'stockNumber',
                     title: '库存',
+                    'Z+': true,
                     required: true
                 }, {
                     field: 'weight',
-                    title: '重量',
+                    title: '重量(g)',
+                    'Z+': true,
                     required: true
                 }, {
                     field: 'isNormalOrder',
@@ -448,7 +457,8 @@ $(function() {
                     }
                 }, {
                     field: 'singleNumber',
-                    title: '拆单数量'
+                    title: '拆单数量',
+                    'Z+': true
                 }],
                 buttons: [{
                     title: '确定',
@@ -474,25 +484,39 @@ $(function() {
                             temp.isSjOrder = data.isSjOrder;
                             temp.isSingle = data.isSingle;
                             temp.singleNumber = data.singleNumber ? data.singleNumber : '-';
-                            var guigeTemp = '<div id="guigeDom' + g + '" style="display:flex;">' +
-                                '<span style="width : 120px;padding:20px 50px;display: inline-block">' + temp.name + '</span>' +
-                                '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.number + '</span>' +
-                                '<span style="width : 260px;padding:20px 40px;display: inline-block">' + temp.stockNumber + '</span>' +
-                                '<span style="width : 260px;padding:20px 40px;display: inline-block">' + temp.weight + '</span>' +
-                                '<span style="width : 260px;padding:20px 40px;display: inline-block">' + bool[temp.isNormalOrder] + '</span>' +
-                                '<span style="width : 220px;padding:20px 40px;display: inline-block">' + bool[temp.isSqOrder] + '</span>' +
-                                '<span style="width : 220px;padding:20px 40px;display: inline-block">' + bool[temp.isSjOrder] + '</span>' +
-                                '<span style="width : 240px;padding:20px 40px;display: inline-block">' + bool[temp.isSingle] + '</span>' +
-                                '<span style="width : 200px;padding:20px 40px;display: inline-block">' + temp.singleNumber + '</span>' +
-                                '<input id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:40px;display: inline-block;!important;" value="删除"/>' +
-                                '<input id="editBtn_' + g + '" data-name="' + temp.name + '" type="button" class="btn delguigeEditBtn" style="margin-left:0px;" value="修改"/>' +
-                                '</div>';
-
+                            // var guigeTemp = '<div id="guigeDom' + g + '" style="display:flex;">' +
+                            //     '<span style="width : 120px;padding:20px 50px;display: inline-block">' + temp.name + '</span>' +
+                            //     '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.number + '</span>' +
+                            //     '<span style="width : 260px;padding:20px 40px;display: inline-block">' + temp.stockNumber + '</span>' +
+                            //     '<span style="width : 260px;padding:20px 40px;display: inline-block">' + temp.weight + '</span>' +
+                            //     '<span style="width : 260px;padding:20px 40px;display: inline-block">' + bool[temp.isNormalOrder] + '</span>' +
+                            //     '<span style="width : 220px;padding:20px 40px;display: inline-block">' + bool[temp.isSqOrder] + '</span>' +
+                            //     '<span style="width : 220px;padding:20px 40px;display: inline-block">' + bool[temp.isSjOrder] + '</span>' +
+                            //     '<span style="width : 240px;padding:20px 40px;display: inline-block">' + bool[temp.isSingle] + '</span>' +
+                            //     '<span style="width : 200px;padding:20px 40px;display: inline-block">' + temp.singleNumber + '</span>' +
+                            //     '<input id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:40px;display: inline-block;!important;" value="删除"/>' +
+                            //     '<input id="editBtn_' + g + '" data-name="' + temp.name + '" type="button" class="btn delguigeEditBtn" style="margin-left:0px;" value="修改"/>' +
+                            //     '</div>';
+                            var guigeTemp = '<tr id="guigeDom' + g + '">' +
+                                '<td>' + temp.name + '</td>' +
+                                '<td>' + temp.number + '</td>' +
+                                '<td>' + temp.stockNumber + '</td>' +
+                                '<td>' + temp.weight + '</td>' +
+                                '<td>' + bool[temp.isNormalOrder] + '</td>' +
+                                '<td>' + bool[temp.isSqOrder] + '</td>' +
+                                '<td>' + bool[temp.isSjOrder] + '</td>' +
+                                '<td>' + bool[temp.isSingle] + '</td>' +
+                                '<td>' + temp.singleNumber + '</td>' +
+                                '<td style="display: flex;">' +
+                                '<input data-name="' + temp.name + '" id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:0px;margin-top: 0;" value="删除"/>' +
+                                '<input id="editBtn_' + g + '" data-code="' + temp.code + '" data-name="' + temp.name + '" type="button" class="btn delguigeEditBtn" style="margin-left:0px;margin-top: 0;" value="修改"/>' +
+                                '</td>' +
+                                '</tr>';
                             $('#guigeHtml').append(guigeTemp);
 
                             dw.close().remove();
                             var circleList = []
-                            for (var p = 0; p < items.length; p++) {
+                            for (var p = 0; p < items.length - 1; p++) {
                                 var field1 = {
                                     field: items[p].level,
                                     title: '等级',
@@ -531,15 +555,17 @@ $(function() {
                                             dw1.close().remove();
                                             var specsPriceList = []
                                             for (var v of items) {
-                                                var price1 = 'price' + (v.level - 1);
-                                                var changePrice1 = 'changePrice' + (v.level - 1);
+                                                if (v.level != 6) {
+                                                    var price1 = 'price' + (v.level - 1);
+                                                    var changePrice1 = 'changePrice' + (v.level - 1);
 
-                                                var temp1 = {};
-                                                temp1.level = v.level;
-                                                temp1.price = +data[price1] * 1000;
-                                                temp1.changePrice = +data[changePrice1] * 1000;
+                                                    var temp1 = {};
+                                                    temp1.level = v.level;
+                                                    temp1.price = +data[price1] * 1000;
+                                                    temp1.changePrice = +data[changePrice1] * 1000;
 
-                                                specsPriceList.push(temp1);
+                                                    specsPriceList.push(temp1);
+                                                }
                                             }
                                             // temp.specsPriceList = specsPriceList;
 
@@ -548,7 +574,7 @@ $(function() {
                                                 0: '否',
                                                 1: '是'
                                             };
-                                            for (var p = 0; p < items.length; p++) {
+                                            for (var p = 0; p < items.length - 1; p++) {
                                                 xiangouList = xiangouList.concat([{
                                                     field: items[p].level,
                                                     title: '等级',
@@ -557,14 +583,17 @@ $(function() {
                                                 }, {
                                                     field: 'dailyNumber' + p,
                                                     title: '日限购',
+                                                    'Z+': true,
                                                     required: true
                                                 }, {
                                                     field: 'weeklyNumber' + p,
                                                     title: '周限购',
+                                                    'Z+': true,
                                                     required: true
                                                 }, {
                                                     field: 'monthlyNumber' + p,
                                                     title: '月限购',
+                                                    'Z+': true,
                                                     required: true
                                                 }, {
                                                     field: 'isBuy' + p,
@@ -575,10 +604,12 @@ $(function() {
                                                 }, {
                                                     field: 'minNumber' + p,
                                                     title: '云仓最少发货数量',
+                                                    'Z+': true,
                                                     required: true
                                                 }, {
                                                     field: 'startNumber' + p,
                                                     title: '起购数量',
+                                                    'Z+': true,
                                                     required: true
                                                 }]);
                                             }
@@ -600,7 +631,7 @@ $(function() {
                                                             var data = $('#popFormXiangou').serializeObject();
                                                             dw2.close().remove();
                                                             // var specsPriceList = []
-                                                            for (var i = 0; i < items.length; i++) {
+                                                            for (var i = 0; i < items.length - 1; i++) {
                                                                 let v = items[i];
                                                                 let dailyNumber = 'dailyNumber' + (v.level - 1);
                                                                 let weeklyNumber = 'weeklyNumber' + (v.level - 1);
@@ -632,10 +663,10 @@ $(function() {
                                                                     '<td>' + (specsPriceList[v].minNumber) + '</td>' +
                                                                     '<td>' + (specsPriceList[v].startNumber) + '</td>' +
                                                                     `<td>
-                                                                        <input data-index="${dingjiaDom}" 
-                                                                        data-sindex="${v}"  
-                                                                        data-name="${temp.name}" 
-                                                                        type="button" class="btn specEditBtn" 
+                                                                        <input data-index="${dingjiaDom}"
+                                                                        data-sindex="${v}"
+                                                                        data-name="${temp.name}"
+                                                                        type="button" class="btn specEditBtn"
                                                                         style="margin-left:0px;margin-top: 0;" value="修改"/>
                                                                     </td>`
                                                                 '</tr>';
@@ -697,14 +728,17 @@ $(function() {
                 }, {
                     field: 'value1',
                     title: '直接推荐奖励(%)',
+                    'Z+': true,
                     required: true
                 }, {
                     field: 'value2',
                     title: '间接推荐奖励(%)',
+                    'Z+': true,
                     required: true
                 }, {
                     field: 'value3',
                     title: '次推荐奖励(%)',
+                    'Z+': true,
                     required: true
                 }],
                 buttons: [{
@@ -813,14 +847,17 @@ $(function() {
                 }, {
                     field: 'number',
                     title: '规格包含数量',
+                    'Z+': true,
                     required: true
                 }, {
                     field: 'stockNumber',
                     title: '库存',
+                    'Z+': true,
                     required: true
                 }, {
                     field: 'weight',
-                    title: '重量',
+                    title: '重量(g)',
+                    'Z+': true,
                     required: true
                 }, {
                     field: 'isNormalOrder',
@@ -860,6 +897,7 @@ $(function() {
                     }
                 }, {
                     field: 'singleNumber',
+                    'Z+': true,
                     title: '拆单数量'
                 }],
                 useData: useData,
@@ -881,19 +919,34 @@ $(function() {
                             temp.code = useData.code || '';
                             temp.name = temp.name0;
                             temp.isSqOrder = temp.isSqOrder;
-                            var guigeTemp = '<div id="guigeDom' + g + '" style="display:flex;">' +
-                                '<span style="width : 200px;padding:20px 20px;display: inline-block">' + temp.name + '</span>' +
-                                '<span style="width : 200px;padding:20px 20px;display: inline-block">' + temp.number + '</span>' +
-                                '<span style="width : 200px;padding:20px 20px;display: inline-block">' + temp.stockNumber + '</span>' +
-                                '<span style="width : 200px;padding:20px 20px;display: inline-block">' + temp.weight + '</span>' +
-                                '<span style="width : 260px;padding:20px 20px;display: inline-block">' + bool[temp.isNormalOrder] + '</span>' +
-                                '<span style="width : 260px;padding:20px 20px;display: inline-block">' + bool[temp.isSqOrder] + '</span>' +
-                                '<span style="width : 260px;padding:20px 20px;display: inline-block">' + bool[temp.isSjOrder] + '</span>' +
-                                '<span style="width : 260px;padding:20px 20px;display: inline-block">' + bool[temp.isSingle] + '</span>' +
-                                '<span style="width : 260px;padding:20px 20px;display: inline-block">' + temp.singleNumber + '</span>' +
-                                '<input id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:40px;display: inline-block;!important;" value="删除"/>' +
-                                '<input id="editBtn_' + g + '" data-name="' + temp.name + '" type="button" class="btn delguigeEditBtn" style="margin-left:0px;" value="修改"/>' +
-                                '</div>';
+                            // var guigeTemp = '<div id="guigeDom' + g + '" style="display:flex;">' +
+                            //     '<span style="width : 200px;padding:20px 20px;display: inline-block">' + temp.name + '</span>' +
+                            //     '<span style="width : 200px;padding:20px 20px;display: inline-block">' + temp.number + '</span>' +
+                            //     '<span style="width : 200px;padding:20px 20px;display: inline-block">' + temp.stockNumber + '</span>' +
+                            //     '<span style="width : 200px;padding:20px 20px;display: inline-block">' + temp.weight + '</span>' +
+                            //     '<span style="width : 260px;padding:20px 20px;display: inline-block">' + bool[temp.isNormalOrder] + '</span>' +
+                            //     '<span style="width : 260px;padding:20px 20px;display: inline-block">' + bool[temp.isSqOrder] + '</span>' +
+                            //     '<span style="width : 260px;padding:20px 20px;display: inline-block">' + bool[temp.isSjOrder] + '</span>' +
+                            //     '<span style="width : 260px;padding:20px 20px;display: inline-block">' + bool[temp.isSingle] + '</span>' +
+                            //     '<span style="width : 260px;padding:20px 20px;display: inline-block">' + temp.singleNumber + '</span>' +
+                            //     '<input id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:40px;display: inline-block;!important;" value="删除"/>' +
+                            //     '<input id="editBtn_' + g + '" data-name="' + temp.name + '" type="button" class="btn delguigeEditBtn" style="margin-left:0px;" value="修改"/>' +
+                            //     '</div>';
+                            var guigeTemp = '<tr id="guigeDom' + g + '">' +
+                                '<td>' + temp.name + '</td>' +
+                                '<td>' + temp.number + '</td>' +
+                                '<td>' + temp.stockNumber + '</td>' +
+                                '<td>' + temp.weight + '</td>' +
+                                '<td>' + bool[temp.isNormalOrder] + '</td>' +
+                                '<td>' + bool[temp.isSqOrder] + '</td>' +
+                                '<td>' + bool[temp.isSjOrder] + '</td>' +
+                                '<td>' + bool[temp.isSingle] + '</td>' +
+                                '<td>' + temp.singleNumber + '</td>' +
+                                '<td style="display:flex;">' +
+                                '<input data-name="' + temp.name + '" id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:0px;margin-top: 0;" value="删除"/>' +
+                                '<input id="editBtn_' + g + '" data-code="' + temp.code + '" data-name="' + temp.name + '" type="button" class="btn delguigeEditBtn" style="margin-left:0px;margin-top: 0;" value="修改"/>' +
+                                '</td>' +
+                                '</tr>';
 
                             $('#guigeDom' + g).replaceWith(guigeTemp);
 
@@ -952,14 +1005,17 @@ $(function() {
             }, {
                 field: 'dailyNumber',
                 title: '日限购',
+                'Z+': true,
                 required: true
             }, {
                 field: 'weeklyNumber',
                 title: '周限购',
+                'Z+': true,
                 required: true
             }, {
                 field: 'monthlyNumber',
                 title: '月限购',
+                'Z+': true,
                 required: true
             }, {
                 field: 'isBuy',
@@ -970,10 +1026,12 @@ $(function() {
             }, {
                 field: 'minNumber',
                 title: '云仓最少发货数量',
+                'Z+': true,
                 required: true
             }, {
                 field: 'startNumber',
                 title: '起购数量',
+                'Z+': true,
                 required: true
             }];
 

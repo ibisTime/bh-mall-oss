@@ -19,14 +19,9 @@ $(function() {
             '0': '否',
             '1': '是'
         };
-        var html = '<div>';
         var guigeHtml = '';
         var dingjiaHtml = '';
         var temp = '';
-        for (var v of items) {
-            html += '<label style="padding: 20px 40px"><b>*</b>' + v.name + '</label>'
-        }
-        html += '</div>';
 
         var fields = [{
             field: 'name',
@@ -251,7 +246,7 @@ $(function() {
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
             '<table style="border: 1px solid #ced9df;width: 100%;">' +
             '<thead>' +
-            '<tr><th>规格名称</th><th>规格包含数量</th><th>库存</th><th>重量(g)</th><th>是否允许普通单下单</th><th>是否允许授权单下单</th><th>是否允许升级单下单</th><th>是否可拆单</th><th>关联规格</th><th>拆单数量</th><th style="padding-left: 100px;">操作</th></tr>' +
+            '<tr><th>规格名称</th><th>规格包含数量</th><th>库存</th><th>重量(g)</th><th>是否允许普通单下单</th><th>是否允许授权单下单</th><th>是否允许升级单下单</th><th>是否可拆单</th><th>关联规格</th><th>拆单数量</th><th>操作</th></tr>' +
             '</thead>' +
             '<tbody id="guigeHtml"></tbody>' +
             '</table>' +
@@ -829,7 +824,6 @@ $(function() {
                                 '<td>' + temp.name + '</td>' +
                                 '<td>' + temp.number + '</td>' +
                                 '<td>' + temp.stockNumber + '</td>' +
-                                '<td>' + temp.weight + '</td>' +
                                 '<td>' + temp.weight + '</td>' +
                                 '<td>' + bool[temp.isNormalOrder] + '</td>' +
                                 '<td>' + bool[temp.isSqOrder] + '</td>' +
