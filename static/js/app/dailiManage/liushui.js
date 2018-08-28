@@ -50,13 +50,6 @@ $(function() {
         title: '创建时间',
         formatter: dateTimeFormat
     }, {
-        title: "充值截图",
-        field: "pic",
-        type: "img",
-        single: true,
-        readonly: false,
-        required: true
-    }, {
         field: 'remark',
         title: '备注'
     }];
@@ -64,7 +57,8 @@ $(function() {
         columns: columns,
         pageCode: '627490',
         searchParams: {
-            accountNumber: accountNumber
+            accountNumber: accountNumber,
+            type: 'B'
         }
     });
     $('.toolbar').empty().append('<li style="display:block;" id="detailBtn"><span><img src="/static/images/t01.png"></span>详情</li><li style="display:block;" id="exportBtn"><span><img src="/static/images/t01.png"></span>导出</li>');

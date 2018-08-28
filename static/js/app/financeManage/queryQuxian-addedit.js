@@ -51,11 +51,23 @@ $(function() {
         title: '审核时间',
         readonly: true,
         formatter: dateTimeFormat
+    }, {
+        field: 'payUserName',
+        title: '回录人'
+    }];
+
+    var buttons = [{
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
     }];
 
     buildDetail({
         fields: fields,
         code: code,
+        view: '1',
+        buttons,
         detailCode: '627512',
         beforeSubmit: function(data) {
             data.remark = remark;

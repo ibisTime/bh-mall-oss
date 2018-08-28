@@ -34,10 +34,9 @@ $(function() {
                 title: '标题',
                 required: true
             }, {
-                field: 'type',
+                field: detail ? 'type1' : 'type',
                 title: '分类',
                 required: true,
-                type: 'select',
                 // key: 'material_type',
                 // formatter: Dict.getNameForList("material_type")
                 listCode: '627076',
@@ -45,7 +44,16 @@ $(function() {
                     parentKey: 'material_type'
                 },
                 keyName: 'dkey',
-                valueName: 'dvalue'
+                valueName: 'dvalue',
+                type: detail ? 'hidden' : 'select'
+            }, {
+                field: detail ? 'type' : 'type1',
+                title: '分类',
+                key: 'material_type',
+                formatter: Dict.getNameForList("material_type"),
+                listCode: '627076',
+                valueName: 'dvalue',
+                type: detail ? 'select' : 'hidden'
             }, {
                 field: 'pic',
                 title: '图片',

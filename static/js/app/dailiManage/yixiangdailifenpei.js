@@ -69,11 +69,10 @@ $(function() {
                     return data ? data.wxId : '-'
                 }
             }, {
-                field: 'diyu',
-                title: '地域',
+                field: 'quyu',
+                title: '区域',
                 formatter: function(v, data) {
                     if (data) {
-
                         return data.area ? data.province + ' ' + data.city + ' ' + data.area :
                             data.city ? data.province + ' ' + data.city :
                             data.province ? data.province : '-';
@@ -85,7 +84,8 @@ $(function() {
             }, {
                 field: 'status',
                 title: '代理状态',
-                formatter: Dict.getNameForList('yx_status')
+                formatter: Dict.getNameForList('yx_status'),
+
             }, {
                 field: 'fromInfo',
                 title: '来源',
@@ -159,7 +159,7 @@ $(function() {
                 toastr.info('非最高等级代理不可接受，请分配到其他代理');
                 return;
             }
-            window.location.href = "./yixiangdailifenpei_edit.html?v=1&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name));
+            window.location.href = "./yixiangdailifenpei_edit.html?v=1&jshou=ok&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name));
         })
 
         // 审核分配

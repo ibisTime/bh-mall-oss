@@ -52,7 +52,7 @@ $(function() {
         columns: columns,
         pageCode: '627830',
         searchParams: {
-            code: code ? code : ''
+            productCode: code ? code : ''
         }
     });
     if (toorter) {

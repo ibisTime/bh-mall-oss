@@ -211,7 +211,8 @@ $(function() {
             view: view,
             buttons: buttons,
             code: {
-                userId: userId
+                userId: userId,
+                updater: getUserId()
             },
             detailCode: '627327',
             addCode: '627920',
@@ -245,7 +246,8 @@ $(function() {
             view: view,
             buttons: buttons,
             code: {
-                userId: userId
+                userId: userId,
+                updater: getUserId()
             },
             detailCode: '627327',
             addCode: '627920',
@@ -280,7 +282,8 @@ $(function() {
             view: view,
             buttons: buttons,
             code: {
-                userId: userId
+                userId: userId,
+                updater: getUserId()
             },
             detailCode: '627327',
             addCode: '627920',

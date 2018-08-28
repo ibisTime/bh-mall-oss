@@ -45,7 +45,7 @@ $(function() {
                     '0': '否'
                 }
             }, {
-                field: 'updateDatetime',
+                field: 'createDatetime',
                 title: '添加时间',
                 formatter: dateTimeFormat
             },

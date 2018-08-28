@@ -33,23 +33,22 @@ $(function() {
             field: 'wxId',
             title: '微信号'
         }, {
-            field: 'diyu',
-            title: '地域',
-            formatter: function(v, data) {
-                return data.area ? data.province + ' ' + data.city + ' ' + data.area :
-                    data.city ? data.province + ' ' + data.city :
-                    data.province ? data.province : '-'
-            }
+            field: 'quyu',
+            title: '区域',
+            type: 'citySelect',
+            required: true
         }, {
             field: 'address',
             title: '详细地址'
         }, {
             field: 'status',
             title: '代理状态',
-            formatter: Dict.getNameForList('yx_status')
+            formatter: Dict.getNameForList('yx_status'),
+            readonly: true
         }, {
             field: 'fromInfo',
-            title: '来源'
+            title: '来源',
+            readonly: true
         }, {
             field: 'applyDatetime',
             title: '申请时间',

@@ -46,13 +46,13 @@ $(function() {
         buildDetail({
             container: $('#formContainer'),
             fields: [{
-                field: 'miniNumber',
+                field: 'proNumber',
                 title: '箱码数量',
                 required: true,
                 number: true,
                 min: '0'
             }, {
-                field: 'proNumber',
+                field: 'miniNumber',
                 title: '盒码数量',
                 required: true,
                 number: true,

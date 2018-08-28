@@ -152,9 +152,9 @@ $(function() {
                 detailData.directAwardList.map(function(index, item) {
                     var awardTemp = '<div id="awardDom' + item + '">' +
                         '<span style="width : 120px;padding:20px 40px;display: inline-block">' + items[index.level - 1].name + '</span>' +
-                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value1 * 100 + '%') + '</span>' +
-                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value2 * 100 + '%') + '</span>' +
-                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value3 * 100 + '%') + '</span>' +
+                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value1 + '%') + '</span>' +
+                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value2 + '%') + '</span>' +
+                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value3 + '%') + '</span>' +
                         '</div>'
                     awardHtml += awardTemp;
                 })
