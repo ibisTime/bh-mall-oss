@@ -4,6 +4,7 @@ $(function() {
     var inq = getQueryString('in');
     var bizType = getQueryString('bizType');
     var kind = inq != null ? '1' : '0';
+
     var columns = [{
         field: '',
         title: '',
@@ -13,43 +14,71 @@ $(function() {
         title: '订单编号',
         search: true
     }, {
-        field: 'amount',
-        amount: true,
+        field: 'amount1',
         title: '订单金额',
         formatter: function(v, data) {
-            return moneyFormat(data.orderInformation.amount)
+            if (data.inOrder) {
+                return moneyFormat(data.inOrder.amount);
+            }
+            return moneyFormat(data.outOrder.amount);
         }
     }, {
         field: 'productCode',
         title: '出货产品',
         formatter: function(v, data) {
-            return data.orderInformation.productName
+            if (data.inOrder) {
+                return data.inOrder.productName
+            }
+            return data.outOrder.productName
         }
     }, {
-        field: 'signer',
+        field: 'specsName',
+        title: '产品规格',
+        formatter: function(v, data) {
+            if (data.inOrder) {
+                return data.inOrder.specsName
+            }
+            return data.outOrder.specsName
+        }
+    }, {
+        field: 'signer1',
         title: '收货人',
         formatter: function(v, data) {
-            return data.orderInformation.signer
+            if (data.inOrder) {
+                return data.inOrder.signer
+            }
+            return data.outOrder.signer
         }
     }, {
-        field: 'mobile',
+        field: 'mobile1',
         title: '收货人手机号',
         formatter: function(v, data) {
-            return data.orderInformation.mobile
+            if (data.inOrder) {
+                return data.inOrder.mobile
+            }
+            return data.outOrder.mobile
         }
     }, {
         field: 'diyu',
         title: '收货地址',
         formatter: function(v, data) {
-            return data.orderInformation.area ? data.orderInformation.province + ' ' + data.orderInformation.city + ' ' + data.orderInformation.area :
-                data.orderInformation.city ? data.orderInformation.province + ' ' + data.orderInformation.city :
-                data.orderInformation.province ? data.orderInformation.province : '-'
+            if (data.inOrder) {
+                return data.inOrder.area ? data.inOrder.province + ' ' + data.inOrder.city + ' ' + data.inOrder.area :
+                    data.inOrder.city ? data.inOrder.province + ' ' + data.inOrder.city :
+                    data.inOrder.province ? data.inOrder.province : '-'
+            }
+            return data.outOrder.area ? data.outOrder.province + ' ' + data.outOrder.city + ' ' + data.outOrder.area :
+                data.outOrder.city ? data.outOrder.province + ' ' + data.outOrder.city :
+                data.outOrder.province ? data.outOrder.province : '-'
+
         }
     }, {
         field: 'status',
         title: '订单状态',
-        formatter: Dict.getNameForList('order_status')
+        key: 'in_order_status',
+        formatter: inq ? Dict.getNameForList('in_order_status') : Dict.getNameForList('out_order_status')
     }];
+
     buildList({
         columns: columns,
         pageCode: '627492',

@@ -44,7 +44,7 @@ $(function() {
         field: 'approveName',
         title: '审核人'
     }, {
-        field: 'applyDatetime',
+        field: 'approveDatetime',
         title: '审核时间',
         formatter: dateTimeFormat
     }, {
@@ -124,8 +124,10 @@ $(function() {
                                     code: '627502',
                                     json: {
                                         codeList: codeList,
+                                        approveNote: $('#approveNote').val(),
                                         approveUser: getUserId(),
-                                        approveResult: '1'
+                                        approveResult: '1',
+                                        updater: getUserId()
                                     }
                                 }).done(function() {
                                     sucList();
@@ -142,8 +144,10 @@ $(function() {
                                     code: '627502',
                                     json: {
                                         codeList: codeList,
+                                        approveNote: $('#approveNote').val(),
                                         approveUser: getUserId(),
-                                        approveResult: '0'
+                                        approveResult: '0',
+                                        updater: getUserId()
                                     }
                                 }).done(function() {
                                     sucList();
@@ -216,6 +220,7 @@ $(function() {
                                 code: '627503',
                                 json: {
                                     codeList: codeList,
+                                    payNote: $('#payNote').val(),
                                     payUser: getUserId(),
                                     payResult: '1'
                                 }
@@ -234,6 +239,7 @@ $(function() {
                                 code: '627503',
                                 json: {
                                     codeList: codeList,
+                                    payNote: $('#payNote').val(),
                                     payUser: getUserId(),
                                     payResult: '0'
                                 }

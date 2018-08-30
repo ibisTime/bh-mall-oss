@@ -11,6 +11,9 @@ $(function() {
         field: 'productName',
         title: '产品名称'
     }, {
+        field: 'specsName',
+        title: '产品规格'
+    }, {
         field: 'payAmount',
         title: '付款金额',
         amount: true,

@@ -23,12 +23,6 @@ $(function() {
         field: 'specsName',
         title: '产品规格'
     }, {
-        field: 'quantity',
-        title: '产品数量',
-        formatter(v, data) {
-            return data.quantity;
-        }
-    }, {
         field: 'price',
         title: '产品单价',
         amount: true
@@ -48,6 +42,12 @@ $(function() {
         title: '订单编号',
         formatter: function(v, data) {
             return data.code;
+        }
+    }, {
+        field: 'quantity',
+        title: '产品数量',
+        formatter(v, data) {
+            return data.quantity;
         }
     }, {
         field: 'amount',

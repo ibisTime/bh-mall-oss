@@ -34,7 +34,7 @@ $(function() {
             }
         }, {
             field: 'amount',
-            title: '付款金额',
+            title: '金额',
             formatter: moneyFormat
         }, {
             field: 'changeProductName',

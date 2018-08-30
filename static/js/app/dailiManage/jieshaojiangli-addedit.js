@@ -13,25 +13,18 @@ $(function() {
         field: 'realName',
         title: '姓名',
         formatter: function(v, data) {
-            return data.userInformation.realName
+            return data.agent.realName
         }
     }, {
         field: 'nickname',
         title: '昵称',
         formatter: function(v, data) {
-            return data.userInformation.nickname
+            return data.agent.nickname
         }
-    }, {
-        field: 'loginName',
-        title: '登录名',
-        formatter: function(v, data) {
-            return data.userInformation.loginName
-        }
-
     }, {
         field: 'status',
         title: '代理状态',
-        formatter: Dict.getNameForList('agent_status')
+        formatter: gin ? Dict.getNameForList('in_order_status') : Dict.getNameForList('out_order_status')
     }, {
         field: 'createDatetime',
         title: '时间',

@@ -95,6 +95,7 @@ $(function() {
                 let specsList = data.specsList;
                 let a = 0;
                 specsList.map(function(item) {
+                    let singleNumber = item.singleNumber ? item.singleNumber : '-';
                     item.price = item.price / 1000;
                     var guigeTemp = '<div id="guigeDom' + a + '">' +
                         '<span style="width : 150px;padding:20px 60px;display: inline-block">' + item.name + '</span>' +
@@ -103,7 +104,7 @@ $(function() {
                         '<span style="width : 140px;padding:20px 40px;display: inline-block">' + item.weight + '</span>' +
                         '<span style="width : 140px;padding:20px 0px;display: inline-block">' + item.price + '</span>' +
                         '<span style="width : 140px;padding:20px 0px;display: inline-block">' + bool[item.isSingle] + '</span>' +
-                        '<span style="width : 140px;padding:20px 0px;display: inline-block">' + item.singleNumber + '</span>' +
+                        '<span style="width : 140px;padding:20px 0px;display: inline-block">' + singleNumber + '</span>' +
                         '</div>';
 
 

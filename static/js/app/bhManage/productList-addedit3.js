@@ -264,19 +264,19 @@ $(function() {
                 }, {
                     field: 'value1',
                     title: '直接推荐奖励(%)',
-                    'Z+': true,
+                    'Z': true,
                     required: true,
                     value: value1
                 }, {
                     field: 'value2',
                     title: '间接推荐奖励(%)',
-                    'Z+': true,
+                    'Z': true,
                     required: true,
                     value: value2
                 }, {
                     field: 'value3',
                     title: '次推荐奖励(%)',
-                    'Z+': true,
+                    'Z': true,
                     required: true,
                     value: value3
                 }],
@@ -579,17 +579,17 @@ $(function() {
                                                 }, {
                                                     field: 'dailyNumber' + p,
                                                     title: '日限购',
-                                                    'Z+': true,
+                                                    'Z': true,
                                                     required: true
                                                 }, {
                                                     field: 'weeklyNumber' + p,
                                                     title: '周限购',
-                                                    'Z+': true,
+                                                    'Z': true,
                                                     required: true
                                                 }, {
                                                     field: 'monthlyNumber' + p,
                                                     title: '月限购',
-                                                    'Z+': true,
+                                                    'Z': true,
                                                     required: true
                                                 }, {
                                                     field: 'isBuy' + p,
@@ -600,12 +600,12 @@ $(function() {
                                                 }, {
                                                     field: 'minNumber' + p,
                                                     title: '云仓最少发货数量',
-                                                    'Z+': true,
+                                                    'Z': true,
                                                     required: true
                                                 }, {
                                                     field: 'startNumber' + p,
                                                     title: '起购数量',
-                                                    'Z+': true,
+                                                    'Z': true,
                                                     required: true
                                                 }]);
                                             }
@@ -724,17 +724,17 @@ $(function() {
                 }, {
                     field: 'value1',
                     title: '直接推荐奖励(%)',
-                    'Z+': true,
+                    'Z': true,
                     required: true
                 }, {
                     field: 'value2',
                     title: '间接推荐奖励(%)',
-                    'Z+': true,
+                    'Z': true,
                     required: true
                 }, {
                     field: 'value3',
                     title: '次推荐奖励(%)',
-                    'Z+': true,
+                    'Z': true,
                     required: true
                 }],
                 buttons: [{
@@ -807,19 +807,10 @@ $(function() {
             var g = specList.length - 1;
             var code = $(this).data('code');
             var name = $(this).data('name');
-            if (code) {
-                for (var i = specList.length - 1; i >= 0; i--) {
-                    if (specList[i].code == code) {
-                        g = i;
-                        break;
-                    }
-                }
-            } else {
-                for (var i = specList.length - 1; i >= 0; i--) {
-                    if (specList[i].name == name) {
-                        g = i;
-                        break;
-                    }
+            for (var i = specList.length - 1; i >= 0; i--) {
+                if (specList[i].name == name) {
+                    g = i;
+                    break;
                 }
             }
             var useData = specList[g];
@@ -1001,17 +992,17 @@ $(function() {
             }, {
                 field: 'dailyNumber',
                 title: '日限购',
-                'Z+': true,
+                'Z': true,
                 required: true
             }, {
                 field: 'weeklyNumber',
                 title: '周限购',
-                'Z+': true,
+                'Z': true,
                 required: true
             }, {
                 field: 'monthlyNumber',
                 title: '月限购',
-                'Z+': true,
+                'Z': true,
                 required: true
             }, {
                 field: 'isBuy',
@@ -1022,12 +1013,12 @@ $(function() {
             }, {
                 field: 'minNumber',
                 title: '云仓最少发货数量',
-                'Z+': true,
+                'Z': true,
                 required: true
             }, {
                 field: 'startNumber',
                 title: '起购数量',
-                'Z+': true,
+                'Z': true,
                 required: true
             }];
 

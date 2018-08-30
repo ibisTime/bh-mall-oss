@@ -1,8 +1,5 @@
 $(function() {
     var columns = [{
-        field: 'list',
-        title: '代理商个数'
-    }, {
         field: 'level',
         title: '等级',
         search: true,
@@ -41,15 +38,19 @@ $(function() {
     }];
     buildList({
         columns: columns,
-        pageCode: '627853'
-            // searchParams: {
-            // 	type: 'android_b',
-            // 	companyCode: OSS.company,
-            // 	orderColumn:'id',
-            // 	orderDir: 'asc'
-            // },
-            // beforeEdit: function(r) {
-            // 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
-            // }
+        pageCode: '627853',
+        afterData(data) {
+            $('#number').text(data.data.number);
+            return data
+        }
+        // searchParams: {
+        // 	type: 'android_b',
+        // 	companyCode: OSS.company,
+        // 	orderColumn:'id',
+        // 	orderDir: 'asc'
+        // },
+        // beforeEdit: function(r) {
+        // 	location.href = '../biz/rule4_addedit.html?code=' + r.id +"&t="+ r.type;
+        // }
     });
 });

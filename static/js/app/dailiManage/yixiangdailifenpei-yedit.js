@@ -1,7 +1,7 @@
 $(function() {
     var code = getQueryString('code');
     var userId = getQueryString('userId');
-    var fenpei = getQueryString('fenpei');
+    var lev = getQueryString('lev');
     reqApi({
         code: '627006',
     }, true).then(function(data) {
@@ -17,14 +17,12 @@ $(function() {
         }, {
             field: 'applyLevel',
             title: '申请等级',
-            formatter: function(v, data) {
-                var level = '';
-                items.map(function(item) {
-                    if (item.level == data.applyLevel) {
-                        level = item.name
-                    }
-                })
-                return level
+            type: 'select',
+            listCode: '627006',
+            keyName: 'level',
+            valueName: 'name',
+            params: {
+                highLevel: 6
             }
         }, {
             field: 'mobile',

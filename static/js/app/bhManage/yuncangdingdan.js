@@ -9,8 +9,10 @@ $(function() {
         title: '订单编号'
     }, {
         field: 'productName',
-        title: '产品',
-        search: true
+        title: '产品'
+    }, {
+        field: 'specsName',
+        title: '规格'
     }, {
         field: 'quantity',
         title: '数量',
@@ -20,8 +22,7 @@ $(function() {
     }, {
         field: 'amount',
         title: '订单金额',
-        amount: true,
-        formatter: moneyFormat
+        amount: true
     }, {
         field: 'status',
         title: '订单状态',

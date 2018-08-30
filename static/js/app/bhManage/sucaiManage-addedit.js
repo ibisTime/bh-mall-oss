@@ -78,9 +78,7 @@ $(function() {
                 required: true
             }, {
                 field: 'allbtn',
-                title: '全选',
-                type: detail ? 'hidden' : 'checkbox',
-                items: all,
+                title: '全选'
             }
         ];
 
@@ -95,12 +93,32 @@ $(function() {
                 if (data.level.length > 1) {
                     data.level = data.level.join(',');
                 }
+                data.updater = getUserId();
                 return data;
             },
+            afterData(data) {
+                let levList = data.level.split(',');
+                if (levList.length == 6) {
+                    $('#allbtn').prop('checked', 'true');
+                    isAll = !isAll;
+                }
+                levList = levList.map(item => {
+                    return parseInt(item);
+                })
+                levList.forEach(item => {
+                    $(`#level_checkbox${item - 1}`).prop('checked', 'true');
+                })
+                return data;
+            }
         });
         hideLoading();
         let isAll = true;
-        $('#allbtn_checkbox0').click(() => {
+        $('#allbtn').css({
+            display: 'inline-block',
+            width: '15px',
+            height: '15px'
+        }).prop('type', 'checkbox');
+        $('#allbtn').click(() => {
             if (isAll) {
                 for (let i = 0; i < level.length; i++) {
                     $('#level_checkbox' + i).prop('checked', 'true');
@@ -117,12 +135,12 @@ $(function() {
             Array.from($(this).children('input')).forEach(item => {
                 i++;
                 if (!$(item).prop('checked')) {
-                    $('#allbtn_checkbox0').removeProp('checked');
+                    $('#allbtn').removeProp('checked');
                     isAll = true;
                     i--;
                 }
                 if (i == level.length) {
-                    $('#allbtn_checkbox0').prop('checked', 'true');
+                    $('#allbtn').prop('checked', 'true');
                     isAll = false;
                 }
             })

@@ -14,6 +14,11 @@ $(function() {
         field: 'specsName',
         title: '规格名称'
     }, {
+        field: 'type',
+        title: '操作',
+        key: 'ware_log_type',
+        formatter: Dict.getNameForList('ware_log_type')
+    }, {
         field: 'tranNumber',
         title: '变动库存',
         formatter(v, data) {
@@ -52,7 +57,7 @@ $(function() {
         columns: columns,
         pageCode: '627830',
         searchParams: {
-            productCode: code ? code : ''
+            specsCode: code ? code : ''
         }
     });
     if (toorter) {

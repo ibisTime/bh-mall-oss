@@ -558,16 +558,19 @@ $(function() {
                     field: 'value1',
                     title: '直接推荐奖励(%)',
                     required: true,
+                    'Z': true,
                     value: value1
                 }, {
                     field: 'value2',
                     title: '间接推荐奖励(%)',
                     required: true,
+                    'Z': true,
                     value: value2
                 }, {
                     field: 'value3',
                     title: '次推荐奖励(%)',
                     required: true,
+                    'Z': true,
                     value: value3
                 }],
                 buttons: [{
@@ -641,14 +644,17 @@ $(function() {
             }, {
                 field: 'dailyNumber',
                 title: '日限购',
+                'Z': true,
                 required: true
             }, {
                 field: 'weeklyNumber',
                 title: '周限购',
+                'Z': true,
                 required: true
             }, {
                 field: 'monthlyNumber',
                 title: '月限购',
+                'Z': true,
                 required: true
             }, {
                 field: 'isBuy',
@@ -659,10 +665,12 @@ $(function() {
             }, {
                 field: 'minNumber',
                 title: '云仓最少发货数量',
+                'Z': true,
                 required: true
             }, {
                 field: 'startNumber',
                 title: '起购数量',
+                'Z': true,
                 required: true
             }];
 
@@ -911,14 +919,17 @@ $(function() {
                                                 }, {
                                                     field: 'dailyNumber' + p,
                                                     title: '日限购',
+                                                    'Z': true,
                                                     required: true
                                                 }, {
                                                     field: 'weeklyNumber' + p,
                                                     title: '周限购',
+                                                    'Z': true,
                                                     required: true
                                                 }, {
                                                     field: 'monthlyNumber' + p,
                                                     title: '月限购',
+                                                    'Z': true,
                                                     required: true
                                                 }, {
                                                     field: 'isBuy' + p,
@@ -929,10 +940,12 @@ $(function() {
                                                 }, {
                                                     field: 'minNumber' + p,
                                                     title: '云仓最少发货数量',
+                                                    'Z': true,
                                                     required: true
                                                 }, {
                                                     field: 'startNumber' + p,
                                                     title: '起购数量',
+                                                    'Z': true,
                                                     required: true
                                                 }]);
                                             }

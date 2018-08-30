@@ -151,7 +151,8 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            window.location.href = "./yixiangdailifenpei_yedit.html?v=1&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name));
+            // console.log(selRecords[0])
+            window.location.href = "./yixiangdailifenpei_yedit.html?v=1&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name)) + "&lev=" + selRecords[0].level;
         });
         // 接受意向
         $('#edityxBtn').off().click(function() {

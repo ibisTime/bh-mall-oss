@@ -2,34 +2,34 @@ $(function() {
     var code = getQueryString('code');
     var fields = [{
         field: 'productName',
-        title: '产品名称',
-        required: true
+        title: '产品名称'
+    }, {
+        field: 'specsName',
+        title: '产品规格'
     }, {
         field: 'quantity',
-        title: '数量',
-        required: true,
+        title: '产品数量',
         formatter(v, data) {
             return data.quantity;
         }
     }, {
-        field: 'specsName',
-        title: '产品规格',
-        required: true
+        field: 'price',
+        title: '产品价格',
+        amount: true
     }, {
         field: 'changeProductName',
         title: '置换产品',
         required: true
     }, {
-        field: 'canChangeQuantity',
-        title: '置换数量',
-        required: true,
-        formatter(v, data) {
-            return data.canChangeQuantity;
-        }
-    }, {
         field: 'changeSpecsName',
         title: '置换产品规格',
         required: true
+    }, {
+        field: 'canChangeQuantity',
+        title: '置换数量',
+        formatter(v, data) {
+            return data.canChangeQuantity;
+        }
     }, {
         field: 'changePrice',
         title: '换货价',

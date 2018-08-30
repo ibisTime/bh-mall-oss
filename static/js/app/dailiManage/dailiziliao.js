@@ -84,7 +84,7 @@ $(function() {
         pageCode: '627325',
         searchParams: {
             kind: 'B',
-            statusList: ['3', '4', '6', '7', '8', '9']
+            statusList: ['3', '6', '7', '8', '9']
         }
     });
     /* 

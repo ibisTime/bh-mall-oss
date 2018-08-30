@@ -13,25 +13,6 @@ $(function() {
         title: '名称',
         search: true
     }, {
-        field: 'specsName',
-        title: '产品规格',
-        formatter(v, d) {
-            let specsName = '';
-            d.specsList.forEach((item, index) => {
-                specsName += '[' + (index + 1) + '] ' + item.name + ', ';
-            });
-            specsName = specsName.split('');
-            specsName.length = specsName.length - 2;
-            specsName = specsName.join('');
-            return specsName;
-        }
-    }, {
-        field: 'quantity',
-        title: '数量',
-        formatter(v, data) {
-            return data.quantity;
-        }
-    }, {
         field: 'status',
         title: '状态',
         search: true,
@@ -47,15 +28,15 @@ $(function() {
         field: 'orderNo',
         title: '排序'
     }, {
-        field: 'remark',
-        title: '备注'
-    }, {
         field: 'updater',
         title: '最新修改人'
     }, {
         field: 'updateDatetime',
         title: '最新修改时间',
         formatter: dateTimeFormat
+    }, {
+        field: 'remark',
+        title: '备注'
     }];
     buildList({
         columns: columns,

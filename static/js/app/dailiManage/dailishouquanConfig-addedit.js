@@ -61,6 +61,7 @@ $(function() {
         beforeSubmit: function(data) {
             data.level = level;
             data.name = name;
+            data.updater = getUserId();
             return data;
         }
     });

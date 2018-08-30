@@ -122,7 +122,12 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            window.location.href = "./shenheshouquan_check.html?v=1&userId=" + selRecords[0].userId;
+            if (selRecords[0].status != '11') {
+                window.location.href = "./shenheshouquan_check.html?v=1&userId=" + selRecords[0].userId;
+            } else {
+                toastr.info("该状态下不可进行审核");
+                return;
+            }
         })
 
         $('#qxcheckBtn').off().click(function() {
@@ -131,7 +136,12 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            window.location.href = "./shenheshouquan_check.html?v=1&userId=" + selRecords[0].userId + '&qx=1';
+            if (selRecords[0].status == '11') {
+                window.location.href = "./shenheshouquan_check.html?v=1&userId=" + selRecords[0].userId + '&qx=1';
+            } else {
+                toastr.info("该状态下不可进行审核退出");
+                return;
+            }
         })
 
     })

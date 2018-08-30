@@ -17,7 +17,9 @@ $(function() {
         var guigeHtml = '';
         var dingjiaHtml = '';
         var allData = '';
-        var temp = '';
+        var temp = '',
+            specsList = [],
+            isRem = false;
         for (var v of items) {
             html += '<label style="padding: 20px 40px"><b>*</b>' + v.name + '</label>'
         }
@@ -26,9 +28,6 @@ $(function() {
             field: 'name',
             title: '产品名称',
             required: true
-        }, {
-            field: 'orderNo',
-            title: '排序'
         }, {
             field: 'advPic',
             title: '广告图',
@@ -55,16 +54,15 @@ $(function() {
             addCode: '627700',
             editCode: '627702',
             beforeSubmit: function(data) {
-                if (allData) {
+                data.specsList = [];
+                if (allData && !isRem) {
                     data.specsList = allData.specsList;
                 }
-                if (specList.length > 0) {
+                if (specsList.length > 0) {
                     //产品规格
-                    data.specsList = specList;
-                }
-                if (awardList.length > 0) {
-                    // 奖励机制
-                    data.awardList = awardList;
+                    for (let i = 0, len = specsList.length; i < len; i++) {
+                        data.specsList.push(specsList[i]);
+                    }
                 }
 
                 data.updater = getUserId();
@@ -88,18 +86,18 @@ $(function() {
                     code: code
                 }
             }, true).then(function(data) {
-                let specsList = data.specsList;
+                specsList = data.specsList;
                 let a = 0;
                 specsList.map(function(item) {
-                    item.price = item.price / 1000;
+                    let singleNumber = item.singleNumber ? item.singleNumber : '-';
                     var guigeTemp = '<div id="guigeDom' + a + '">' +
                         '<span style="width : 150px;padding:20px 60px;display: inline-block">' + item.name + '</span>' +
                         '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.number + '</span>' +
                         '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.stockNumber + '</span>' +
                         '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.weight + '</span>' +
-                        '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.price + '</span>' +
+                        '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.price / 1000 + '</span>' +
                         '<span style="width : 120px;padding:20px 40px;display: inline-block">' + bool[item.isSingle] + '</span>' +
-                        '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.singleNumber + '</span>' +
+                        '<span style="width : 120px;padding:20px 40px;display: inline-block">' + singleNumber + '</span>' +
                         '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="display: inline-block;!important;" value="删除"/>' +
                         '</div>';
                     $('#guigeHtml').append(guigeTemp);
@@ -127,11 +125,12 @@ $(function() {
 
         // 删除产品规格
         $('#guigeHtml').on('click', '.delguigeBtn', function delguige(e) {
+            isRem = true;
             var id = e.target.id;
             var text = $('#' + id).parent().children(":first").text();
-            for (var v = 0; v < specList.length; v++) {
-                if (specList[v].name == text) {
-                    specList.splice(v, 1);
+            for (var v = 0; v < specsList.length; v++) {
+                if (specsList[v].name == text) {
+                    specsList.splice(v, 1);
                     break;
                 }
             }
@@ -139,113 +138,31 @@ $(function() {
             $('#guigeHtml').empty();
             $('#dingjiaContent').empty();
             var a = 0;
-            specList.map(function(item) {
+            specsList.map(function(item) {
+                let singleNumber = item.singleNumber ? item.singleNumber : '-';
                 var guigeTemp = '<div id="guigeDom' + a + '">' +
                     '<span style="width : 150px;padding:20px 60px;display: inline-block">' + item.name + '</span>' +
                     '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.number + '</span>' +
                     '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.stockNumber + '</span>' +
                     '<span style="width : 150px;padding:20px 40px;display: inline-block">' + item.weight + '</span>' +
-                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.price + '</span>' +
+                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.price / 1000 + '</span>' +
                     '<span style="width : 120px;padding:20px 40px;display: inline-block">' + bool[item.isSingle] + '</span>' +
-                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.singleNumber + '</span>' +
-                    '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="display: inline-block;!important; margin-left: 0px;" value="删除"/>' +
+                    '<span style="width : 120px;padding:20px 40px;display: inline-block">' + singleNumber + '</span>' +
+                    '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="display: inline-block;!important; margin-left: 180px;" value="删除"/>' +
                     '</div>';
 
 
                 $('#guigeHtml').append(guigeTemp);
-
-                // var dingjiaHtml = '<tr id="dingjiaOutDom' + a + '">';
-                var dingjiaHtml = '';
-                for (var v = 0; v < item.specsPriceList.length; v++) {
-                    var dingjiaTemp = '<tr class="dingjiaDom' + v + '">' +
-                        '<td>' + item.name + '</td>' +
-                        '<td>' + items[item.specsPriceList[v].level - 1].name + '</td>' +
-                        '<td>' + moneyFormat(item.specsPriceList[v].price) + '</td>' +
-                        '<td>' + moneyFormat(item.specsPriceList[v].changePrice) + '</td>' +
-                        '<td>' + item.specsPriceList[v].dailyNumber + '</td>' +
-                        '<td>' + item.specsPriceList[v].weeklyNumber + '</td>' +
-                        '<td>' + item.specsPriceList[v].monthlyNumber + '</td>' +
-                        '<td>' + bool[item.specsPriceList[v].isBuy] + '</td>' +
-                        '<td>' + item.specsPriceList[v].minNumber + '</td>' +
-                        '<td>' + item.specsPriceList[v].singleNumber + '</td>' +
-                        '</tr>'
-                    dingjiaHtml += dingjiaTemp;
-                }
-                $('#dingjiaContent').append(dingjiaHtml);
                 a++;
             });
         });
 
-        // 修改出货奖励
-        $('#awardCHContent').on('click', '.editAwardCHBtn', function editAwardCH(e) {
-            var index = (+e.target.id.split('_')[1]);
-            var value = items[index].name;
-            var dw2 = dialog({
-                content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该产品的出货奖励机制</li></ul>' +
-                    '</form>',
-            });
-            dw2.showModal();
-
-            buildDetail({
-                container: $('#formContainer'),
-                fields: [{
-                    field: 'level',
-                    title: '等级',
-                    required: true,
-                    value: value,
-                    readonly: true
-                }, {
-                    field: 'type',
-                    title: '类型',
-                    value: '1',
-                    hidden: true
-                }, {
-                    field: 'value1',
-                    title: '出货奖励',
-                    required: true
-                }],
-                buttons: [{
-                    title: '确定',
-                    handler: function() {
-                        if ($('#popForm').valid()) {
-                            var data = $('#popForm').serializeObject();
-                            data.level = +index + 1;
-                            for (var v in awardList) {
-                                if (awardList[v].level - 1 == index && awardList[v].type == data.type) {
-                                    awardList[v].value1 = data.value1;
-                                }
-                            }
-                            var awardTemp =
-                                // '<div id="awardDom'+index+'">'+
-                                '<span style="width : 120px;padding:20px 40px;display: inline-block">' + items[data.level - 1].name + '</span>' +
-                                // '<span style="width : 120px;padding:20px 40px;display: inline-block">'+index.type+'</span>'+
-                                '<span style="width : 140px;padding:20px 40px;display: inline-block">' + (+data.value1 + '%') + '</span>' +
-                                // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value2+'</span>'+
-                                // '<span style="width : 140px;padding:20px 40px;display: inline-block">'+data.value3+'</span>'+
-                                '<input id="editAwardCHBtn_' + index + '" type="button" class="btn editAwardCHBtn" style="margin-left:40px;display: inline-block;!important;" value="修改"/>'
-                                // '</div>'
-                            $('#awardCHDom' + index).empty().append(awardTemp);
-                            dw2.close().remove();
-                        }
-
-                    }
-                }, {
-                    title: '取消',
-                    handler: function() {
-                        goBack();
-                    }
-                }]
-
-            })
-            hideLoading();
-        });
         var b = 0;
         var specList = [];
         var dingjiaDom = 0;
         // 添加产品规格
         $('#add1Btn').click(function() {
-            var g = specList.length;
+            var g = specsList.length;
             var temp = {}
             var dw = dialog({
                 content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
@@ -312,7 +229,7 @@ $(function() {
                             temp.weight = data.weight;
                             temp.price = data.price;
                             temp.isSingle = data.isSingle;
-
+                            let singleNumber = temp.singleNumber ? temp.singleNumber : '-'
                             var guigeTemp = '<div id="guigeDom' + g + '">' +
                                 '<span style="width : 150px;padding:20px 60px;display: inline-block">' + temp.name + '</span>' +
                                 '<span style="width : 150px;padding:20px 40px;display: inline-block">' + temp.number + '</span>' +
@@ -320,8 +237,8 @@ $(function() {
                                 '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.weight + '</span>' +
                                 '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.price / 1000 + '</span>' +
                                 '<span style="width : 120px;padding:20px 40px;display: inline-block">' + bool[temp.isSingle] + '</span>' +
-                                '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.singleNumber + '</span>' +
-                                '<input id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:40px;display: inline-block;!important;" value="删除"/>'
+                                '<span style="width : 120px;padding:20px 40px;display: inline-block">' + singleNumber + '</span>' +
+                                '<input id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:180px;display: inline-block;!important;" value="删除"/>'
                             '</div>';
 
                             $('#guigeHtml').append(guigeTemp);
@@ -348,7 +265,7 @@ $(function() {
 
                                 circleList.push(field1, field2, field3);
                             }
-                            specList.push(temp);
+                            specsList.push(temp);
                             hideLoading();
                             dingjiaDom++;
                         }

@@ -7,7 +7,8 @@ $(function() {
         reqApi({ // 所有菜单
             code: '627056',
             json: {
-                kind: '1'
+                kind: '1',
+                updater: getUserId()
             }
         }),
         reqApi({ // 获得菜单

@@ -21,6 +21,7 @@ $(function() {
         listCode: '627056',
         params: {
             type: '1',
+            updater: getUserId(),
             roleCode: sessionStorage.getItem('roleCode')
         },
         keyName: 'code',

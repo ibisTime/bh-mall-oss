@@ -33,17 +33,19 @@ $(function() {
         }, {
             field: 'yjAmount',
             title: '余额',
-            amount: true,
-            formatter: moneyFormat
+            amount: true
         }, {
             field: 'sendAward',
-            title: '出货总额'
+            title: '出货总额',
+            amount: true
         }, {
             field: 'refreeAward',
-            title: '推荐总额'
+            title: '推荐总额',
+            amount: true
         }, {
             field: 'intrAward',
-            title: '介绍总额'
+            title: '介绍总额',
+            amount: true
         }, {
             field: 'impowerDatetime',
             title: '日期',

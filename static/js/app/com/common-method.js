@@ -1141,6 +1141,9 @@ function buildDetail(options) {
         if (item['Z+']) {
             rules[item.field]['Z+'] = item['Z+'];
         }
+        if (item['Z']) {
+            rules[item.field]['Z'] = item['Z'];
+        }
         if (item['amount']) {
             rules[item.field]['amount'] = item['amount'];
         }
@@ -1881,12 +1884,7 @@ function buildDetail(options) {
                 } else if (item.type == 'radio') {
                     $('input[name=' + item.field + '][value=' + displayValue + ']').prop('checked', true);
                 } else if (item.type == "checkbox") {
-                    let checkData;
-                    if (displayValue) {
-                        checkData = displayValue.split('/,/');
-                    } else {
-                        checkData = ['1'];
-                    }
+                    var checkData = displayValue.split('/,/');
                     for (var h = 0; h < checkData.length; h++) {
                         for (var k = 0, len1 = item.items.length; k < len1; k++) {
                             var rd = item.items[k];

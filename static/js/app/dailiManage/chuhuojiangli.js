@@ -23,19 +23,6 @@ $(function() {
             formatter: function(v, data) {
                 return data.agent ? data.agent.teamName : '-'
             }
-        }, {
-            field: 'productName',
-            title: '产品',
-            search: true,
-            formatter(v, data) {
-                return data.inOrder ? data.inOrder.productName : '-';
-            }
-        }, {
-            field: 'specsName',
-            title: '规格',
-            formatter(v, data) {
-                return data.inOrder ? data.inOrder.specsName : '-';
-            }
         },
         {
             field: 'inAmount',
@@ -76,11 +63,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        //      if(selRecords[0].outAmount != '0'){
         window.location.href = "./chuhuojiangli_addedit.html?out=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType;
-        //      }else {
-        //          toastr.info('无支出明细')
-        //      }
     });
 
     //收入明细
