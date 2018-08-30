@@ -29,7 +29,10 @@ $(function() {
     }];
     buildList({
         columns: columns,
-        pageCode: '627885'
+        pageCode: '627885',
+        searchParams: {
+            orderColumn: 'status'
+        }
     });
     $('.fixed-table-container').css('width', '80%');
 

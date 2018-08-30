@@ -9,6 +9,12 @@ $(function() {
             return data.code;
         }
     }, {
+        field: 'quantity',
+        title: '产品数量',
+        formatter(v, data) {
+            return data.quantity;
+        }
+    }, {
         field: 'amount',
         title: '订单金额',
         formatter: moneyFormat

@@ -28,19 +28,23 @@ $(function() {
             title: '产品名称',
             required: true
         }, {
+            field: 'specsName',
+            title: '产品规格',
+            required: true
+        }, {
             field: 'quantity',
-            title: '数量',
+            title: '产品数量',
             required: true,
             formatter(v, data) {
                 return data.quantity;
             }
         }, {
-            field: 'specsName',
-            title: '产品规格',
-            required: true
-        }, {
             field: 'changeProductName',
             title: '置换产品',
+            required: true
+        }, {
+            field: 'changeSpecsName',
+            title: '置换产品规格',
             required: true
         }, {
             field: 'canChangeQuantity',
@@ -49,10 +53,6 @@ $(function() {
             formatter: function(v, data) {
                 return data.canChangeQuantity;
             }
-        }, {
-            field: 'changeSpecsName',
-            title: '置换产品规格',
-            required: true
         }, {
             field: 'amount',
             title: '付款金额',

@@ -6,9 +6,6 @@ $(function() {
         title: '',
         checkbox: true
     }, {
-        field: 'accountNumber',
-        title: '账号'
-    }, {
         field: 'realName',
         title: '户名',
         search: true

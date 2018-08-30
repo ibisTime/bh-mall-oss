@@ -17,7 +17,7 @@ $(function() {
         }
     }, {
         field: 'level',
-        title: '等级',
+        title: '等级名称',
         search: true,
         type: 'select'
     }, {
@@ -39,7 +39,7 @@ $(function() {
         type: 'select',
         data: { '1': '是', '0': '否' }
     }, {
-        field: 'updater',
+        field: 'updateName',
         title: '更新人',
         readonly: true
     }, {

@@ -26,8 +26,6 @@ $(function() {
     }, {
         field: 'status',
         title: '状态',
-        search: true,
-        type: 'select',
         key: 'charge_status',
         formatter: Dict.getNameForList('charge_status')
     }, {

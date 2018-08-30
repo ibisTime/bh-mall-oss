@@ -113,7 +113,7 @@ $(function() {
                         <td> ${bool[spList[i].isSjOrder]} </td>
                         <td> ${bool[spList[i].isSingle]} </td>
                         <td> ${globalSpecialList[spList[i].refCode] ? globalSpecialList[spList[i].refCode] : '-'} </td>
-                        <td> ${spList[i].singleNumber} </td>
+                        <td> ${spList[i].singleNumber ? spList[i].singleNumber : '-'} </td>
                         </tr>`;
                     $('#guigeHtml').append(guigeTemp);
                     if (detailData.specsList.length <= 1) {
@@ -152,9 +152,9 @@ $(function() {
                 detailData.directAwardList.map(function(index, item) {
                     var awardTemp = '<div id="awardDom' + item + '">' +
                         '<span style="width : 120px;padding:20px 40px;display: inline-block">' + items[index.level - 1].name + '</span>' +
-                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value1 + '%') + '</span>' +
-                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value2 + '%') + '</span>' +
-                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value3 + '%') + '</span>' +
+                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value1) + '</span>' +
+                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value2) + '</span>' +
+                        '<span style="width : 140px;padding:20px 70px;display: inline-block">' + (+index.value3) + '</span>' +
                         '</div>'
                     awardHtml += awardTemp;
                 })
@@ -238,14 +238,14 @@ $(function() {
         var awardHtml = '';
         $('#remark').parent().after(
             '<div style="width:100%">' +
-            '<span style="font-size: 18px">推荐奖励机制(请输入0-1之间的小数(%))</span>' +
+            '<span style="font-size: 18px">推荐奖励机制(0-100之间的数(%))</span>' +
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
             '<div style="border: 1px solid #ced9df">' +
             '<div id="awardTitle">' +
-            '<label style="padding: 20px 40px"><b>*</b>等级</label>' +
-            '<label style="padding: 20px 40px"><b>*</b>直接推荐奖励</label>' +
-            '<label style="padding: 20px 40px"><b>*</b>间接推荐奖励</label>' +
-            '<label style="padding: 20px 40px"><b>*</b>次推荐奖励</label>' +
+            '<label style="padding: 20px 40px"><b></b>等级</label>' +
+            '<label style="padding: 20px 40px"><b></b>直接推荐奖励(%)</label>' +
+            '<label style="padding: 20px 40px"><b></b>间接推荐奖励(%)</label>' +
+            '<label style="padding: 20px 40px"><b></b>次推荐奖励(%)</label>' +
             '</div>' +
             '<div id="awardContent"></div>' +
             '</div>' +

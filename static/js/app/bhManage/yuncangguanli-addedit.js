@@ -1,5 +1,4 @@
 $(function() {
-    // 代理管理-系统设置-介绍奖设置
     var code = getQueryString('code');
     var view = getQueryString('v');
 
@@ -16,13 +15,19 @@ $(function() {
         }
     }, {
         field: 'productCode',
-        title: '商品编号'
+        title: '产品编号'
     }, {
         field: 'productName',
-        title: '商品名称'
+        title: '产品名称'
     }, {
         field: 'specsName',
-        title: '商品规格'
+        title: '产品规格'
+    }, {
+        field: 'quantity',
+        title: '产品数量',
+        formatter(v, data) {
+            return data.quantity;
+        }
     }, {
         field: 'price',
         title: '产品单价',
@@ -63,7 +68,7 @@ $(function() {
         field: 'toUserName',
         title: '上级代理'
     }, {
-        field: 'leaderName',
+        field: 'teamLeader',
         title: '团队长'
     }, {
         field: 'status',

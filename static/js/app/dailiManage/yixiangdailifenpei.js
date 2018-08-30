@@ -12,8 +12,6 @@ $(function() {
             };
         });
 
-
-
         var columns = [{
                 field: '',
                 title: '',
@@ -69,10 +67,11 @@ $(function() {
                     return data ? data.wxId : '-'
                 }
             }, {
-                field: 'quyu',
-                title: '区域',
+                field: 'diyu',
+                title: '地域',
                 formatter: function(v, data) {
                     if (data) {
+
                         return data.area ? data.province + ' ' + data.city + ' ' + data.area :
                             data.city ? data.province + ' ' + data.city :
                             data.province ? data.province : '-';
@@ -84,8 +83,18 @@ $(function() {
             }, {
                 field: 'status',
                 title: '代理状态',
-                formatter: Dict.getNameForList('yx_status'),
-
+                formatter: function(v, d) {
+                    var dictObj = {
+                        0: '有意愿',
+                        1: '已忽略',
+                        2: '已接受',
+                        3: '已分配'
+                    };
+                    if (d.applyLevel != 1 && v == '0') {
+                        return '待审核分配';
+                    }
+                    return dictObj[v];
+                }
             }, {
                 field: 'fromInfo',
                 title: '来源',
@@ -121,9 +130,6 @@ $(function() {
             columns: columns,
             pageCode: '627265'
         });
-
-
-
         // 忽略意向
         $('#hulveBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -146,9 +152,8 @@ $(function() {
                 return;
             }
             window.location.href = "./yixiangdailifenpei_yedit.html?v=1&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name));
-
         });
-
+        // 接受意向
         $('#edityxBtn').off().click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if (selRecords.length <= 0) {
@@ -180,7 +185,7 @@ $(function() {
             }
         });
 
-        // 修改资料
+        // 详情
         $('#editBtn').off('click').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if (selRecords.length <= 0) {
@@ -189,11 +194,5 @@ $(function() {
             }
             window.location.href = "./yixiangdailifenpei_edit.html?v=0&userId=" + selRecords[0].userId;
         });
-
-
-
-
-    })
-
-
+    });
 });

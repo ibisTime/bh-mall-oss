@@ -105,6 +105,7 @@ $(function() {
                     handler: function() {
                         if ($('#popForm').valid()) {
                             var data = $('#popForm').serializeObject();
+
                             reqApi({
                                 code: '627543',
                                 json: {

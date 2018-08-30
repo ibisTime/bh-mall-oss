@@ -44,7 +44,7 @@ $(function() {
             var data = $('#popForm').serializeObject();
             data.approver = getUserId();
             data.code = code;
-            data.changePrice = $('#changePrice').val();
+            data.changePrice = parseInt($('#changePrice').val()) * 1000;
             reqApi({
                 code: '627791',
                 json: data

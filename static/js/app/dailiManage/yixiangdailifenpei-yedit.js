@@ -70,7 +70,7 @@ $(function() {
                     data.userId = userId;
                     // data.remark = $('#remark').val();
                     reqApi({
-                        code: '627251',
+                        code: '627257',
                         json: data
                     }).done(function(data) {
                         sucDetail();
@@ -91,9 +91,7 @@ $(function() {
                 userId: userId
             },
             buttons: buttons,
-            detailCode: '627267',
-            addCode: '627920',
-            editCode: '627921'
+            detailCode: '627267'
         });
         hideLoading();
     })

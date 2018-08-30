@@ -94,7 +94,10 @@ $(function() {
 
     var options = {
         fields: fields,
-        code: code,
+        code: {
+            code,
+            updater: getUserId()
+        },
         buttons,
         detailCode: '627495',
         view: view,

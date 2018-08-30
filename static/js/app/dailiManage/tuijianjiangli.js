@@ -10,9 +10,7 @@ $(function() {
         }, {
             field: 'realName',
             title: '代理人',
-            formatter(v, data) {
-                return data.agent ? data.agent.realName : '-'
-            }
+            search: true
         }, {
             field: 'mobile',
             title: '代理电话',
@@ -24,6 +22,19 @@ $(function() {
             title: '代理团队',
             formatter: function(v, data) {
                 return data.agent ? data.agent.teamName : '-'
+            }
+        }, {
+            field: 'productName',
+            title: '产品',
+            search: true,
+            formatter(v, data) {
+                return data.inOrder ? data.inOrder.productName : '-';
+            }
+        }, {
+            field: 'specsName',
+            title: '规格',
+            formatter(v, data) {
+                return data.inOrder ? data.inOrder.specsName : '-';
             }
         },
         {
@@ -55,6 +66,7 @@ $(function() {
         pageCode: '627490',
         searchParams: {
             bizType: 'AJ_TJJL',
+            type: 'B'
         }
     });
 
@@ -66,10 +78,10 @@ $(function() {
             return;
         }
         //      if(selRecords[0].outAmount != '0'){
-        window.location.href = "./tuijianjiangli_addedit.html?out=1&userId=" + selRecords[0].userId
-            //      }else {
-            //          toastr.info('无支出明细')
-            //      }
+        window.location.href = "./tuijianjiangli_addedit.html?out=1&userId=" + selRecords[0].userId + selRecords[0].bizType;
+        //      }else {
+        //          toastr.info('无支出明细')
+        //      }
     });
 
     //收入明细
@@ -80,9 +92,9 @@ $(function() {
             return;
         }
         //      if(selRecords[0].inAmount != '0'){
-        window.location.href = "./tuijianjiangli_addedit.html?in=1&userId=" + selRecords[0].userId
-            //      }else {
-            //          toastr.info('无收入明细')
-            //      }
+        window.location.href = "./tuijianjiangli_addedit.html?in=1&userId=" + selRecords[0].userId + selRecords[0].bizType;
+        //      }else {
+        //          toastr.info('无收入明细')
+        //      }
     })
 });

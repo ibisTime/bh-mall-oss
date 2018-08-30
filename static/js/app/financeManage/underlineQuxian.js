@@ -13,8 +13,11 @@ $(function() {
         title: '账号'
     }, {
         field: 'amount',
-        title: '金额',
-        amount: true,
+        title: '余额',
+        formatter: moneyFormat
+    }, {
+        field: 'fee',
+        title: '手续费',
         formatter: moneyFormat
     }, {
         field: 'payCardInfo',

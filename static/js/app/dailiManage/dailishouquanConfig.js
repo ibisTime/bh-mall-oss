@@ -14,7 +14,7 @@ $(function() {
         valueName: 'name'
     }, {
         field: 'level',
-        title: '等级',
+        title: '等级名称',
         search: true,
         type: 'select'
     }, {
@@ -42,7 +42,7 @@ $(function() {
         title: '门槛款',
         formatter: moneyFormat
     }, {
-        field: 'updater',
+        field: 'updateName',
         title: '更新人',
         readonly: true
     }, {

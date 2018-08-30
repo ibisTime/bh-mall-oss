@@ -37,7 +37,10 @@ $(function() {
         field: 'payNote',
         title: '理由',
         readonly: false,
-        required: true
+        required: true,
+        formatter() {
+            return null;
+        }
     }];
 
     var buttons = [{

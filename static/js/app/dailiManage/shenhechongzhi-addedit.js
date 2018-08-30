@@ -35,6 +35,9 @@ $(function() {
         field: 'payDatetime',
         title: '审核时间',
         formatter: dateTimeFormat
+    }, {
+        field: 'payNote',
+        title: '备注'
     }];
 
     buildDetail({

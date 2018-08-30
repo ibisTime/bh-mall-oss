@@ -35,7 +35,7 @@ $(function() {
         title: '审核时间',
         formatter: dateTimeFormat
     }, {
-        field: 'remark',
+        field: 'payNote',
         title: '备注'
     }];
 

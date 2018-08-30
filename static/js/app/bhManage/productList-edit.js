@@ -19,14 +19,9 @@ $(function() {
             '0': '否',
             '1': '是'
         };
-        var html = '<div>';
         var guigeHtml = '';
         var dingjiaHtml = '';
         var temp = '';
-        for (var v of items) {
-            html += '<label style="padding: 20px 40px"><b>*</b>' + v.name + '</label>'
-        }
-        html += '</div>';
 
         var fields = [{
             field: 'name',
@@ -94,7 +89,6 @@ $(function() {
 
                 type0 = awardList.filter(ftype0);
                 data.updater = getUserId();
-
                 if (data.specList.length <= 0 || awardList.length <= 0) {
                     toastr.info('请检查您是否填写规格体系以及奖励机制')
                 } else {
@@ -166,10 +160,12 @@ $(function() {
                             </tr>`;
                         dingjiaHtml += dingjiaTemp;
                     }
-
+                    shopIndex++;
                     // dingjiaHtml += '</div>';
                     $('#dingjiaContent').append(dingjiaHtml);
                 }
+
+                shopIndex = shopIndex - 1;
                 // 插入推荐奖励
                 detailData.directAwardList.map(function(index, item) {
                     var awardTemp = '<div id="awardDom' + item + '">' +
@@ -251,7 +247,7 @@ $(function() {
             '<hr style="height:2px;border:none;border-top:1px ridge #ced9df;">' +
             '<table style="border: 1px solid #ced9df;width: 100%;">' +
             '<thead>' +
-            '<tr><th>规格名称</th><th>规格包含数量</th><th>库存</th><th>重量(g)</th><th>是否允许普通单下单</th><th>是否允许授权单下单</th><th>是否允许升级单下单</th><th>是否可拆单</th><th>关联规格</th><th>拆单数量</th><th style="padding-left: 100px;">操作</th></tr>' +
+            '<tr><th>规格名称</th><th>规格包含数量</th><th>库存</th><th>重量(g)</th><th>是否允许普通单下单</th><th>是否允许授权单下单</th><th>是否允许升级单下单</th><th>是否可拆单</th><th>关联规格</th><th>拆单数量</th><th>操作</th></tr>' +
             '</thead>' +
             '<tbody id="guigeHtml"></tbody>' +
             '</table>' +
@@ -299,8 +295,6 @@ $(function() {
             var useData = specList[g];
             useData.name0 = useData.name;
             delete globalSpecialList[useData.code];
-            console.log(useData);
-            console.log(globalSpecialList)
             useData.isSqOrder = useData.isSqOrder;
 
             var dw = dialog({
@@ -443,6 +437,7 @@ $(function() {
         // 删除规格定价
         $('#guigeHtml').on('click', '.delguigeBtn', function delguige(e) {
             specList = detailData.specsList;
+            shopIndex--;
             if (specList.length == 1) {
                 return;
             }
@@ -467,8 +462,9 @@ $(function() {
 
             $('#guigeHtml').empty();
             $('#dingjiaContent').empty();
+            let a = 0;
             specList.map(function(item, index) {
-                let refCode = item.refCode ? item.refCode : '-';
+                let refCode = item.refCode ? globalSpecialList[item.refCode] : '-';
                 var guigeTemp = '<tr id="guigeDom' + index + '">' +
                     '<td>' + item.name + '</td>' +
                     '<td>' + item.number + '</td>' +
@@ -499,7 +495,7 @@ $(function() {
                 var priceList = item.specsPriceList || item.priceList;
                 for (let v = 0; v < priceList.length; v++) {
                     var dingjiaTemp = '<tr data-index="' + index + '" class="dingjiaDom' + v + '">' +
-                        '<td>' + item.name + '</td>' +
+                        '<td class="shopName' + a + '">' + item.name + '</td>' +
                         '<td>' + items[priceList[v].level - 1].name + '</td>' +
                         '<td>' + moneyFormat(priceList[v].price) + '</td>' +
                         '<td>' + moneyFormat(priceList[v].changePrice) + '</td>' +
@@ -509,10 +505,17 @@ $(function() {
                         '<td>' + bool[priceList[v].isBuy] + '</td>' +
                         '<td>' + priceList[v].minNumber + '</td>' +
                         '<td>' + priceList[v].startNumber + '</td>' +
+                        `<td>
+                            <input data-index="${a}"
+                            data-sindex="${v}"
+                            data-name="${item.name}"
+                            type="button" class="btn specEditBtn"
+                            style="margin-left:0px;margin-top: 0;" value="修改"/>
+                        </td>` +
                         '</tr>'
                     dingjiaHtml += dingjiaTemp;
                 }
-
+                a++;
                 // dingjiaHtml += '</div>';
                 $('#dingjiaContent').append(dingjiaHtml);
                 if (detailData.specsList.length <= 1) {
@@ -592,9 +595,7 @@ $(function() {
 
 
 
-                            $('.editAwardBtn').click(function() {
-                                editAward(e);
-                            })
+
                             $('#awardDom' + index).empty().append(awardTemp);
                             dw.close().remove();
                         }
@@ -723,6 +724,7 @@ $(function() {
         var dingjiaDom = 0;
         // 添加产品规格
         $('#add1Btn').click(function() {
+            shopIndex++;
             specList = detailData.specsList;
             var g = specList.length;
             var temp = {}
@@ -802,7 +804,6 @@ $(function() {
                     title: '确定',
                     handler: function() {
                         if ($('#popForm').valid()) {
-                            shopIndex++;
                             var data = $('#popForm').serializeObject();
                             if (temp.isSingle == 0) {
                                 data.singleNumber = 0;
@@ -829,7 +830,6 @@ $(function() {
                                 '<td>' + temp.name + '</td>' +
                                 '<td>' + temp.number + '</td>' +
                                 '<td>' + temp.stockNumber + '</td>' +
-                                '<td>' + temp.weight + '</td>' +
                                 '<td>' + temp.weight + '</td>' +
                                 '<td>' + bool[temp.isNormalOrder] + '</td>' +
                                 '<td>' + bool[temp.isSqOrder] + '</td>' +

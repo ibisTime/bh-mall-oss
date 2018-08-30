@@ -14,9 +14,12 @@ $(function() {
         readonly: true
     }, {
         field: 'amount',
-        title: '金额',
-        amount: true,
+        title: '余额',
         readonly: true,
+        formatter: moneyFormat
+    }, {
+        field: 'fee',
+        title: '手续费',
         formatter: moneyFormat
     }, {
         field: 'payCardInfo',

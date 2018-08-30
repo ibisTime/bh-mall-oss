@@ -14,7 +14,17 @@ $(function() {
         search: true
     }, {
         field: 'specsName',
-        title: '产品规格'
+        title: '产品规格',
+        formatter(v, d) {
+            let specsName = '';
+            d.specsList.forEach((item, index) => {
+                specsName += '[' + (index + 1) + '] ' + item.name + ', ';
+            });
+            specsName = specsName.split('');
+            specsName.length = specsName.length - 2;
+            specsName = specsName.join('');
+            return specsName;
+        }
     }, {
         field: 'quantity',
         title: '数量',

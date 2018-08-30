@@ -15,7 +15,8 @@ $(function() {
         fields: fields,
         code: {
             code,
-            id
+            id,
+            updater: getUserId()
         },
         editCode: '627102',
         detailCode: '627107',

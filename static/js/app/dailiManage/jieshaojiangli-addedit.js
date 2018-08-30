@@ -2,7 +2,7 @@ $(function() {
     // 代理管理-财务管理-出货奖励
     var userId = getQueryString('userId');
     var gin = getQueryString('in');
-    var out = getQueryString('out');
+    var bizType = getQueryString('bizType');
 
     var kind = gin != null ? '1' : '0'
     var columns = [{
@@ -44,9 +44,10 @@ $(function() {
         columns: columns,
         pageCode: '627492',
         searchParams: {
-            bizType: '2',
+            bizType,
             userId: userId,
-            kind: kind
+            kind: kind,
+            type: 'B'
         }
     });
     $('.search-form').css('display', 'none');

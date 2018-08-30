@@ -49,7 +49,7 @@ $(function() {
         search: true,
         type: 'datetime'
     }, {
-        field: 'updater',
+        field: 'updateName',
         title: '操作人'
     }, {
         field: 'remark',

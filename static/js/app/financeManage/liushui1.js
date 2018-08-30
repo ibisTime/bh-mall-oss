@@ -50,7 +50,7 @@ $(function() {
         title: '创建时间',
         formatter: dateTimeFormat
     }, {
-        field: 'reamrk',
+        field: 'remark',
         title: '备注'
     }];
 

@@ -23,8 +23,7 @@ $(function() {
             title: '产品名称'
         }, {
             field: 'specsName',
-            title: '产品规格',
-            required: true
+            title: '产品规格'
         }, {
             field: 'price',
             title: '单价',
@@ -84,7 +83,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            window.location.href = "./yuncangjilu.html?code=" + selRecords[0].code + '&userId=' + selRecords[0].userId + '&toorter=ok';
+            window.location.href = "./yuncangjilu.html?code=" + selRecords[0].productCode + '&userId=' + selRecords[0].userId + '&toorter=ok';
         });
 
     });

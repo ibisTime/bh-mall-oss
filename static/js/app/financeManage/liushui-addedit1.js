@@ -1,7 +1,7 @@
 $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
-
+    var istguan = getQueryString('tguan');
     var fields = [{
         title: '流水编号',
         field: 'code1',
@@ -18,12 +18,16 @@ $(function() {
         field: 'accountNumber',
         readonly: true
     }, {
-        field: 'currency',
-        title: '币种',
-        type: 'select',
-        key: 'currency',
-        formatter: Dict.getNameForList("currency"),
+        field: 'type1',
+        title: '账户类型',
         readonly: true,
+        formatter(v, d) {
+            if (istguan) {
+                return '托管账户';
+            } else {
+                return '盈亏账户';
+            }
+        }
     }, {
         field: 'channelType',
         title: '渠道类型',
@@ -62,15 +66,15 @@ $(function() {
         field: 'payCardInfo',
         title: '支付渠道信息',
         readonly: true,
-        formatter(v, data) {
-            return data.withdraw.payCardInfo;
+        formatter(v, d) {
+            return d.withdraw ? d.withdraw.payCardInfo : '-'
         }
     }, {
         field: 'payCardNo',
         title: '支付渠道账号',
         readonly: true,
-        formatter(v, data) {
-            return data.withdraw.payCardNo;
+        formatter(v, d) {
+            return d.withdraw ? d.withdraw.payCardNo : '-'
         }
     }, {
         field: 'createDatetime',
@@ -99,7 +103,10 @@ $(function() {
 
     var options = {
         fields: fields,
-        code: code,
+        code: {
+            code,
+            updater: getUserId()
+        },
         detailCode: '627495',
         view: view,
         buttons

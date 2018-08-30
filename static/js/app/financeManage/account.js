@@ -1,5 +1,5 @@
 $(function() {
-    var accountNumber, id;
+    var accountNumber, id, accountNumberYK;
 
 
     reqApi({
@@ -11,6 +11,9 @@ $(function() {
         if (data[0].accountNumber) {
             accountNumber = data[0].accountNumber;
         }
+        if (data[1].accountNumber) {
+            accountNumberYK = data[1].accountNumber;
+        }
         code = data[0].userId;
         reqApi({
             code: '627452',
@@ -21,8 +24,8 @@ $(function() {
             $("#amount-TG").text("￥" + moneyFormat(data1.amount));
 
         });
+        $("#amount-YK").text("￥" + moneyFormat(data[1].amount));
     });
-
 
 
 
@@ -31,7 +34,12 @@ $(function() {
     });
 
     $('#accoutGrantBtn').click(function() {
-        window.location.href = './liushui1.html?accountNumber=' + accountNumber;
+        window.location.href = './liushui1.html?accountNumber=' + accountNumber + '&tguan=1';
     })
+
+    $('#accoutGrantYKBtn').click(function() {
+        window.location.href = './liushui1.html?accountNumber=' + accountNumberYK;
+    })
+
 
 });

@@ -69,6 +69,12 @@ $(function() {
 
                 data.updater = getUserId();
 
+                data.specsList.forEach(item => {
+                    if (!item.singleNumber) {
+                        item.singleNumber = 0
+                    }
+                })
+
                 return data
             },
             afterData: function(data) {

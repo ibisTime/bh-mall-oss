@@ -10,9 +10,7 @@ $(function() {
         }, {
             field: 'realName',
             title: '代理人',
-            formatter(v, data) {
-                return data.agent ? data.agent.realName : '-'
-            }
+            search: true
         }, {
             field: 'mobile',
             title: '代理电话',
@@ -57,6 +55,7 @@ $(function() {
         pageCode: '627490',
         searchParams: {
             bizType: 'AJ_JSJL',
+            type: 'B'
         }
     });
     //支出明细
@@ -67,10 +66,10 @@ $(function() {
             return;
         }
         //      if(selRecords[0].outAmount != '0'){
-        window.location.href = "./jieshaojiangli_addedit.html?out=1&userId=" + selRecords[0].userId
-            //      }else {
-            //          toastr.info('无支出明细')
-            //      }
+        window.location.href = "./jieshaojiangli_addedit.html?out=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType;
+        //      }else {
+        //          toastr.info('无支出明细')
+        //      }
     });
 
     //收入明细
@@ -81,10 +80,10 @@ $(function() {
             return;
         }
         //      if(selRecords[0].inAmount != '0'){
-        window.location.href = "./jieshaojiangli_addedit.html?in=1&userId=" + selRecords[0].userId
-            //      }else {
-            //          toastr.info('无收入明细')
-            //      }
+        window.location.href = "./jieshaojiangli_addedit.html?in=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType;
+        //      }else {
+        //          toastr.info('无收入明细')
+        //      }
     })
 
 });

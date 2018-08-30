@@ -52,7 +52,7 @@ $(function() {
         field: 'toUserName',
         title: '上级代理'
     }, {
-        field: 'leaderName',
+        field: 'teamLeader',
         title: '团队长'
     }, {
         field: 'applyDatetime',
