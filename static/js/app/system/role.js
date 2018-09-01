@@ -8,7 +8,7 @@ $(function() {
         title: '角色名称',
         search: true
     }, {
-        field: 'updater',
+        field: 'updateName',
         title: '更新人'
     }, {
         field: 'updateDatetime',

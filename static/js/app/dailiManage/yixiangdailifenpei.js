@@ -151,6 +151,10 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
+            // if (selRecords[0].applyLevel != 1 && selRecords[0].status == '0') {
+            //     toastr.info("该状态下无法修改资料");
+            //     return;
+            // }
             // console.log(selRecords[0])
             window.location.href = "./yixiangdailifenpei_yedit.html?v=1&userId=" + selRecords[0].userId + "&name=" + encodeURI(encodeURI(selRecords[0].name)) + "&lev=" + selRecords[0].level;
         });

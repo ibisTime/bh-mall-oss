@@ -3,7 +3,7 @@
  * extensions: https://github.com/kayalshri/tableExport.jquery.plugin
  */
 
-(function ($) {
+(function($) {
     'use strict';
     var sprintf = $.fn.bootstrapTable.utils.sprintf;
 
@@ -36,7 +36,7 @@
     var BootstrapTable = $.fn.bootstrapTable.Constructor,
         _initToolbar = BootstrapTable.prototype.initToolbar;
 
-    BootstrapTable.prototype.initToolbar = function () {
+    BootstrapTable.prototype.initToolbar = function() {
         this.showToolbar = this.options.showExport;
 
         _initToolbar.apply(this, Array.prototype.slice.apply(arguments));
@@ -49,14 +49,15 @@
             if (!$export.length) {
                 $export = $([
                     '<div class="export btn-group" style="display: none;">',
-                        '<button class="btn' +
-                            sprintf(' btn-%s', this.options.buttonsClass) +
-                            sprintf(' btn-%s', this.options.iconSize) +
-                            '" ' +
-                            'data-type="excel" type="button">',
-                            sprintf('<i class="%s %s"></i> ', this.options.iconsPrefix, this.options.icons.export),
-                        '导出</button>' +
-                    '</div>'].join('')).appendTo($btnGroup);
+                    '<button class="btn' +
+                    sprintf(' btn-%s', this.options.buttonsClass) +
+                    sprintf(' btn-%s', this.options.iconSize) +
+                    '" ' +
+                    'data-type="excel" type="button">',
+                    sprintf('<i class="%s %s"></i> ', this.options.iconsPrefix, this.options.icons.export),
+                    '导出</button>' +
+                    '</div>'
+                ].join('')).appendTo($btnGroup);
 
                 var $menu = $export.find('button'),
                     exportTypes = this.options.exportTypes;
@@ -65,22 +66,22 @@
                     var types = this.options.exportTypes.slice(1, -1).replace(/ /g, '').split(',');
 
                     exportTypes = [];
-                    $.each(types, function (i, value) {
+                    $.each(types, function(i, value) {
                         exportTypes.push(value.slice(1, -1));
                     });
                 }
 
-                $menu.click(function () {
+                $menu.click(function() {
                     var type = $(this).data('type'),
-                        doExport = function () {
+                        doExport = function() {
                             that.$el.tableExport($.extend({}, that.options.exportOptions, {
                                 type: type,
                                 escape: false
                             }));
                         };
-                        
+
                     if (that.options.exportDataType === 'all' && that.options.pagination) {
-                        that.$el.one(that.options.sidePagination === 'server' ? 'post-body.bs.table' : 'page-change.bs.table', function () {
+                        that.$el.one(that.options.sidePagination === 'server' ? 'post-body.bs.table' : 'page-change.bs.table', function() {
                             doExport();
                             that.togglePagination();
                         });

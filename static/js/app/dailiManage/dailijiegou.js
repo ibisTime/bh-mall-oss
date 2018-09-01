@@ -25,9 +25,9 @@ $(function() {
         }
         for (var i = 0; i < list.length; i++) {
             list[i].parent = list.parent || null;
-            if (list[i].userList && list[i].userList.length) {
-                list[i].userList.parent = list[i];
-                createList(list[i].userList);
+            if (list[i].agentList && list[i].agentList.length) {
+                list[i].agentList.parent = list[i];
+                createList(list[i].agentList);
             } else {
                 var obj = {};
                 var tmp = list[i];
@@ -81,7 +81,6 @@ $(function() {
                 status: '8'
             }
         }).then(function(d) {
-            console.log(d)
             d.forEach(function(d, i) {
                 for (var v of items) {
                     d.level += '';
@@ -177,7 +176,7 @@ $(function() {
                         status: '8'
                     }
                 }).then(function(data) {
-                    var selectData = data.userList;
+                    var selectData = data;
                     buildList({
                         container: $('.ui-dialog-content'),
                         columns: items,
@@ -240,6 +239,7 @@ $(function() {
 
                 $('#exBtn').off('click').click(function() {
                     $('.export .btn').click();
+                    dw.close().remove();
                 });
 
                 $('#cancelBtn').click(function() {

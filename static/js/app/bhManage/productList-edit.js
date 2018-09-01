@@ -108,7 +108,6 @@ $(function() {
                     obj[spList[i].code] = spList[i].name;
                 }
                 globalSpecialList = obj;
-                gloData = JSON.parse(JSON.stringify(obj));
                 // 插入规格和定价
                 for (let i = 0, len = spList.length; i < len; i++) {
                     let singNum = spList[i].singleNumber == 0 ? '0' : spList[i].singleNumber;
@@ -272,8 +271,13 @@ $(function() {
 
         // 修改产品规格
         $('#guigeHtml').on('click', '.delguigeEditBtn', function(e) {
-            globalSpecialList = JSON.parse(JSON.stringify(gloData));
             specList = detailData.specsList;
+            let obj = {};
+            for (let i = 0; i < specList.length; i++) {
+                obj[specList[i].code] = specList[i].name;
+            }
+            gloData = JSON.parse(JSON.stringify(obj));
+            globalSpecialList = JSON.parse(JSON.stringify(gloData));
             var g = specList.length - 1;
             var code = $(this).data('code');
             var name = $(this).data('name');

@@ -40,7 +40,11 @@ $(function() {
         code: code,
         addCode: '627070',
         editCode: '627072',
-        detailCode: '627077'
+        detailCode: '627077',
+        beforeSubmit: function(data) {
+            data.updater = getUserId();
+            return data;
+        }
     });
 
     $('#parentKey').on('change', function() {

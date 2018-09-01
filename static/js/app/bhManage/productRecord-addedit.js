@@ -38,7 +38,7 @@ $(function() {
         title: '变动时间',
         formatter: dateTimeFormat
     }, {
-        field: direct ? 'updater' : 'realName',
+        field: direct ? 'updateName' : 'realName',
         title: '操作人',
     }, {
         field: 'remark',

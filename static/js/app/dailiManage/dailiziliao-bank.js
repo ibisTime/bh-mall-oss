@@ -12,9 +12,6 @@ $(function() {
         title: '卡号'
     }, {
         field: 'subbranch',
-        title: '开户行'
-    }, {
-        field: 'payCardInfo',
         title: '开户支行'
     }];
     buildList({

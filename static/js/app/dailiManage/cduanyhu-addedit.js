@@ -1,35 +1,31 @@
 $(function() {
     var userId = getQueryString('userId');
-    var code = getQueryString('code');
-    var view = getQueryString('v');
     var fields = [{
-        field: 'nickName',
-        title: '昵称',
-        readonly: view
+        field: 'nickname',
+        title: '昵称'
     }, {
         field: 'photo',
         title: '头像',
-        type: 'img',
-        readonly: false,
+        readonly: true,
         formatter: function(v, data) {
-            return data.pic && '<img  style="width:40px;height:40px" src="' + OSS.picBaseUrl + '/' + data.pic + '" >' || "-"
+            return data.photo && '<img  style="width:40px;height:40px" src="' + data.photo + '" >' || "-"
         }
     }, {
-        field: 'status',
-        title: '状态',
-        readonly: view
-    }, {
-        field: 'wxId',
-        title: '微信号',
-        readonly: view
+        field: 'createDatetime',
+        title: '注册时间',
+        formatter: dateTimeFormat
     }];
     buildDetail({
         fields: fields,
+        view: '1',
         code: {
             userId: userId,
             updater: getUserId()
         },
-        detailCode: '627347'
+        detailCode: '627347',
+        afterData(data) {
+            $('.w100p').text('')
+            return data;
+        }
     });
-
 });

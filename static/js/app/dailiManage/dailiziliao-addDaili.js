@@ -22,7 +22,11 @@ $(function() {
 
     buildDetail({
         fields: fields,
-        addCode: '627110'
+        addCode: '627110',
+        beforeSubmit(data) {
+            data.updater = getUserId();
+            return data;
+        }
     });
     hideLoading();
 });

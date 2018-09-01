@@ -6,24 +6,24 @@ $(function() {
         search: true
     }, {
         field: 'teamLeader',
-        title: '最高代理名字'
+        title: '最高代理名字',
     }, {
         field: 'updateDatetime1',
         title: '产品1',
         formatter: function(v, data) {
-            return data.productQuantity[0];
+            return data.list ? data.list[0].productName + ': ' + data.list[0].quantity : 0;
         }
     }, {
         field: 'updateDatetime2',
         title: '产品2',
         formatter: function(v, data) {
-            return data.productQuantity[1];
+            return data.list[1] ? data.list[1].productName + ': ' + data.list[1].quantity : 0;
         }
     }, {
         field: 'updateDatetime3',
         title: '产品3',
         formatter: function(v, data) {
-            return data.productQuantity[2];
+            return data.list[2] ? data.list[2].productName + ': ' + data.list[2].quantity : 0;
         }
     }, {
         field: 'impowerDatetime',

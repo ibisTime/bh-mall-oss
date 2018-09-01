@@ -56,7 +56,7 @@ $(function() {
             },
             type: 'select'
         }, {
-            field: 'updater',
+            field: 'updateName',
             title: '更新人',
             readonly: true
         }, {

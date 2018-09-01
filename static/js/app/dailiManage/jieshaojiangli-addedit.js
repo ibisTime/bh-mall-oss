@@ -10,25 +10,28 @@ $(function() {
         title: '',
         checkbox: true
     }, {
-        field: 'realName',
-        title: '姓名',
-        formatter: function(v, data) {
-            return data.agent.realName
+        field: 'realName1',
+        title: '出货人',
+        formatter(v, data) {
+            return data.agent ? data.agent.realName : '-'
         }
     }, {
-        field: 'nickname',
-        title: '昵称',
-        formatter: function(v, data) {
-            return data.agent.nickname
-        }
+        field: 'inAmount',
+        title: '奖励金额',
+        amount: true
     }, {
         field: 'status',
-        title: '代理状态',
-        formatter: gin ? Dict.getNameForList('in_order_status') : Dict.getNameForList('out_order_status')
+        title: '状态',
+        type: 'select',
+        key: 'jour_status',
+        formatter: Dict.getNameForList('jour_status'),
+        search: true
     }, {
-        field: 'createDatetime',
+        field: 'createDatetime1',
         title: '时间',
-        formatter: dateTimeFormat
+        formatter(v, d) {
+            return dateTimeFormat(d.agent.createDatetime);
+        }
     }, {
         field: 'remark',
         title: '备注'
@@ -37,7 +40,7 @@ $(function() {
         columns: columns,
         pageCode: '627492',
         searchParams: {
-            bizType,
+            bizType: 'AJ_JSJL',
             userId: userId,
             kind: kind,
             type: 'B'
@@ -45,5 +48,7 @@ $(function() {
     });
     $('.search-form').css('display', 'none');
     $('.toolbar').empty().append('<li style="display:block;" id="exportBtn"><span><img src="/static/images/t01.png"></span>导出</li>')
-
+    $('#exportBtn').click(function() {
+        $('.export .btn').click();
+    });
 });

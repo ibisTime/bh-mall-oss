@@ -82,7 +82,11 @@ $(function() {
         view: view,
         addCode: "627030",
         editCode: "627032",
-        detailCode: '627037'
+        detailCode: '627037',
+        beforeSubmit: function(data) {
+            data.updater = getUserId();
+            return data;
+        }
     });
     hideLoading();
 });

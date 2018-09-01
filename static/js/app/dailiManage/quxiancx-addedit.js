@@ -39,7 +39,7 @@ $(function() {
         key: 'withdraw_status',
         formatter: Dict.getNameForList('withdraw_status')
     }, {
-        field: 'payUser',
+        field: 'approveName',
         title: '审核人',
         readonly: true,
     }, {

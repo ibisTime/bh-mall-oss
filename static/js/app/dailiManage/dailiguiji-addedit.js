@@ -24,10 +24,6 @@ $(function() {
         valueName: 'name',
         visible: false
     }, {
-        field: 'approveName',
-        title: '操作人',
-        readonly: view
-    }, {
         field: 'userReferrerName',
         title: '推荐人',
         readonly: view

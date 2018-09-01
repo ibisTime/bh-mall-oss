@@ -28,7 +28,7 @@ $(function() {
         field: 'orderNo',
         title: '排序'
     }, {
-        field: 'updater',
+        field: 'updateName',
         title: '最新修改人'
     }, {
         field: 'updateDatetime',

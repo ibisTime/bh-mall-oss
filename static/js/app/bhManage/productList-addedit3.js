@@ -512,7 +512,7 @@ $(function() {
 
                             dw.close().remove();
                             var circleList = []
-                            for (var p = 0; p < items.length - 1; p++) {
+                            for (var p = 0; p < items.length; p++) {
                                 var field1 = {
                                     field: items[p].level,
                                     title: '等级',
@@ -551,17 +551,15 @@ $(function() {
                                             dw1.close().remove();
                                             var specsPriceList = []
                                             for (var v of items) {
-                                                if (v.level != 6) {
-                                                    var price1 = 'price' + (v.level - 1);
-                                                    var changePrice1 = 'changePrice' + (v.level - 1);
+                                                var price1 = 'price' + (v.level - 1);
+                                                var changePrice1 = 'changePrice' + (v.level - 1);
 
-                                                    var temp1 = {};
-                                                    temp1.level = v.level;
-                                                    temp1.price = +data[price1] * 1000;
-                                                    temp1.changePrice = +data[changePrice1] * 1000;
+                                                var temp1 = {};
+                                                temp1.level = v.level;
+                                                temp1.price = +data[price1] * 1000;
+                                                temp1.changePrice = +data[changePrice1] * 1000;
 
-                                                    specsPriceList.push(temp1);
-                                                }
+                                                specsPriceList.push(temp1);
                                             }
                                             // temp.specsPriceList = specsPriceList;
 
@@ -570,7 +568,7 @@ $(function() {
                                                 0: '否',
                                                 1: '是'
                                             };
-                                            for (var p = 0; p < items.length - 1; p++) {
+                                            for (var p = 0; p < items.length; p++) {
                                                 xiangouList = xiangouList.concat([{
                                                     field: items[p].level,
                                                     title: '等级',
@@ -627,7 +625,7 @@ $(function() {
                                                             var data = $('#popFormXiangou').serializeObject();
                                                             dw2.close().remove();
                                                             // var specsPriceList = []
-                                                            for (var i = 0; i < items.length - 1; i++) {
+                                                            for (var i = 0; i < items.length; i++) {
                                                                 let v = items[i];
                                                                 let dailyNumber = 'dailyNumber' + (v.level - 1);
                                                                 let weeklyNumber = 'weeklyNumber' + (v.level - 1);

@@ -32,7 +32,7 @@ $(function() {
             title: '微信号'
         }, {
             field: 'yjAmount',
-            title: '余额',
+            title: '可提现余额',
             amount: true
         }, {
             field: 'sendAward',

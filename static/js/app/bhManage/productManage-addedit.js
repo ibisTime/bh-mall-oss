@@ -98,7 +98,7 @@ $(function() {
                         '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.price / 1000 + '</span>' +
                         '<span style="width : 120px;padding:20px 40px;display: inline-block">' + bool[item.isSingle] + '</span>' +
                         '<span style="width : 120px;padding:20px 40px;display: inline-block">' + singleNumber + '</span>' +
-                        '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="display: inline-block;!important;" value="删除"/>' +
+                        '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="display: inline-block;!important;margin-left:0px;" value="删除"/>' +
                         '</div>';
                     $('#guigeHtml').append(guigeTemp);
                     a++;
@@ -148,7 +148,7 @@ $(function() {
                     '<span style="width : 120px;padding:20px 40px;display: inline-block">' + item.price / 1000 + '</span>' +
                     '<span style="width : 120px;padding:20px 40px;display: inline-block">' + bool[item.isSingle] + '</span>' +
                     '<span style="width : 120px;padding:20px 40px;display: inline-block">' + singleNumber + '</span>' +
-                    '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="display: inline-block;!important; margin-left: 180px;" value="删除"/>' +
+                    '<input id="delguigeBtn_' + a + '" type="button" class="btn delguigeBtn" style="display: inline-block;!important; margin-left: 0px;" value="删除"/>' +
                     '</div>';
 
 
@@ -238,7 +238,7 @@ $(function() {
                                 '<span style="width : 120px;padding:20px 40px;display: inline-block">' + temp.price / 1000 + '</span>' +
                                 '<span style="width : 120px;padding:20px 40px;display: inline-block">' + bool[temp.isSingle] + '</span>' +
                                 '<span style="width : 120px;padding:20px 40px;display: inline-block">' + singleNumber + '</span>' +
-                                '<input id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:180px;display: inline-block;!important;" value="删除"/>'
+                                '<input id="delguigeBtn_' + g + '" type="button" class="btn delguigeBtn" style="margin-left:0px;display: inline-block;!important;" value="删除"/>'
                             '</div>';
 
                             $('#guigeHtml').append(guigeTemp);

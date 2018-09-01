@@ -76,11 +76,14 @@ $(function() {
             }
         }, {
             title: "充值截图",
-            field: "pic",
+            field: "photo",
             type: "img",
             single: true,
             readonly: false,
-            required: true
+            required: true,
+            formatter: function(v, data) {
+                return data.agent ? data.agent.photo && '<img  style="width:40px;height:40px" src="' + data.agent.photo + '" >' || "-" : '-'
+            }
         }, {
             field: 'remark',
             title: '备注',
@@ -146,13 +149,6 @@ $(function() {
             formatter(v, data) {
                 return null;
             }
-        }, {
-            title: "扣款截图",
-            field: "pic",
-            type: "img",
-            single: true,
-            readonly: false,
-            required: true
         }, {
             field: 'remark',
             title: '备注',

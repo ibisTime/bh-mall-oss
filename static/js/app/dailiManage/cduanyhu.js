@@ -30,11 +30,8 @@ $(function() {
             title: '头像',
             type: 'img',
             formatter: function(v, data) {
-                return data.pic && '<img  style="width:40px;height:40px" src="' + OSS.picBaseUrl + '/' + data.pic + '" >' || "-"
+                return data.photo && '<img  style="width:40px;height:40px" src="' + data.photo + '" >' || "-"
             }
-        }, {
-            field: 'wxId',
-            title: '微信号'
         }, {
             field: 'createDatetime',
             title: '注册时间',

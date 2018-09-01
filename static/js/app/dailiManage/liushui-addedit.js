@@ -67,12 +67,6 @@ $(function() {
         formatter: dateTimeFormat,
         readonly: true
     }, {
-        title: "截图",
-        field: "pic",
-        type: "img",
-        single: true,
-        readonly: false
-    }, {
         field: 'status',
         title: '状态',
         type: 'select',

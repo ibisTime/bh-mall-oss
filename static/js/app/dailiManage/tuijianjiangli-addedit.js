@@ -4,7 +4,6 @@ $(function() {
     var inq = getQueryString('in');
     var bizType = getQueryString('bizType');
     var kind = inq != null ? '1' : '0';
-
     var columns = [{
         field: '',
         title: '',
@@ -12,64 +11,32 @@ $(function() {
     }, {
         field: 'code',
         title: '订单编号',
-        search: true
+        formatter: function(v, data) {
+            return data.code
+        }
     }, {
-        field: 'amount1',
+        field: 'amount',
         title: '订单金额',
-        formatter: function(v, data) {
-            if (data.inOrder) {
-                return moneyFormat(data.inOrder.amount);
-            }
-            return moneyFormat(data.outOrder.amount);
-        }
+        amount: true
     }, {
-        field: 'productCode',
-        title: '出货产品',
-        formatter: function(v, data) {
-            if (data.inOrder) {
-                return data.inOrder.productName
-            }
-            return data.outOrder.productName
-        }
+        field: 'productName',
+        title: '出货产品'
     }, {
         field: 'specsName',
-        title: '产品规格',
-        formatter: function(v, data) {
-            if (data.inOrder) {
-                return data.inOrder.specsName
-            }
-            return data.outOrder.specsName
-        }
+        title: '产品规格'
     }, {
-        field: 'signer1',
-        title: '收货人',
-        formatter: function(v, data) {
-            if (data.inOrder) {
-                return data.inOrder.signer
-            }
-            return data.outOrder.signer
-        }
+        field: 'signer',
+        title: '收货人'
     }, {
-        field: 'mobile1',
-        title: '收货人手机号',
-        formatter: function(v, data) {
-            if (data.inOrder) {
-                return data.inOrder.mobile
-            }
-            return data.outOrder.mobile
-        }
+        field: 'mobile',
+        title: '收货人手机号'
     }, {
         field: 'diyu',
         title: '收货地址',
         formatter: function(v, data) {
-            if (data.inOrder) {
-                return data.inOrder.area ? data.inOrder.province + ' ' + data.inOrder.city + ' ' + data.inOrder.area :
-                    data.inOrder.city ? data.inOrder.province + ' ' + data.inOrder.city :
-                    data.inOrder.province ? data.inOrder.province : '-'
-            }
-            return data.outOrder.area ? data.outOrder.province + ' ' + data.outOrder.city + ' ' + data.outOrder.area :
-                data.outOrder.city ? data.outOrder.province + ' ' + data.outOrder.city :
-                data.outOrder.province ? data.outOrder.province : '-'
+            return data.area ? data.province + ' ' + data.city + ' ' + data.area :
+                data.city ? data.province + ' ' + data.city :
+                data.province ? data.province : '-'
 
         }
     }, {
@@ -81,7 +48,7 @@ $(function() {
 
     buildList({
         columns: columns,
-        pageCode: '627492',
+        pageCode: '627496',
         searchParams: {
             bizType,
             userId: userId,
@@ -91,5 +58,7 @@ $(function() {
     });
     $('.search-form').css('display', 'none');
     $('.toolbar').empty().append('<li style="display:block;" id="exportBtn"><span><img src="/static/images/t01.png"></span>导出</li>')
-
+    $('#exportBtn').click(function() {
+        $('.export .btn').click();
+    });
 });

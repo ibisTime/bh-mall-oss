@@ -89,7 +89,9 @@ $(function() {
     }, {
         field: 'remark',
         title: '备注',
-        readonly: false
+        readonly: false,
+        required: true
+
     }];
 
     if (up) {

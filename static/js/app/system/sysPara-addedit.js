@@ -25,6 +25,7 @@ $(function() {
         editCode: '627081',
         beforeSubmit: function(data) {
             data.remark = $('#remark').text();
+            data.updater = getUserId();
             return data;
         }
     });

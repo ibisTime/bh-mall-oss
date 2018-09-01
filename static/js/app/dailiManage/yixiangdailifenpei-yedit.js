@@ -65,6 +65,7 @@ $(function() {
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
                     data.approver = getUserId();
+                    data.updater = getUserId();
                     data.userId = userId;
                     // data.remark = $('#remark').val();
                     reqApi({

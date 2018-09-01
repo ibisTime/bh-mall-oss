@@ -64,6 +64,10 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
+        if (selRecords[0].transAmount > 0) {
+            toastr.info("此记录为收入明细");
+            return;
+        }
         //      if(selRecords[0].outAmount != '0'){
         window.location.href = "./tuijianjiangli_addedit.html?out=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType;
         //      }else {
@@ -76,6 +80,10 @@ $(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
+            return;
+        }
+        if (selRecords[0].transAmount < 0) {
+            toastr.info("此记录为支出明细");
             return;
         }
         //      if(selRecords[0].inAmount != '0'){

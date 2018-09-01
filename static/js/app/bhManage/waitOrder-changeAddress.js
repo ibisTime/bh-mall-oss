@@ -33,13 +33,11 @@ $(function() {
         view: view,
         detailCode: '627664',
         addCode: '627643',
-        editCode: '627643'
-            /* ,
-                    beforeSubmit: function(data) {
-                        data.signer = data.signeName;
-                        delete data.signeName;
-                        return data;
-                    } */
+        editCode: '627643',
+        beforeSubmit: function(data) {
+            data.updater = getUserId();
+            return data;
+        }
     });
 
 });
