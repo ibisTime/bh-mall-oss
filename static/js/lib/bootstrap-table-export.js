@@ -72,11 +72,17 @@
                 }
 
                 $menu.click(function() {
+                    let li_len = $('.place').find('li').length - 1;
+                    let excelTxt = $($('.place').find('li')[li_len]).text();
+                    if (excelTxt == '导出') {
+                        excelTxt = $($('.place').find('li')[li_len - 1]).text();
+                    }
                     var type = $(this).data('type'),
                         doExport = function() {
                             that.$el.tableExport($.extend({}, that.options.exportOptions, {
                                 type: type,
-                                escape: false
+                                escape: false,
+                                excelTxt: excelTxt
                             }));
                         };
 

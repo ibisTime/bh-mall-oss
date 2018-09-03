@@ -61,7 +61,8 @@ $(function() {
         singleSelect: false,
         searchParams: {
             type: 'B',
-            companyCode: OSS.company
+            companyCode: OSS.company,
+            isCompanyPay: 1
         }
 
     });

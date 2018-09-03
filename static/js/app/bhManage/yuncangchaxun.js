@@ -86,5 +86,15 @@ $(function() {
             window.location.href = "./yuncangjilu.html?code=" + selRecords[0].specsCode + '&userId=' + selRecords[0].userId + '&toorter=ok';
         });
 
+        //修改库存
+        $('#editBtn').off('click').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            window.location.href = "./yuncangchaxun_yedit.html?code=" + selRecords[0].code + '&userId=' + selRecords[0].userId + '&view=ok';
+        });
+
     });
 })

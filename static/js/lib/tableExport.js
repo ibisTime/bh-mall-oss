@@ -10,6 +10,7 @@
 (function($) {
     $.fn.extend({
         tableExport: function(options) {
+            let excelTxt = options.excelTxt;
             var defaults = {
                 consoleLog: false,
                 csvEnclosure: '"',
@@ -17,8 +18,8 @@
                 csvUseBOM: true,
                 displayTableName: false,
                 escape: false,
-                excelstyles: ['text-align','vertical-align'], // e.g. ['border-bottom', 'border-top', 'border-left', 'border-right']
-                fileName: '表格导出',
+                excelstyles: ['text-align', 'vertical-align'], // e.g. ['border-bottom', 'border-top', 'border-left', 'border-right']
+                fileName: excelTxt,
                 htmlContent: false,
                 ignoreColumn: [],
                 ignoreRow: [],
