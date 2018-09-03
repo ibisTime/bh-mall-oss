@@ -13,12 +13,6 @@ $(function() {
         value: getUserId(),
         hidden: true
     }, {
-        field: 'isCompanySend',
-        title: '是否云仓发货',
-        type: 'select',
-        data: { '0': '否', '1': '是' },
-        required: true
-    }, {
         field: 'logisticsCode',
         title: '物流编号',
         required: true

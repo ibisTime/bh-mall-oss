@@ -69,7 +69,7 @@ $(function() {
             return;
         }
         //      if(selRecords[0].outAmount != '0'){
-        window.location.href = "./tuijianjiangli_addedit.html?out=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType;
+        window.location.href = "./tuijianjiangli_addedit.html?out=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType + '&refNo=' + selRecords[0].refNo;
         //      }else {
         //          toastr.info('无支出明细')
         //      }
@@ -87,7 +87,7 @@ $(function() {
             return;
         }
         //      if(selRecords[0].inAmount != '0'){
-        window.location.href = "./tuijianjiangli_addedit.html?in=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType;
+        window.location.href = "./tuijianjiangli_addedit.html?in=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType + '&refNo=' + selRecords[0].refNo;
         //      }else {
         //          toastr.info('无收入明细')
         //      }

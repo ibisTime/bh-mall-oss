@@ -85,7 +85,7 @@ $(function() {
             search: true,
             data: {
                 '7': '授权待公司审核',
-                '11': '授权退出'
+                '11': '申请退出待公司审核'
             }
         }, {
             field: 'createDatetime',

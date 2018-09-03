@@ -3,6 +3,7 @@ $(function() {
     var userId = getQueryString('userId');
     var in1 = getQueryString('in');
     var bizType = getQueryString('bizType');
+    var refNo = getQueryString('refNo');
     var kind = in1 != null ? '1' : '0';
 
     var columns = [{
@@ -53,7 +54,8 @@ $(function() {
             bizType,
             userId: userId,
             kind: kind,
-            type: 'B'
+            type: 'B',
+            refNo
         }
     });
     $('.search-form').css('display', 'none');

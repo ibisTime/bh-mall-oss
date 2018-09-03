@@ -67,7 +67,7 @@ $(function() {
             toastr.info("此记录为收入明细");
             return;
         }
-        window.location.href = "./chuhuojiangli_addedit.html?out=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType;
+        window.location.href = "./chuhuojiangli_addedit.html?out=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType + '&refNo=' + selRecords[0].refNo;
     });
 
     //收入明细
@@ -82,7 +82,7 @@ $(function() {
             return;
         }
         //      if(selRecords[0].inAmount != '0'){
-        window.location.href = "./chuhuojiangli_addedit.html?in=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType;
+        window.location.href = "./chuhuojiangli_addedit.html?in=1&userId=" + selRecords[0].userId + '&bizType=' + selRecords[0].bizType + '&refNo=' + selRecords[0].refNo;
         //      }else {
         //          toastr.info('无收入明细')
         //      }

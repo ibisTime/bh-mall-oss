@@ -9,7 +9,8 @@ $(function() {
         title: '地区'
     }, {
         field: 'cvalue',
-        title: '数值'
+        title: '数值',
+        amount: true
     }];
     buildList({
         columns: columns,
@@ -27,6 +28,6 @@ $(function() {
             return;
         }
         // debugger;
-        window.location.href = "../financeManage/quxianRules_addedit.html?v=0&id=" + selRecords[0].id + "&remark=" + selRecords[0].remark;
+        window.location.href = "./yunfeipeiz_addedit.html?v=0&yf=ok&id=" + selRecords[0].id + "&remark=" + selRecords[0].remark;
     });
 });
