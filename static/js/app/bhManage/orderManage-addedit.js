@@ -21,6 +21,10 @@ $(function() {
         amount: true,
         formatter: moneyFormat
     }, {
+        field: 'yunfei',
+        title: '运费',
+        amount: true
+    }, {
         field: 'status',
         title: '订单状态',
         type: 'select',
@@ -41,6 +45,9 @@ $(function() {
     }, {
         field: 'mobile',
         title: '收货人电话'
+    }, {
+        field: 'address',
+        title: '收货地址'
     }, {
         field: 'remark',
         title: '备注'

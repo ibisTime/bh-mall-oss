@@ -6,8 +6,11 @@ $(function() {
 
 
     var fields = [{
-        field: 'code',
-        title: '订单编号'
+        field: 'code1',
+        title: '订单编号',
+        formatter(v, d) {
+            return d.code;
+        }
     }, {
         field: 'applyDatetime',
         title: '下单日期',

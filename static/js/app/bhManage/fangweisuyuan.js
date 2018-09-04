@@ -24,9 +24,8 @@ $(function() {
     }, {
         field: 'status',
         title: '状态',
-        key: 'code_status',
-        type: 'select',
-        formatter: Dict.getNameForList('code_status')
+        key: 'pro_code_status',
+        formatter: Dict.getNameForList('pro_code_status')
     }];
     buildList({
         columns: columns,

@@ -19,6 +19,10 @@ $(function() {
         amount: true,
         formatter: moneyFormat
     }, {
+        field: 'yunfei',
+        title: '运费',
+        amount: true
+    }, {
         field: 'status',
         title: '订单状态',
         search: true,
@@ -51,7 +55,8 @@ $(function() {
     }];
     buildList({
         columns: columns,
-        pageCode: '627731'
+        pageCode: '627731',
+        singleSelect: false
     });
 
     // 物流信息
@@ -98,52 +103,64 @@ $(function() {
                 codeList.push(item.code);
             });
 
-            confirm('确定批量审单？').then(function() {
-                var dw = dialog({
-                    content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                        '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
-                        '</form>'
-                });
+            var dw = dialog({
+                content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请填写以下信息</li></ul>' +
+                    '</form>'
+            });
 
-                dw.showModal();
+            dw.showModal();
 
-                buildDetail({
-                    container: $('#formContainer'),
-                    fields: [{
-                        field: 'approveNote',
-                        title: '审核备注',
-                    }],
-                    buttons: [{
-                        title: '确定',
-                        handler: function() {
-                            if ($('#popForm').valid()) {
-                                var data = $('#popForm').serializeObject();
-                                reqApi({
-                                    code: '627727',
-                                    json: {
-                                        codeList: codeList,
-                                        approver: getUserId(),
-                                        approveNote: data.approveNote
-                                    }
-                                }).done(function() {
-                                    sucList();
-                                    dw.close().remove();
-                                });
-                            }
+            buildDetail({
+                container: $('#formContainer'),
+                fields: [{
+                    field: 'approveNote',
+                    title: '审核备注',
+                }],
+                buttons: [{
+                    title: '确定',
+                    handler: function() {
+                        if ($('#popForm').valid()) {
+                            var data = $('#popForm').serializeObject();
+                            reqApi({
+                                code: '627727',
+                                json: {
+                                    codeList: codeList,
+                                    approver: getUserId(),
+                                    approveNote: data.approveNote
+                                }
+                            }).done(function() {
+                                sucList();
+                                dw.close().remove();
+                            });
                         }
-                    }, {
-                        title: '取消',
-                        handler: function() {
-                            dw.close().remove();
-                        }
-                    }]
-                });
-                hideLoading();
-            })
+                    }
+                }, {
+                    title: '取消',
+                    handler: function() {
+                        dw.close().remove();
+                    }
+                }]
+            });
+            hideLoading();
         } else {
             return;
         }
 
+    });
+
+    // 审核取消
+    $('#qxcheckBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        if (selRecords[0].status == '5') {
+            window.location.href = './orderManage_qxdedit.html?code=' + selRecords[0].code;
+        } else {
+            toastr.info('该状态下不能审核取消')
+        }
     });
 
 });

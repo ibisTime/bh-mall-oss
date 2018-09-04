@@ -16,9 +16,15 @@ $(function() {
             return data.agent ? data.agent.realName : '-'
         }
     }, {
-        field: 'inAmount',
+        field: 'amount1',
         title: '奖励金额',
-        amount: true
+        formatter(v, d) {
+            if (gin) {
+                return moneyFormat(d.inAmount);
+            } else {
+                return moneyFormat(d.outAmount);
+            }
+        }
     }, {
         field: 'status',
         title: '状态',
