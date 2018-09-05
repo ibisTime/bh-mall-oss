@@ -97,7 +97,6 @@ $(function() {
         title: '账户类型',
         type: 'select',
         key: 'account_type',
-
         formatter: Dict.getNameForList('account_type'),
         required: true
     }, {

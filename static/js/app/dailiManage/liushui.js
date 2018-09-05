@@ -20,6 +20,12 @@ $(function() {
         formatter: Dict.getNameForList('channel_type'),
         search: true
     }, {
+        field: 'currency',
+        title: '账户类型',
+        key: 'currency',
+        formatter: Dict.getNameForList('currency'),
+        required: true
+    }, {
         field: 'bizType',
         title: '业务类型',
         type: 'select',

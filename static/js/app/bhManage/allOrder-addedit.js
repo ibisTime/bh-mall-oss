@@ -1,6 +1,12 @@
 $(function() {
     var code = getQueryString('code');
+    var cancel = getQueryString('cancel');
     var view = getQueryString('v');
+
+
+    if (cancel == '1') {
+        view = true
+    }
 
 
     reqApi({
@@ -14,7 +20,6 @@ $(function() {
         });
 
 
-
         var fields = [{
             field: 'code1',
             title: '订单编号',
@@ -25,65 +30,90 @@ $(function() {
             field: 'productName',
             title: '产品名称',
         }, {
+            field: 'quantity',
+            title: '购买数量',
+            formatter(v, data) {
+                return data.quantity;
+            }
+        }, {
+            field: 'specsName',
+            title: '产品规格',
+        }, {
             field: 'amount',
             title: '付款金额',
+            amount: true,
             formatter: moneyFormat
         }, {
             field: 'status',
             title: '订单状态',
             type: 'select',
-            key: 'order_status',
-            formatter: Dict.getNameForList('order_status')
+            key: 'out_order_status',
+            formatter: Dict.getNameForList('out_order_status')
+
         }, {
             field: 'kind',
             title: '订单类型',
             type: 'select',
-            key: 'order_type',
-            formatter: Dict.getNameForList('order_type')
+            formatter: Dict.getNameForList('out_order_type')
+
         }, {
             field: 'realName',
-            title: '下单代理',
-            formatter: function(v, data) {
-                return data.user ? data.user.realName : '-'
-            }
+            title: '下单代理'
         }, {
-            field: 'level1',
+            field: 'level',
             title: '下单代理等级',
             formatter: function(v, data) {
                 var level = '';
                 items.map(function(item) {
-                    if (item.level == data.user.level) {
+                    if (item.level == data.level) {
                         level = item.name
                     }
                 })
                 return level
             }
         }, {
-            field: 'signeName',
+            field: 'teamLeader',
+            title: '团队长名称'
+        }, {
+            field: 'teamName',
+            title: '团队名称',
+            formatter: function(v, data) {
+                return data.teamName
+            }
+        }, {
+            field: 'signer',
             title: '收货人'
         }, {
             field: 'mobile',
             title: '收货人电话'
+        }, {
+            field: 'quyu',
+            title: '区域',
+            required: true,
+            type: 'citySelect'
+        }, {
+            field: 'address',
+            title: '详细地址'
         }, {
             field: 'applyDatetime',
             title: '下单日期',
             formatter: dateTimeFormat
         }, {
             field: 'remark',
-            title: '备注'
+            title: '备注',
+            readonly: !cancel,
+            required: true
         }];
 
         buildDetail({
             fields: fields,
-            code: code,
+            code: {
+                code,
+                updater: getUserId()
+            },
             view: view,
-            detailCode: '627664',
-            addCode: '627920',
-            editCode: '627921'
+            detailCode: '627664'
         });
-
-
-
 
     })
 
