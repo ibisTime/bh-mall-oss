@@ -89,7 +89,8 @@ $(function() {
                     title: '顺序',
                     required: true,
                     number: true,
-                    min: '0'
+                    min: '0',
+                    value: selRecords[0].orderNo ? selRecords[0].orderNo : ''
                 }, {
                     field: 'isFree1',
                     title: '是否包邮',
@@ -98,7 +99,8 @@ $(function() {
                     data: {
                         '0': '否',
                         '1': '是'
-                    }
+                    },
+                    value: selRecords[0].isFree ? selRecords[0].isFree : ''
                 }],
                 buttons: [{
                     title: '确定',

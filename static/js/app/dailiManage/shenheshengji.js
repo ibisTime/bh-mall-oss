@@ -95,9 +95,13 @@ $(function() {
                 field: 'diyu',
                 title: '地域',
                 formatter: function(v, data) {
-                    return data.area ? data.province + ' ' + data.city + ' ' + data.area :
-                        data.city ? data.province + ' ' + data.city :
-                        data.province ? data.province : '-'
+                    if (data.user) {
+                        return data.user.area ? data.user.province + ' ' + data.user.city + ' ' + data.user.area :
+                            data.user.city ? data.user.province + ' ' + data.user.city :
+                            data.user.province ? data.user.province : '-'
+                    } else {
+                        return '-'
+                    }
                 }
             }, {
                 field: 'applyDatetime',
@@ -121,6 +125,7 @@ $(function() {
                 title: '状态',
                 key: 'sj_status',
                 data: {
+                    '13': '待公司审核',
                     '14': '通过',
                     '15': '不通过'
                 }

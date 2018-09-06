@@ -75,16 +75,6 @@ $(function() {
                 return null;
             }
         }, {
-            title: "充值截图",
-            field: "photo",
-            type: "img",
-            single: true,
-            readonly: false,
-            required: true,
-            formatter: function(v, data) {
-                return data.agent ? data.agent.photo && '<img  style="width:40px;height:40px" src="' + data.agent.photo + '" >' || "-" : '-'
-            }
-        }, {
             field: 'remark',
             title: '备注',
             readonly: false,

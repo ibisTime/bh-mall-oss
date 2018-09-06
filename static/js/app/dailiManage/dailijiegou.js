@@ -77,8 +77,7 @@ $(function() {
         reqApi({
             code: '627321',
             json: {
-                userId: toorter ? setUserId : '',
-                status: '8'
+                userId: toorter ? setUserId : ''
             }
         }).then(function(d) {
             d.forEach(function(d, i) {
@@ -171,10 +170,7 @@ $(function() {
                     };
                 });
                 reqApi({
-                    code: '627321',
-                    json: {
-                        status: '8'
-                    }
+                    code: '627321'
                 }).then(function(data) {
                     var selectData = data;
                     buildList({
@@ -182,8 +178,7 @@ $(function() {
                         columns: items,
                         pageCode: '627321',
                         searchParams: {
-                            userId: toorter ? setUserId : '',
-                            status: '8'
+                            userId: toorter ? setUserId : ''
                         },
                         tableId: 'tableList1',
                         exportDataType: 'combine',
@@ -275,8 +270,7 @@ $(function() {
                 reqApi({
                     code: '627321',
                     json: {
-                        'userId': note.data.userId,
-                        status: '8'
+                        'userId': note.data.userId
                     }
                 }).then(function(d) {
                     d.forEach(function(d, i) {

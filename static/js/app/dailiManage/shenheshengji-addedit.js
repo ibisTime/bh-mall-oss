@@ -41,15 +41,21 @@ $(function() {
             }
         }, {
             field: 'mobile',
-            title: '联系电话'
+            title: '联系电话',
+            formatter(v, d) {
+                return d.user ? d.user.mobile : '-'
+            }
         }, {
             field: 'wxId',
-            title: '微信号'
+            title: '微信号',
+            formatter(v, d) {
+                return d.user ? d.user.wxId : '-'
+            }
         }, {
             field: 'highUserName',
             title: '上级',
             formatter: function(v, data) {
-                return data.highUser ? data.highUser.realName : '-'
+                return data.user ? data.user.highUserName : '-'
             }
         }, {
             field: 'teamName',
@@ -61,9 +67,13 @@ $(function() {
             field: 'diyu',
             title: '地域',
             formatter: function(v, data) {
-                return data.area ? data.province + ' ' + data.city + ' ' + data.area :
-                    data.city ? data.province + ' ' + data.city :
-                    data.province ? data.province : '-'
+                if (data.user) {
+                    return data.user.area ? data.user.province + ' ' + data.user.city + ' ' + data.user.area :
+                        data.user.city ? data.user.province + ' ' + data.user.city :
+                        data.user.province ? data.user.province : '-'
+                } else {
+                    return '-'
+                }
             }
         }, {
             field: 'applyDatetime',
