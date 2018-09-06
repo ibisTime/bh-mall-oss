@@ -69,7 +69,7 @@ $(function() {
         //     return true;
         // },
         searchParams: {
-            // channelType: 'out',
+            type: 'B',
             companyCode: OSS.company
         },
         // beforeSearch: function(data) {

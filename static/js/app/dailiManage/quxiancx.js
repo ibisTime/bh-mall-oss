@@ -13,6 +13,10 @@ $(function() {
         amount: true,
         formatter: moneyFormat
     }, {
+        field: 'fee',
+        title: '手续费',
+        formatter: moneyFormat
+    }, {
         field: 'payCardInfo',
         readonly: true,
         title: '开户支行'

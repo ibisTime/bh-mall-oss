@@ -4,19 +4,19 @@ $(function() {
         field: '',
         title: '',
         checkbox: true
-    },{
+    }, {
         field: 'remark',
         title: '规则名称'
-    },{
+    }, {
         field: 'cvalue',
         title: '数值'
     }];
     buildList({
         columns: columns,
         pageCode: '627085',
-        searchParams : {
-            type: 'AT_QX',
-            companyCode : OSS.company
+        searchParams: {
+            typeList: ['AT_QX', 'WD_QX'],
+            companyCode: OSS.company
         }
     });
     // 修改
@@ -27,6 +27,6 @@ $(function() {
             return;
         }
         // debugger;
-        window.location.href = "./quxianRules_addedit.html?v=0&id=" + selRecords[0].id+"&remark="+selRecords[0].remark;
+        window.location.href = "./quxianRules_addedit.html?v=0&id=" + selRecords[0].id + "&remark=" + selRecords[0].remark;
     });
 });
