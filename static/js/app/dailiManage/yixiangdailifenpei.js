@@ -98,9 +98,8 @@ $(function() {
             }, {
                 field: 'fromInfo',
                 title: '来源',
-                formatter: function(v, data) {
-                    return data ? data.fromInfo : '-'
-                }
+                key: 'source',
+                formatter: Dict.getNameForList('source')
             }, {
                 // 显示
                 field: 'applyDatetime1',

@@ -3,7 +3,6 @@ $(function() {
     var userId = getQueryString('userId');
     var fenpei = getQueryString('fenpei');
     var lev = Number(getQueryString('lev'));
-    console.log(lev)
     var view = getQueryString('v');
     reqApi({
         code: '627006'
@@ -140,7 +139,7 @@ $(function() {
                 field: 'toUserId',
                 title: '代理',
                 readonly: false,
-                listCode: '627326',
+                pageCode: '627325',
                 type: 'select',
                 params: {
                     kind: 'B',

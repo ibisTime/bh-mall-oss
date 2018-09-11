@@ -59,10 +59,10 @@ $(function() {
             field: 'highUser',
             title: '新上级',
             type: 'select',
-            listCode: level == 1 ? 627126 : 627326,
+            pageCode: level == 1 ? 627125 : 627325,
             params: {
                 kind: 'B',
-                statusList: [8],
+                noStatusList: [0, 4],
                 noUserId: highUserId,
                 highLevel: level
             },
@@ -116,10 +116,10 @@ $(function() {
     }, {
         field: 'userreferrer',
         title: '新推荐人姓名',
-        listCode: '627326',
+        pageCode: '627325',
         params: {
             kind: 'B',
-            statusList: [8],
+            noStatusList: [0, 4],
             noUserList: [userId, referrer],
             level: level
         },
