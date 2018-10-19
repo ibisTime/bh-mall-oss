@@ -127,6 +127,20 @@ $(function() {
             return e.length <= 0 ? void toastr.info("请选择记录") : void("3" == e[0].status || "4" == e[0].status ? window.location.href = "./wuliu.html?v=1&code=" + e[0].code : toastr.info("只有待收货和已收货的订单可以查看物流"))
         })
 
+        // 订单作废
+        $('#cancellationBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if (selRecords.length <= 0) {
+                toastr.info("请选择记录");
+                return;
+            }
+            if (selRecords[0].status == '0' || selRecords[0].status == '1') {
+                window.location.href = './waitOrder_cancellation.html?cancel=1&code=' + selRecords[0].code
+            } else {
+                toastr.info('该状态下不能订单作废')
+            }
+        });
+
     })
 
 

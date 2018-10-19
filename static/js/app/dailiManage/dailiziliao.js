@@ -21,6 +21,10 @@ $(function() {
                 highLevel: 6
             }
         }, {
+            field: 'mkAmount',
+            title: '门槛账户余额',
+            amount: true
+        }, {
             field: 'wareAmount',
             title: '云仓余额',
             amount: true
@@ -28,14 +32,12 @@ $(function() {
             field: 'mobile',
             title: '联系电话'
         },
-        /* {
-               field: 'whAmount',
-               title: '云仓余额',
-               amount: true
-           },  */
         {
             field: 'wxId',
             title: '微信号'
+        }, {
+            field: 'idNo',
+            title: '身份证号'
         }, {
             field: 'highUserName',
             title: '上级'
@@ -47,21 +49,12 @@ $(function() {
             title: '团队名称',
             search: true
         }, {
-            field: 'manageName',
-            title: '关联管理员'
-        }, {
             field: 'userRefreeName',
             title: '推荐人'
         }, {
             field: 'userRefreeMobile',
             title: '推荐人电话'
-        }, {
-            field: 'introduceName',
-            title: '介绍人'
-        }, {
-            field: 'introduceMobile',
-            title: '介绍人电话'
-        },
+        }, 
         {
             field: 'status',
             title: '授权状态',
@@ -77,6 +70,9 @@ $(function() {
                     data.city ? data.province + ' ' + data.city :
                     data.province ? data.province : '-'
             }
+        }, {
+            field: 'address',
+            title: '详细地址'
         }
     ];
     buildList({
@@ -87,26 +83,7 @@ $(function() {
             noStatusList: ['0', '4']
         }
     });
-    /* 
-        {
-                field: 'createDatetime',
-                title: '申请时间',
-                formatter: dateTimeFormat,
-                field1: 'dateStart',
-                title1: '申请时间',
-                type: 'datetime',
-                field2: 'dateEnd',
-                twoDate: true,
-                search: true,
-                visible: false
-            }, {
-                field: 'createDatetime1',
-                title: '申请时间',
-                formatter: function(v, data) {
-                    return data ? dateTimeFormat(data.applyDatetime) : '-'
-                }
-            }
-     */
+    
 
     // 修改上级
     $('#changeUpBtn').click(function() {

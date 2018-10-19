@@ -163,6 +163,7 @@
                 tdData += ") VALUES ";
                 // Row vs Column
                 $rows = $(el).find('tbody').first().find(defaults.tbodySelector);
+                console.log($rows)
                 $rows.each(function() {
                     trData = "";
                     ForEachVisibleCell(this, 'td', rowIndex, $hrows.length + $rows.length,

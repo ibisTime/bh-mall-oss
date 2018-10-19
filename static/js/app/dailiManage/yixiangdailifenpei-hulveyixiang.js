@@ -143,12 +143,12 @@ $(function() {
                 type: 'select',
                 params: {
                     kind: 'B',
-                    statusList: [8],
+                    statusList: [8, 12, 13, 14],
                     noUserId: userId,
                     highLevel: lev
                 },
                 keyName: 'userId',
-                valueName: '{{realName.DATA}}'
+                valueName: 'realName'
             }, {
                 field: 'reason',
                 title: '理由',

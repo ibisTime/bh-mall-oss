@@ -14,90 +14,96 @@ $(function() {
 
 
         var columns = [{
-                field: '',
-                title: '',
-                checkbox: true
-            }, {
-                field: 'realName',
-                title: '姓名',
-                search: true
-            }, {
-                field: 'mobile',
-                title: '手机号',
-                search: true
-            }, {
-                field: 'wxId',
-                title: '微信号',
-                search: true
-            }, {
-                field: 'level',
-                title: '当前等级',
-                params: {
-                    highLevel: 6
-                },
-                formatter: function(v, data) {
-                    var level = '';
-                    items.map(function(item) {
-                        if (item.level == data.level) {
-                            level = item.name
-                        }
-                    })
-                    return level
-                }
-            }, {
-                field: 'applyLevel',
-                title: '申请等级',
-                params: {
-                    highLevel: 6
-                },
-                formatter: function(v, data) {
-                    var level = '';
-                    items.map(function(item) {
-                        if (item.level == data.applyLevel) {
-                            level = item.name
-                        }
-                    })
-                    return level
-                }
-            }, {
-                field: 'approveName',
-                title: '审核人'
-            }, {
-                field: 'userReferrerName',
-                title: '推荐人'
-            }, {
-                field: 'toUserName',
-                title: '归属人'
-            }, {
-                field: 'introduceName',
-                title: '介绍人'
-            }, {
-                field: 'type',
-                title: '操作类型',
-                key: 'agnecy_log_type',
-                formatter: Dict.getNameForList('agnecy_log_type')
-
-            }, {
-                field: 'status',
-                title: '状态',
-                key: 'agent_log_status',
-                formatter: Dict.getNameForList('agent_log_status')
-
-            }, {
-                field: 'approveDatetime',
-                title: '授权时间',
-                formatter: dateTimeFormat,
-                field1: 'dateStart',
-                title1: '授权时间',
-                type: 'datetime',
-                field2: 'dateEnd',
-                twoDate: true,
+            field: '',
+            title: '',
+            checkbox: true
+        }, {
+            field: 'realName',
+            title: '姓名',
+            search: true
+        }, {
+            field: 'mobile',
+            title: '手机号',
+            search: true
+        }, {
+            field: 'wxId',
+            title: '微信号',
+            search: true
+        }, {
+            field: 'level',
+            title: '当前等级',
+            params: {
+                highLevel: 6
+            },
+            formatter: function(v, data) {
+                var level = '';
+                items.map(function(item) {
+                    if (item.level == data.level) {
+                        level = item.name
+                    }
+                })
+                return level
             }
-            /* , {
-                            field: 'remark',
-                            title: '备注'
-                        } */
-        ];
+        }, {
+            field: 'applyLevel',
+            title: '申请等级',
+            params: {
+                highLevel: 6
+            },
+            formatter: function(v, data) {
+                var level = '';
+                items.map(function(item) {
+                    if (item.level == data.applyLevel) {
+                        level = item.name
+                    }
+                })
+                return level
+            }
+        }, {
+            field: 'approveName',
+            title: '审核人'
+        }, {
+            field: 'userReferrerName',
+            title: '推荐人'
+        }, {
+            field: 'toUserName',
+            title: '归属人'
+        }, {
+            field: 'introduceName',
+            title: '介绍人'
+        }, {
+            field: 'type',
+            title: '操作类型',
+            key: 'agnecy_log_type',
+            formatter: Dict.getNameForList('agnecy_log_type')
+
+        }, {
+            field: 'status',
+            title: '状态',
+            key: 'agent_log_status',
+            formatter: Dict.getNameForList('agent_log_status')
+
+        }, {
+            field: 'approveDatetime',
+            title: '授权时间',
+            formatter: dateTimeFormat,
+            field1: 'dateStart',
+            title1: '授权时间',
+            type: 'datetime',
+            field2: 'dateEnd',
+            twoDate: true,
+        }, {
+            field: 'applyDatetime',
+            title: '申请时间',
+            formatter: dateTimeFormat,
+            field1: 'dateStart',
+            title1: '申请时间',
+            type: 'datetime',
+            field2: 'dateEnd',
+            twoDate: true,
+            visible: false,
+            search: true
+        }];
         buildList({
             columns: columns,
             pageCode: '627365',

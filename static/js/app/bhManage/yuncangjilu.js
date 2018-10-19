@@ -1,7 +1,8 @@
 $(function() {
     // 报货管理-云仓管理-产品库存记录
     let toorter = getQueryString('toorter');
-    let code = getQueryString('code');
+    // let code = getQueryString('code');
+    let userId = getQueryString('userId');
     var columns = [{
         field: '',
         title: '',
@@ -10,6 +11,12 @@ $(function() {
         field: 'productName',
         title: '产品名称',
         search: true
+    }, {
+        field: 'realName',
+        title: '代理人',
+        search: true,
+        visible: false
+
     }, {
         field: 'specsName',
         title: '规格名称'
@@ -50,14 +57,15 @@ $(function() {
         field: 'realName',
         title: '操作人'
     }, {
-        field: 'remark',
+        field: 'bizNote',
         title: '备注'
     }];
     buildList({
         columns: columns,
         pageCode: '627830',
         searchParams: {
-            specsCode: code ? code : ''
+            // specsCode: code ? code : '',
+            'userId': userId ? userId : '',
         }
     });
     if (toorter) {

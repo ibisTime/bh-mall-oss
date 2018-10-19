@@ -6,13 +6,15 @@ $(function() {
         checkbox: true
     }, {
         field: 'refCode',
-        title: '箱码'
+        title: '箱码',
+        search: true
     }, {
         field: 'miniCode',
         title: '防伪码'
     }, {
         field: 'traceCode',
-        title: '溯源码'
+        title: '溯源码',
+        search: true
     }, {
         field: 'orderCode',
         title: '关联订单编号',

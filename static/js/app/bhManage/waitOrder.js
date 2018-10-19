@@ -92,6 +92,22 @@ $(function() {
             field: 'mobile',
             title: '收货人电话'
         }, {
+            field: 'keyword',
+            title: '产品名称',
+            search: true,
+            visible: false
+        }, {
+            field: 'quyu',
+            title: ' &nbsp;&nbsp;&nbsp;区域&nbsp;&nbsp;&nbsp; ',
+            formatter: function(v, data) {
+                return data.area ? data.province + ' ' + data.city + ' ' + data.area :
+                    data.city ? data.province + ' ' + data.city :
+                    data.province ? data.province : '-'
+            }
+        }, {
+            field: 'address',
+            title: ' &nbsp;&nbsp;&nbsp;详细地址 &nbsp;&nbsp;&nbsp;'
+        }, {
             field: 'applyDatetime',
             title: '下单日期',
             formatter: dateTimeFormat,
@@ -104,11 +120,6 @@ $(function() {
         }, {
             field: 'remark',
             title: '备注'
-        }, {
-            field: 'keyword',
-            title: '产品名称',
-            search: true,
-            visible: false
         }];
         buildList({
             columns: columns,

@@ -6,7 +6,7 @@ OSS.system = 'CD-CBH000020';
 // companyCode
 OSS.company = 'CD-CBH000020';
 // system name
-OSS.systemName = '浙江圈粉科技管理平台';
+OSS.systemName = '麦记微商管理系统';
 // company name
 OSS.companyName = '浙江圈粉科技有限公司';
 // menuCode

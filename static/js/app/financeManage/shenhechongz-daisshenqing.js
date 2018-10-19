@@ -1,5 +1,5 @@
 $(function() {
-    let usid = '';
+    let accountNumber = getQueryString('accountNumber');
     var fields = [{
         title: '代理',
         field: 'applyUser',
@@ -7,7 +7,7 @@ $(function() {
         type: 'select',
         pageCode: '627325',
         params: {
-            // status: '8'
+            noStatusList: ['0', '4']
         },
         keyName: 'userId',
         valueName: 'realName',
@@ -17,8 +17,7 @@ $(function() {
                 listCode: '627451',
                 params: {
                     userId: v,
-                    updater: getUserId(),
-                    currencyList: ['C_CNY', 'TX_CNY']
+                    updater: getUserId()
                 },
                 keyCode1: '627076',
                 dict: [
@@ -49,33 +48,29 @@ $(function() {
 
         }
     }, {
-        title: '账户余额',
-        field: 'amount1',
-        required: true,
-        readonly: true
-    }, {
-        title: '取现金额',
-        field: 'amount',
+        title: '充值金额',
+        field: 'chargeAmount',
         amount: true,
         required: true
     }, {
-        title: '支付渠道账号信息（如开户支行）',
-        field: 'payCardInfo',
+        title: '打款图片',
+        field: 'chargePdf',
+        type: 'img',
         required: true
     }, {
-        title: '支付渠道账号（如银行卡号）',
-        field: 'payCardNo',
-        required: true,
-    }, {
-        title: '申请说明',
+        title: '申请人说明',
         field: 'applyNote',
         required: true
     }];
 
+    setTimeout(() => {
+        $('#accountNumber').text(accountNumber);
+    }, 20);
     buildDetail({
         fields: fields,
-        addCode: '627501',
+        addCode: '627460',
         beforeSubmit: function(data) {
+            data.type = 'AJ_CZ';
             data.updater = getUserId();
             // data.amount = parseInt(data.amount)
             return data

@@ -62,12 +62,12 @@ $(function() {
             pageCode: level == 1 ? 627125 : 627325,
             params: {
                 kind: 'B',
-                noStatusList: [0, 4],
+                statusList: [8, 12, 13, 14],
                 noUserId: highUserId,
                 highLevel: level
             },
             keyName: 'userId',
-            valueName: '{{realName.DATA}}' + '-' + '{{mobile.DATA}}',
+            valueName: 'realName', // {{realName.DATA}}' + '-' + '{{mobile.DATA}}
             readonly: false,
             required: true
         }
@@ -114,18 +114,18 @@ $(function() {
         title: '授权状态',
         formatter: Dict.getNameForList('agent_status')
     }, {
-        field: 'userreferrer',
+        field: 'userReferee',
         title: '新推荐人姓名',
         pageCode: '627325',
         params: {
             kind: 'B',
-            noStatusList: [0, 4],
+            statusList: [8, 12, 13, 14],
             noUserList: [userId, referrer],
             level: level
         },
         type: 'select',
         keyName: 'userId',
-        valueName: '{{realName.DATA}}-{{mobile.DATA}}', //'{{mobile.DATA}}-{{kindName.DATA}}-{{nickname.DATA}}'
+        valueName: 'realName', //'{{mobile.DATA}}-{{kindName.DATA}}-{{nickname.DATA}}'
         readonly: false
     }];
 

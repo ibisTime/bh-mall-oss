@@ -57,4 +57,10 @@ $(function() {
             toastr.info('该状态不可进行审核')
         }
     })
+
+    // 代申请
+    $('#daishenqingBtn').click(function() {
+        // window.location.href = "./underlineQuxian_daishenqing.html?accountNumber=" + selRecords[0].accountNumber
+        window.location.href = `./shenhechongz_daisshenqing.html`;
+    })
 });

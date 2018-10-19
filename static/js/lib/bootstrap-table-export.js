@@ -79,15 +79,17 @@
                     }
                     var type = $(this).data('type'),
                         doExport = function() {
+                            console.log(that.options.exportOptions)
                             that.$el.tableExport($.extend({}, that.options.exportOptions, {
                                 type: type,
                                 escape: false,
                                 excelTxt: excelTxt
                             }));
                         };
-
+                    // that.options.exportDataType = 'selected';
                     if (that.options.exportDataType === 'all' && that.options.pagination) {
                         that.$el.one(that.options.sidePagination === 'server' ? 'post-body.bs.table' : 'page-change.bs.table', function() {
+                            debugger
                             doExport();
                             that.togglePagination();
                         });
