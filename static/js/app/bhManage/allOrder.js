@@ -18,7 +18,8 @@ $(function() {
             checkbox: true
         }, {
             field: 'code',
-            title: '订单编号'
+            title: '订单编号',
+            search: true
         }, {
             field: 'productName',
             title: '产品名称',
@@ -112,6 +113,16 @@ $(function() {
         }, {
             field: 'keyword',
             title: '产品名称',
+            visible: false
+        }, {
+            field: 'impowerDatetime',
+            title: '日期',
+            formatter: dateTimeFormat,
+            field1: 'dateStart',
+            title1: '日期',
+            field2: 'dateEnd',
+            twoDate: true,
+            search: true,
             visible: false
         }];
         buildList({
